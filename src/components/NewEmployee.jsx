@@ -3,16 +3,18 @@ import React, { useState, useEffect } from "react";
 const NewEmployee = ({ newEmployee }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  if(newEmployee.length === 0) return null;
+  if (newEmployee.length === 0) return null;
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === newEmployee.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 4000);
+    if (newEmployee.length > 1) {
+      const intervalId = setInterval(() => {
+        setCurrentIndex((prevIndex) =>
+          prevIndex === newEmployee.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 4300);
 
-    return () => clearInterval(intervalId);
+      return () => clearInterval(intervalId);
+    }
   }, [newEmployee]);
 
   return (
