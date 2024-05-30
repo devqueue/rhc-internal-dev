@@ -171,7 +171,7 @@ const Home = () => {
           </div>
 
           <div className="flex gap-[30px] mt-[25px]">
-            <Calender events={calendarEvents} />
+            <Calender events={calendarEvents} /> 
             <Planner tasks={plannerTasks} />
           </div>
 
