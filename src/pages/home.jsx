@@ -195,7 +195,7 @@ const Home = () => {
           </div>
           <hr />
           <div className="mt-[21px] mb-[32px] px-[25px]">
-            <EventName />
+            <EventName events = {calendarEvents}/>
           </div>
           <hr />
           <div className="px-[30px] mt-[30px]">
