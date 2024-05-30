@@ -22,13 +22,13 @@ const UpcomingEvents = ({ events }) => {
       </div>
 
       <div className="h-full overflow-y-auto pb-16">
-      <div className="flex p-[20px] gap-[20px] items-start content-start self-stretch flex-wrap border-b-[1px] border-b-[#888888]">
+      {/* <div className="flex p-[20px] gap-[20px] items-start content-start self-stretch flex-wrap border-b-[1px] border-b-[#888888]">
           <div className="w-[72px] h-[72px] bg-slate-300"> </div>
           <div>
             <h1 className="text-[16px] font-[400px]">{events.fields.Title}</h1>
             <div className="flex gap-[10px] items-center">
               <div className="w-[16px] h-[16px] shrink-0 bg-slate-300"></div>
-              <p className="text-[12px] font-[400px]">{normalizeDateTime(event.fields.Start_time)} - {normalizeDateTime(event.fields.end_time)}</p>
+              <p className="text-[12px] font-[400px]">{normalizeDateTime(events.fields.Start_time)} - {normalizeDateTime(events.fields.end_time)}</p>
             </div>
             <div className="flex gap-[10px] items-center">
               <div className="w-[16px] h-[16px] shrink-0 bg-slate-300"></div>
@@ -37,7 +37,7 @@ const UpcomingEvents = ({ events }) => {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="flex p-[20px] gap-[20px] items-start content-start self-stretch flex-wrap border-b-[1px] border-b-[#888888]">
           <div className="w-[72px] h-[72px] bg-slate-300"> </div>
