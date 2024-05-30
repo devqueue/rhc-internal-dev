@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 
-const NewEmployee = ({ employees }) => {
+const NewEmployee = ({ newEmployee }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  if(employees.length === 0) return null;
+  if(newEmployee.length === 0) return null;
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentIndex((prevIndex) =>
-        prevIndex === employees.length - 1 ? 0 : prevIndex + 1
+        prevIndex === newEmployee.length - 1 ? 0 : prevIndex + 1
       );
     }, 4000);
 
     return () => clearInterval(intervalId);
-  }, [employees]);
+  }, [newEmployee]);
 
   return (
     <div className="overflow-hidden">
@@ -21,7 +21,7 @@ const NewEmployee = ({ employees }) => {
         className="flex transition-transform duration-500"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
-        {employees.map((employee, index) => (
+        {newEmployee.map((employee, index) => (
           <div
             key={index}
             className="flex w-full flex-shrink-0 flex-col items-center gap-[30px] bg-[#50917F] py-[30px] rounded-[8px] overflow-hidden"
