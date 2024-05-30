@@ -19,7 +19,11 @@ const News = ({news}) => {
       <div className="flex flex-col gap-[20px]">
       {news.map((item, index) => (
           <div key={index} className='flex flex-wrap gap-[30px] items-center px-[30px] border-b-[1px] pb-[26.5px]'>
-            <img src={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${item.fields.image_name}`} className='w-[106px] h-[70px] bg-slate-300'></img>
+            <div style={{
+              backgroundImage: `url('https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${item.fields.image_name}')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }} className='w-[106px] h-[70px] bg-slate-300'></div>
 
             <div>
               <h1 className='text-[16px] text-[#444444]'>{item.fields.Title}</h1>
