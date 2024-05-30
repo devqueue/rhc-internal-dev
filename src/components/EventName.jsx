@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 const EventName = ({ events }) => {
-  if(events.length === 0) return null;
 
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0 });
 
@@ -42,6 +41,9 @@ const EventName = ({ events }) => {
 
     return () => clearInterval(intervalId);
   }, [events]);
+
+  if(events.length === 0) return null;
+
 
   return (
     <div className="py-[30px] px-[20px] bg-[#3B729C] flex flex-col justify-center items-center gap-[24px] text-white rounded-[8px]">
