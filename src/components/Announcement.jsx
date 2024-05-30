@@ -37,7 +37,7 @@ const Announcement = ({ announcements }) => {
             style={{ backgroundImage: `url('https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${announcement.fields.image_name}')`, backgroundSize: '100%', backgroundPosition: 'center center' }}
             ></div>
             <div className="text-white flex flex-col gap-[20px] items-start">
-              <h1 className="text-[24px] font-light">{announcement.fields.title}</h1>
+              <h1 className="text-[24px] font-light">{announcement.fields.Title}</h1>
               <p className="text-[16px] font-light">
                 {announcement.fields.preview_en}
               </p>
