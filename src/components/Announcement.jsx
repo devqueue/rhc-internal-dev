@@ -31,9 +31,11 @@ const Announcement = ({ announcements }) => {
           <div
             key={index}
             className={`w-full justify-center flex xl:flex-nowrap flex-wrap flex-shrink-0 rounded-lg gap-[60px] items-center self-stretch content-center`}
-            style={{ backgroundImage: `url('https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${announcement.fields.image_name}')` }}
-          >
-            <div className="w-[460px] h-[320px] bg-slate-300 rounded-lg overflow-hidden shrink-0"></div>
+            style={{ backgroundColor: "#50917F" }}          >
+            <div 
+            className="w-[460px] h-[320px] bg-slate-300 rounded-lg overflow-hidden shrink-0"
+            style={{ backgroundImage: `url('https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${announcement.fields.image_name}')`, backgroundSize: '100%', backgroundPosition: 'center center' }}
+            ></div>
             <div className="text-white flex flex-col gap-[20px] items-start">
               <h1 className="text-[24px] font-light">{announcement.fields.title}</h1>
               <p className="text-[16px] font-light">
