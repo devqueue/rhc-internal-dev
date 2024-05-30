@@ -58,7 +58,7 @@ const Home = () => {
           ...loginRequest,
           account: accounts[0],
         };
-
+ 
         try {
           const response = await instance.acquireTokenSilent(request);
           setAccessToken(response.accessToken);
