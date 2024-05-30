@@ -32,7 +32,11 @@ const NewEmployee = ({ newEmployee }) => {
               New Employee
             </h1>
 
-            <div className="h-[145px] w-[124px] bg-slate-300 rounded-[8px] overflow-hidden"></div>
+            <div 
+            className="h-[145px] w-[124px] bg-slate-300 rounded-[8px] overflow-hidden"
+            style={{ backgroundImage: `url('https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${employee.fields.employee_photo}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+          
+            ></div>
 
             <h2 className="text-center text-[16px] text-white h-[22.94px] self-stretch">
               {employee.fields.Title}
