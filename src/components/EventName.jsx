@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 const EventName = ({ events }) => {
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0 });
 
+  if(events.length === 0) return null;
+
   useEffect(() => {
     // Find the event with the nearest or newest date
     const nearestEvent = events.reduce((nearest, current) => {
