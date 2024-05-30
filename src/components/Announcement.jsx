@@ -2,18 +2,22 @@ import React, { useState, useEffect } from 'react';
 
 const Announcement = ({ announcements }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  if (!announcements || announcements.length === 0 ) {
-    return null 
-  }
+  
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === announcements.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 4300); 
+    if (announcements.length > 1) {
+      const intervalId = setInterval(() => {
+        setCurrentIndex((prevIndex) =>
+          prevIndex === announcements.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 4300); 
 
-    return () => clearInterval(intervalId); 
-  }, []);
+      return () => clearInterval(intervalId);
+    }
+  }, [announcements]);
+
+  if (!announcements || announcements.length === 0 ) {
+    return null; 
+  }
 
   return (
     <div className="w-full overflow-hidden bg-[#50917F] relative">
@@ -27,7 +31,7 @@ const Announcement = ({ announcements }) => {
           <div
             key={index}
             className={`w-full justify-center flex xl:flex-nowrap flex-wrap flex-shrink-0 rounded-lg gap-[60px] items-center self-stretch content-center`}
-            style={{ backgroundImage: `url('https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${announcement.fields.image_name})'` }}
+            style={{ backgroundImage: `url('https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${announcement.fields.image_name}')` }}
           >
             <div className="w-[460px] h-[320px] bg-slate-300 rounded-lg overflow-hidden shrink-0"></div>
             <div className="text-white flex flex-col gap-[20px] items-start">
