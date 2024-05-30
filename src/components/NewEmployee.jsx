@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-const NewEmployee = ({employees}) => {
+const NewEmployee = ({ employees }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  if(employees.length === 0) return null;
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -11,7 +13,7 @@ const NewEmployee = ({employees}) => {
     }, 4000);
 
     return () => clearInterval(intervalId);
-  }, [employees.length]);
+  }, [employees]);
 
   return (
     <div className="overflow-hidden">
