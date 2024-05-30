@@ -3,19 +3,19 @@ import React, { useState, useEffect } from "react";
 const NewEmployee = ({ newEmployee }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  if (newEmployee.length === 0) return null;
-
   useEffect(() => {
     if (newEmployee.length > 1) {
       const intervalId = setInterval(() => {
         setCurrentIndex((prevIndex) =>
           prevIndex === newEmployee.length - 1 ? 0 : prevIndex + 1
         );
-      }, 4300);
+      }, 4000);
 
       return () => clearInterval(intervalId);
     }
   }, [newEmployee]);
+
+  if (newEmployee.length === 0) return null;
 
   return (
     <div className="overflow-hidden">
