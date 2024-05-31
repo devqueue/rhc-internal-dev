@@ -12,6 +12,7 @@ import Home from "./pages/home";
 import ArabicHome from "./pages/ArabicHome";
 import { msalConfig, loginRequest } from "./authConfig";
 import AllEvents from "./pages/AllEvents";
+import Annoucement from "./pages/Annoucement";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -64,6 +65,13 @@ const App = () => {
           }
         />
 
+        <Route
+          path="/annoucement"
+          element={
+            <Annoucement/>
+          }
+
+        />
       </Routes>
     </Router>
   );
