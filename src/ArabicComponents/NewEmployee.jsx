@@ -43,7 +43,7 @@ const NewEmployee = ({ newEmployee }) => {
             </h2>
 
             <div className="flex flex-col content-center gap-[5px] pb-[30px] items-center text-center text-white self-stretch border-b-[1px] border-b-[#ffffff57] text-[14px]">
-              <h2 className="font-light">{employee.fields.job_title_en}</h2>
+              <h2 className="font-light">{employee.fields.job_title_ar || employee.fields.job_title_en}</h2>
               <h2 className="font-medium">{employee.fields.department_ar}</h2>
             </div>
 

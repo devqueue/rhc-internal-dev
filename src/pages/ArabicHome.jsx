@@ -15,11 +15,12 @@ import UpcomingEvents from "../ArabicComponents/UpcomingEvents";
 import { useMsal } from '@azure/msal-react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { loginRequest } from '../authConfig';
+import { loginRequest, msalConfig } from '../authConfig';
 import { InteractionRequiredAuthError } from '@azure/msal-browser';
 
+import { PublicClientApplication } from '@azure/msal-browser';
+
 const ArabicHome = () => {
-  const { instance, accounts } = useMsal();
   const [accessToken, setAccessToken] = useState(null);
   const [calendarEvents, setCalendarEvents] = useState([]);
   const [plannerTasks, setPlannerTasks] = useState([]);
@@ -29,26 +30,33 @@ const ArabicHome = () => {
   const [newEmployee, setNewEmployee] = useState([]);
   const [upcomingEvents, setUpcomingEvents] = useState([]);
   const [gallery,setGallery] = useState([]);
+  const [accounts, setAccounts] = useState([]);  
+  const msalInstance = new PublicClientApplication(msalConfig);
 
   console.log(accounts)
   useEffect(() => {
+    const initializeMsal = async () => {
+      await msalInstance.initialize();
+      const accounts = msalInstance.getAllAccounts();
+      setAccounts(accounts);
+    };
 
     const fetchListItems = async (token, siteId, listId, setStateFunction, name) => {
-        try {
-            const response = await fetch(`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listId}/items?expand=fields`, {
-                headers: { Authorization: `Bearer ${token}` },
-            });
-            const data = await response.json();
-            console.log(`${name} items:`, data);
+      try {
+        const response = await fetch(`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listId}/items?expand=fields`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const data = await response.json();
+        console.log(`${name} items:`, data);
 
-            if (data.value) {
-                setStateFunction(data.value);
-            } else {
-                console.error(`No items found in ${listId}`);
-            }
-        } catch (error) {
-            console.error(`Error fetching items from ${listId}:`, error);
+        if (data.value) {
+          setStateFunction(data.value);
+        } else {
+          console.error(`No items found in ${listId}`);
         }
+      } catch (error) {
+        console.error(`Error fetching items from ${listId}:`, error);
+      }
     };
 
     const acquireToken = async () => {
@@ -57,17 +65,19 @@ const ArabicHome = () => {
           ...loginRequest,
           account: accounts[0],
         };
- 
+
         try {
-          const response = await instance.acquireTokenSilent(request);
+          const response = await msalInstance.acquireTokenSilent(request);
           setAccessToken(response.accessToken);
           fetchCalendarEvents(response.accessToken);
           fetchPlannerTasks(response.accessToken);
-          //fetchAnnouncements(response.accessToken);
 
-          const response2 = await fetch('https://graph.microsoft.com/v1.0/sites/riyadhholding.sharepoint.com:/sites/Shamil/',{headers:{Authorization:"Bearer"+response.accessToken}});
+          const response2 = await fetch('https://graph.microsoft.com/v1.0/sites/riyadhholding.sharepoint.com:/sites/Shamil/', {
+            headers: { Authorization: `Bearer ${response.accessToken}` }
+          });
           const resJson = await response2.json();
           const siteId = resJson.id;
+
           const lists = [
             { name: 'Announcements', id: '8123ed29-3809-4573-bd24-70b60e752aa1', setStateFunction: setAnnouncements },
             { name: 'Employee Directory', id: '50e093d8-d366-4994-a9d8-ac460cb6e18a', setStateFunction: setEmployeeDirectory },
@@ -75,15 +85,15 @@ const ArabicHome = () => {
             { name: 'New Employee', id: 'cc29e416-2bf1-4462-8d41-d2b437357776', setStateFunction: setNewEmployee },
             { name: 'Upcoming events', id: 'fd974e0a-d601-4921-804c-10ff956619e2', setStateFunction: setUpcomingEvents },
             { name: 'Gallery', id: '9505ceb4-ece5-447d-99fa-b383a324dcd9', setStateFunction: setGallery },
-        ];
+          ];
 
-        lists.forEach(list => {
-            fetchListItems(response.accessToken, siteId, list.id, list.setStateFunction,list.name);
-        });
+          lists.forEach(list => {
+            fetchListItems(response.accessToken, siteId, list.id, list.setStateFunction, list.name);
+          });
 
         } catch (error) {
           if (error instanceof InteractionRequiredAuthError) {
-            instance.acquireTokenRedirect(request);
+            msalInstance.acquireTokenRedirect(request);
           } else {
             console.error(error);
           }
@@ -93,22 +103,20 @@ const ArabicHome = () => {
 
     const fetchCalendarEvents = async (token) => {
       try {
-        // Get the current date and set time to midnight to include all of today
         const now = new Date();
         now.setHours(0, 0, 0, 0);
         const isoDate = now.toISOString();
-    
-        // Fetch events starting from today or later
-        let calendar = await fetch(`https://graph.microsoft.com/v1.0/me/calendar/events?$filter=start/dateTime ge '${isoDate}'`, {
+
+        const calendar = await fetch(`https://graph.microsoft.com/v1.0/me/calendar/events?$filter=start/dateTime ge '${isoDate}'`, {
           headers: { Authorization: "Bearer " + token, Prefer: 'outlook.timezone="Asia/Kolkata"' },
         });
-    
-        let cal_json = await calendar.json();
+
+        const cal_json = await calendar.json();
         console.log('org_cal', cal_json);
-    
-        const tz = "Asia/Kolkata"; // Using the correct IANA time zone identifier
-    
-        let cal_eventsjson = cal_json.value.map((events) => ({
+
+        const tz = "Asia/Kolkata";
+
+        const cal_eventsjson = cal_json.value.map((events) => ({
           name: events.subject,
           month: new Date(events.start.dateTime).toLocaleString("default", { month: "short" }),
           day: new Date(events.start.dateTime).getDate(),
@@ -121,26 +129,23 @@ const ArabicHome = () => {
             timeZone: tz,
           }),
           bodyPreview: events.bodyPreview,
-          
         }));
-    
+
         setCalendarEvents(cal_eventsjson);
         console.log('cal_eventsjson', cal_eventsjson);
       } catch (error) {
         console.error("Error fetching calendar events:", error);
       }
     };
-    
-    
 
     const fetchPlannerTasks = async (token) => {
       try {
-        let tasks_planner = await fetch("https://graph.microsoft.com/v1.0/me/planner/tasks/", {
+        const tasks_planner = await fetch("https://graph.microsoft.com/v1.0/me/planner/tasks/", {
           headers: { Authorization: "Bearer " + token },
         });
-        let tasks_json = await tasks_planner.json();
-        let tasks_filter_json = tasks_json.value.filter((obj) => !obj.completedBy);
-        let tasks_assigned_json = tasks_filter_json.map((tasks) => ({
+        const tasks_json = await tasks_planner.json();
+        const tasks_filter_json = tasks_json.value.filter((obj) => !obj.completedBy);
+        const tasks_assigned_json = tasks_filter_json.map((tasks) => ({
           title: tasks.title,
           id: tasks.id,
           url: `https://tasks.office.com/arhc.com.sa/Home/Task/${tasks.id}`,
@@ -149,15 +154,16 @@ const ArabicHome = () => {
             : "No Due Date",
         }));
         setPlannerTasks(tasks_assigned_json);
-        console.log('tasks_assigned_json',tasks_assigned_json)
+        console.log('tasks_assigned_json', tasks_assigned_json);
       } catch (error) {
         console.error("Error fetching planner tasks:", error);
       }
     };
 
-
-    acquireToken();
-  }, [instance, accounts]);
+    initializeMsal().then(() => {
+      acquireToken();
+    });
+  }, [accounts, msalInstance]);
 
 
   return (
@@ -177,7 +183,7 @@ const ArabicHome = () => {
           </div>
 
           <div className="mt-[30px] w-full">
-            <Announcement announcementss={announcements} />
+            <Announcement announcements={announcements} />
           </div>
 
           <div className="flex gap-[60px] justify-between mt-[25px]">
@@ -199,7 +205,7 @@ const ArabicHome = () => {
           <hr />
 
           <div className="mt-[21px] mb-[32px] px-[25px]">
-            <EventName />
+            <EventName events={calendarEvents}/>
           </div>
 
           <hr />

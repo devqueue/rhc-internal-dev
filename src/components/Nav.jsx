@@ -6,7 +6,7 @@ const Nav = () => {
       
       <img className="w-[200px]" src="/icons/rhclogo1.png" alt="" />
 
-      <Link className="text-[#3B729C]" to="/ar">العربية</Link>
+      <a className="text-[#3B729C]" href="/ar">العربية</a>
     </div>
   )
 }

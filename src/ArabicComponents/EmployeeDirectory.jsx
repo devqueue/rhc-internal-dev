@@ -49,9 +49,9 @@ const EmployeeDirectory = ({employees}) => {
                 />
             </div>
             <div className="text-[#444444] pb-[6px]">
-              <h1 className="text-[16px]">{employee.fields.employee_ar || employee.fields.employee}</h1>
+              <h1 className="text-[16px]">{employee.fields.name_ar || employee.fields.name}</h1>
               <div className="text-[14px] font-light">
-                <p>Job Title: {employee.fields.Title_ar || employee.fields.Title}</p>
+                <p>Job Title: {employee.fields.jobTitle_ar || employee.fields.jobTitle}</p>
                 <p>Phone: {employee.fields.number}</p>
                 <p>Email: {employee.fields.email}</p>
               </div>

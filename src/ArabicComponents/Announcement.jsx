@@ -4,6 +4,7 @@ const Announcement = ({announcements}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
+    
     if (announcements.length > 1) {
       const intervalId = setInterval(() => {
         setCurrentIndex((prevIndex) =>
