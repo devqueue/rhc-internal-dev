@@ -11,6 +11,7 @@ import { PublicClientApplication } from "@azure/msal-browser";
 import Home from "./pages/home";
 import ArabicHome from "./pages/ArabicHome";
 import { msalConfig, loginRequest } from "./authConfig";
+import AllEvents from "./pages/AllEvents";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -55,7 +56,14 @@ const App = () => {
             
           }
         />
-        {/* Add other routes as needed */}
+        
+        <Route 
+          path="/all-events"
+          element={
+            <AllEvents/>
+          }
+        />
+
       </Routes>
     </Router>
   );
