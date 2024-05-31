@@ -122,6 +122,7 @@ const Home = () => {
             timeZone: tz,
           }),
           bodyPreview: events.bodyPreview,
+          
         }));
     
         setCalendarEvents(cal_eventsjson);
