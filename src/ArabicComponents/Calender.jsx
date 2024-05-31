@@ -52,9 +52,9 @@ const Calender = ({ events }) => {
         </a>
       </div>
       <div className="h-full overflow-y-auto pb-16">
-        {renderEvents(todayEvents, 'اليوم')}
+        {todayEvents.length > 0? renderEvents(todayEvents, 'Today'):null}
         <hr />
-        {renderEvents(weekEvents, 'هذا الأسبوع')}
+        {weekEvents.length > 0 ?renderEvents(weekEvents, 'This Week'):null}
       </div>
     </div>
   );

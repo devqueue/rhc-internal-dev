@@ -36,18 +36,17 @@ const EmployeeDirectory = ({ employees }) => {
             className="flex-grow px-4 py-2 "
           />
         </div>
-        <div className="w-full  px-[15px]">
+        <div className="w-full  px-[15px] max-h-[500px] overflow-y-auto">
         {employees.map((employee, index) => (
           <div key={index} className="flex gap-[20px] mt-[20px] px-[30px] border-b-[1px] w-full">
             <div className="w-[80px] h-[80px] bg-slate-300 rounded-lg">
             <img
                   src={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${employee.fields.photo_name}`}
-                  alt={employee.fields.Title}
                   className="w-full h-full object-cover rounded-lg"
                 />
             </div>
             <div className="text-[#444444] pb-[6px]">
-              <h1 className="text-[16px]">{employee.fields.name}</h1>
+              <h1 className="text-[16px]">{employee.fields.Title}</h1>
               <div className="text-[14px] font-light">
                 <p>Job Title: {employee.fields.jobTitle}</p>
                 <p>Phone: {employee.fields.number}</p>

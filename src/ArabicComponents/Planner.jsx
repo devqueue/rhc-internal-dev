@@ -1,4 +1,5 @@
 const Planner = ({tasks}) => {
+  if (tasks.length === 0) return null;
   return (
     <>
       <div className="w-full bg-white rounded-lg overflow-hidden shadow-md">

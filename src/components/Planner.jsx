@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Planner = ({ tasks }) => {
+  if (tasks.length === 0) return null;
   return (
     <div className="w-full h-[424px] bg-white rounded-lg overflow-hidden shadow-md">
       <div className="bg-[#3B729C] w-full min-h-[64px] gap-[10px] flex justify-between items-center flex-wrap px-[30px] py-[20px] text-[white] mb-[30px]">

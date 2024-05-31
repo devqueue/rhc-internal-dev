@@ -54,9 +54,9 @@ const Calendar = ({ events }) => {
         </a>
       </div>
       <div className="h-full overflow-y-auto pb-16">
-        {renderEvents(todayEvents, 'Today')}
+        {todayEvents.length > 0? renderEvents(todayEvents, 'Today'):null}
         <hr />
-        {renderEvents(weekEvents, 'This Week')}
+        {weekEvents.length > 0 ?renderEvents(weekEvents, 'This Week'):null}
       </div>
     </div>
   );

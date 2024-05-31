@@ -13,12 +13,11 @@ import Poll from "../ArabicComponents/Poll";
 import QuickLinks from "../ArabicComponents/QuickLinks";
 import UpcomingEvents from "../ArabicComponents/UpcomingEvents";
 import { useMsal } from '@azure/msal-react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { loginRequest, msalConfig } from '../authConfig';
-import { InteractionRequiredAuthError } from '@azure/msal-browser';
+import { InteractionRequiredAuthError, PublicClientApplication } from '@azure/msal-browser';
 
-import { PublicClientApplication } from '@azure/msal-browser';
+const msalInstance = new PublicClientApplication(msalConfig);
 
 const ArabicHome = () => {
   const [accessToken, setAccessToken] = useState(null);
@@ -29,11 +28,11 @@ const ArabicHome = () => {
   const [news, setNews] = useState([]);
   const [newEmployee, setNewEmployee] = useState([]);
   const [upcomingEvents, setUpcomingEvents] = useState([]);
-  const [gallery,setGallery] = useState([]);
-  const [accounts, setAccounts] = useState([]);  
-  const msalInstance = new PublicClientApplication(msalConfig);
+  const [gallery, setGallery] = useState([]);
+  const [accounts, setAccounts] = useState([]);
 
-  console.log(accounts)
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const initializeMsal = async () => {
       await msalInstance.initialize();
@@ -41,6 +40,10 @@ const ArabicHome = () => {
       setAccounts(accounts);
     };
 
+    initializeMsal();
+  }, []);
+
+  useEffect(() => {
     const fetchListItems = async (token, siteId, listId, setStateFunction, name) => {
       try {
         const response = await fetch(`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listId}/items?expand=fields`, {
@@ -69,8 +72,8 @@ const ArabicHome = () => {
         try {
           const response = await msalInstance.acquireTokenSilent(request);
           setAccessToken(response.accessToken);
-          fetchCalendarEvents(response.accessToken);
-          fetchPlannerTasks(response.accessToken);
+          await fetchCalendarEvents(response.accessToken);
+          await fetchPlannerTasks(response.accessToken);
 
           const response2 = await fetch('https://graph.microsoft.com/v1.0/sites/riyadhholding.sharepoint.com:/sites/Shamil/', {
             headers: { Authorization: `Bearer ${response.accessToken}` }
@@ -87,10 +90,12 @@ const ArabicHome = () => {
             { name: 'Gallery', id: '9505ceb4-ece5-447d-99fa-b383a324dcd9', setStateFunction: setGallery },
           ];
 
-          lists.forEach(list => {
-            fetchListItems(response.accessToken, siteId, list.id, list.setStateFunction, list.name);
-          });
+          const fetchPromises = lists.map(list => 
+            fetchListItems(response.accessToken, siteId, list.id, list.setStateFunction, list.name)
+          );
 
+          await Promise.all(fetchPromises);
+          setLoading(false); // Set loading to false after all data is fetched
         } catch (error) {
           if (error instanceof InteractionRequiredAuthError) {
             msalInstance.acquireTokenRedirect(request);
@@ -160,78 +165,92 @@ const ArabicHome = () => {
       }
     };
 
-    initializeMsal().then(() => {
+    if (accounts.length > 0) {
       acquireToken();
-    });
-  }, [accounts, msalInstance]);
+    }
+  }, [accounts]);
 
+  if (loading) {
+    return (
+      <div class="grid min-h-[100vh] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
+  <svg class="w-16 h-16 animate-spin text-gray-900/50" viewBox="0 0 64 64" fill="none"
+    xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+    <path
+      d="M32 3C35.8083 3 39.5794 3.75011 43.0978 5.20749C46.6163 6.66488 49.8132 8.80101 52.5061 11.4939C55.199 14.1868 57.3351 17.3837 58.7925 20.9022C60.2499 24.4206 61 28.1917 61 32C61 35.8083 60.2499 39.5794 58.7925 43.0978C57.3351 46.6163 55.199 49.8132 52.5061 52.5061C49.8132 55.199 46.6163 57.3351 43.0978 58.7925C39.5794 60.2499 35.8083 61 32 61C28.1917 61 24.4206 60.2499 20.9022 58.7925C17.3837 57.3351 14.1868 55.199 11.4939 52.5061C8.801 49.8132 6.66487 46.6163 5.20749 43.0978C3.7501 39.5794 3 35.8083 3 32C3 28.1917 3.75011 24.4206 5.2075 20.9022C6.66489 17.3837 8.80101 14.1868 11.4939 11.4939C14.1868 8.80099 17.3838 6.66487 20.9022 5.20749C24.4206 3.7501 28.1917 3 32 3L32 3Z"
+      stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path
+      d="M32 3C36.5778 3 41.0906 4.08374 45.1692 6.16256C49.2477 8.24138 52.7762 11.2562 55.466 14.9605C58.1558 18.6647 59.9304 22.9531 60.6448 27.4748C61.3591 31.9965 60.9928 36.6232 59.5759 40.9762"
+      stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" class="text-gray-900">
+    </path>
+  </svg>
+</div>  
+    );
+  }
 
   return (
-    <div className="overflow-hidden w-full" style={{direction: 'rtl'}}>
-    <Nav/>
-    <div className="px-[30px] bg-[#F4F8FB] w-full py-[30px]">
-      <div className="flex gap-[30px]">
-        <div className="w-[66vw]">
-          <div className="w-full h-[400px] rounded-lg overflow-hidden">
-            <Banner />
+    <div className="overflow-hidden w-full" style={{ direction: 'rtl' }}>
+      <Nav />
+      <div className="px-[30px] bg-[#F4F8FB] w-full py-[30px]">
+        <div className="flex gap-[30px]">
+          <div className="w-[66vw]">
+            <div className="w-full h-[400px] rounded-lg overflow-hidden">
+              <Banner />
+            </div>
+
+            <div className="flex gap-[60px] mt-[25px]">
+              <Calender events={calendarEvents} />
+
+              <Planner tasks={plannerTasks} />
+            </div>
+
+            <div className="mt-[30px] w-full">
+              <Announcement announcements={announcements} />
+            </div>
+
+            <div className="flex gap-[60px] justify-between mt-[25px]">
+              <Poll />
+
+              <News news={news} />
+            </div>
+
+            <div className="mt-[30px]">
+              <EmployeeDirectory employees={employeeDirectory} />
+            </div>
           </div>
 
-          <div className="flex gap-[60px] mt-[25px]">
-            <Calender events={calendarEvents} />
+          <div className="shadow-md w-[33vw] rounded-[8px]  bg-white">
+            <div className="py-[24px] px-[30px]">
+              <QuickLinks />
+            </div>
 
-            <Planner tasks={plannerTasks} />
-          </div>
+            <hr />
 
-          <div className="mt-[30px] w-full">
-            <Announcement announcements={announcements} />
-          </div>
+            <div className="mt-[21px] mb-[32px] px-[25px]">
+              <EventName events={calendarEvents} />
+            </div>
 
-          <div className="flex gap-[60px] justify-between mt-[25px]">
-            <Poll />
+            <hr />
 
-            <News news={news} />
-          </div>
+            <div className="px-[30px] my-[25px]">
+              <UpcomingEvents events={upcomingEvents} />
+            </div>
 
-          <div className="mt-[30px]">
-            <EmployeeDirectory employees={employeeDirectory} />
+            <hr />
+
+            <div className="px-[30px] mt-[30px]">
+              <NewEmployee newEmployee={newEmployee} />
+            </div>
+
+            <div className="px-[30px] mt-[30px]">
+              <KnowledgeBase />
+            </div>
           </div>
         </div>
 
-        <div className="shadow-md w-[33vw] rounded-[8px]  bg-white">
-          <div className="py-[24px] px-[30px]">
-            <QuickLinks />
-          </div>
-
-          <hr />
-
-          <div className="mt-[21px] mb-[32px] px-[25px]">
-            <EventName events={calendarEvents}/>
-          </div>
-
-          <hr />
-
-          <div className="px-[30px] my-[25px]">
-            <UpcomingEvents events={upcomingEvents} />
-          </div>
-
-          <hr />
-
-          <div className="px-[30px] mt-[30px]">
-            <NewEmployee newEmployee={newEmployee} />
-          </div>
-
-          <div className="px-[30px] mt-[30px]">
-            <KnowledgeBase />
-          </div>
-
-
+        <div className="w-full rounded-lg overflow-hidden mt-[65px]">
+          <Gallery gallery={gallery} />
         </div>
       </div>
-
-      <div className="w-full rounded-lg overflow-hidden mt-[65px]">
-        <Gallery gallery={gallery} />
-      </div>
-    </div>
     </div>
   );
 };
