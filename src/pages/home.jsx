@@ -121,7 +121,7 @@ const Home = () => {
             timeStyle: "short",
             timeZone: tz,
           }),
-          bodyPreview: events.bodyPreview,
+          bodyPreview: events.description_en,
 
         }));
     

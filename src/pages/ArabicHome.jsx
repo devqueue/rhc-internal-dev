@@ -133,7 +133,7 @@ const ArabicHome = () => {
             timeStyle: "short",
             timeZone: tz,
           }),
-          bodyPreview: events.bodyPreview,
+          bodyPreview: events.description_ar,
         }));
 
         setCalendarEvents(cal_eventsjson);
