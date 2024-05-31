@@ -26,7 +26,7 @@ const UpcomingEvents = ({ events }) => {
           
       <div className="flex p-[20px] gap-[20px] items-start content-start self-stretch flex-wrap border-b-[1px] border-b-[#888888]">
           <div className="w-[72px] h-[72px] bg-slate-300" style={{
-            backgroundImage: `url('https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${event.fields.image_name}')`,
+            backgroundImage: `url('/icons/cal.svg')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}> </div>

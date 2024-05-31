@@ -1,4 +1,4 @@
-const Planner = () => {
+const Planner = ({tasks}) => {
   return (
     <>
       <div className="w-full bg-white rounded-lg overflow-hidden shadow-md">
@@ -13,41 +13,29 @@ const Planner = () => {
         </div>
 
         <div className="w-full flex flex-col gap-[15px]">
-          <div className="px-[30px] flex gap-[15px] w-full">
-            <div className="flex flex-col gap-[10px] w-full">
+        {tasks.map((task, index) => (
+          <div key={index} className="px-[30px] flex gap-[15px] w-full">
+            <div className="flex flex-col gap-[10px]">
               <div className="flex items-stretch border-[1px] border-[#50917F] rounded-lg">
-                <div className="px-[25px] border-l-[1px] border-l-[#50917F] flex flex-col justify-center flex-grow-0 ">
-                  <h1 className="text-[24px] font-medium">TE</h1>
+                <div className="px-[25px] border-r-[1px] border-r-[#50917F] flex flex-col justify-center flex-grow-0">
+                  <h1 className="text-[24px] font-medium">{task.title[0]}</h1>
                 </div>
 
                 <div className="px-[30px] py-[12px] flex-1 flex items-center">
                   <div>
-                    <h1 className="text-[16px]  w-[100%]">
-                      Planner Title Comes Here
-                    </h1>
+                    <h1 className="text-[16px] w-[100%]">{task.title}</h1>
+                    <h2 className="text-[14px] text-[#888888]">
+                      Due Date: {task.dueDate}
+                    </h2>
+                    <a className="text-[14px] text-[#3B729C]" href={task.url} target="_blank" rel="noopener noreferrer">
+                      View Task
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div className="px-[30px] flex gap-[15px] w-full ">
-            <div className="flex flex-col gap-[10px] w-full">
-              <div className="flex items-stretch border-[1px] border-[#50917F] rounded-lg">
-                <div className="px-[25px] border-l-[1px] border-l-[#50917F] flex flex-col justify-center flex-grow-0">
-                  <h1 className="text-[24px] font-medium">TE</h1>
-                </div>
-
-                <div className="px-[30px] py-[12px] flex-1 flex items-center">
-                  <div>
-                    <h1 className="text-[16px]  w-[100%]">
-                      Planner Title Comes Here
-                    </h1>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        ))}
         </div>
       </div>
     </>

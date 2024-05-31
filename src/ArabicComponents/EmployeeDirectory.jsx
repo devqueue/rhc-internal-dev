@@ -1,4 +1,5 @@
-const EmployeeDirectory = () => {
+const EmployeeDirectory = ({employees}) => {
+  if (employees.length === 0) return null;
   return (
     <div className="w-full min-h-[424px] bg-white rounded-lg overflow-hidden shadow-md">
       <div className="bg-[#50917F] w-full h-[64px] flex justify-between items-center px-[30px] py-[20px] text-[white]  mb-[30px]">
@@ -38,31 +39,25 @@ const EmployeeDirectory = () => {
         </div>
 
         <div className="w-full  px-[15px]">
-          <div className="flex gap-[20px] mt-[20px] px-[30px] border-b-[1px] w-full">
-            <div className="w-[80px] h-[80px] bg-slate-300 rounded-lg"></div>
-
+        {employees.map((employee, index) => (
+          <div key={index} className="flex gap-[20px] mt-[20px] px-[30px] border-b-[1px] w-full">
+            <div className="w-[80px] h-[80px] bg-slate-300 rounded-lg">
+            <img
+                  src={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${employee.fields.photo_name}`}
+                  alt={employee.fields.Title}
+                  className="w-full h-full object-cover rounded-lg"
+                />
+            </div>
             <div className="text-[#444444] pb-[6px]">
-              <h1 className="text-[16px]">Employee Name Here</h1>
+              <h1 className="text-[16px]">{employee.fields.employee_ar || employee.fields.employee}</h1>
               <div className="text-[14px] font-light">
-                <p>Job Title: Web Developer</p>
-                <p>Phone: +9876543210</p>
-                <p>Email: name@websitename.com</p>
+                <p>Job Title: {employee.fields.Title_ar || employee.fields.Title}</p>
+                <p>Phone: {employee.fields.number}</p>
+                <p>Email: {employee.fields.email}</p>
               </div>
             </div>
           </div>
-
-          <div className="flex gap-[20px] mt-[20px] px-[30px] border-b-[1px] w-full">
-                <div className="w-[80px] h-[80px] bg-slate-300 rounded-lg"></div>
-
-                <div className="text-[#444444] pb-[6px]">
-                    <h1 className="text-[16px]">Employee Name Here</h1>
-                    <div  className="text-[14px] font-light">
-                    <p>Job Title: Web Developer</p>
-                    <p>Phone: +9876543210</p>
-                    <p>Email: name@websitename.com</p>
-                    </div>
-                </div>
-            </div>
+        ))}
         </div>
       </div>
     </div>
