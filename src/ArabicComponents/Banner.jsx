@@ -15,7 +15,7 @@ const Banner = () => {
         style={{ fontFamily: "SomarBold" }}
       >
         <h1 className="text-white">
-          !{" "} كل ما تحتاجه في مكان واحد
+          كل ما تحتاجه في مكان واحد
           <span
             className="text-['SomarLight'] font-extralight"
             style={{ fontFamily: "SomarLight" }}
