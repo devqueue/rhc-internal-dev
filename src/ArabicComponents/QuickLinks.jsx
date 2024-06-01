@@ -38,7 +38,7 @@ const QuickLinks = () => {
       path: "https://wevolve.percipio.com/",
     },
     {
-      src: "/icons/Realestateportalar.svg",
+      src: "/icons/office.svg",
       alt: "Office & Outlook",
       path: "https://www.office.com",
     },
