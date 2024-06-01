@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const EmployeeDirectory = ({ employees }) => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   if (employees.length === 0) return null;
 
-  const filteredEmployees = employees.filter(employee =>
-    (employee.fields.name_ar || employee.fields.name).toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredEmployees = employees.filter((employee) =>
+    (employee.fields.name_ar || employee.fields.name)
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase())
   );
 
   const displayedEmployees = filteredEmployees.slice(0, 10);
@@ -73,7 +75,7 @@ const EmployeeDirectory = ({ employees }) => {
                     Job Title:{" "}
                     {employee.fields.jobTitle_ar || employee.fields.jobTitle}
                   </p>
-                  <p>Phone: {employee.fields.number}</p>
+                  <p>Ext. : {employee.fields.number}</p>
                   <p>Email: {employee.fields.email}</p>
                 </div>
               </div>

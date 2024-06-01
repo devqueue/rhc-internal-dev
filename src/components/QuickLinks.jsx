@@ -2,23 +2,46 @@ import { Link } from "react-router-dom";
 
 const QuickLinks = () => {
   const links = [
-    { src: "/icons/ERPIcon.svg", alt: "ERP Icon",  path: "https://arhc.operations.eu.dynamics.com/"},
+    {
+      src: "/icons/ERPIcon.svg",
+      alt: "ERP Icon",
+      path: "https://arhc.operations.eu.dynamics.com/",
+    },
     {
       src: "/icons/RealEstateIcon.svg",
       alt: "Real Estate",
-      path: "https://propertyprod.crm4.dynamics.com/main.aspx"
+      path: "https://propertyprod.crm4.dynamics.com/main.aspx",
     },
-    { src: "/icons/DMS.svg", alt: "DMS", path: "http://svrshamil/"},
+    { src: "/icons/DMS.svg", alt: "DMS", path: "http://svrshamil/" },
     {
       src: "/icons/SelfServiceIcon.svg",
       alt: "Employee self-service",
-      path: "https://hress.arhc.com.sa:9091/"
+      path: "https://hress.arhc.com.sa:9091/",
     },
-    { src: "/icons/HelpIcon.svg", alt: "Help Desk",  path: "http://helpdesk.riyadhholding.sa/support-portal/"},
-    { src: "/icons/Midan.svg", path: "https://arhc-op-web.azurewebsites.net/violations" },
-    { src: "/icons/BookRooms.svg", alt: "Book rooms and meetings", path: "https://arhc.provizit.com/"},
-    { src: "/icons/Training.svg", alt: "Training", path: "https://wevolve.percipio.com/"},
-    { src: "/icons/Realestateportal.svg", alt: "Real estate portal", path: "https://propertyproduction.powerappsportals.com/ar-SA/"},
+    {
+      src: "/icons/HelpIcon.svg",
+      alt: "Help Desk",
+      path: "http://helpdesk.riyadhholding.sa/support-portal/",
+    },
+    {
+      src: "/icons/Midan.svg",
+      path: "https://arhc-op-web.azurewebsites.net/violations",
+    },
+    {
+      src: "/icons/BookRooms.svg",
+      alt: "Book rooms and meetings",
+      path: "https://arhc.provizit.com/",
+    },
+    {
+      src: "/icons/Training.svg",
+      alt: "Training",
+      path: "https://wevolve.percipio.com/",
+    },
+    {
+      src: "/icons/Realestateportal.svg",
+      alt: "Office & Outlook",
+      path: "https://www.office.com",
+    },
   ];
   return (
     <div className="w-full bg-white">
