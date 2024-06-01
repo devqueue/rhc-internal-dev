@@ -26,15 +26,17 @@ const Gallery = ({ gallery }) => {
                 className="object-cover w-full h-full"
               />
             </div>
-            <div className="px-[27.88px] mt-[20px]">
-              <h1 className="sm:text-[16px] text-[11px] mb-[5px]">
-                {item.fields.Title}
-              </h1>
-              <p className="sm:text-[14px] text-[9px] font-light text-[#888888]">
-                {item.fields.subtitle_en}
-              </p>
+            <div className="px-[27.88px] mt-[20px] h-[130px] flex flex-col justify-between">
+              <div>
+                <h1 className="sm:text-[16px] text-[11px] mb-[5px]">
+                  {item.fields.Title}
+                </h1>
+                <p className="sm:text-[14px] text-[9px] font-light text-[#888888]">
+                  {item.fields.subtitle_en}
+                </p>
+              </div>
 
-              <button className="sm:text-[14px] text-[9px] text-white font-light px-[20px] py-[10px] bg-[#3B729C] mt-[20px] rounded-md">
+              <button className="sm:text-[14px] text-[9px] text-white font-light px-[20px] py-[10px] bg-[#3B729C] rounded-md w-[120px]">
                 View Gallery
               </button>
             </div>

@@ -29,15 +29,17 @@ const Gallery = ({ gallery }) => {
                 className="object-cover w-full h-full"
               />
             </div>
-            <div className="px-[27.88px] mt-[20px]">
+            <div className="px-[27.88px] mt-[20px] h-[130px] flex flex-col justify-between">
+              <div>
               <h1 className="sm:text-[16px] text-[11px] mb-[5px]">
                 {item.fields.event_name_ar}
               </h1>
               <p className="sm:text-[14px] text-[9px]m font-light text-[#888888]">
                 {item.fields.subtitle_ar}
               </p>
+              </div>
 
-              <button className="sm:text-[14px] text-[9px] text-white font-light px-[20px] py-[10px] bg-[#3B729C] mt-[20px] rounded-md">
+              <button className="sm:text-[14px] text-[9px] text-white font-light px-[20px] py-[10px] bg-[#3B729C] w-[120px] rounded-md">
               عرض الصور
               </button>
             </div>
