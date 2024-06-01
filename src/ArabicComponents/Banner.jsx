@@ -22,7 +22,7 @@ const Banner = () => {
           ></span>
         </h1>
         <h1 className="text-white"> تعرّف على البوابة الداخلية</h1>
-        <h1 className="text-white"> شامل التي ستغير </h1>
+        <h1 className="text-white"> الجديدة شامل التي ستغير</h1>
         <h1 className="text-white"> طريقة عملك وتواصلك</h1>
       </div>
     </div>
