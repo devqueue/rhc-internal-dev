@@ -15,6 +15,7 @@ import AllEvents from "./pages/AllEvents";
 import Annoucement from "./pages/Annoucement";
 import AllNews from "./pages/AllNews";
 import EmployeeDirectory from "./pages/EmployeeDirectory";
+import Polls from "./pages/Polls";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -86,6 +87,13 @@ const App = () => {
           path="/all-employees"
           element={
             <EmployeeDirectory/>
+          }
+        />
+
+        <Route 
+          path="/polls"
+          element={
+            <Polls/>
           }
         />
 
