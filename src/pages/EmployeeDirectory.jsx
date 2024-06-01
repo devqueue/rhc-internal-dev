@@ -1,89 +1,13 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import Nav from "../components/Nav"
 import EmployeeCard from "../components/EmployeeCard"
 
 const EmployeeDirectory = () => {
-
-    const [events, setEvents] = useState([
-        {
-            img: "/icons/1.png",
-            title: "Annual General Meeting",
-            jobTitle: "CEO",
-            number: "1234567890",
-            email: "Web Developer"
-        },
-        {
-            img: "/icons/1.png",
-            title: "Annual General Meeting",
-            jobTitle: "CEO",
-            number: "1234567890",
-            email: "Web Developer"
-        },
-        {
-            img: "/icons/1.png",
-            title: "Annual General Meeting",
-            jobTitle: "CEO",
-            number: "1234567890",
-            email: "Web Developer"
-        },
-        {
-            img: "/icons/1.png",
-            title: "Annual General Meeting",
-            jobTitle: "CEO",
-            number: "1234567890",
-            email: "Web Developer"
-        },
-        {
-            img: "/icons/1.png",
-            title: "Annual General Meeting",
-            jobTitle: "CEO",
-            number: "1234567890",
-            email: "Web Developer"
-        },
-        {
-            img: "/icons/1.png",
-            title: "Annual General Meeting",
-            jobTitle: "CEO",
-            number: "1234567890",
-            email: "Web Developer"
-        },
-        {
-            img: "/icons/1.png",
-            title: "Annual General Meeting",
-            jobTitle: "CEO",
-            number: "1234567890",
-            email: "Web Developer"
-        },
-        {
-            img: "/icons/1.png",
-            title: "Annual General Meeting",
-            jobTitle: "CEO",
-            number: "1234567890",
-            email: "Web Developer"
-        },
-        {
-            img: "/icons/1.png",
-            title: "Annual General Meeting",
-            jobTitle: "CEO",
-            number: "1234567890",
-            email: "Web Developer"
-        },
-        {
-            img: "/icons/1.png",
-            title: "Annual General Meeting",
-            jobTitle: "CEO",
-            number: "1234567890",
-            email: "Web Developer"
-        },
-        {
-            img: "/icons/1.png",
-            title: "Annual General Meeting",
-            jobTitle: "CEO",
-            number: "1234567890",
-            email: "Web Developer"
-        },
-
-    ])
+    const location = useLocation();
+    const employees = location.state ? location.state.employees : [];
+    
+    console.log("employees", employees);
   return (
     <>
     <div className="overflow-hidden w-full bg-[#F4F8FB]">
@@ -121,14 +45,14 @@ const EmployeeDirectory = () => {
         </div>
 
         <div className="px-14 mx-auto flex flex-wrap gap-[60px] md:gap-8 lg:gap-[60px] justify-between">
-        {events.map((event, index) => (
+        {employees.map((employee, index) => (
               <EmployeeCard
-              key={index}
-                img={event.img}
-                title={event.title}
-                jobTitle={event.jobTitle}
-                number={event.number}
-                email={event.email}
+                key={index}
+                img={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${employee.fields.photo_name}`}
+                title={employee.fields.Title}
+                jobTitle={employee.fields.jobTitle}
+                number={employee.fields.number}
+                email={employee.fields.email}
               />
             ))}
         </div>

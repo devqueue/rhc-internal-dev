@@ -11,14 +11,14 @@ const EmployeeCard = ({ img, title, jobTitle, number, email }) => {
       <div
         className="h-[143px] w-[143px] ml-[20%] mb-[25px] rounded-[8px]"
         style={{
-          backgroundImage: `url('/images/employee.svg')`,
+          backgroundImage: `url(${img})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       ></div>
 
       <h1 className="font-figtree flex flex-col items-center justify-center font-semibold text-[22px] leading-[19.2px] mb-[10px]">
-        Akshita Arora
+        {title}
       </h1>
       <div className="flex flex-row gap-[15px] items-center justify-center border-b-[2px] pb-4 ">
         <div className="flex flex-row gap-[8px] items-center justify-center border-r-[1px] pr-2">
@@ -35,7 +35,7 @@ const EmployeeCard = ({ img, title, jobTitle, number, email }) => {
           </h2>
         </div>
         <p className="text-[14px] font-figtree font-normal leading-[21.6px]">
-          Web Developer
+            {jobTitle}
         </p>
       </div>
       <div className="flex items-center w-[225.5px] h-[24px] gap-[15px] mt-4">
@@ -49,7 +49,7 @@ const EmployeeCard = ({ img, title, jobTitle, number, email }) => {
         ></div>
 
         <p className="font-figtree font-medium text-[13px] leading-[16.5px]">
-          +9876543210
+            {number}
         </p>
         <button onClick={() => handleCopy("+9876543210")} className="ml-auto">
             <img
@@ -70,7 +70,7 @@ const EmployeeCard = ({ img, title, jobTitle, number, email }) => {
         ></div>
 
         <p className="font-figtree font-medium text-[13px] leading-[16.5px]">
-          name@websitename.com
+            {email}
         </p>
         <button onClick={() => handleCopy("name@websitename.com")} className="ml-auto">
             <img
