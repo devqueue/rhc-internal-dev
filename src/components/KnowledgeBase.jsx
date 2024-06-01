@@ -33,7 +33,9 @@ const KnowledgeBase = ({ pdfs }) => {
       </div>
 
       {pdfs.map((pdf, index) => (
-        <div
+        <a
+        target='_blank'
+        href = "/pdf"
           key={index}
           className="flex self-stretch p-[12px] px-[20px] mx-[20px] items-center gap-[10px] rounded-[8px] border border-[#595959] cursor-pointer"
           onClick={() => handlePdfClick(pdf)}
@@ -46,12 +48,12 @@ const KnowledgeBase = ({ pdfs }) => {
             </h1>
             <h3 className="text-[12px] font-light self-stretch">Documents</h3>
           </div>
-        </div>
+        </a>
       ))}
 
       {isPopupOpen && selectedPdf && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-4 rounded-lg relative">
+          <div className="bg-white p-4 rounded-lg relative w-[90%] h-[90%] ">
             <button
               className="absolute top-2 right-2 text-[24px] font-bold text-gray-700"
               onClick={closePopup}

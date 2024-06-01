@@ -17,7 +17,7 @@ const Gallery = ({ gallery }) => {
       </div>
 
       <div className="flex gap-[41.88px] md:flex-nowrap flex-wrap">
-        {gallery.map((item, index) => (
+        {gallery.slice(0,3).map((item, index) => (
           <div
             key={index}
             className="w-[404px] min-h-[355px] bg-white rounded-lg overflow-hidden"

@@ -16,6 +16,7 @@ import Annoucement from "./pages/Annoucement";
 import AllNews from "./pages/AllNews";
 import EmployeeDirectory from "./pages/EmployeeDirectory";
 import Polls from "./pages/Polls";
+import Flipbook from "./components/dflip";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -96,6 +97,14 @@ const App = () => {
             <Polls/>
           }
         />
+
+        <Route
+          path="/pdf"
+          element={
+            <Flipbook />
+          }
+        />
+
 
       </Routes>
     </Router>

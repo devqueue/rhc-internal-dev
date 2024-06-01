@@ -79,7 +79,7 @@ class Flipbook extends Component {
 
     return (
       <div>
-        <div className="_df_book" id="flipbook" pageMode='2' source={source}></div>
+        <div className="_df_book" id="flipbook" pageMode='2' source={'/doc1.pdf'}></div>
       </div>
     );
   }
