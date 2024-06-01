@@ -60,11 +60,11 @@ const Calendar = ({ events }) => {
           View All
         </Link>
       </div>
-      <div className="h-full overflow-y-auto pb-16">
+      {todayEvents.length>0||weekEvents.length>0?(<div className="h-full overflow-y-auto pb-16">
         {todayEvents.length > 0 ? renderEvents(todayEvents, "Today") : null}
         <hr />
         {weekEvents.length > 0 ? renderEvents(weekEvents, "This Week") : null}
-      </div>
+      </div>):<div className="text-l">No events in calendar</div>}
     </div>
   );
 };

@@ -1,7 +1,25 @@
 import { Link } from "react-router-dom";
 
 const Planner = ({ tasks }) => {
-  if (tasks.length === 0) return null;
+  if (tasks.length === 0){
+    return(
+      <div className="w-full bg-white rounded-lg overflow-hidden shadow-md">
+        <div className="bg-[#3B729C] w-full min-h-[64px] gap-[10px] flex justify-between items-center flex-wrap px-[30px] py-[20px] text-[white] mb-[30px]">
+          <h1 className="sm:text-[20px] text-[12px]">بلانر</h1>
+          <Link
+            className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#3B729C] rounded-[8px]"
+            href=""
+          >
+            عرض الكل
+          </Link>
+        </div>
+
+        <div className="w-full flex flex-col gap-[15px] p-7">
+        لا توجد مهام في البلانر
+        </div>
+      </div>
+    )
+  }
   return (
     <>
       <div className="w-full bg-white rounded-lg overflow-hidden shadow-md">
