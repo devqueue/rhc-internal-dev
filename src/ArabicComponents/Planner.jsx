@@ -33,10 +33,10 @@ const Planner = ({ tasks }) => {
           </Link>
         </div>
 
-        <div className="w-full flex flex-col gap-[15px]">
+        <div className="w-full flex flex-col gap-[15px] pb-10">
           {tasks.map((task, index) => (
             <div key={index} className="px-[30px] flex gap-[15px] w-full">
-              <div className="flex flex-col gap-[10px]">
+              <div className="flex flex-col gap-[10px] w-full">
                 <div className="flex items-stretch border-[1px] border-[#50917F] rounded-lg">
                   <div className="px-[25px] border-l-[1px] border-l-[#50917F] flex flex-col justify-center flex-grow-0">
                     <h1 className="sm:text-[24px] text-[16px] font-medium">

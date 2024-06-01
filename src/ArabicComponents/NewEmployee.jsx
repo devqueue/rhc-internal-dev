@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const NewEmployee = ({ newEmployee }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState("true");
+  const [isTransitioning, setIsTransitioning] = useState(true);
 
   useEffect(() => {
     if (newEmployee.length > 1) {
@@ -12,11 +12,11 @@ const NewEmployee = ({ newEmployee }) => {
         );
 
         if (currentIndex === newEmployee.length - 1) {
-          setIsTransitioning("none");
+          setIsTransitioning(false);
         }
 
         if (currentIndex != newEmployee.length - 1) {
-          setIsTransitioning("true");
+          setIsTransitioning(true);
         }
       }, 4000);
 
@@ -29,7 +29,7 @@ const NewEmployee = ({ newEmployee }) => {
   return (
     <div className="overflow-hidden">
       <div
-        className={`flex transition-transform transition-${isTransitioning} duration-500`}
+        className={`flex transition-transform ${isTransitioning ? "duration-500" : "duration-0"}`}
         style={{ transform: `translateX(${currentIndex * 100}%)` }}
       >
         {newEmployee.map((employee, index) => (
