@@ -45,6 +45,7 @@ const EventName = ({ events }) => {
     if (events.length > 0) {
       const nearestEvent = getNearestEvent(events);
       setNearestEvent(nearestEvent);
+      if(!nearestEvent) return;
       const eventDate = new Date(
         `${nearestEvent.month} ${nearestEvent.day}, 2024 ${nearestEvent.starttime}`
       );
@@ -61,7 +62,7 @@ const EventName = ({ events }) => {
     }
   }, [events]);
 
-  if(events.length === 0) return null;
+  if(events.length === 0 || !nearestEvent) return null;
 
   return (
     <div className="py-[30px] px-[20px] bg-[#3B729C] flex flex-col justify-center items-center gap-[24px] text-white rounded-[8px]">
