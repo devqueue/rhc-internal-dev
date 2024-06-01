@@ -59,9 +59,9 @@ const UpcomingEvents = ({ events }) => {
 
       <div className="h-full overflow-y-auto pb-16">
         {events.map((event) => (
-          <div className="flex p-[20px] gap-[20px] items-start content-start self-stretch xl:flex-nowrap flex-wrap border-b-[1px] border-b-[#888888]">
+          <div className="flex p-[20px] gap-[20px] items-start content-start self-stretch lg:flex-nowrap flex-wrap border-b-[1px] border-b-[#888888]">
             <div
-              className="w-[72px] h-[72px] flex items-end pb-1 justify-center text-sm text-center"
+              className="w-[72px] h-[72px] flex items-end pb-1 justify-center text-sm text-center shrink-0"
               style={{
                 backgroundImage: `url('/icons/cal.svg')`,
                 backgroundSize: "cover",
@@ -72,7 +72,7 @@ const UpcomingEvents = ({ events }) => {
               <br /> {formatDate(event.fields.Start_time).monthName}
             </div>
             <div className="flex flex-col gap-[5px]">
-              <h1 className="sm:text-[16px] text-[11px] font-[400px] lg:w-[15vw]">
+              <h1 className="sm:text-[16px] text-[11px] font-[400px] xl:w-[15vw]">
                 {event.fields.Title}
               </h1>
               <div className="flex gap-[10px] items-center">
