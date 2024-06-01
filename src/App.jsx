@@ -14,6 +14,7 @@ import { msalConfig, loginRequest } from "./authConfig";
 import AllEvents from "./pages/AllEvents";
 import Annoucement from "./pages/Annoucement";
 import AllNews from "./pages/AllNews";
+import EmployeeDirectory from "./pages/EmployeeDirectory";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -78,6 +79,13 @@ const App = () => {
           path="/news"
           element={
             <AllNews  />
+          }
+        />
+
+        <Route
+          path="/all-employees"
+          element={
+            <EmployeeDirectory/>
           }
         />
 
