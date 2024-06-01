@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const Poll = () => {
   const [selectedOption, setSelectedOption] = useState("");
+  const [voteCasted, setVoteCasted] = useState(false);
 
   const options = [
     { label: "Yes, I have all the tools and equipment", value: "option1" },
@@ -11,7 +12,15 @@ const Poll = () => {
   ];
 
   const handleOptionChange = (value) => {
-    setSelectedOption(value);
+    if (!voteCasted) {
+      setSelectedOption(value);
+    }
+  };
+
+  const handleVote = () => {
+    if (selectedOption) {
+      setVoteCasted(true);
+    }
   };
 
   return (
@@ -20,7 +29,7 @@ const Poll = () => {
         <h1 className="sm:text-[20px] text-[12px]">Poll</h1>
         <Link
           className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#50917F] rounded-[8px]"
-          href=""
+          to="/all-polls"
         >
           View All
         </Link>
@@ -36,7 +45,7 @@ const Poll = () => {
           {options.map((option) => (
             <div
               key={option.value}
-              className={`w-full h-[62px] px-[33px] border-[1px] border-[#50917F] rounded-lg flex items-center gap-[16px]`}
+              className={`w-full h-[62px] px-[33px] border-[1px] border-[#50917F] rounded-lg flex items-center gap-[16px] cursor-pointer ${voteCasted ? 'opacity-50 cursor-not-allowed' : ''}`}
               onClick={() => handleOptionChange(option.value)}
             >
               <input
@@ -47,6 +56,7 @@ const Poll = () => {
                 value={option.value}
                 checked={selectedOption === option.value}
                 onChange={() => handleOptionChange(option.value)}
+                disabled={voteCasted}
               />
               <span className="w-[33.31px] h-[33px] border-[1px] border-[#888888] rounded-full flex items-center justify-center">
                 <span
@@ -59,7 +69,7 @@ const Poll = () => {
               </span>
 
               <label
-                className="sm:text-[16px] text-[11px]"
+                className={`sm:text-[16px] text-[11px] ${voteCasted ? 'cursor-not-allowed' : 'cursor-pointer'}`}
                 htmlFor={option.value}
               >
                 {option.label}
@@ -67,9 +77,18 @@ const Poll = () => {
             </div>
           ))}
         </div>
-        <h1 className="h-[48px] bg-[#50917F] my-[30px] flex justify-center items-center rounded-lg text-white">
+        <button
+          onClick={handleVote}
+          className={`h-[48px] bg-[#50917F] w-full my-[30px] flex justify-center items-center rounded-lg text-white ${voteCasted ? 'opacity-50 cursor-not-allowed' : ''}`}
+          disabled={voteCasted}
+        >
           Vote
-        </h1>
+        </button>
+        {voteCasted && (
+          <p className="text-center text-[#50917F] mt-4">
+            Thank you for voting!
+          </p>
+        )}
       </div>
     </div>
   );
