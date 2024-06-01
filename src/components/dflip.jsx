@@ -45,9 +45,7 @@ class Flipbook extends Component {
         color3DCover:"#ffffff",
         hard: "none",
         shadowOpacity: 0,
-        allControls: "",
-        pageMode: 1,
-        singlePageMode: 1,
+        allControls: "https://riyadhholding.sharepoint.com",
         onReady: function (flipBook) {
           const prodFlipbook = document.querySelector('#prod-flipbook');
           if (prodFlipbook) {
