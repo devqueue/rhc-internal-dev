@@ -5,9 +5,9 @@ const Poll = () => {
   const [selectedOption, setSelectedOption] = useState("");
 
   const options = [
-    { label: "Option One", value: "option1" },
-    { label: "Option Two", value: "option2" },
-    { label: "Option Three", value: "option3" },
+    { label: "نعم .. لدي كل الأدوات و المعدات", value: "option1" },
+    { label: "لا...احتاج الى الأدوات والمعدات", value: "option2" },
+    { label: "بعضها متاح", value: "option3" },
   ];
 
   const handleOptionChange = (value) => {
@@ -17,7 +17,7 @@ const Poll = () => {
   return (
     <div className="w-full min-h-[424px] bg-white rounded-lg overflow-hidden shadow-md">
       <div className="bg-[#50917F] w-full h-[64px] flex justify-between items-center px-[30px] py-[20px] text-white mb-[30px]">
-        <h1 className="sm:text-[20px] text-[12px]">تصويت</h1>
+        <h1 className="sm:text-[20px] text-[12px]">استطلاع رأي</h1>
         <Link
           className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#50917F] rounded-[8px]"
           href=""
@@ -28,9 +28,8 @@ const Poll = () => {
 
       <div className="w-full px-[30px]">
         <p className="mb-[30px] sm:text-base text-[10.5px]">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type?
+          هل تعتقد أن لديك جميع الأدوات والمعدات التي تحتاجها لتنفيذ مهامك
+          اليومية؟
         </p>
 
         <div className="flex flex-col gap-[16px]">
@@ -69,7 +68,7 @@ const Poll = () => {
           ))}
         </div>
         <h1 className="h-[48px] bg-[#50917F] my-[30px] flex justify-center items-center rounded-lg text-white">
-        تصويت
+          تصويت
         </h1>
       </div>
     </div>

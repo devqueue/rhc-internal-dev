@@ -16,18 +16,22 @@ const QuickLinks = () => {
     { src: "/icons/MidanAr.svg" },
     { src: "/icons/BookRoomsAr.svg", alt: "Book rooms and meetings" },
     { src: "/icons/TrainingAr.svg", alt: "Training" },
-    { src: "/icons/ShamilAr.svg", alt: "Shamil" },
+    { src: "/icons/Realestateportalar.svg", alt: "Real estate portal" },
   ];
   return (
     <div className="w-full bg-white">
-      <h1>Quick Links</h1>
+      <h1>روابط سريعة</h1>
       <div className="w-full flex md:justify-center justify-start gap-[20px] flex-wrap mt-[20px]">
         {links.map((link, index) => (
           <div
             key={index}
             className="md:w-[7vw] md:h-[7vw] w-[15vw] h-[15vw] rounded-lg flex flex-col justify-center gap-[12px] items-center"
           >
-            <img className="w-full h-full object-contain" src={link.src} alt={link.alt} />
+            <img
+              className="w-full h-full object-contain"
+              src={link.src}
+              alt={link.alt}
+            />
           </div>
         ))}
       </div>
