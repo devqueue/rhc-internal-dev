@@ -16,7 +16,7 @@ const EmployeeDirectory = ({ employees }) => {
         <h1 className="sm:text-[20px] text-[12px]">Employee Directory</h1>
         <Link to="/all-employees" 
               className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#50917F] rounded-md"
-              state={{ employees }}
+              state={ employees }
         >
           View All
         </Link>
