@@ -5,9 +5,9 @@ import EmployeeCard from "../components/EmployeeCard"
 
 const EmployeeDirectory = () => {
     const location = useLocation();
-    const employees = location.state ? location.state.employees : [];
-    
-    console.log("employees", employees);
+    console.log("location", location); 
+    const employees = location.state ? location.state : [];
+    const displayedEmployees = employees ? employees.slice(0, 9) : [];
   return (
     <>
     <div className="overflow-hidden w-full bg-[#F4F8FB]">
@@ -45,7 +45,7 @@ const EmployeeDirectory = () => {
         </div>
 
         <div className="px-14 mx-auto flex flex-wrap gap-[60px] md:gap-8 lg:gap-[60px] justify-between">
-        {employees.map((employee, index) => (
+        {employees && displayedEmployees.map((employee, index) => (
               <EmployeeCard
                 key={index}
                 img={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${employee.fields.photo_name}`}
