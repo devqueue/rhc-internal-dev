@@ -21,3 +21,4 @@ export const loginRequest = {
     "Sites.Read.All",
   ],
 };
+

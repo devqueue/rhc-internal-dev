@@ -16,16 +16,16 @@ const KnowledgeBase = () => {
         </Link>
       </div>
 
-      <div className="flex self-stretch p-[12px] px-[20px] mx-[20px] items-center gap-[10px] rounded-[8px] border border-[#595959]">
+      <a href="/pdf" target="_blank" className="flex self-stretch p-[12px] px-[20px] mx-[20px] items-center gap-[10px] rounded-[8px] border border-[#595959]">
         <img src="/icons/WebinarIcon.svg" alt="" />
 
         <div>
           <h1 className="sm:text-[14px] text-[9px] font-medium self-stretch">
-            Webinar - June Notebook
+          دليل الموظف
           </h1>
-          <h3 className="text-[12px] font-light self-stretch">Assets</h3>
+          <h3 className="text-[12px] font-light self-stretch">ملفات</h3>
         </div>
-      </div>
+      </a>
     </div>
   );
 };
