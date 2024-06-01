@@ -5,9 +5,9 @@ const Poll = () => {
   const [selectedOption, setSelectedOption] = useState("");
 
   const options = [
-    { label: "Option One", value: "option1" },
-    { label: "Option Two", value: "option2" },
-    { label: "Option Three", value: "option3" },
+    { label: "Yes, I have all the tools and equipment", value: "option1" },
+    { label: "No...I need tools and equipment", value: "option2" },
+    { label: "Some are available", value: "option3" },
   ];
 
   const handleOptionChange = (value) => {
@@ -28,9 +28,8 @@ const Poll = () => {
 
       <div className="w-full px-[30px]">
         <p className="mb-[30px] sm:text-base text-[10.5px]">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type?
+          Do you think you have all the tools and equipment you need to carry
+          out your daily tasks?
         </p>
 
         <div className="flex flex-col gap-[16px]">
