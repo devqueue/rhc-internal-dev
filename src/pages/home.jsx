@@ -30,6 +30,7 @@ const Home = () => {
   const [newEmployee, setNewEmployee] = useState([]);
   const [upcomingEvents, setUpcomingEvents] = useState([]);
   const [gallery,setGallery] = useState([]);
+  const [pdfs,setPdfs] = useState([]);
   const [loading, setLoading] = useState(true);
 
 
@@ -77,6 +78,7 @@ const Home = () => {
             { name: 'New Employee', id: 'cc29e416-2bf1-4462-8d41-d2b437357776', setStateFunction: setNewEmployee },
             { name: 'Upcoming events', id: 'fd974e0a-d601-4921-804c-10ff956619e2', setStateFunction: setUpcomingEvents },
             { name: 'Gallery', id: '9505ceb4-ece5-447d-99fa-b383a324dcd9', setStateFunction: setGallery },
+            { name: 'Pdfs', id: 'ed12e05a-da1c-4407-83d0-85c70fe882b7',setStateFunction: setPdfs}
           ];
 
           const fetchPromises = lists.map(list => fetchListItems(response.accessToken, siteId, list.id, list.setStateFunction, list.name));
@@ -236,7 +238,7 @@ const Home = () => {
           </div>
           
           <div className="sm:px-[30px] px-[5vw] mt-[30px]">
-            <KnowledgeBase />
+            <KnowledgeBase pdfs={pdfs} />
           </div>
         </div>
       </div>
