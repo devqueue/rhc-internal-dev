@@ -190,14 +190,14 @@ const ArabicHome = () => {
   return (
     <div className="overflow-hidden w-full" style={{ direction: 'rtl' }}>
       <Nav />
-      <div className="px-[30px] bg-[#F4F8FB] w-full py-[30px]">
-        <div className="flex gap-[30px]">
-          <div className="w-[66vw]">
+      <div className="xl:px-[30px] px-[2vw] bg-[#F4F8FB] w-full py-[30px]">
+        <div className="flex md:flex-row flex-col xl:gap-[30px] gap-[2vw]">
+          <div className="md:w-[63vw] w-full">
             <div className="w-full h-[400px] rounded-lg overflow-hidden">
               <Banner />
             </div>
 
-            <div className="flex gap-[60px] mt-[25px]">
+            <div className="flex md:flex-row flex-col gap-[60px] mt-[25px]">
               <Calender events={calendarEvents} />
 
               <Planner tasks={plannerTasks} />
@@ -207,7 +207,7 @@ const ArabicHome = () => {
               <Announcement announcements={announcements} />
             </div>
 
-            <div className="flex gap-[60px] justify-between mt-[25px]">
+            <div className="flex md:flex-row flex-col gap-[60px] justify-between mt-[25px]">
               <Poll />
 
               <News news={news} />
@@ -218,30 +218,30 @@ const ArabicHome = () => {
             </div>
           </div>
 
-          <div className="shadow-md w-[33vw] rounded-[8px]  bg-white">
-            <div className="py-[24px] px-[30px]">
+          <div className="shadow-md md:w-[30vw] w-full rounded-[8px] bg-white">
+            <div className="py-[24px] sm:px-[30px] px-[5vw]">
               <QuickLinks />
             </div>
 
             <hr />
 
-            <div className="mt-[21px] mb-[32px] px-[25px]">
+            <div className="mt-[21px] mb-[32px] psm:px-[25px] px-[5vw]">
               <EventName events={calendarEvents} />
             </div>
 
             <hr />
 
-            <div className="px-[30px] my-[25px]">
+            <div className="sm:px-[30px] px-[5vw] my-[25px]">
               <UpcomingEvents events={upcomingEvents} />
             </div>
 
             <hr />
 
-            <div className="px-[30px] mt-[30px]">
+            <div className="sm:px-[30px] px-[5vw] mt-[30px]">
               <NewEmployee newEmployee={newEmployee} />
             </div>
 
-            <div className="px-[30px] mt-[30px]">
+            <div className="sm:px-[30px] px-[5vw] mt-[30px]">
               <KnowledgeBase />
             </div>
           </div>

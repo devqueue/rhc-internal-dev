@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
 const EventCard = ({ start_time, end_time, Title, event_location_en }) => {
-
-    const [isScheduled, setIsScheduled] = useState(false);
+  const [isScheduled, setIsScheduled] = useState(false);
 
   const toggleReminder = () => {
     setIsScheduled(!isScheduled);
@@ -24,7 +23,7 @@ const EventCard = ({ start_time, end_time, Title, event_location_en }) => {
         </div>
 
         <div className="flex flex-col gap-[5px] p-[40px] h-[166px] mb-[72px]">
-          <h1 className="text-[24px] font-figtree font-semibold leading-[28.8px] mb-2">
+          <h1 className="sm:text-[24px] text-[16px] font-figtree font-semibold leading-[28.8px] mb-2">
             Annual General Meeting
           </h1>
           <div className="flex items-center w-[244.5px] h-[24px] gap-[15px] mb-2">
@@ -56,17 +55,28 @@ const EventCard = ({ start_time, end_time, Title, event_location_en }) => {
           </div>
         </div>
       </div>
-      <div className={`w-[312.5px] h-[64px] ${isScheduled ? 'bg-[#50907F]' : 'bg-[#3B729C]'} p-[20px_10px] flex gap-[10px] rounded-[8px] rounded-tl-none rounded-tr-none mt-[50px]`} onClick={toggleReminder}>
       <div
-        className={`w-[24px] h-[24px] bg-cover items-center justify-between ${isScheduled ? 'ml-10': 'ml-16'}`}
-        style={{
-          backgroundImage: `url('${isScheduled ? '/icons/bell_scheduled.svg' : '/icons/bell.svg'}')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      ></div>
-      <p className="font-figtree font-medium text-[18px] leading-[21.6px] text-white text-center">{isScheduled ? 'Reminder Scheduled' : 'Remind Me'}</p>
-    </div>
+        className={`w-[312.5px] h-[64px] ${
+          isScheduled ? "bg-[#50907F]" : "bg-[#3B729C]"
+        } p-[20px_10px] flex gap-[10px] rounded-[8px] rounded-tl-none rounded-tr-none mt-[50px]`}
+        onClick={toggleReminder}
+      >
+        <div
+          className={`w-[24px] h-[24px] bg-cover items-center justify-between ${
+            isScheduled ? "ml-10" : "ml-16"
+          }`}
+          style={{
+            backgroundImage: `url('${
+              isScheduled ? "/icons/bell_scheduled.svg" : "/icons/bell.svg"
+            }')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        ></div>
+        <p className="font-figtree font-medium text-[18px] leading-[21.6px] text-white text-center">
+          {isScheduled ? "Reminder Scheduled" : "Remind Me"}
+        </p>
+      </div>
     </div>
   );
 };

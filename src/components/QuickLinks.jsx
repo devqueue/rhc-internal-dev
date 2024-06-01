@@ -13,13 +13,13 @@ const QuickLinks = () => {
   return (
     <div className="w-full bg-white">
       <h1>Quick Links</h1>
-      <div className="w-full flex gap-[20px] flex-wrap mt-[20px]">
+      <div className="w-full flex md:justify-center justify-start gap-[20px] flex-wrap mt-[20px]">
         {links.map((link, index) => (
           <div
             key={index}
-            className="w-[90px] h-[90px] rounded-lg flex flex-col justify-center gap-[12px] items-center"
+            className="md:w-[7vw] md:h-[7vw] w-[15vw] h-[15vw] rounded-lg flex flex-col justify-center gap-[12px] items-center"
           >
-            <img src={link.src} alt={link.alt} />
+            <img className="w-full h-full object-contain" src={link.src} alt={link.alt} />
           </div>
         ))}
       </div>
