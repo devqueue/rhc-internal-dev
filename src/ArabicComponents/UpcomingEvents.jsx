@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 
 const UpcomingEvents = ({ events }) => {
-  if (!events || events.length === 0) {
+  const sortedEvents = events.slice().sort((a, b) => {
+    return new Date(a.fields.Start_time) - new Date(b.fields.Start_time);
+  });
+
+  if (!sortedEvents || sortedEvents.length === 0) {
     return <div>No upcoming events available.</div>;
   }
 
@@ -57,7 +61,7 @@ const UpcomingEvents = ({ events }) => {
       </div>
 
       <div className="h-full overflow-y-auto pb-16">
-        {events.map((event) => (
+        {sortedEvents.map((event) => (
           <div className="flex p-[20px] gap-[20px] items-start content-start self-stretch lg:flex-nowrap flex-wrap border-b-[1px] border-b-[#888888]">
             <div
               className="w-[72px] h-[72px] flex items-end pb-1 justify-center text-sm text-center shrink-0"

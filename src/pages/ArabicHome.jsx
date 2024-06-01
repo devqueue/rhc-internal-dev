@@ -112,7 +112,7 @@ const ArabicHome = () => {
         now.setHours(0, 0, 0, 0);
         const isoDate = now.toISOString();
 
-        const calendar = await fetch(`https://graph.microsoft.com/v1.0/me/calendar/events?$filter=start/dateTime ge '${isoDate}'`, {
+        const calendar = await fetch(`https://graph.microsoft.com/v1.0/me/calendar/events?$filter=start/dateTime ge '${isoDate}' &$orderby=start/dateTime`, {
           headers: { Authorization: "Bearer " + token, Prefer: 'outlook.timezone="Asia/Kolkata"' },
         });
 
@@ -158,7 +158,18 @@ const ArabicHome = () => {
             ? `${new Date(tasks.dueDateTime).getDate()}/${new Date(tasks.dueDateTime).getMonth() + 1}/${new Date(tasks.dueDateTime).getFullYear()}`
             : "No Due Date",
         }));
-        setPlannerTasks(tasks_assigned_json);
+        const stasks_assigned_json = tasks_assigned_json.sort((a, b) => {
+          // Split the dueDate string and parse it as a Date object
+          const datePartsA = a.dueDate.split('/');
+          const datePartsB = b.dueDate.split('/');
+          
+          // Create Date objects with year, month (zero-based), and day
+          const dateA = new Date(datePartsA[2], datePartsA[0] - 1, datePartsA[1]);
+          const dateB = new Date(datePartsB[2], datePartsB[0] - 1, datePartsB[1]);
+          
+          return dateA - dateB;
+        });
+        setPlannerTasks(stasks_assigned_json);
         console.log('tasks_assigned_json', tasks_assigned_json);
       } catch (error) {
         console.error("Error fetching planner tasks:", error);

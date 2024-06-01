@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 
 const UpcomingEvents = ({ events }) => {
-  if (!events || events.length === 0) {
+  // Sort events by start date in ascending order
+  const sortedEvents = events.slice().sort((a, b) => {
+    return new Date(a.fields.Start_time) - new Date(b.fields.Start_time);
+  });
+
+  if (!sortedEvents || sortedEvents.length === 0) {
     return <div>No upcoming events available.</div>;
   }
 
@@ -50,7 +55,7 @@ const UpcomingEvents = ({ events }) => {
         </h1>
 
         <Link
-          href=""
+          to="/all-events" // Changed from href to to for Link component
           className="sm:text-[14px] text-[9px] font-light rounded-[4px] px-[10px] text-[#3B729C] bg-white"
         >
           View All
@@ -58,8 +63,8 @@ const UpcomingEvents = ({ events }) => {
       </div>
 
       <div className="h-full overflow-y-auto pb-16">
-        {events.map((event) => (
-          <div className="flex p-[20px] gap-[20px] items-start content-start self-stretch lg:flex-nowrap flex-wrap border-b-[1px] border-b-[#888888]">
+        {sortedEvents.map((event) => (
+          <div key={event.id} className="flex p-[20px] gap-[20px] items-start content-start self-stretch lg:flex-nowrap flex-wrap border-b-[1px] border-b-[#888888]">
             <div
               className="w-[72px] h-[72px] flex items-end pb-1 justify-center text-sm text-center shrink-0"
               style={{
@@ -109,24 +114,5 @@ const UpcomingEvents = ({ events }) => {
     </div>
   );
 };
-
-//         <div className="flex p-[20px] gap-[20px] items-start content-start self-stretch flex-wrap border-b-[1px] border-b-[#888888]">
-//           <div className="w-[72px] h-[72px] bg-slate-300"> </div>
-
-//           <div>
-//             <h1 className="sm:text-[16px] text-[11px] font-[400px]">Event Title Here</h1>
-//             <div className="flex gap-[10px] items-center">
-//               <div className="w-[16px] h-[16px] shrink-0 bg-slate-300"></div>
-//               <p className="text-[12px] font-[400px]">11:00 AM - 2:00 PM</p>
-//             </div>
-//             <div className="flex gap-[10px] items-center">
-//               <div className="w-[16px] h-[16px] shrink-0 bg-slate-300"></div>
-//               <p className="text-[12px] font-[400px]">Full Address Comes Here</p>
-//             </div>
-//           </div>
-//         </div>
-//     </div>
-//   );
-// };
 
 export default UpcomingEvents;
