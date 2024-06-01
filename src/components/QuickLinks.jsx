@@ -2,9 +2,9 @@ const QuickLinks = () => {
   const links = [
     { src: "/icons/ERPIcon.svg", alt: "ERP Icon", label: "ERP" },
     { src: "/icons/RealEstateIcon.svg", alt: "Real Estate", label: "Real Estate" },
-    { src: "/icons/HelpIcon.svg", alt: "Help Desk", label: "Help Desk" },
-    { src: "/icons/SelfServiceIcon.svg", alt: "Employee self-service", label: "Employee self-service portal" },
     { src: "/icons/DMS.svg", alt: "DMS"},
+    { src: "/icons/SelfServiceIcon.svg", alt: "Employee self-service", label: "Employee self-service portal" },
+    { src: "/icons/HelpIcon.svg", alt: "Help Desk", label: "Help Desk" },
     { src: "/icons/Midan.svg"},
     { src: "/icons/BookRooms.svg", alt: "Book rooms and meetings"},
     { src: "/icons/Training.svg", alt: "Training"},
