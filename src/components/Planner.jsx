@@ -16,10 +16,10 @@ const Planner = ({ tasks }) => {
       </div>
 
       <div className=" h-full overflow-y-auto pb-24 pt-[30px]">
-        <div className="w-full flex flex-col gap-[15px]">
+        <div className="w-full flex flex-col gap-[15px] pb-10">
           {tasks.map((task, index) => (
             <div key={index} className="px-[30px] flex gap-[15px] w-full">
-              <div className="flex flex-col gap-[10px]">
+              <div className="flex flex-col gap-[10px] w-full">
                 <div className="flex items-stretch border-[1px] border-[#50917F] rounded-lg">
                   <div className="px-[25px] border-r-[1px] border-r-[#50917F] flex flex-col justify-center flex-grow-0">
                     <h1 className="sm:text-[24px] text-[16px] font-medium">
@@ -27,7 +27,7 @@ const Planner = ({ tasks }) => {
                     </h1>
                   </div>
 
-                  <div className="px-[30px] py-[12px] flex-1 flex items-center">
+                  <div className="px-[30px] py-[12px] flex-1 flex items-center w-full">
                     <div>
                       <h1 className="sm:text-[16px] text-[11px] w-[100%]">
                         {task.title}
