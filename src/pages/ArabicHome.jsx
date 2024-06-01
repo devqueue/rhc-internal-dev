@@ -225,7 +225,7 @@ const ArabicHome = () => {
 
             <hr />
 
-            <div className="mt-[21px] mb-[32px] psm:px-[25px] px-[5vw]">
+            <div className="mt-[21px] mb-[32px] sm:px-[25px] px-[5vw]">
               <EventName events={calendarEvents} />
             </div>
 
