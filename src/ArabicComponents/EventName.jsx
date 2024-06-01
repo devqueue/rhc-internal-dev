@@ -61,6 +61,8 @@ const EventName = ({ events }) => {
     }
   }, [events]);
 
+  if(events.length === 0) return null;
+
   return (
     <div className="py-[30px] px-[20px] bg-[#3B729C] flex flex-col justify-center items-center gap-[24px] text-white rounded-[8px]">
       <div className="flex flex-col items-center gap-[10px]">
