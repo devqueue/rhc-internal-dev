@@ -56,16 +56,21 @@ const Calender = ({ events }) => {
         <h1 className="sm:text-[20px] text-[12px]">تقويم</h1>
         <Link
           className="text-[14px] px-[10px] py-[5px] bg-white text-[#3B729C] rounded-[8px]"
-          href=""
+          to="https://outlook.office.com/calendar/view/month"
+          target="_blank"
         >
           عرض الكل
         </Link>
       </div>
-      {todayEvents.length>0||weekEvents.length>0?(<div className="h-full overflow-y-auto pb-16">
-        {todayEvents.length > 0 ? renderEvents(todayEvents, "Today") : null}
-        <hr />
-        {weekEvents.length > 0 ? renderEvents(weekEvents, "This Week") : null}
-      </div>):<div className="text-l">لا توجد أحداث في التقويم</div>}
+      {todayEvents.length > 0 || weekEvents.length > 0 ? (
+        <div className="h-full overflow-y-auto pb-16">
+          {todayEvents.length > 0 ? renderEvents(todayEvents, "Today") : null}
+          <hr />
+          {weekEvents.length > 0 ? renderEvents(weekEvents, "This Week") : null}
+        </div>
+      ) : (
+        <div className="text-l">لا توجد أحداث في التقويم</div>
+      )}
     </div>
   );
 };

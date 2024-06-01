@@ -56,7 +56,10 @@ const Calendar = ({ events }) => {
     <div className="w-full h-[424px] bg-white rounded-lg overflow-hidden shadow-md">
       <div className="bg-[#3B729C] w-full flex justify-between items-center px-[30px] py-[20px] text-[white]">
         <h1 className="sm:text-[20px] text-[12px]">Calendar</h1>
-        <Link className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white rounded-md text-[#3B729C]">
+        <Link className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white rounded-md text-[#3B729C]"
+        to="https://outlook.office.com/calendar/view/month"
+        target="_blank"
+        >
           View All
         </Link>
       </div>

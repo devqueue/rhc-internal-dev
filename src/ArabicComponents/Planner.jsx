@@ -5,10 +5,11 @@ const Planner = ({ tasks }) => {
     return (
       <div className="w-full bg-white rounded-lg overflow-hidden shadow-md">
         <div className="bg-[#3B729C] w-full min-h-[64px] gap-[10px] flex justify-between items-center flex-wrap px-[30px] py-[20px] text-[white] mb-[30px]">
-          <h1 className="sm:text-[20px] text-[12px]">(Planner) بلانر</h1>
+          <h1 className="sm:text-[20px] text-[12px]">بلانر</h1>
           <Link
             className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#3B729C] rounded-[8px]"
-            href=""
+            to="https://tasks.office.com/arhc.com.sa/en-US/Home/Planner/"
+            target="_blank"
           >
             عرض الكل
           </Link>
@@ -27,7 +28,8 @@ const Planner = ({ tasks }) => {
           <h1 className="sm:text-[20px] text-[12px]">بلانر</h1>
           <Link
             className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#3B729C] rounded-[8px]"
-            href=""
+            to="https://tasks.office.com/arhc.com.sa/en-US/Home/Planner/"
+            target="_blank"
           >
             عرض الكل
           </Link>

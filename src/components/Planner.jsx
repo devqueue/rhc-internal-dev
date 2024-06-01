@@ -9,7 +9,8 @@ const Planner = ({ tasks }) => {
         <h1 className="sm:text-[20px] text-[12px]">List From Planner</h1>
         <Link
           className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#3B729C] rounded-md"
-          href=""
+          to="https://tasks.office.com/arhc.com.sa/en-US/Home/Planner/"
+          target="_blank"
         >
           View All
         </Link>
@@ -27,7 +28,8 @@ const Planner = ({ tasks }) => {
         <h1 className="sm:text-[20px] text-[12px]">List From Planner</h1>
         <Link
           className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#3B729C] rounded-md"
-          href=""
+          to="https://tasks.office.com/arhc.com.sa/en-US/Home/Planner/"
+          target="_blank"
         >
           View All
         </Link>
