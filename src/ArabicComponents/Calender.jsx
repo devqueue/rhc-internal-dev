@@ -51,7 +51,7 @@ const Calender = ({ events }) => {
   if (!events || events.length === 0) return null;
 
   return (
-    <div className="w-full bg-white rounded-lg overflow-hidden shadow-md">
+    <div className="w-full h-[424px] bg-white rounded-lg overflow-hidden shadow-md">
       <div className="bg-[#3B729C] w-full flex justify-between items-center px-[30px] py-[20px] text-[white]">
         <h1 className="sm:text-[20px] text-[12px]">تقويم</h1>
         <Link
