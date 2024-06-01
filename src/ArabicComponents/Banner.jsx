@@ -14,15 +14,15 @@ const Banner = () => {
         className="absolute top-[100px] lg:right-[44px] right-[5vw] xl:text-[40px] lg:text-[3vw] sm:text-[24px] text-[16px] font-bold"
         style={{ fontFamily: "SomarBold" }}
       >
-        <h1 className="text-white ">
-           كل ما تحتاجه في مكان واحد
+        <h1 className="text-white">
+          !{" "} كل ما تحتاجه في مكان واحد
           <span
             className="text-['SomarLight'] font-extralight"
             style={{ fontFamily: "SomarLight" }}
           ></span>
         </h1>
         <h1 className="text-white"> تعرّف على البوابة الداخلية</h1>
-        <h1 className="text-white"> ستغير الجديدة (شامل) التي </h1>
+        <h1 className="text-white"> شامل التي ستغير </h1>
         <h1 className="text-white"> طريقة عملك وتواصلك</h1>
       </div>
     </div>
