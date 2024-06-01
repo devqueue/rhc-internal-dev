@@ -29,7 +29,9 @@ const NewEmployee = ({ newEmployee }) => {
   return (
     <div className="overflow-hidden">
       <div
-        className={`flex transition-transform ${isTransitioning ? "duration-500" : "duration-0"}`}
+        className={`flex transition-transform ${
+          isTransitioning ? "duration-500" : "duration-0"
+        }`}
         style={{ transform: `translateX(${currentIndex * 100}%)` }}
       >
         {newEmployee.map((employee, index) => (
@@ -38,7 +40,7 @@ const NewEmployee = ({ newEmployee }) => {
             className="flex w-full flex-shrink-0 flex-col items-center gap-[30px] bg-[#50917F] py-[30px] rounded-[8px] overflow-hidden"
           >
             <h1 className="text-center sm:text-[20px] text-[12px] text-white font-light h-[28.98px] ">
-              New Employee
+              أهلاً بك في عائلة الرياض القابضة
             </h1>
 
             <div
