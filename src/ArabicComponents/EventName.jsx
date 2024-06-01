@@ -12,7 +12,7 @@ const EventName = ({ events }) => {
     const now = new Date();
     const upcomingEvents = events.filter(
       (event) =>
-        new Date(`${event.month} ${event.day}, 2024 ${event.starttime}`) > now
+        new Date(`${event.month} ${event.day}, 2024 ${event.starttime}`) >= now
     );
     const sortedEvents = upcomingEvents.sort(
       (a, b) =>
