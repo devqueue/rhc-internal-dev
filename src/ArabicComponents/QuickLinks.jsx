@@ -12,7 +12,11 @@ const QuickLinks = () => {
       alt: "Real Estate",
       path: "https://propertyprod.crm4.dynamics.com/main.aspx",
     },
-    { src: "/icons/DMSAr.svg", alt: "DMS", path: "http://svrshamil/" },
+    {
+      src: "/icons/DMSAr.svg",
+      alt: "DMS",
+      path: "https://ecommunication.riyadhholding.sa/",
+    },
     {
       src: "/icons/SelfServiceIconAr.svg",
       alt: "Employee self-service",
