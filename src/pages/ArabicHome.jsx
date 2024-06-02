@@ -113,13 +113,13 @@ const ArabicHome = () => {
         const isoDate = now.toISOString();
 
         const calendar = await fetch(`https://graph.microsoft.com/v1.0/me/calendar/events?$filter=start/dateTime ge '${isoDate}' &$orderby=start/dateTime`, {
-          headers: { Authorization: "Bearer " + token, Prefer: 'outlook.timezone="Asia/Kolkata"' },
+          headers: { Authorization: "Bearer " + token, Prefer: 'outlook.timezone="Asia/Riyadh"' },
         });
 
         const cal_json = await calendar.json();
         console.log('org_cal', cal_json);
 
-        const tz = "Asia/Kolkata";
+        const tz = "Asia/Riyadh";
 
         const cal_eventsjson = cal_json.value.map((events) => ({
           name: events.subject,

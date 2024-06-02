@@ -103,13 +103,13 @@ const Home = () => {
     
         // Fetch events starting from today or later
         let calendar = await fetch(`https://graph.microsoft.com/v1.0/me/calendar/events?$filter=start/dateTime ge '${isoDate}' &$orderby=start/dateTime`, {
-          headers: { Authorization: "Bearer " + token, Prefer: 'outlook.timezone="Asia/Kolkata"' },
+          headers: { Authorization: "Bearer " + token, Prefer: 'outlook.timezone="Asia/Riyadh"' },
         });
     
         let cal_json = await calendar.json();
         console.log('org_cal', cal_json);
     
-        const tz = "Asia/Kolkata"; // Using the correct IANA time zone identifier
+        const tz = "Asia/Riyadh"; // Using the correct IANA time zone identifier
     
         let cal_eventsjson = cal_json.value.map((events) => ({
           name: events.subject,
