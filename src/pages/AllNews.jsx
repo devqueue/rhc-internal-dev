@@ -74,7 +74,7 @@ const AllNews = () => {
             </h1>
             
           </div>
-          <div className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-[22px] lg:mx-9 md:mx-12 sm:mx-28 xs:mx-56">
+          <div className="lg:p-0 p-8 flex flex-wrap justify-start gap-6 md:gap-8 lg:gap-[22px] lg:mx-9 md:mx-12 sm:mx-28 xs:mx-56">
             {events.map((event, index) => (
               <NewsCard
               key={index}
