@@ -45,7 +45,7 @@ const Poll = () => {
           {options.map((option) => (
             <div
               key={option.value}
-              className={`w-full h-[62px] px-[33px] border-[1px] border-[#50917F] rounded-lg flex items-center gap-[16px] cursor-pointer ${voteCasted ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`w-full px-[33px] py-[17px] border-[1px] border-[#50917F] rounded-lg flex items-center gap-[16px] cursor-pointer ${voteCasted ? 'opacity-50 cursor-not-allowed' : ''}`}
               onClick={() => handleOptionChange(option.value)}
             >
               <input
@@ -58,7 +58,7 @@ const Poll = () => {
                 onChange={() => handleOptionChange(option.value)}
                 disabled={voteCasted}
               />
-              <span className="w-[33.31px] h-[33px] border-[1px] border-[#888888] rounded-full flex items-center justify-center">
+              <span className="w-[33px] h-[33px] border-[1px] border-[#888888] rounded-full flex items-center justify-center shrink-0">
                 <span
                   className={`w-[60%] h-[60%] bg-[#3B729C] rounded-full ${
                     selectedOption === option.value
