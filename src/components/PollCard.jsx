@@ -30,19 +30,19 @@ const PollCard = ({questions, option}) => {
   return (
     <>
       <div
-        className={`w-[303px] gap-[40px] ${
+        className={`lg:w-[303px] w-auto gap-[40px] ${
           isVoted ? "bg-[#50907F]" : "bg-white"
-        } rounded-[8px] `}
+        } rounded-[8px] mb-2 `}
       >
         <div className="w-[303px] p-8 border-white border-b-[1px]">
-          <p className={`text-[16px] ${isVoted ? "text-white" : "text-black"} font-figtree font-normal leading-[22px] px-2`}>
+          <p className={`lg:text-[16px] text-[14px] ${isVoted ? "text-white" : "text-black"} font-figtree font-normal leading-[22px] px-2`}>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s, when an unknown printer took a galley of type?
           </p>
         </div>
         <div
-          className={`w-[303px] h-[64px] bg-[#50907F] p-[20px_10px] flex gap-[10px] rounded-[8px] rounded-tl-none rounded-tr-none`}
+          className={`lg:w-[303px] w-auto h-[64px] bg-[#50907F] p-[20px_10px] flex gap-[10px] rounded-[8px] rounded-tl-none rounded-tr-none`}
           onClick={toggleReminder}
         >
           <div
@@ -57,7 +57,7 @@ const PollCard = ({questions, option}) => {
               backgroundPosition: "center",
             }}
           ></div>
-          <p className="font-figtree font-medium text-[18px] leading-[21.6px] text-white text-center">
+          <p className="font-figtree font-medium lg:text-[18px] text-[14px] leading-[21.6px] text-white text-center">
             {isVoted ? "VOTED" : "Cast Your Vote"}
           </p>
         </div>
@@ -98,7 +98,7 @@ const PollCard = ({questions, option}) => {
                       checked={selectedOption === option.value}
                       onChange={() => handleOptionChange(option.value)}
                     />
-                    <span className="w-[33.31px] h-[33px] border-[1px] border-[#888888] rounded-full flex items-center justify-center">
+                    <span className="w-[33.31px] h-[33px] xs:w-[22px] xs:h-[22px] border-[1px] border-[#888888] rounded-full flex items-center justify-center">
                       <span
                         className={`w-[60%] h-[60%] bg-[#3B729C] rounded-full ${
                           selectedOption === option.value
@@ -109,7 +109,7 @@ const PollCard = ({questions, option}) => {
                     </span>
 
                     <label
-                      className="sm:text-[16px] text-[11px]"
+                      className=" text-[9.5px] lg:text-[14px]"
                       htmlFor={option.value}
                     >
                       {option.label}
