@@ -45,7 +45,7 @@ const EmployeeDirectory = ({ employees }) => {
           <input
             type="text"
             placeholder="Search For Employee"
-            className="flex-grow px-4 py-2"
+            className="flex-grow px-4 py-2 outline-none"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
