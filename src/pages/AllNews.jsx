@@ -68,13 +68,13 @@ const AllNews = () => {
       <div className="overflow-hidden w-full">
         <Nav />
         <div className="py-[30px] bg-[#F4F8FB] overflow-hidden w-full shadow-md ">
-          <div className="px-[10px] py-[16px]  mb-[20px] flex items-center justify-between gap-[10px] self-stretch flex-wrap bg-[#C2AB80] text-[white]">
+          <div className="px-[10px] py-[16px]  mb-[20px] flex items-center rounded-[8px] rounded-bl-none rounded-br-none justify-between gap-[10px] self-stretch flex-wrap bg-[#C2AB80] text-[white]">
             <h1 className="text-[20px] font-light self-stretch min-w-[100px]">
               Corporate News
             </h1>
             
           </div>
-          <div className="p-5 mx-auto flex flex-wrap gap-6 md:gap-8 lg:gap-[10px] justify-between">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-[22px] lg:mx-9 md:mx-12 sm:mx-28 xs:mx-56">
             {events.map((event, index) => (
               <NewsCard
               key={index}

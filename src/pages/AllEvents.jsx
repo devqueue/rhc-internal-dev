@@ -95,7 +95,7 @@ const AllEvents = () => {
       <div className="overflow-hidden w-full">
         <Nav />
         <div className="py-[30px] bg-[#F4F8FB] overflow-hidden w-full h-[1603px] shadow-md ">
-          <div className="px-[20px] py-[16px]  mb-[20px] flex items-center justify-between gap-[10px] self-stretch flex-wrap bg-[#3B729C] text-[white]">
+          <div className="px-[20px] py-[16px]  mb-[20px] flex items-center rounded-[8px] rounded-bl-none rounded-br-none justify-between gap-[10px] self-stretch flex-wrap bg-[#3B729C] text-[white]">
             <h1 className="sm:text-[20px] text-[12px] font-light self-stretch min-w-[100px]">
               Upcoming Events
             </h1>
@@ -106,7 +106,7 @@ const AllEvents = () => {
               Filter
             </a>
           </div>
-          <div className="w-[1360px] h-[1474px] mx-auto flex flex-wrap gap-[36px]">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-[22px] lg:mx-9 md:mx-12 sm:mx-28 xs:mx-56">
             {events.map((event, index) => (
               <EventCard
                 key={index}

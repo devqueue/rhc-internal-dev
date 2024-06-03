@@ -79,10 +79,10 @@ const Polls = () => {
     <div className="overflow-hidden w-full bg-[#F4F8FB]">
       <Nav />
       <div className="w-full pt-[30px] min-h-[424px] bg-[#F4F8FB] overflow-hidden shadow-md">
-        <div className="bg-[#50917F] w-full h-[64px] flex rounded-[8px] rounded-bl-none rounded-br-nonejustify-between items-center px-[30px] py-[20px] text-white mb-[30px]">
+        <div className="bg-[#50917F] w-full h-[64px] flex rounded-[8px] rounded-bl-none rounded-br-none justify-between items-center px-[30px] py-[20px] text-white mb-[30px]">
           <h1 className="sm:text-[20px] text-[12px]">Poll</h1>
         </div>
-        <div className="px-8 mx-auto flex flex-wrap gap-[60px] md:gap-8 lg:gap-[30px] justify-between">
+        <div className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-[22px] lg:mx-2 md:mx-12 sm:mx-28 xs:mx-56">
             {events.map((event, index) => (
                 <PollCard
                 key={index}
