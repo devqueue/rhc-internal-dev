@@ -8,18 +8,18 @@ const EventCard = ({ start_time, end_time, Title, event_location_en }) => {
   };
 
   return (
-    <div className=" h-[458px] w-[312.5px] gap-[40px] bg-white rounded-[8px]">
+    <div className=" h-[458px] w-[312.5px] bg-white rounded-[8px]">
       <div className=" h-[314px] w-[312.5px] mt-[30px] ">
         <div
-          className="w-[108px] h-[108px] mb-[20px] ml-24  flex items-center justify-center text-2xl text-center"
+          className="w-[108px] h-[108px] mb-[20px] ml-24 p-2 grid place-items-center text-center text-[#444444]"
           style={{
             backgroundImage: `url('/icons/cal.svg')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
-          <span className="font-extrabold text-[#3B729C] text-3xl">15</span>
-          <br /> May
+          <span className="font-extrabold text-[#3B729C] text-3xl mt-7">15</span>
+      <span className="text-xl">MAY</span>
         </div>
 
         <div className="flex flex-col gap-[5px] p-[40px] h-[166px] mb-[72px]">
@@ -36,7 +36,7 @@ const EventCard = ({ start_time, end_time, Title, event_location_en }) => {
               className="w-[24px] h-[24px] shrink-0"
             ></div>
 
-            <p className="text-[18px] font-figtree font-normal leading-[28.8px]">
+            <p className="text-[18px] font-figtree font-normal leading-[28.8px] text-[#444444]">
               11:00 AM - 2:00 PM
             </p>
           </div>
@@ -49,7 +49,7 @@ const EventCard = ({ start_time, end_time, Title, event_location_en }) => {
               }}
               className="w-[24px] h-[24px] shrink-0"
             ></div>
-            <p className="text-[18px] font-figtree font-normal leading-[21.6px]">
+            <p className="text-[18px] font-figtree font-normal leading-[21.6px] text-[#444444]">
               The Company`s Auditorium
             </p>
           </div>
