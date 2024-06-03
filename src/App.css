@@ -1,3 +1,27 @@
+@font-face {
+  font-family: 'Somar';
+  src: url('./assets/Fonts/EnglishFont/Somar-Regular.ttf') format('woff2'), 
+       url('./assets/Fonts/EnglishFont/Somar-Regular.ttf') format('woff'),
+}
+
+@font-face {
+  font-family: 'SomarSemiBold';
+  src: url('./assets/Fonts/EnglishFont//Somar-SemiBold.otf') format('woff2'),
+       url('./assets/Fonts/EnglishFont//Somar-SemiBold.otf') format('woff'),
+}
+
+@font-face {
+  font-family: 'SomarBold';
+  src: url('./assets/Fonts/EnglishFont/Somar-ExtraBold.otf') format('woff2'), 
+       url('./assets/Fonts/EnglishFont/Somar-ExtraBold.otf') format('woff'); 
+}
+
+@font-face {
+  font-family: 'SomarLight';
+  src: url('./assets/Fonts/EnglishFont/Somar-Light.otf') format('woff2'), 
+       url('./assets/Fonts/EnglishFont/Somar-Light.otf') format('woff'); 
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
