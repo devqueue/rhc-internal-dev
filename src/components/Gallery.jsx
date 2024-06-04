@@ -17,7 +17,7 @@ const Gallery = ({ gallery }) => {
         {gallery.map((item, index) => ( //slice(0,3)
           <div
             key={index}
-            className="w-[404px] min-h-[355px] bg-white rounded-lg overflow-hidden"
+            className="w-[404px] min-h-[355px] bg-white rounded-lg overflow-auto"
           >
             <div className="w-full h-[180px] bg-slate-300">
               <img
