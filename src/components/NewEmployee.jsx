@@ -39,7 +39,7 @@ const NewEmployee = ({ newEmployee }) => {
             key={index}
             className="flex w-full flex-shrink-0 flex-col items-center gap-[30px] bg-[#50917F] py-[30px] rounded-[8px] overflow-hidden"
           >
-            <h1 className="text-center sm:text-[20px] text-[12px] text-white font-light h-[28.98px] ">
+            <h1 className="text-center sm:text-[20px] text-[12px] text-white font-light w-full px-[16px] text-wrap">
               Welcome to Riyadh Holding family
             </h1>
 
