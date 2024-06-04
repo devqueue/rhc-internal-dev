@@ -216,7 +216,7 @@ const Home = () => {
           </div>
 
           <div className="mt-[30px]">
-            <EmployeeDirectory employees={employeeDirectory} />
+            {/* <EmployeeDirectory employees={employeeDirectory} /> */}
           </div>
         </div>
 
