@@ -106,7 +106,7 @@ const AllEvents = () => {
               Filter
             </a>
           </div>
-          <div className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-[22px] lg:mx-9 md:mx-12 sm:mx-28 xs:mx-56">
+          <div className="flex flex-wrap justify-left gap-6 md:gap-8 lg:gap-auto lg:mx-9 md:mx-12 sm:mx-28 xs:justify-center">
             {events.map((event, index) => (
               <EventCard
                 key={index}
