@@ -3,10 +3,11 @@ import React, { useState, useEffect } from "react";
 const NewEmployee = ({ newEmployee }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    if (newEmployee.length > 1) {
-      const intervalId = setInterval(() => {
+    if (newEmployee.length > 1 && !isHovered) {
+      let intervalId = setInterval(() => {
         setCurrentIndex((prevIndex) =>
           prevIndex === newEmployee.length - 1 ? 0 : prevIndex + 1
         );
@@ -19,15 +20,15 @@ const NewEmployee = ({ newEmployee }) => {
           setIsTransitioning(true);
         }
       }, 4000);
-
+  
       return () => clearInterval(intervalId);
     }
-  }, [newEmployee, currentIndex]);
+  }, [newEmployee, currentIndex, isHovered]);
 
   if (newEmployee.length === 0) return null;
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
       <div
         className={`flex transition-transform ${
           isTransitioning ? "duration-500" : "duration-0"

@@ -2,27 +2,39 @@ import React, { useState, useEffect } from "react";
 
 const Announcement = ({ announcements }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    if (announcements.length > 1) {
+    if (announcements.length > 1 && !isHovered) {
       const intervalId = setInterval(() => {
         setCurrentIndex((prevIndex) =>
           prevIndex === announcements.length - 1 ? 0 : prevIndex + 1
         );
       }, 4300);
 
+      if (currentIndex === announcements.length - 1) {
+        setIsTransitioning(false);
+      }
+
+      if (currentIndex != announcements.length - 1) {
+        setIsTransitioning(true);
+      }
+
       return () => clearInterval(intervalId);
     }
-  }, [announcements]);
+  }, [announcements, currentIndex, isHovered]);
 
   if (!announcements || announcements.length === 0) {
     return null;
   }
 
   return (
-    <div className="w-full rounded-[8px] overflow-hidden bg-[#50917F] relative">
+    <div className="w-full rounded-[8px] overflow-hidden bg-[#50917F] relative" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
       <div
-        className="flex gap-[40px] p-[40px] transition-transform duration-500"
+        className={`flex gap-[40px] p-[40px] transition-transform ${
+          isTransitioning ? "duration-500" : "duration-0"
+        }`}
         style={{
           transform: `translateX(calc(${currentIndex * 100}% - ${
             currentIndex * 40
