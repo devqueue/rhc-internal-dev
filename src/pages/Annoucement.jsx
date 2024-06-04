@@ -25,8 +25,8 @@ const Annoucement = () => {
     <>
       <div className="overflow-hidden w-full bg-[#F4F8FB]">
         <Nav />
-        <div className="flex h-[1553px] pt-[30px] bg-[#F4F8FB] overflow-hidden">
-          <div className="w-3/4 p-[60px] bg-white">
+        <div className="lg:flex pt-[30px] bg-[#F4F8FB] overflow-hidden">
+          <div className="lg:w-3/4 md:w-full p-[60px] bg-white">
             <h1 className="font-figtree font-semibold text-4xl leading-[48px] text-left">
               Europe Expansion in July 2024
             </h1>
@@ -99,8 +99,8 @@ const Annoucement = () => {
               type specimen book.
             </p>
           </div>
-          <div className="w-1/4 p-[60px] bg-[#50917F]">
-            <h1 className="font-figtree font-semibold text-4xl leading-[48px] text-white">
+          <div className="lg:w-1/4 p-[60px] bg-[#50917F]">
+            <h1 className="font-figtree font-semibold lg:text-4xl md:text-4xl sm:text-4xl xs:text-xl leading-[48px] text-white">
               More Announcements
             </h1>
             {events.map((event, index) => (
