@@ -215,8 +215,8 @@ const Home = () => {
             <News news={news}/>
           </div>
 
-          <div className="mt-[30px] hidden">
-            <EmployeeDirectory employees={employeeDirectory} />
+          <div className="mt-[30px]">
+            {/* <EmployeeDirectory employees={employeeDirectory} /> */}
           </div>
         </div>
 
