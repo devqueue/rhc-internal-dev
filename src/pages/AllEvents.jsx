@@ -95,13 +95,13 @@ const AllEvents = () => {
       <div className="overflow-hidden w-full">
         <Nav />
         <div className="py-[30px] bg-[#F4F8FB] overflow-hidden w-full h-[1603px] shadow-md ">
-          <div className="px-[20px] py-[16px]  mb-[20px] flex items-center rounded-[8px] rounded-bl-none rounded-br-none justify-between gap-[10px] self-stretch flex-wrap bg-[#3B729C] text-[white]">
-            <h1 className="sm:text-[20px] text-[12px] font-light self-stretch min-w-[100px]">
+          <div className="px-[20px] py-[16px]  mb-[20px] flex items-center rounded-[8px] rounded-bl-none rounded-br-none justify-between gap-[10px] self-stretch flex-wrap bg-[#3B729C] text-[white] ">
+            <h1 className="text-[18px] font-light self-stretch min-w-[100px] mt-1">
               Upcoming Events
             </h1>
             <a
               href=""
-              className="sm:text-[14px] text-[9px] w-[105px] h-[37px] p-[5px_10px] font-light rounded-[4px] text-white bg-[#3B729C] border-[1px] border-white items-center justify-center text-center"
+              className="text-[18px] w-[105px] h-[37px] p-[5px_10px] font-light rounded-[4px] text-white bg-[#3B729C] border-[1px] border-white items-center justify-center text-center"
             >
               Filter
             </a>
