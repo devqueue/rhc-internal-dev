@@ -6,6 +6,7 @@ class Flipbook extends Component {
   componentDidMount() {
     this.loadStyles();
     this.loadScripts();
+    this.disableRightClick();
   }
 
   loadStyles() {
@@ -68,6 +69,12 @@ class Flipbook extends Component {
         source: 'location of pdf.pdf'
         // Additional configuration options here
       });
+    });
+  }
+
+  disableRightClick() {
+    document.addEventListener('contextmenu', function (event) {
+      event.preventDefault();
     });
   }
 
