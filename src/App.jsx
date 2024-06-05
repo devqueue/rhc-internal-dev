@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from 'react';
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {
@@ -39,6 +39,16 @@ const PrivateRoute = ({ children }) => {
 };
 
 const App = () => {
+
+  useEffect(() => {
+    const reload = setInterval(() => {
+      window.location.reload();
+    }, 3600000); 
+
+    return () => clearInterval(reload);
+  }, []);
+
+  
   return (
     <Router>
       <Routes>

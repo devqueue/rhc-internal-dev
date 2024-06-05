@@ -30,7 +30,7 @@ const Announcement = ({ announcements }) => {
   }
 
   return (
-    <div className="w-full overflow-hidden bg-[#50917F] relative" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+    <div className="w-full overflow-hidden bg-[#50917F] relative rounded-lg" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
       <div
         className={`flex gap-[40px] p-[40px] transition-transform ${
           isTransitioning ? "duration-500" : "duration-0"
