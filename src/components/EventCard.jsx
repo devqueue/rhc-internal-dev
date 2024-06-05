@@ -1,30 +1,67 @@
 import React, { useState } from "react";
 
 const EventCard = ({ start_time, end_time, Title, event_location_en }) => {
+  
   const [isScheduled, setIsScheduled] = useState(false);
 
   const toggleReminder = () => {
     setIsScheduled(!isScheduled);
   };
+  const formatDate = (timestamp) => {
+    const date = new Date(timestamp);
+
+    // Define month names
+    const monthNames = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    // Get the day of the month
+    const day = date.getDate();
+
+    // Get the month (0-indexed), so we need to add 1 to it
+    const monthIndex = date.getMonth();
+    const monthName = monthNames[monthIndex];
+
+    // Format the date
+    return { day, monthName };
+  };
+  const normalizeDateTime = (dateTimeString) => {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    return new Date(dateTimeString).toLocaleString("default", {
+      timeStyle: "short",
+      timeZone: tz,
+    });
+  };
 
   return (
-    <div className=" h-[448px] lg:w-[312.5px] md:w-[312.5px] sm:w-[312.5px] xs:w-[280px] bg-white rounded-[8px]">
+    <div className=" lg:w-[312.5px] md:w-[312.5px] sm:w-[312.5px] xs:w-[280px] bg-white rounded-[8px]">
       <div className=" h-[314px] lg:w-[312.5px] md:w-[312.5px] sm:w-[312.5px] xs:w-[280px] mt-[30px] ">
         <div
-          className="w-[108px] h-[108px] mb-[20px] ml-24 xs:ml-20 p-2 grid items-center text-center text-[#444444]"
+          className="w-[108px] h-[108px] mb-[20px] lg:ml-24 md:ml-24 sm:ml-24 xs:ml-20 p-2 grid items-center text-center text-[#444444]"
           style={{
             backgroundImage: `url('/icons/cal.svg')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
-          <span className="font-extrabold text-[#3B729C] text-3xl mt-7">15</span>
-      <span className="text-xl">MAY</span>
+          <span className="font-extrabold text-[#3B729C] text-3xl mt-7">{formatDate(start_time).day}</span>
+      <span className="text-xl">{formatDate(start_time).monthName}</span>
         </div>
 
-        <div className="flex flex-col gap-[5px] p-[40px] h-[166px] mb-[50px] overflow-hidden">
+        <div className="flex flex-col gap-[5px] p-[40px] max-h-[200px] mb-[50px] overflow-hidden">
           <h1 className="lg:text-[20px] md:text-[20px] sm:text-[20px] xs:text-[16px] font-figtree font-semibold leading-[28.8px] mb-2">
-            Annual General Meeting
+            {Title}
           </h1>
           <div className="flex items-center w-[244.5px] h-[24px] gap-[15px] mb-2">
             <div
@@ -37,7 +74,8 @@ const EventCard = ({ start_time, end_time, Title, event_location_en }) => {
             ></div>
 
             <p className="lg:text-[18px] md:text-[18px] sm:text-[18px] xs:text-[16px] font-figtree font-normal leading-[28.8px] text-[#444444]">
-              11:00 AM - 2:00 PM
+            {normalizeDateTime(start_time)} -{" "}
+                  {normalizeDateTime(end_time)}
             </p>
           </div>
           <div className="flex gap-[15px] items-start ">
@@ -50,7 +88,7 @@ const EventCard = ({ start_time, end_time, Title, event_location_en }) => {
               className="w-[24px] h-[24px] shrink-0"
             ></div>
             <p className="lg:text-[18px] md:text-[18px] sm:text-[18px] xs:text-[16px] font-figtree font-normal leading-[21.6px] text-[#444444]">
-              The Company`s Auditorium
+              {event_location_en}
             </p>
           </div>
         </div>

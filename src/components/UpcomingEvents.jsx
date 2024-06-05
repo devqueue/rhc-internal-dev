@@ -57,6 +57,7 @@ const UpcomingEvents = ({ events }) => {
         <Link
           to="/all-events" // Changed from href to to for Link component
           className="sm:text-[14px] text-[9px] font-light rounded-[4px] px-[10px] text-[#3B729C] bg-white"
+          state={events}
         >
           View All
         </Link>
