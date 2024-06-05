@@ -5,7 +5,7 @@ const NewsCard = ({ img, title, subheading }) => {
     <div className="h-[360px] lg:w-[273px] md:w-[273px] xs:w-[222px] bg-white rounded-[8px] mb-4 flex flex-col justify-between">
       <div className="m-[25px] flex flex-col h-full">
         <div
-          className="h-[137px] w-full flex items-center justify-center mb-[25px] rounded-[8px] bg-cover bg-center"
+          className="h-[137px] w-full flex bg-slate-300 items-center justify-center mb-[25px] rounded-[8px] bg-cover bg-center"
           style={{
             backgroundImage: `url(${img})`,
           }}
