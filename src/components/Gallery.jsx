@@ -21,7 +21,7 @@ const Gallery = ({ gallery }) => {
           >
             <div className="w-full h-[180px] bg-slate-300">
               <img
-                src={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${item.fields.image_name}`}
+                src={`https://riyadhholding.sharepoint.com/sites/Shamil/_api/Web/GetFileByServerRelativeUrl('/sites/Shamil/Assets/${item.fields.image_name}/$value`}
                 alt={item.Title}
                 className="object-cover w-full h-full"
               />
