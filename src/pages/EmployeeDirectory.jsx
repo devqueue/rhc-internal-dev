@@ -49,42 +49,42 @@ const EmployeeDirectory = () => {
           title: "Annual General Meeting",
           jobTitle: "CEO",
           number: "1234567890",
-          email: "Web Developer"
+          email: "name1234@gmail.com"
       },
       {
           img: "/images/employee.svg",
           title: "Annual General Meeting",
           jobTitle: "CEO",
           number: "1234567890",
-          email: "Web Developer"
+          email: "name1234@gmail.com"
       },
       {
           img: "/images/employee.svg",
           title: "Annual General Meeting",
           jobTitle: "CEO",
           number: "1234567890",
-          email: "Web Developer"
+          email: "name1234@gmail.com"
       },
       {
           img: "/images/employee.svg",
           title: "Annual General Meeting",
           jobTitle: "CEO",
           number: "1234567890",
-          email: "Web Developer"
+          email: "name1234@gmail.com"
       },
       {
           img: "/images/employee.svg",
           title: "Annual General Meeting",
           jobTitle: "CEO",
           number: "1234567890",
-          email: "Web Developer"
+          email: "name1234@gmail.com"
       },
       {
           img: "/images/employee.svg",
           title: "Annual General Meeting",
-          jobTitle: "CEO",
+          jobTitle: "Web Developer",
           number: "1234567890",
-          email: "Web Developer"
+          email: "name1234@gmail.com"
       },
 
   ])

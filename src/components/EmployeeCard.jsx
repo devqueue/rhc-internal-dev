@@ -20,7 +20,7 @@ const EmployeeCard = ({ img, title, jobTitle, number, email }) => {
       <h1 className="font-figtree flex flex-col items-center justify-center font-semibold text-[22px] leading-[19.2px] mb-[10px]">
         {title}
       </h1>
-      <div className="flex flex-row gap-[15px] items-center justify-center border-b-[2px] pb-4 ">
+      <div className="flex flex-wrap gap-[15px] items-center justify-center border-b-[2px] pb-4 ">
         <div className="flex flex-row gap-[8px] items-center justify-center border-r-[1px] pr-2">
           <div
             style={{
