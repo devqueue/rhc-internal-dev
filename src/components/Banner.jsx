@@ -11,21 +11,21 @@ const Banner = () => {
       </div>
 
       <div
-        className="absolute top-[100px] lg:left-[44px] left-[5vw] xl:text-[40px] lg:text-[3vw] sm:text-[24px] text-[16px] font-bold"
+        className="absolute top-[100px] lg:left-[44px] left-[5vw] lg:text-[2.6vw] sm:text-[24px] text-[16px] font-bold"
         style={{ fontFamily: "SomarBold" }}
       >
         <h1 className="text-white">
-          40 YEARS{" "}
+          Everything you{" "}
           <span
             className="text-['SomarLight'] font-extralight"
             style={{ fontFamily: "SomarLight" }}
           >
-            IN THE FIELD OF
+            need in one place!
           </span>
         </h1>
-        <h1 className="text-white">DEVELOPING COMMERCIAL</h1>
-        <h1 className="text-white">SERVICE PROJECTS</h1>
-        <h1 className="text-white">& PUBLIC MARKETS.</h1>
+        <h1 className="text-white">Discover the new internal portal </h1>
+        <h1 className="text-white">(Shamil) that will change the </h1>
+        <h1 className="text-white">way you work and communicate</h1>
       </div>
     </div>
   );

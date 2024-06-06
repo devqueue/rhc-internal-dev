@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const EmployeeDirectory = ({ employees }) => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredEmployees = employees.filter(employee =>
+  const filteredEmployees = employees.filter((employee) =>
     employee.fields.Title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -14,9 +14,10 @@ const EmployeeDirectory = ({ employees }) => {
     <div className="w-full min-h-[424px] bg-white rounded-lg overflow-hidden shadow-md">
       <div className="bg-[#50917F] w-full h-[64px] flex justify-between items-center px-[30px] py-[20px] text-[white] mb-[30px]">
         <h1 className="sm:text-[20px] text-[12px]">Employee Directory</h1>
-        <Link to="/all-employees" 
-              className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#50917F] rounded-md"
-              state={ employees }
+        <Link
+          to="/all-employees"
+          className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#50917F] rounded-md"
+          state={employees}
         >
           View All
         </Link>
@@ -44,7 +45,7 @@ const EmployeeDirectory = ({ employees }) => {
           <input
             type="text"
             placeholder="Search For Employee"
-            className="flex-grow px-4 py-2"
+            className="flex-grow px-4 py-2 outline-none"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -67,7 +68,7 @@ const EmployeeDirectory = ({ employees }) => {
                 </h1>
                 <div className="sm:text-[14px] text-[9px] font-light">
                   <p>Job Title: {employee.fields.jobTitle}</p>
-                  <p>Phone: {employee.fields.number}</p>
+                  <p>Ext. : {employee.fields.number}</p>
                   <p>Email: {employee.fields.email}</p>
                 </div>
               </div>

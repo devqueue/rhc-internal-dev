@@ -60,7 +60,7 @@ const UpcomingEvents = ({ events }) => {
         </Link>
       </div>
 
-      <div className="h-full overflow-y-auto pb-16">
+      <div className="h-full overflow-y-auto xl:pb-24 pb-32">
         {sortedEvents.map((event) => (
           <div className="flex p-[20px] gap-[20px] items-start content-start self-stretch lg:flex-nowrap flex-wrap border-b-[1px] border-b-[#888888]">
             <div

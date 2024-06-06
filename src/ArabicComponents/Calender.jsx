@@ -53,7 +53,7 @@ const Calender = ({ events }) => {
   return (
     <div className="w-full h-[424px] bg-white rounded-lg overflow-hidden shadow-md">
       <div className="bg-[#3B729C] w-full flex justify-between items-center px-[30px] py-[20px] text-[white]">
-        <h1 className="sm:text-[20px] text-[12px]">تقويم</h1>
+        <h1 className="sm:text-[20px] text-[12px]">التقويم</h1>
         <Link
           className="text-[14px] px-[10px] py-[5px] bg-white text-[#3B729C] rounded-[8px]"
           to="https://outlook.office.com/calendar/view/month"

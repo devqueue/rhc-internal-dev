@@ -13,35 +13,42 @@ const Gallery = ({ gallery }) => {
         </Link>
       </div>
 
-      <div className="flex gap-[41.88px] md:flex-nowrap flex-wrap">
-        {gallery.slice(0,3).map((item, index) => (
-          <div
-            key={index}
-            className="w-[404px] min-h-[355px] bg-white rounded-lg overflow-hidden"
-          >
-            <div className="w-full h-[180px] bg-slate-300">
-              <img
-                src={`https://riyadhholding.sharepoint.com/sites/Shamil/_api/Web/GetFileByServerRelativeUrl('/sites/Shamil/Assets/${item.fields.image_name}/$value`}
-                alt={item.Title}
-                className="object-cover w-full h-full"
-              />
-            </div>
-            <div className="px-[27.88px] mt-[20px] h-[130px] flex flex-col justify-between">
+      <div className="flex gap-[41.88px] lg:flex-nowrap flex-wrap">
+        {gallery.map(
+          (
+            item,
+            index //slice(0,3)
+          ) => (
+            <div
+              key={index}
+              className="w-[404px] min-h-[355px] bg-white rounded-lg overflow-hidden flex flex-col justify-between"
+            >
               <div>
-                <h1 className="sm:text-[16px] text-[11px] mb-[5px]">
-                  {item.fields.Title}
-                </h1>
-                <p className="sm:text-[14px] text-[9px] font-light text-[#888888]">
-                  {item.fields.subtitle_en}
-                </p>
+                <div className="w-full h-[180px] bg-slate-300">
+                  <img
+                    src={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${item.fields.image_name}`}
+                    alt={item.Title}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+                <div className="px-[27.88px] mt-[20px] min-h-[130px] flex flex-col justify-between">
+                  <div>
+                    <h1 className="sm:text-[16px] text-[11px] mb-[5px]">
+                      {item.fields.Title}
+                    </h1>
+                    <p className="sm:text-[14px] text-[9px] font-light text-[#888888]">
+                      {item.fields.subtitle_en}
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <button className="sm:text-[14px] text-[9px] text-white font-light px-[20px] py-[10px] bg-[#3B729C] rounded-md w-[120px]">
+              <button className="mx-[27.88px] my-[16px] sm:text-[14px] text-[9px] text-white font-light px-[20px] py-[10px] bg-[#3B729C] rounded-md w-[120px]">
                 View Gallery
               </button>
             </div>
-          </div>
-        ))}
+          )
+        )}
       </div>
 
       {/* // <div className="w-[404px] min-h-[355px] bg-white rounded-lg overflow-hidden">

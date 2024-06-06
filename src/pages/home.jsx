@@ -103,13 +103,13 @@ const Home = () => {
     
         // Fetch events starting from today or later
         let calendar = await fetch(`https://graph.microsoft.com/v1.0/me/calendar/events?$filter=start/dateTime ge '${isoDate}' &$orderby=start/dateTime`, {
-          headers: { Authorization: "Bearer " + token, Prefer: 'outlook.timezone="Asia/Kolkata"' },
+          headers: { Authorization: "Bearer " + token, Prefer: 'outlook.timezone="Asia/Riyadh"' },
         });
     
         let cal_json = await calendar.json();
         console.log('org_cal', cal_json);
     
-        const tz = "Asia/Kolkata"; // Using the correct IANA time zone identifier
+        const tz = "Asia/Riyadh"; // Using the correct IANA time zone identifier
     
         let cal_eventsjson = cal_json.value.map((events) => ({
           name: events.subject,
@@ -195,13 +195,13 @@ const Home = () => {
     <Nav/>
     <div className="xl:px-[30px] px-[2vw] bg-[#F4F8FB] w-full py-[30px]">
 
-      <div className="flex md:flex-row flex-col xl:gap-[30px] gap-[2vw]">
-        <div className="md:w-[63vw] w-full">
+      <div className="flex lg:flex-row flex-col xl:gap-[30px] gap-[2vw]">
+        <div className="lg:w-[63vw] w-full">
           <div className="w-full h-[400px] rounded-lg overflow-hidden">
             <Banner />
           </div>
 
-          <div className="flex md:flex-row flex-col gap-[30px] mt-[25px]">
+          <div className="flex lg:flex-row flex-col gap-[30px] mt-[25px]">
             <Calender events={calendarEvents} /> 
             <Planner tasks={plannerTasks} />
           </div>
@@ -210,17 +210,17 @@ const Home = () => {
             <Announcement announcements={announcements} />
           </div>
 
-          <div className="flex md:flex-row flex-col gap-[30px] justify-between mt-[25px]">
+          <div className="flex lg:flex-row flex-col gap-[30px] justify-between mt-[25px]">
             <Poll />
             <News news={news}/>
           </div>
 
           <div className="mt-[30px]">
-            <EmployeeDirectory employees={employeeDirectory} />
+            {/* <EmployeeDirectory employees={employeeDirectory} /> */}
           </div>
         </div>
 
-        <div className="shadow-md md:w-[30vw] w-full rounded-[8px] bg-white">
+        <div className="shadow-md lg:w-[30vw] w-full rounded-[8px] bg-white">
           <div className="py-[24px] sm:px-[30px] px-[5vw]">
             <QuickLinks />
           </div>

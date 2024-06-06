@@ -11,21 +11,19 @@ const Banner = () => {
       </div>
 
       <div
-        className="absolute top-[100px] lg:right-[44px] right-[5vw] xl:text-[40px] lg:text-[3vw] sm:text-[24px] text-[16px] font-bold"
+        className="absolute top-[100px] lg:right-[44px] right-[5vw] lg:text-[2.6vw] sm:text-[24px] text-[16px] font-bold"
         style={{ fontFamily: "SomarBold" }}
       >
         <h1 className="text-white">
-          40 عاماً{" "}
+          كل ما تحتاجه في مكان واحد
           <span
             className="text-['SomarLight'] font-extralight"
             style={{ fontFamily: "SomarLight" }}
-          >
-            في مجال تطوير
-          </span>
+          ></span>
         </h1>
-        <h1 className="text-white">المشاريع التجارية</h1>
-        <h1 className="text-white">والخدمية والتجارية </h1>
-        <h1 className="text-white">والأسواق العامة</h1>
+        <h1 className="text-white"> تعرّف على البوابة الداخلية</h1>
+        <h1 className="text-white"> الجديدة شامل التي ستغير</h1>
+        <h1 className="text-white"> طريقة عملك وتواصلك</h1>
       </div>
     </div>
   );
