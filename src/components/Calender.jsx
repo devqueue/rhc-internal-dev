@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Calendar = () => {
+const Calendar = ({events}) => {
   //{ events }
   const today = new Date();
   const todayYear = today.getFullYear();
@@ -11,14 +11,14 @@ const Calendar = () => {
   const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay()));
   const endOfWeek = new Date(today.setDate(today.getDate() - today.getDay() + 6));
    
-  const events = [
-    { day: "5", month: "June", name: "Meeting", starttime: "10:00 AM", endtime: "11:00 AM" },
-    { day: "6", month: "June", name: "Workshop", starttime: "1:00 PM", endtime: "3:00 PM" },
-    { day: "7", month: "June", name: "Conference", starttime: "9:00 AM", endtime: "5:00 PM" },
-    { day: "8", month: "June", name: "Seminar", starttime: "2:00 PM", endtime: "4:00 PM" },
-    { day: "9", month: "June", name: "Training", starttime: "10:00 AM", endtime: "12:00 PM"},
-    { day: "10", month: "June", name: "Meeting", starttime: "10:00 AM", endtime: "11:00 AM" },
-  ];
+  // const events = [
+  //   { day: "5", month: "June", name: "Meeting", starttime: "10:00 AM", endtime: "11:00 AM" },
+  //   { day: "6", month: "June", name: "Workshop", starttime: "1:00 PM", endtime: "3:00 PM" },
+  //   { day: "7", month: "June", name: "Conference", starttime: "9:00 AM", endtime: "5:00 PM" },
+  //   { day: "8", month: "June", name: "Seminar", starttime: "2:00 PM", endtime: "4:00 PM" },
+  //   { day: "9", month: "June", name: "Training", starttime: "10:00 AM", endtime: "12:00 PM"},
+  //   { day: "10", month: "June", name: "Meeting", starttime: "10:00 AM", endtime: "11:00 AM" },
+  // ];
   const renderEvents = (events, title) => (
     <div className="px-[30px] my-[20px]">
       <h1 className="sm:text-[16px] text-[11px] pb-[10px]">{title}</h1>
