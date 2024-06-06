@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Announcement = ({ announcements }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -62,12 +63,13 @@ const Announcement = ({ announcements }) => {
               <p className="sm:text-[16px] text-[11px] font-light">
                 {announcement.fields.preview_en}
               </p>
-              <a
+              <Link
                   className="m:sm:text-[14px] text-[9px] px-[10px] py-[5px] border-[1px] border-white md:rounded-[8px] rounded-md"
-                href="#"
+                  to={`/announcement/${announcement.id}`}
+                  state={{ announcement }}
               >
                 Read More
-              </a>
+              </Link>
             </div>
           </div>
         ))}
