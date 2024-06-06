@@ -87,7 +87,7 @@ const UpcomingEvents = ({ events }) => {
                   }}
                   className="w-[16px] h-[16px] shrink-0"
                 ></div>
-                <p className="text-[12px] font-[400px]">
+                <p className="text-[12px] font-[400px]"  style={{direction: "ltr"}}>
                   {normalizeDateTime(event.fields.Start_time)} -{" "}
                   {normalizeDateTime(event.fields.end_time)}
                 </p>
