@@ -2,6 +2,25 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Planner = ({ tasks }) => {
+  //
+  // const tasks = [
+  //   {
+  //     title: "Task 1",
+  //     dueDate: "2024-06-10",
+  //     url: "https://tasks.office.com/arhc.com.sa/en-US/Home/Planner/#/task1",
+  //   },
+  //   {
+  //     title: "Task 2",
+  //     dueDate: "2024-06-11",
+  //     url: "https://tasks.office.com/arhc.com.sa/en-US/Home/Planner/#/task2",
+  //   },
+  //   {
+  //     title: "Task 3",
+  //     dueDate: "2024-06-12",
+  //     url: "https://tasks.office.com/arhc.com.sa/en-US/Home/Planner/#/task3",
+  //   },
+  // ];
+  const sortedTasks = tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
   if (tasks.length === 0){
     return(
       <div className="w-full h-[424px] bg-white rounded-lg overflow-hidden shadow-md">
@@ -37,7 +56,7 @@ const Planner = ({ tasks }) => {
 
       <div className=" h-full overflow-y-auto pb-24 pt-[30px]">
         <div className="w-full flex flex-col gap-[15px] pb-10">
-          {tasks.map((task, index) => (
+          {sortedTasks.map((task, index) => (
             <div key={index} className="px-[30px] flex gap-[15px] w-full">
               <div className="flex flex-col gap-[10px] w-full">
                 <div className="flex items-stretch border-[1px] border-[#50917F] rounded-lg">
