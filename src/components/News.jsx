@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const News = ({ news }) => {
-  console.log(news);
+  // console.log(news);
   if (!news || news.length === 0) {
     return null;
   }

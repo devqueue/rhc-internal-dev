@@ -34,7 +34,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
 
-  console.log(accounts)
+  // console.log(accounts)
   useEffect(() => {
 
     const fetchListItems = async (token, siteId, listId, setStateFunction, name) => {
@@ -43,7 +43,7 @@ const Home = () => {
                 headers: { Authorization: `Bearer ${token}` },
             });
             const data = await response.json();
-            console.log(`${name} items:`, data);
+            // console.log(`${name} items:`, data);
 
             if (data.value) {
                 setStateFunction(data.value);
@@ -107,7 +107,7 @@ const Home = () => {
         });
     
         let cal_json = await calendar.json();
-        console.log('org_cal', cal_json);
+        // console.log('org_cal', cal_json);
     
         const tz = "Asia/Riyadh"; // Using the correct IANA time zone identifier
     
@@ -128,7 +128,7 @@ const Home = () => {
         }));
     
         setCalendarEvents(cal_eventsjson);
-        console.log('cal_eventsjson', cal_eventsjson);
+        // console.log('cal_eventsjson', cal_eventsjson);
       } catch (error) {
         console.error("Error fetching calendar events:", error);
       }
@@ -163,7 +163,7 @@ const Home = () => {
           return dateA - dateB;
         });
         setPlannerTasks(stasks_assigned_json);
-        console.log('tasks_assigned_json',tasks_assigned_json)
+        // console.log('tasks_assigned_json',tasks_assigned_json)
       } catch (error) {
         console.error("Error fetching planner tasks:", error);
       }

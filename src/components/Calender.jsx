@@ -47,8 +47,8 @@ const Calendar = ({ events }) => {
     return event.day !== todayDay;
   });
 
-  console.log("Today Events:", todayEvents);
-  console.log("Week Events:", weekEvents);
+  // console.log("Today Events:", todayEvents);
+  // console.log("Week Events:", weekEvents);
 
   if (!events || events.length === 0) return null;
 
