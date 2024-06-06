@@ -17,6 +17,7 @@ import AllNews from "./pages/AllNews";
 import EmployeeDirectory from "./pages/EmployeeDirectory";
 import Polls from "./pages/Polls";
 import Flipbook from "./components/dflip";
+import Gallery from './pages/Gallery';
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -114,7 +115,13 @@ const App = () => {
             <Flipbook />
           }
         />
+        <Route
+          path="/gallery"
+          element={
+            <Gallery/>
+          }
 
+        />
 
       </Routes>
     </Router>

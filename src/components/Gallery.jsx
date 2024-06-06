@@ -8,7 +8,10 @@ const Gallery = ({ gallery }) => {
     <div className="pt-[30px] pb-[40px] sm:px-[41px] px-[5vw] w-full bg-[#C2AB80]">
       <div className="w-full flex justify-between items-center mb-[30px] text-[white]">
         <h1 className="sm:text-[20px] text-[12px]">Gallery</h1>
-        <Link className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#C2AB80] rounded-md">
+        <Link className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#C2AB80] rounded-md"
+           to={"/gallery"}
+           state={ gallery }
+        >
           View All
         </Link>
       </div>
