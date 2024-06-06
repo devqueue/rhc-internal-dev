@@ -7,6 +7,10 @@ const Calender = ({ events }) => {
   const todayMonth = today.getMonth();
   const todayDay = today.getDate();
 
+  
+  const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay()));
+  const endOfWeek = new Date(today.setDate(today.getDate() - today.getDay() + 6));
+
   const renderEvents = (events, title) => (
     <div className="px-[30px] my-[20px]">
       <h1 className="sm:text-[16px] text-[11px] pb-[10px]">{title}</h1>
@@ -38,12 +42,17 @@ const Calender = ({ events }) => {
     </div>
   );
 
+  // Events for today and this week
   const todayEvents = events.filter((event) => {
-    return event.day === todayDay;
+    const eventDate = new Date(todayYear, todayMonth, event.day);
+    return eventDate.toDateString() === new Date().toDateString();
   });
+
   const weekEvents = events.filter((event) => {
-    return event.day !== todayDay;
+    const eventDate = new Date(todayYear, todayMonth, event.day);
+    return eventDate >= startOfWeek && eventDate <= endOfWeek && eventDate.toDateString() !== new Date().toDateString();
   });
+
 
   // console.log("Today Events:", todayEvents);
   // console.log("Week Events:", weekEvents);
