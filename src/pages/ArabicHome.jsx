@@ -30,6 +30,7 @@ const ArabicHome = () => {
   const [upcomingEvents, setUpcomingEvents] = useState([]);
   const [gallery, setGallery] = useState([]);
   const [accounts, setAccounts] = useState([]);
+  const [user, setUser] = useState(null);
 
   const [loading, setLoading] = useState(true);
 
@@ -50,7 +51,7 @@ const ArabicHome = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
-        console.log(`${name} items:`, data);
+        // console.log(`${name} items:`, data);
 
         if (data.value) {
           setStateFunction(data.value);
@@ -74,6 +75,13 @@ const ArabicHome = () => {
           setAccessToken(response.accessToken);
           await fetchCalendarEvents(response.accessToken);
           await fetchPlannerTasks(response.accessToken);
+
+          const userResponse = await fetch('https://graph.microsoft.com/v1.0/me', {
+            headers: { Authorization: `Bearer ${response.accessToken}` }
+          });
+          const userJson = await userResponse.json();
+          console.log('User details:', userJson);
+          setUser(userJson);
 
           const response2 = await fetch('https://graph.microsoft.com/v1.0/sites/riyadhholding.sharepoint.com:/sites/Shamil/', {
             headers: { Authorization: `Bearer ${response.accessToken}` }
@@ -111,13 +119,15 @@ const ArabicHome = () => {
         const now = new Date();
         now.setHours(0, 0, 0, 0);
         const isoDate = now.toISOString();
+        const dateAfterSevenDays = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
+        const isoDateAfterSevenDays = dateAfterSevenDays.toISOString();
 
-        const calendar = await fetch(`https://graph.microsoft.com/v1.0/me/calendar/events?$filter=start/dateTime ge '${isoDate}' &$orderby=start/dateTime`, {
+        let calendar = await fetch(`https://graph.microsoft.com/v1.0/me/calendarView?startDateTime=${isoDate}&endDateTime=${isoDateAfterSevenDays}`, {
           headers: { Authorization: "Bearer " + token, Prefer: 'outlook.timezone="Asia/Riyadh"' },
         });
 
         const cal_json = await calendar.json();
-        console.log('org_cal', cal_json);
+        // console.log('org_cal', cal_json);
 
         const tz = "Asia/Riyadh";
 
@@ -137,7 +147,7 @@ const ArabicHome = () => {
         }));
 
         setCalendarEvents(cal_eventsjson);
-        console.log('cal_eventsjson', cal_eventsjson);
+        // console.log('cal_eventsjson', cal_eventsjson);
       } catch (error) {
         console.error("Error fetching calendar events:", error);
       }
@@ -170,7 +180,7 @@ const ArabicHome = () => {
           return dateA - dateB;
         });
         setPlannerTasks(stasks_assigned_json);
-        console.log('tasks_assigned_json', tasks_assigned_json);
+        // console.log('tasks_assigned_json', tasks_assigned_json);
       } catch (error) {
         console.error("Error fetching planner tasks:", error);
       }

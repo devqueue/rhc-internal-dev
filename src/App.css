@@ -22,6 +22,11 @@
        url('./assets/Fonts/EnglishFont/Somar-Light.otf') format('woff'); 
 }
 
+
+*{
+  font-family: 'Somar';
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }

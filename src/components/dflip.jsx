@@ -80,7 +80,7 @@ class Flipbook extends Component {
 
   render() {
     const { source } = this.props;
-    console.log(source)
+    // console.log(source)
 
     return (
       <div>

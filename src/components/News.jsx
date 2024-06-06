@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const News = ({ news }) => {
-  console.log(news);
+  // console.log(news);
   if (!news || news.length === 0) {
     return null;
   }
@@ -11,7 +11,8 @@ const News = ({ news }) => {
         <h1 className="sm:text-[20px] text-[12px]">Corporate News</h1>
         <Link
           className="sm:text-[14px] text-[9px] px-[10px] text-[#C2AB80] py-[5px] bg-white rounded-md"
-          href=""
+          to="/news"
+          state={news}
         >
           View All
         </Link>
@@ -19,7 +20,7 @@ const News = ({ news }) => {
 
       <div className="flex flex-col gap-[20px] max-h-[500px] overflow-y-auto">
         {news.map((item, index) => (
-          <div className="flex gap-[30px] items-center flex-wrap px-[30px] border-b-[1px] pb-[26.5px]">
+          <div key ={index} className="flex gap-[30px] items-center flex-wrap px-[30px] border-b-[1px] pb-[26.5px]">
             {" "}
             <div
               style={{

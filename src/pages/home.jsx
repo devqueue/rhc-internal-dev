@@ -31,10 +31,11 @@ const Home = () => {
   const [upcomingEvents, setUpcomingEvents] = useState([]);
   const [gallery,setGallery] = useState([]);
   const [pdfs,setPdfs] = useState([]);
+  const [user,setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
 
-  console.log(accounts)
+  // console.log(accounts)
   useEffect(() => {
 
     const fetchListItems = async (token, siteId, listId, setStateFunction, name) => {
@@ -43,7 +44,7 @@ const Home = () => {
                 headers: { Authorization: `Bearer ${token}` },
             });
             const data = await response.json();
-            console.log(`${name} items:`, data);
+            // console.log(`${name} items:`, data);
 
             if (data.value) {
                 setStateFunction(data.value);
@@ -61,13 +62,21 @@ const Home = () => {
           ...loginRequest,
           account: accounts[0],
         };
-
+    
         try {
           const response = await instance.acquireTokenSilent(request);
           setAccessToken(response.accessToken);
           await fetchCalendarEvents(response.accessToken);
           await fetchPlannerTasks(response.accessToken);
-
+    
+          // Fetching user details
+          const userResponse = await fetch('https://graph.microsoft.com/v1.0/me', {
+            headers: { Authorization: `Bearer ${response.accessToken}` }
+          });
+          const userJson = await userResponse.json();
+          console.log('User details:', userJson);
+          setUser(userJson);
+    
           const response2 = await fetch('https://graph.microsoft.com/v1.0/sites/riyadhholding.sharepoint.com:/sites/Shamil/', { headers: { Authorization: `Bearer ${response.accessToken}` } });
           const resJson = await response2.json();
           const siteId = resJson.id;
@@ -80,7 +89,7 @@ const Home = () => {
             { name: 'Gallery', id: '9505ceb4-ece5-447d-99fa-b383a324dcd9', setStateFunction: setGallery },
             { name: 'Pdfs', id: 'ed12e05a-da1c-4407-83d0-85c70fe882b7',setStateFunction: setPdfs}
           ];
-
+    
           const fetchPromises = lists.map(list => fetchListItems(response.accessToken, siteId, list.id, list.setStateFunction, list.name));
           await Promise.all(fetchPromises);
           setLoading(false); // Set loading to false after all data is fetched
@@ -93,6 +102,7 @@ const Home = () => {
         }
       }
     };
+    
 
     const fetchCalendarEvents = async (token) => {
       try {
@@ -100,14 +110,15 @@ const Home = () => {
         const now = new Date();
         now.setHours(0, 0, 0, 0);
         const isoDate = now.toISOString();
-    
-        // Fetch events starting from today or later
-        let calendar = await fetch(`https://graph.microsoft.com/v1.0/me/calendar/events?$filter=start/dateTime ge '${isoDate}' &$orderby=start/dateTime`, {
+        const dateAfterSevenDays = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
+        const isoDateAfterSevenDays = dateAfterSevenDays.toISOString();
+
+        let calendar = await fetch(`https://graph.microsoft.com/v1.0/me/calendarView?startDateTime=${isoDate}&endDateTime=${isoDateAfterSevenDays}`, {
           headers: { Authorization: "Bearer " + token, Prefer: 'outlook.timezone="Asia/Riyadh"' },
         });
     
         let cal_json = await calendar.json();
-        console.log('org_cal', cal_json);
+        // console.log('org_cal', cal_json);
     
         const tz = "Asia/Riyadh"; // Using the correct IANA time zone identifier
     
@@ -128,7 +139,7 @@ const Home = () => {
         }));
     
         setCalendarEvents(cal_eventsjson);
-        console.log('cal_eventsjson', cal_eventsjson);
+        // console.log('cal_eventsjson', cal_eventsjson);
       } catch (error) {
         console.error("Error fetching calendar events:", error);
       }
@@ -163,7 +174,7 @@ const Home = () => {
           return dateA - dateB;
         });
         setPlannerTasks(stasks_assigned_json);
-        console.log('tasks_assigned_json',tasks_assigned_json)
+        // console.log('tasks_assigned_json',tasks_assigned_json)
       } catch (error) {
         console.error("Error fetching planner tasks:", error);
       }
