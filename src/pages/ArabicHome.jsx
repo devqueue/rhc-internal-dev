@@ -50,7 +50,7 @@ const ArabicHome = () => {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
-        console.log(`${name} items:`, data);
+        // console.log(`${name} items:`, data);
 
         if (data.value) {
           setStateFunction(data.value);
@@ -117,7 +117,7 @@ const ArabicHome = () => {
         });
 
         const cal_json = await calendar.json();
-        console.log('org_cal', cal_json);
+        // console.log('org_cal', cal_json);
 
         const tz = "Asia/Riyadh";
 
@@ -137,7 +137,7 @@ const ArabicHome = () => {
         }));
 
         setCalendarEvents(cal_eventsjson);
-        console.log('cal_eventsjson', cal_eventsjson);
+        // console.log('cal_eventsjson', cal_eventsjson);
       } catch (error) {
         console.error("Error fetching calendar events:", error);
       }
@@ -170,7 +170,7 @@ const ArabicHome = () => {
           return dateA - dateB;
         });
         setPlannerTasks(stasks_assigned_json);
-        console.log('tasks_assigned_json', tasks_assigned_json);
+        // console.log('tasks_assigned_json', tasks_assigned_json);
       } catch (error) {
         console.error("Error fetching planner tasks:", error);
       }
