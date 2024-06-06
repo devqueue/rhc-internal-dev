@@ -68,6 +68,7 @@ const Home = () => {
           setAccessToken(response.accessToken);
           await fetchCalendarEvents(response.accessToken);
           await fetchPlannerTasks(response.accessToken);
+          await fetchMailInbox(response.accessToken);
     
           // Fetching user details
           const userResponse = await fetch('https://graph.microsoft.com/v1.0/me', {
@@ -144,6 +145,22 @@ const Home = () => {
         console.error("Error fetching calendar events:", error);
       }
     };
+
+    const fetchMailInbox = async (token)=>{
+      try {
+        const response = await fetch("https://graph.microsoft.com/v1.0/me/mailFolders/inbox/messages?$orderby=receivedDateTime DESC&$filter=receivedDateTime ge 2016-01-01T00:00:00Z and from/emailAddress/address eq 'mcenter@riyadhholding.sa'", {
+          headers: { Authorization: "Bearer " + token },
+        });
+        
+        
+        const json = await response.json();
+        console.log('mailbox:', json);
+        
+
+      } catch (error) {
+        console.error("Error fetching mail inbox:", error);
+      }
+    }
     
     
 

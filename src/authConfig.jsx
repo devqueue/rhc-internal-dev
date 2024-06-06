@@ -3,8 +3,8 @@ export const msalConfig = {
     clientId: "087d5427-2255-48c9-869e-9428f0a88b20",
     authority:
       "https://login.microsoftonline.com/5030b96a-04c0-4332-92a2-b935cadbb142",
-        redirectUri: "https://shamil.riyadhholding.sa",
-        //redirectUri:'http://localhost:5173'
+        //redirectUri: "https://shamil.riyadhholding.sa",
+        redirectUri:'http://localhost:5173'
   },
   cache: {
     cacheLocation: "localStorage",
