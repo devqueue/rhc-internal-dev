@@ -203,7 +203,7 @@ const Home = () => {
 
   return (
     <div className="overflow-hidden w-full">
-    <Nav/>
+    <Nav user={user} />
     <div className="xl:px-[30px] px-[2vw] bg-[#F4F8FB] w-full py-[30px]">
 
       <div className="flex lg:flex-row flex-col xl:gap-[30px] gap-[2vw]">
