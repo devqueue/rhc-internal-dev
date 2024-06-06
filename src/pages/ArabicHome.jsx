@@ -30,6 +30,7 @@ const ArabicHome = () => {
   const [upcomingEvents, setUpcomingEvents] = useState([]);
   const [gallery, setGallery] = useState([]);
   const [accounts, setAccounts] = useState([]);
+  const [user, setUser] = useState(null);
 
   const [loading, setLoading] = useState(true);
 
@@ -75,6 +76,13 @@ const ArabicHome = () => {
           await fetchCalendarEvents(response.accessToken);
           await fetchPlannerTasks(response.accessToken);
 
+          const userResponse = await fetch('https://graph.microsoft.com/v1.0/me', {
+            headers: { Authorization: `Bearer ${response.accessToken}` }
+          });
+          const userJson = await userResponse.json();
+          console.log('User details:', userJson);
+          setUser(userJson);
+
           const response2 = await fetch('https://graph.microsoft.com/v1.0/sites/riyadhholding.sharepoint.com:/sites/Shamil/', {
             headers: { Authorization: `Bearer ${response.accessToken}` }
           });
@@ -111,8 +119,10 @@ const ArabicHome = () => {
         const now = new Date();
         now.setHours(0, 0, 0, 0);
         const isoDate = now.toISOString();
+        const dateAfterSevenDays = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
+        const isoDateAfterSevenDays = dateAfterSevenDays.toISOString();
 
-        const calendar = await fetch(`https://graph.microsoft.com/v1.0/me/calendar/events?$filter=start/dateTime ge '${isoDate}' &$orderby=start/dateTime`, {
+        let calendar = await fetch(`https://graph.microsoft.com/v1.0/me/calendarView?startDateTime=${isoDate}&endDateTime=${isoDateAfterSevenDays}`, {
           headers: { Authorization: "Bearer " + token, Prefer: 'outlook.timezone="Asia/Riyadh"' },
         });
 
