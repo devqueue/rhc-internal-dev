@@ -31,7 +31,11 @@ const Announcement = ({ announcements }) => {
   }
 
   return (
-    <div className="w-full overflow-hidden bg-[#50917F] relative rounded-lg" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+    <div
+      className="w-full overflow-hidden bg-[#50917F] relative rounded-lg"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div
         className={`flex gap-[40px] p-[40px] transition-transform ${
           isTransitioning ? "duration-500" : "duration-0"
@@ -45,7 +49,7 @@ const Announcement = ({ announcements }) => {
         {announcements.map((announcement, index) => (
           <div
             key={index}
-            className={`w-full justify-center flex xl:flex-nowrap flex-wrap flex-shrink-0 rounded-lg gap-[60px] items-center self-stretch content-center`}
+            className={`w-full justify-center flex flex-wrap flex-shrink-0 rounded-lg gap-[60px] items-center self-stretch content-center`}
             style={{ backgroundColor: "#50917F" }}
           >
             <div
@@ -56,20 +60,25 @@ const Announcement = ({ announcements }) => {
                 backgroundPosition: "center center",
               }}
             ></div>
-            <div className="text-white flex flex-col gap-[20px] items-start">
-              <h1 className="sm:text-[24px] text-[16px] font-light">
-                {announcement.fields.Title}
-              </h1>
-              <p className="sm:text-[16px] text-[11px] font-light">
-                {announcement.fields.preview_en}
-              </p>
-              <Link
+
+            <div className="flex justify-between gap-[60px] items-end sm:items-center sm:flex-row flex-col">
+              <div className="text-white flex flex-col gap-[20px] items-start">
+                <h1 className="sm:text-[24px] text-[16px] font-light">
+                  {announcement.fields.Title}
+                </h1>
+                <p className="sm:text-[16px] text-[11px] font-light xxl:w-[20vw] w-auto">
+                  {announcement.fields.preview_en}
+                </p>
+                <Link
                   className="m:sm:text-[14px] text-[9px] px-[10px] py-[5px] border-[1px] border-white md:rounded-[8px] rounded-md"
                   to={`/announcement/${announcement.id}`}
                   state={{ announcement }}
-              >
-                Read More
-              </Link>
+                >
+                  Read More
+                </Link>
+              </div>
+
+              <img className="sm:w-[200px] w-[150px]" src="/images/HeroImgPattern.png" alt="" />
             </div>
           </div>
         ))}

@@ -30,7 +30,11 @@ const Announcement = ({ announcements }) => {
   }
 
   return (
-    <div className="w-full rounded-[8px] overflow-hidden bg-[#50917F] relative" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+    <div
+      className="w-full rounded-[8px] overflow-hidden bg-[#50917F] relative"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div
         className={`flex gap-[40px] p-[40px] transition-transform ${
           isTransitioning ? "duration-500" : "duration-0"
@@ -44,7 +48,7 @@ const Announcement = ({ announcements }) => {
         {announcements.map((announcement, index) => (
           <div
             key={index}
-            className={`w-full justify-center flex xl:flex-nowrap flex-wrap flex-shrink-0 rounded-lg gap-[60px] items-center self-stretch content-center`}
+            className={`w-full justify-center flex flex-wrap flex-shrink-0 rounded-lg gap-[60px] items-center self-stretch content-center`}
             style={{ backgroundColor: "#50917F" }}
           >
             <div
@@ -55,19 +59,24 @@ const Announcement = ({ announcements }) => {
                 backgroundPosition: "center center",
               }}
             ></div>
-            <div className="text-white flex flex-col gap-[20px] items-start">
-              <h1 className="sm:text-[24px] text-[16px] font-light">
-                {announcement.fields.Title_ar}
-              </h1>
-              <p className="sm:text-[16px] text-[11px] font-light">
-                {announcement.fields.preview_ar}
-              </p>
-              <a
-                className="sm:text-[14px] text-[9px] px-[10px] py-[5px] border-[1px] border-white rounded-[8px]"
-                href="#"
-              >
-                Read More
-              </a>
+
+            <div className="flex justify-between gap-[60px] items-end sm:items-center sm:flex-row flex-col">
+              <div className="text-white flex flex-col gap-[20px] items-start">
+                <h1 className="sm:text-[24px] text-[16px] font-light">
+                  {announcement.fields.Title_ar}
+                </h1>
+                <p className="sm:text-[16px] text-[11px] font-light xxl:w-[20vw] w-auto">
+                  {announcement.fields.preview_ar}
+                </p>
+                <a
+                  className="sm:text-[14px] text-[9px] px-[10px] py-[5px] border-[1px] border-white rounded-[8px]"
+                  href="#"
+                >
+                  Read More
+                </a>
+              </div>
+
+              <img className="sm:w-[200px] w-[150px] scale-x-[-1]" src="/images/HeroImgPattern.png" alt="" />
             </div>
           </div>
         ))}
