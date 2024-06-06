@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Planner = ({ tasks }) => {
-  //
+  //{ tasks }
   // const tasks = [
   //   {
   //     title: "Task 1",
@@ -19,8 +19,22 @@ const Planner = ({ tasks }) => {
   //     dueDate: "2024-06-12",
   //     url: "https://tasks.office.com/arhc.com.sa/en-US/Home/Planner/#/task3",
   //   },
+  //   {
+  //     title: "Task 4",
+  //     dueDate: "2024-06-11",
+  //     url: "https://tasks.office.com/arhc.com.sa/en-US/Home/Planner/#/task4",
+  //   },
+  //   {
+  //     title: "Task 5",
+  //     dueDate: null,
+  //     url: "https://tasks.office.com/arhc.com.sa/en-US/Home/Planner/#/task5",
+  //   },
   // ];
-  const sortedTasks = tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+  const sortedTasks = tasks.sort((a, b) => {
+    if (a.dueDate === null) return 1;
+    if (b.dueDate === null) return -1;
+    return new Date(a.dueDate) - new Date(b.dueDate);
+  });
   if (tasks.length === 0){
     return(
       <div className="w-full h-[424px] bg-white rounded-lg overflow-hidden shadow-md">

@@ -1,12 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Calendar = ({ events }) => {
+const Calendar = () => {
+  //{ events }
   const today = new Date();
   const todayYear = today.getFullYear();
   const todayMonth = today.getMonth();
   const todayDay = today.getDate();
 
+  const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay()));
+  const endOfWeek = new Date(today.setDate(today.getDate() - today.getDay() + 6));
+   
+  const events = [
+    { day: "5", month: "June", name: "Meeting", starttime: "10:00 AM", endtime: "11:00 AM" },
+    { day: "6", month: "June", name: "Workshop", starttime: "1:00 PM", endtime: "3:00 PM" },
+    { day: "7", month: "June", name: "Conference", starttime: "9:00 AM", endtime: "5:00 PM" },
+    { day: "8", month: "June", name: "Seminar", starttime: "2:00 PM", endtime: "4:00 PM" },
+    { day: "9", month: "June", name: "Training", starttime: "10:00 AM", endtime: "12:00 PM"},
+    { day: "10", month: "June", name: "Meeting", starttime: "10:00 AM", endtime: "11:00 AM" },
+  ];
   const renderEvents = (events, title) => (
     <div className="px-[30px] my-[20px]">
       <h1 className="sm:text-[16px] text-[11px] pb-[10px]">{title}</h1>
@@ -37,20 +49,28 @@ const Calendar = ({ events }) => {
       </div>
     </div>
   );
-
-  // const todayEvents = events.filter(event => new Date(event.starttime).getDate() === today);
-  // const weekEvents = events.filter(event => new Date(event.starttime).getDate() !== today);
+  
+  // Events for today and this week
   const todayEvents = events.filter((event) => {
-    return event.day === todayDay;
+    const eventDate = new Date(todayYear, todayMonth, event.day);
+    return eventDate.toDateString() === new Date().toDateString();
   });
+
   const weekEvents = events.filter((event) => {
-    return event.day !== todayDay;
+    const eventDate = new Date(todayYear, todayMonth, event.day);
+    return eventDate >= startOfWeek && eventDate <= endOfWeek && eventDate.toDateString() !== new Date().toDateString();
   });
+
+ // Events for today and others
+  // const todayEvents = events.filter((event) => {
+  //   return event.day === todayDay;
+  // });
+  // const weekEvents = events.filter((event) => {
+  //   return event.day !== todayDay;
+  // });
 
   // console.log("Today Events:", todayEvents);
   // console.log("Week Events:", weekEvents);
-
-  if (!events || events.length === 0) return null;
 
   return (
     <div className="w-full h-[424px] bg-white rounded-lg overflow-hidden shadow-md">
