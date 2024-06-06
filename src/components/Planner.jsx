@@ -2,39 +2,34 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Planner = ({ tasks }) => {
-  //{ tasks }
-  // const tasks = [
-  //   {
-  //     title: "Task 1",
-  //     dueDate: "2024-06-10",
-  //     url: "https://tasks.office.com/arhc.com.sa/en-US/Home/Planner/#/task1",
-  //   },
-  //   {
-  //     title: "Task 2",
-  //     dueDate: "2024-06-11",
-  //     url: "https://tasks.office.com/arhc.com.sa/en-US/Home/Planner/#/task2",
-  //   },
-  //   {
-  //     title: "Task 3",
-  //     dueDate: "2024-06-12",
-  //     url: "https://tasks.office.com/arhc.com.sa/en-US/Home/Planner/#/task3",
-  //   },
-  //   {
-  //     title: "Task 4",
-  //     dueDate: "2024-06-11",
-  //     url: "https://tasks.office.com/arhc.com.sa/en-US/Home/Planner/#/task4",
-  //   },
-  //   {
-  //     title: "Task 5",
-  //     dueDate: null,
-  //     url: "https://tasks.office.com/arhc.com.sa/en-US/Home/Planner/#/task5",
-  //   },
-  // ];
+
+  console.log("tasks", tasks);
+  
   const sortedTasks = tasks.sort((a, b) => {
-    if (a.dueDate === null) return 1;
-    if (b.dueDate === null) return -1;
-    return new Date(a.dueDate) - new Date(b.dueDate);
+    // Splitting date components for task A
+    const [dayA, monthA, yearA] = a.dueDate ? a.dueDate.split('/') : [null, null, null];
+    // Splitting date components for task B
+    const [dayB, monthB, yearB] = b.dueDate ? b.dueDate.split('/') : [null, null, null];
+  
+    // Handle cases where due date is null
+    if (!yearA && !yearB) return 0;
+    if (!yearA) return 1;
+    if (!yearB) return -1;
+  
+    // Compare years
+    if (yearA !== yearB) return parseInt(yearA) - parseInt(yearB);
+    
+    // Compare months
+    if (monthA !== monthB) return parseInt(monthA) - parseInt(monthB);
+  
+    // Compare days
+    if (dayA !== dayB) return parseInt(dayA) - parseInt(dayB);
+  
+    return 0;
   });
+  
+
+  
   if (tasks.length === 0){
     return(
       <div className="w-full h-[424px] bg-white rounded-lg overflow-hidden shadow-md">
