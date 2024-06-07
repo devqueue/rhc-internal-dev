@@ -4,7 +4,7 @@ import Calender from "../ArabicComponents/Calender";
 import EmployeeDirectory from "../ArabicComponents/EmployeeDirectory";
 import EventName from "../ArabicComponents/EventName";
 import Gallery from "../ArabicComponents/Gallery";
-import KnowledgeBase from "../ArabicComponents/KnowledgeBase";
+import KnowledgeBase from "../ArabicComponents/Documents";
 import Nav from "../ArabicComponents/Nav";
 import NewEmployee from "../ArabicComponents/NewEmployee";
 import News from "../ArabicComponents/News";
