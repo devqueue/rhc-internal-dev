@@ -22,26 +22,8 @@ const Nav = ({user}) => {
         />
         {isHovered && (
           <div className="absolute top-[60px] left-0 bg-white border border-gray-300 rounded-lg shadow-md p-4">
-            <p className="text-gray-800">{user.displayName
-            }</p>
-            <div className="flex flex-wrap gap-[15px] items-center justify-center ">
-        <div className="flex flex-row gap-[8px] items-center justify-center border-l-[1px] pl-2">
-          <div
-            style={{
-              backgroundImage: "url('/icons/graduation-cap.svg')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-            className="w-[15.21px] h-[9.27px] shrink-0"
-          ></div>
-          <h2 className="text-[14px]  font-figtree font-normal leading-[21.6px]">
-            Job Title
-          </h2>
-        </div>
-        <p className="text-[14px] font-figtree font-normal leading-[21.6px]">
-            {user.jobTitle? user.jobTitle : "Web Devloper"}
-        </p>
-      </div>
+            <p className="text-gray-800">{user.displayName}</p>
+            <p className="text-gray-800">{user.jobTitle}</p>
           </div>
         )}
       </div>
