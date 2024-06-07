@@ -8,7 +8,7 @@ const galleryview = () => {
     const {gallery} = location.state || {};
   return (
     <>
-      <div className="overflow-hidden w-full bg-[#F4F8FB]">
+      <div className="overflow-hidden w-full h-auto bg-[#F4F8FB]">
         <Nav />
         <div className="py-[18px] bg-[#F4F8FB] overflow-hidden w-full shadow-md"></div>
         <div className="px-[20px] py-[16px] mxmb-[20px] flex items-center rounded-[8px] rounded-bl-none rounded-br-none justify-between gap-[10px] self-stretch flex-wrap bg-[#C2AB80] text-[white]">
@@ -17,29 +17,26 @@ const galleryview = () => {
           </h1>
         </div>
         <div className="flex carousel bg-white rounded-box overflow-x-auto">
-          <div className="carousel-item p-[40px] ">
-            <img src="images/gallery.png" alt="img" />
+          <div className="carousel-item lg:w-[812px] lg:h-[533px] py-[40px] pl-[40px]">
+            <img src="/images/gallery.png" alt="img" />
           </div>
-          <div className="carousel-item p-[40px]">
-            <img src="images/gallery.png" alt="img" />
+          <div className="carousel-item lg:w-[812px] lg:h-[533px] py-[40px] pl-[40px]">
+            <img src="/images/gallery.png" alt="img" />
           </div>
-          <div className="carousel-item p-[40px]">
-            <img src="images/gallery.png" alt="Burger" />
+          <div className="carousel-item lg:w-[812px] lg:h-[533px] py-[40px] pl-[40px]">
+            <img src="/images/gallery.png" alt="Burger" />
           </div>
-          <div className="carousel-item p-[40px]">
-            <img src="images/gallery.png" alt="Burger" />
+          <div className="carousel-item lg:w-[812px] lg:h-[533px] py-[40px] pl-[40px]">
+            <img src="/images/gallery.png" alt="Burger" />
           </div>
-          <div className="carousel-item p-[40px]">
-            <img src="images/gallery.png" alt="Burger" />
+          <div className="carousel-item lg:w-[812px] lg:h-[533px] py-[40px] pl-[40px]">
+            <img src="/images/gallery.png" alt="Burger" />
           </div>
-          <div className="carousel-item p-[40px]">
-            <img src="images/gallery.png" alt="Burger" />
-          </div>
-          <div className="carousel-item p-[40px]">
-            <img src="images/gallery.png" alt="Burger" />
+          <div className="carousel-item lg:w-[812px] lg:h-[533px] py-[40px] pl-[40px]">
+            <img src="/images/gallery.png" alt="Burger" />
           </div>
         </div>
-        <div className="lg:w-full md:w-full p-[40px] bg-white">
+        <div className="lg:w-full md:w-full p-[40px] bg-white h-auto">
           <h1 className="font-figtree font-semibold text-4xl leading-[48px] text-left">
             {gallery.fields.Title}
           </h1>

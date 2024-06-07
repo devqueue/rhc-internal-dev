@@ -20,7 +20,7 @@ const Nav = ({ user }) => {
       >
         <img
           className="rounded-full cursor-pointer"
-          src="images/user.png"
+          src="/images/user.png"
           alt="User Profile"
           style={{ width: "40px", height: "40px" }}
         />
@@ -38,7 +38,7 @@ const Nav = ({ user }) => {
       >
         <img
           className="rounded-full cursor-pointer"
-          src="images/arabic.png"
+          src="/images/arabic.png"
           alt="User Profile"
           style={{ width: "40px", height: "40px" }}
         />
