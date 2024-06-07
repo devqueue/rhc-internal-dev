@@ -18,6 +18,7 @@ import EmployeeDirectory from "./pages/EmployeeDirectory";
 import Polls from "./pages/Polls";
 import Flipbook from "./components/dflip";
 import Gallery from "./pages/Gallery";
+import GalleryView from "./pages/GalleryView";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -74,6 +75,7 @@ const App = () => {
 
         <Route path="/pdf" element={<Flipbook />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/galleryview" element={<GalleryView />} />
       </Routes>
     </Router>
   );
