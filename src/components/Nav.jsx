@@ -53,8 +53,6 @@ const Nav = ({user}) => {
       {/* <a className="text-[#3B729C]" href="/ar">العربية</a> */}
       <div 
         className="flex items-end justify-end  mr-4"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
         onClick={() => window.location.href = "/ar"}
       >
         <img 
