@@ -49,8 +49,9 @@ const Calender = ({ events }) => {
   });
 
   const weekEvents = events.filter((event) => {
+    const todayEvent = new Date(todayYear, todayMonth, todayDay);
     const eventDate = new Date(todayYear, todayMonth, event.day);
-    return eventDate >= startOfWeek && eventDate <= endOfWeek && eventDate.toDateString() !== new Date().toDateString();
+    return eventDate > todayEvent && eventDate <= endOfWeek && eventDate.toDateString() !== new Date().toDateString();
   });
 
 
