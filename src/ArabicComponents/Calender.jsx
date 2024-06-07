@@ -31,7 +31,7 @@ const Calender = ({ events }) => {
                 <h1 className="sm:text-[16px] text-[11px] w-[100%]">
                   {event.name}
                 </h1>
-                <h2 className="text-[14px] text-[#888888]">
+                <h2 className="text-[14px] text-[#888888]" style={{direction: "ltr"}}>
                   {event.starttime} - {event.endtime}
                 </h2>
               </div>
