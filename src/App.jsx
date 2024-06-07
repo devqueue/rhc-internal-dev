@@ -75,7 +75,7 @@ const App = () => {
 
         <Route path="/pdf" element={<Flipbook />} />
         <Route path="/gallery" element={<Gallery />} />
-        <Route path="/galleryview" element={<GalleryView />} />
+        <Route path="/galleryview/:id" element={<GalleryView />} />
       </Routes>
     </Router>
   );

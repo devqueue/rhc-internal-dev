@@ -12,24 +12,6 @@ const AnnouncementDetail = () => {
     return <div>Announcement not found</div>;
   }
 
-  const [events, setEvents] = useState([
-    { 
-      title: 'Annual General Meeting', 
-      imgSrc: '/images/announcement1.svg', 
-      link: '/icons/link-icon.svg' 
-    },
-    { 
-      title: 'Quarterly Results Announced', 
-      imgSrc: '/images/announcement1.svg', 
-      link: '/icons/link-icon.svg' 
-    },
-    { 
-      title: 'New Product Launch', 
-      imgSrc: '/images/announcement1.svg', 
-      link: '/icons/link-icon.svg' 
-    },
-  ]);
-
   return (
     <>
       <div className="overflow-hidden w-full bg-[#F4F8FB]">
