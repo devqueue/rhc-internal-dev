@@ -1,6 +1,6 @@
 import { useState } from "react"; // Import useState to manage state
 import Nav from "../components/Nav";
-import NewsCard from "../components/NewsCard";
+import NewsCard from "../ArabicComponents/NewsCard";
 import { useLocation } from "react-router-dom";
 
 const AllNewsAr = () => {
