@@ -5,7 +5,7 @@ import Calender from '../components/Calender';
 import EmployeeDirectory from '../components/EmployeeDirectory';
 import EventName from '../components/EventName';
 import Gallery from '../components/Gallery';
-import KnowledgeBase from '../components/KnowledgeBase';
+import KnowledgeBase from '../components/Documents';
 import Nav from '../components/Nav';
 import NewEmployee from '../components/NewEmployee';
 import News from '../components/News';
@@ -18,6 +18,9 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { loginRequest } from '../authConfig';
 import { InteractionRequiredAuthError } from '@azure/msal-browser';
+import KnowledgeBaseUpdated from '../components/KnowledgeBaseUpdated';
+import ViewEmployeeDirectory from '../components/ViewEmployeeDirectory';
+import NewEmployeeDirectory from '../components/NewEmployeeDirectory';
 
 const Home = () => {
   const { instance, accounts } = useMsal();
@@ -244,7 +247,7 @@ const Home = () => {
           </div>
 
           <div className="mt-[30px]">
-            {/* <EmployeeDirectory employees={employeeDirectory} /> */}
+            <KnowledgeBaseUpdated/>
           </div>
         </div>
 
@@ -264,6 +267,11 @@ const Home = () => {
           <div className="sm:px-[30px] px-[5vw] mt-[30px]">
             <NewEmployee newEmployee={newEmployee} />
           </div>
+
+          {/* <hr />
+          <div className="sm:px-[30px] px-[5vw] mt-[30px]">
+            <NewEmployeeDirectory/>
+          </div> */}
           
           <div className="sm:px-[30px] px-[5vw] mt-[30px]">
             <KnowledgeBase pdfs={pdfs} />
@@ -274,6 +282,8 @@ const Home = () => {
       <div className="w-full rounded-lg overflow-hidden mt-[65px]">
         <Gallery gallery={gallery} />
       </div>
+
+      {/* <ViewEmployeeDirectory/> */}
     </div>
   </div>
   );
