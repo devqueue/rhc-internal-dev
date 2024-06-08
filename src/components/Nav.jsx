@@ -15,7 +15,9 @@ const Nav = ({ userImg }) => {
 
   return (
     <div className="w-full bg-white flex justify-between sm:px-[30px] px-[5vw] py-[20px]">
-      <img className="sm:w-[200px] w-[35vw]" src="/icons/rhclogo1.png" alt="" />
+      <Link to="https://shamil.riyadhholding.sa/">
+        <img className="sm:w-[200px] w-[35vw]" src="/icons/rhclogo1.png" alt="" />
+      </Link>
       <div
         className="flex items-end justify-end ml-auto mr-4"
         onMouseEnter={() => setIsHovered(true)}
