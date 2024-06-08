@@ -76,13 +76,13 @@ const Polls = () => {
           }
     ]);
   return (
-    <div className="overflow-hidden w-full bg-[#F4F8FB]">
+    <div className="overflow-hidden w-full">
       <Nav />
-      <div className="w-full pt-[30px] min-h-[424px] bg-[#F4F8FB] overflow-hidden shadow-md">
-        <div className="bg-[#50917F] w-full h-[64px] flex rounded-[8px] rounded-bl-none rounded-br-none justify-between items-center px-[30px] py-[20px] text-white mb-[30px]">
+      <div className="w-full pt-[30px] min-h-[424px] overflow-hidden shadow-md px-[30px]">
+        <div className="bg-[#50917F] w-full h-[64px] flex rounded-[8px] rounded-bl-none rounded-br-none justify-between items-center  py-[20px] px-[30px] text-white">
           <h1 className="sm:text-[20px] text-[12px]">Poll</h1>
         </div>
-        <div className="p-6 flex flex-wrap lg:justify-start md:gap-8 lg:gap-[30px] lg:mx-9 md:mx-9 sm:mx-28 xs:mx-18 xs:justify-center">
+        <div className="bg-[#F4F8FB] mx-auto px-[30px] py-[30px] w-full flex flex-wrap lg:justify-start md:gap-8 lg:gap-[30px] xs:justify-center">
             {events.map((event, index) => (
                 <PollCard
                 key={index}
