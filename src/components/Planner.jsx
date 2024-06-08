@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Planner = ({ tasks }) => {
-
-  console.log("tasks", tasks);
   
   const sortedTasks = tasks.sort((a, b) => {
     // Splitting date components for task A

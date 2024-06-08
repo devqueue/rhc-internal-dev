@@ -1,6 +1,30 @@
 import { Link } from "react-router-dom";
 
 const Planner = ({ tasks }) => {
+
+  const sortedTasks = tasks.sort((a, b) => {
+    // Splitting date components for task A
+    const [dayA, monthA, yearA] = a.dueDate ? a.dueDate.split('/') : [null, null, null];
+    // Splitting date components for task B
+    const [dayB, monthB, yearB] = b.dueDate ? b.dueDate.split('/') : [null, null, null];
+  
+    // Handle cases where due date is null
+    if (!yearA && !yearB) return 0;
+    if (!yearA) return 1;
+    if (!yearB) return -1;
+  
+    // Compare years
+    if (yearA !== yearB) return parseInt(yearA) - parseInt(yearB);
+    
+    // Compare months
+    if (monthA !== monthB) return parseInt(monthA) - parseInt(monthB);
+  
+    // Compare days
+    if (dayA !== dayB) return parseInt(dayA) - parseInt(dayB);
+  
+    return 0;
+  });
+  
   if (tasks.length === 0) {
     return (
       <div className="w-full bg-white rounded-lg overflow-hidden shadow-md">
@@ -37,7 +61,7 @@ const Planner = ({ tasks }) => {
 
         <div className=" h-full overflow-y-auto pb-24 pt-[30px]">
           <div className="w-full flex flex-col gap-[15px] pb-10">
-            {tasks.map((task, index) => (
+            {sortedTasks.map((task, index) => (
               <div key={index} className="px-[30px] flex gap-[15px] w-full">
                 <div className="flex flex-col gap-[10px] w-full">
                   <div className="flex items-stretch border-[1px] border-[#50917F] rounded-lg">
