@@ -2,10 +2,10 @@ import React from "react";
 
 const NewEmployeeDirectory = () => {
   return (
-    <div className="inline-flex p-10 flex-col items-start gap-10 bg-[#3B729C] rounded-lg">
-      <div className="flex h-[181px] flex-col items-start gap-[25px] self-stretch">
+    <div className="inline-flex p-10 flex-col items-start gap-10 bg-[#3B729C] rounded-lg w-[310px]">
+      <div className="flex h-[181px] flex-col items-start gap-[25px] self-stretch mb-7">
         <div className="flex items-start gap-[17px] self-stretch">
-          <div className="rounded-full border border-white h-[50px] w-[50px] bg-slate-300">
+          <div className="rounded-full border border-white h-[50px] w-[50px] bg-slate-300 shrink-0">
             <img src="" alt="" />
           </div>
 
@@ -27,7 +27,7 @@ const NewEmployeeDirectory = () => {
         </p>
       </div>
 
-      <div className="w-[230px] h-[160px] rounded-lg bg-slate-300">
+      <div className="sm:w-[230px] w-[100%] h-[160px] rounded-lg bg-slate-300">
         <img src="" alt="" />
       </div>
 
