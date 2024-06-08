@@ -8,6 +8,8 @@ const Nav = ({ user }) => {
   const isHomePage = location.pathname === "https://shamil.riyadhholding.sa/";
 
   const handleClickLogo = () => {
+    console.log("Clicked on logo");
+    console.log("Is home page:", isHomePage);
     if (isHomePage) {
       window.location.reload(); 
     }
