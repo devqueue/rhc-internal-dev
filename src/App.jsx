@@ -86,10 +86,12 @@ const App = () => {
         <Route path="/ar/all-polls" element={<PollsAr />} />
 
         <Route path="/pdf" element={<Flipbook />} />
+
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/ar/gallery" element={<GalleryAr />} />
+
         <Route path="/galleryview/:id" element={<GalleryView />} />
-        <Route path="/galleryview/:id" element={<GalleryviewAr />} />
+        <Route path="/ar/galleryview/:id" element={<GalleryviewAr />} />
       </Routes>
     </Router>
   );
