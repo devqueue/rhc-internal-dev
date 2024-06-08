@@ -24,12 +24,12 @@ const KnowledgeBase = ({ pdfs }) => {
           Documents
         </h1>
 
-        <Link
+        {/* <Link
           to="/all-documents"
           className="sm:text-[14px] text-[9px] font-light rounded-[4px] text-[#3B729C] px-[10px] bg-white"
         >
           View All
-        </Link>
+        </Link> */}
       </div>
 
       {pdfs.map((pdf, index) => (
