@@ -32,7 +32,7 @@ const Announcement = ({ announcements }) => {
 
   return (
     <div
-      className="w-full overflow-hidden bg-[#f2f8f4] relative rounded-lg shadow-md"
+      className="w-full overflow-hidden bg-[#ffffff] relative rounded-lg shadow-md"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -48,7 +48,7 @@ const Announcement = ({ announcements }) => {
           <div
             key={index}
             className={`w-full justify-center flex flex-wrap flex-shrink-0 rounded-lg gap-[60px] items-center self-stretch content-center`}
-            style={{ backgroundColor: "#f2f8f4" }}
+            style={{ backgroundColor: "#ffffff" }}
           >
             <div
               className="lg:w-[460px] w-[40vw] lg:h-[320px] h-[30vw] bg-slate-300 rounded-lg overflow-hidden shrink-0"

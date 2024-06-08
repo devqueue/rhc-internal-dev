@@ -32,7 +32,7 @@ const Announcement = ({ announcements }) => {
 
   return (
     <div
-      className="w-full rounded-[8px] overflow-hidden bg-[#f2f8f4] relative shadow-md"
+      className="w-full rounded-[8px] overflow-hidden bg-[#ffffff] relative shadow-md"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -48,7 +48,7 @@ const Announcement = ({ announcements }) => {
           <div
             key={index}
             className={`w-full justify-center flex flex-wrap flex-shrink-0 rounded-lg gap-[60px] items-center self-stretch content-center`}
-            style={{ backgroundColor: "#f2f8f4" }}
+            style={{ backgroundColor: "#ffffff" }}
           >
             <div
               className="lg:w-[460px] w-[40vw] lg:h-[320px] h-[30vw] bg-slate-300 rounded-lg overflow-hidden shrink-0"
@@ -72,11 +72,11 @@ const Announcement = ({ announcements }) => {
                   to={`/ar/announcement/${announcement.id}`}
                   state={{ announcement,  moreAnnouncements: announcements }}
                 >
-                  Read More
+                  تعلم اكثر
                 </Link>
               </div>
 
-              <img className="sm:w-[200px] lg:w-[100px] scale-x-[-1]" src="/images/HeroPattern.png" alt="" />
+              <img className="sm:w-[200px] lg:w-[100px]" src="/images/HeroPattern.png" alt="" />
             </div>
           </div>
         ))}
