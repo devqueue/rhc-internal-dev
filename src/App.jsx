@@ -19,6 +19,10 @@ import Polls from "./pages/Polls";
 import Flipbook from "./components/dflip";
 import Gallery from "./pages/Gallery";
 import GalleryView from "./pages/GalleryView";
+import AllEventsAr from "./pages/AllEventsAr";
+import AnnouncementDetailAr from "./pages/AnnouncementDetailAr";
+import AllNewsAr from "./pages/AllNewsAr";
+import EmployeeDirectoryAr from "./pages/EmployeeDirectoryAr";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -64,12 +68,16 @@ const App = () => {
         <Route path="/ar" element={<ArabicHome />} />
 
         <Route path="/all-events" element={<AllEvents />} />
+        <Route path="/ar/all-events" element={<AllEventsAr />} />
 
         <Route path="/announcement/:id" element={<AnnouncementDetail />} />
+        <Route path="/ar/announcement/:id" element={<AnnouncementDetailAr />} />
 
         <Route path="/news" element={<AllNews />} />
+        <Route path="/ar/news" element={<AllNewsAr />} />
 
         <Route path="/all-employees" element={<EmployeeDirectory />} />
+        <Route path="/ar/all-employees" element={<EmployeeDirectoryAr />} />
 
         <Route path="/all-polls" element={<Polls />} />
 
