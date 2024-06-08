@@ -31,14 +31,14 @@ const AllEventsAr = () => {
                 Filter
               </a>
             </div>
-            <div className="flex flex-wrap lg:justify-start md:justify-start sm:justify-start gap-6 md:gap-8 lg:gap-auto lg:mx-9 md:mx-12 sm:mx-12 xs:justify-center xs:mx-4">
+            <div className="flex flex-wrap lg:justify-start md:justify-start sm:justify-start gap-6 md:gap-8 lg:gap-[60px] lg:mx-9 md:mx-12 sm:mx-12 xs:justify-center xs:mx-4">
               {sortedEvents.map((event, index) => (
                 <EventCard
                   key={index}
                   start_time={event.fields.Start_time}
                   end_time={event.fields.end_time}
-                  Title={event.fields.Title}
-                  event_location_en={event.fields.event_location_en}
+                  Title={event.fields.event_title_ar}
+                  event_location_en={event.fields.event_location_ar}
                 />
               ))}
             </div>
