@@ -148,7 +148,7 @@ const Home = () => {
 
     const fetchMailInbox = async (token)=>{
       try {
-        const response = await fetch("https://graph.microsoft.com/v1.0/me/mailFolders/inbox/messages?$orderby=receivedDateTime DESC&$filter=receivedDateTime ge 2016-01-01T00:00:00Z and from/emailAddress/address eq 'mcenter@riyadhholding.sa'", {
+        const response = await fetch(`https://graph.microsoft.com/v1.0/me/messages?$filter=microsoft.graph.eventMessage/meetingMessageType ne 'none' and sender/emailAddress/address  eq 'mcenter@riyadhholding.sa'`, {
           headers: { Authorization: "Bearer " + token },
         });
         
@@ -221,6 +221,7 @@ const Home = () => {
   return (
     <div className="overflow-hidden w-full">
     <Nav user={user} />
+    
     <div className="xl:px-[30px] px-[2vw] bg-[#F4F8FB] w-full py-[30px]">
 
       <div className="flex lg:flex-row flex-col xl:gap-[30px] gap-[2vw]">
