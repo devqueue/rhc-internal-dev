@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Announcement = ({ announcements }) => {
+  console.log("Announcements", announcements);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
@@ -70,7 +71,7 @@ const Announcement = ({ announcements }) => {
                 <Link
                   className="m:sm:text-[14px] text-[9px] px-[10px] py-[5px] border-[1px] border-white md:rounded-[8px] rounded-md"
                   to={`/announcement/${announcement.id}`}
-                  state={{ announcement }}
+                  state={{ announcement,  moreAnnouncements: announcements }}
                 >
                   Read More
                 </Link>

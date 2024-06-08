@@ -9,6 +9,7 @@ const AnnouncementDetail = () => {
   console.log("location", location);
   const { announcement, moreAnnouncements = [] } = location.state || {};
 
+  console.log("More Announcement", moreAnnouncements);
   if (!announcement) {
     return <div>Announcement not found</div>;
   }
@@ -95,7 +96,12 @@ const AnnouncementDetail = () => {
               More Announcements
             </h1>
             {moreAnnouncements.map((event, index) => (
-              <AnnouncementCard key={index} {...event} />
+              <AnnouncementCard
+                key={index}
+                title={event.fields.Title}
+                image={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${event.fields.image_name}`}
+                link={`/announcement/${event.id}`}
+              />
             ))}
           </div>
         </div>
