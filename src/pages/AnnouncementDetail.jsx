@@ -71,7 +71,7 @@ const AnnouncementDetail = () => {
               </h1>
               <div className="flex flex-wrap items-center h-full gap-[30px] mt-[40px] mb-[40px]">
                 {attachment.map((item, index) => (
-                <div key={index} className="w-[256px] h-[198px] bg-[#F9F9F9]">
+                <div key={index} className="w-[256px] h-[198px] bg-[#F9F9F9] rounded-[8px] rounded-bl-none rounded-br-none">
                   <div>
                     <img
                       src="/images/attachment.svg"
@@ -79,8 +79,8 @@ const AnnouncementDetail = () => {
                       className="w-full object-cover rounded-[8px]"
                     />
                   </div>
-                  <div className="pt-[10px]">
-                    <h1 className="font-figtree font-semibold text-2xl leading-[48px] text-[#6D6D6D] text-left">
+                  <div className="pt-[10px] px-[10px]">
+                    <h1 className="font-figtree  font-semibold text-2xl leading-[48px] text-[#6D6D6D] text-left">
                       Building.png
                     </h1>
                   </div>
