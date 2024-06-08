@@ -5,18 +5,19 @@ const Gallery = ({ gallery }) => {
     return <div>No gallery available.</div>;
   }
   return (
-    <div className="pt-[30px] pb-[40px] sm:px-[41px] px-[5vw] w-full bg-[#C2AB80]">
-      <div className="w-full flex justify-between items-center mb-[30px] text-[white]">
+    <div className="w-full bg-[#f9f9f9]">
+      <div className=" px-10 w-full py-[16px] bg-[#C2AB80] flex justify-between items-center mb-[30px] bg text-[white] rounded-[8px] rounded-bl-none rounded-br-none">
         <h1 className="sm:text-[20px] text-[12px]">معرض الصور</h1>
         <Link
           className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#C2AB80] rounded-[8px]"
-          href=""
+          to="/ar/gallery"
+          state={gallery}
         >
           عرض الكل
         </Link>
       </div>
 
-      <div className="flex gap-[41.88px] lg:flex-nowrap flex-wrap">
+      <div className="flex gap-[41.88px] px-[30px] lg:flex-nowrap flex-wrap">
         {gallery.map(
           (
             item,
@@ -46,9 +47,12 @@ const Gallery = ({ gallery }) => {
                 </div>
               </div>
 
-              <button className="mx-[27.88px] my-[16px] sm:text-[14px] text-[9px] text-white font-light px-[20px] py-[10px] bg-[#3B729C] rounded-md w-[120px]">
+              <Link 
+                to={`/ar/galleryview/${item.id}`}
+                state={{ gallery: item }}
+                className="mx-[27.88px] my-[16px] sm:text-[14px] text-[9px] text-white font-light px-[20px] py-[10px] bg-[#3B729C] rounded-md w-[120px]">
                 عرض الصور
-              </button>
+              </Link>
             </div>
           )
         )}
