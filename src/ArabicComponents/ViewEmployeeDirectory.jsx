@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ViewEmployeeDirectoryAr = () => {
   return (
-    <div className="flex w-full p-4 pt-4 pb-4 px-5 items-start content-start gap-2 flex-wrap bg-[#C2AB80] rounded-lg">
+    <Link to="/ar/all-employees" className="flex w-full p-4 pt-4 pb-4 px-5 items-start content-start gap-2 flex-wrap bg-[#C2AB80] rounded-lg">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="50"
@@ -17,7 +18,7 @@ const ViewEmployeeDirectoryAr = () => {
       </svg>
 
       <h1 className="text-white font-inter text-lg font-semibold">View Employee Directory</h1>
-    </div>
+    </Link>
   );
 };
 
