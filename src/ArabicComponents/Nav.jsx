@@ -32,7 +32,7 @@ const Nav = ({ user }) => {
       >
         <img
           className="rounded-full cursor-pointer"
-          src="/images/user.png"
+          src="/images/user.svg"
           alt="User Profile"
           style={{ width: "40px", height: "40px" }}
         />
@@ -49,8 +49,8 @@ const Nav = ({ user }) => {
         onClick={() => (window.location.href = "/")}
       >
         <img
-          className="rounded-full cursor-pointer"
-          src="/images/arabic.png"
+          className=" cursor-pointer"
+          src="/images/english.svg"
           alt="User Profile"
           style={{ width: "40px", height: "40px" }}
         />

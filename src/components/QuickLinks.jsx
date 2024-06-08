@@ -53,7 +53,7 @@ const QuickLinks = () => {
       <div className="w-full flex lg:justify-center justify-start gap-[20px] flex-wrap mt-[20px]">
         {links.map((link, index) => (
           <Link key={index} to={link.path} target="_blank">
-            <div className="lg:w-[7vw] lg:h-[7vw] w-[15vw] h-[15vw] rounded-lg flex flex-col justify-center gap-[12px] items-center border-[2px] border-[#3B729C] overflow-hidden">
+            <div className="lg:w-[7vw] lg:h-[7vw] w-[15vw] h-[15vw] rounded-lg flex flex-col justify-center gap-[12px] items-center  border-[#3B729C] overflow-hidden">
               <img
                 className="w-full h-full object-contain"
                 src={link.src}
