@@ -11,8 +11,8 @@ const Gallery = () => {
     <>
       <div className="overflow-hidden w-full">
         <Nav />
-        <div className="py-[30px] px-[30px] bg-[#F4F8FB] overflow-hidden w-full shadow-md">
-        <div className="px-[30px] bg-[#C2AB80] overflow-hidden w-full h-full shadow-md rounded-lg">
+        <div className="py-[30px] px-[30px] bg-[#F4F8FB] overflow-hidden w-full rounded-lg shadow-md ">
+          <div className="overflow-hidden w-full h-full shadow-md rounded-lg">
             <div className="px-[20px] py-[16px] mb-[20px] flex items-center rounded-[8px] rounded-bl-none rounded-br-none justify-between gap-[10px] self-stretch flex-wrap bg-[#C2AB80] text-[white] ">
               <h1 className="text-[28px] font-semibold self-stretch min-w-[100px] mt-1">
                 Gallery
