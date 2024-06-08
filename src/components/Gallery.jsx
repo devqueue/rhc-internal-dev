@@ -5,8 +5,9 @@ const Gallery = ({ gallery }) => {
     return <div>No gallery available.</div>;
   }
   return (
-    <div className="pt-[30px] pb-[40px] sm:px-[41px] px-[5vw] w-full bg-[#C2AB80]">
-      <div className="w-full flex justify-between items-center mb-[30px] text-[white]">
+    <>
+    <div className="w-full bg-[#f9f9f9]">
+      <div className=" px-10 w-full py-[16px] bg-[#C2AB80] flex justify-between items-center mb-[30px] bg text-[white] rounded-[8px] rounded-bl-none rounded-br-none">
         <h1 className="sm:text-[20px] text-[12px]">Gallery</h1>
         <Link className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#C2AB80] rounded-md"
            to={"/gallery"}
@@ -15,7 +16,7 @@ const Gallery = ({ gallery }) => {
           View All
         </Link>
       </div>
-
+      <div className="pt-[10px] pb-[40px] sm:px-[41px] w-full bg-[#f9f9f9]">
       <div className="flex gap-[41.88px] lg:flex-nowrap flex-wrap">
         {gallery.map(
           (
@@ -84,7 +85,9 @@ const Gallery = ({ gallery }) => {
       //   </div>
       // </div>
       // </div> */}
+      </div>
     </div>
+    </>
   );
 };
 

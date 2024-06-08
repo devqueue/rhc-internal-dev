@@ -3,7 +3,7 @@ import { useState } from "react";
 import Nav from "../components/Nav"
 import EmployeeCard from "../components/EmployeeCard"
 
-const EmployeeDirectory = () => {
+const EmployeeDirectoryAr = () => {
     // const location = useLocation();
     // console.log("location", location); 
     // const employees = location.state ? location.state : [];
@@ -90,7 +90,7 @@ const EmployeeDirectory = () => {
   ])
   return (
     <>
-    <div className="overflow-hidden w-full bg-[#F4F8FB]">
+    <div className="overflow-hidden w-full bg-[#F4F8FB]" style={{direction: "rtl"}}>
         <Nav />
       <div className="w-full pt-[30px] min-h-[424px] bg-[#F4F8FB] overflow-hidden shadow-md">
       <div className="bg-[#50917F] w-full h-[64px] rounded-[8px] rounded-bl-none rounded-br-none flex justify-between items-center px-[30px] py-[20px] text-[white] mb-[30px]">
@@ -149,4 +149,4 @@ const EmployeeDirectory = () => {
   )
 }
 
-export default EmployeeDirectory
+export default EmployeeDirectoryAr

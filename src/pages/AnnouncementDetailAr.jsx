@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "../components/Nav";
 import AnnouncementCard from "../components/AnnouncementCard";
-import { useLocation } from 'react-router-dom';
+import { useLocation} from 'react-router-dom';
 
-const AnnouncementDetail = () => {
+const AnnouncementDetailAr = () => {
   const location = useLocation();
   console.log("location", location);
-  const { announcement, moreAnnouncements = [] } = location.state || {};
+  const { announcement } = location.state || {};
 
   if (!announcement) {
     return <div>Announcement not found</div>;
@@ -14,34 +14,30 @@ const AnnouncementDetail = () => {
 
   return (
     <>
-      <div className="overflow-hidden w-full bg-[#F4F8FB]">
+      <div className="overflow-hidden w-full bg-[#F4F8FB]" style={{direction: "rtl"}}>
         <Nav />
         <div className="lg:flex pt-[30px] bg-[#F4F8FB] overflow-hidden">
           <div className="lg:w-3/4 md:w-full p-[60px] bg-white">
             <h1 className="font-figtree font-semibold text-4xl leading-[48px] text-left">
-              {announcement.fields.Title}
+            {announcement.fields.Title}
             </h1>
             <div className="flex items-center gap-[20px] mt-[40px] mb-[40px]">
               <img
-                src="/images/announcement.svg"
+                src="/images/annoucement.svg"
                 alt="announcement"
                 className="w-full h-[456px] object-cover rounded-[8px]"
               />
             </div>
 
-            <p className="font-somar font-normal text-base leading-[32.52px]">
-              {announcement.fields.Full_Text_en}
+            <p className="font-inter font-normal text-base leading-[28px]">
+            {announcement.fields.Full_Text_en}
             </p>
-            <div className="mt-6">
-            <h1 className="font-figtree font-semibold text-4xl leading-[48px] text-[#6D6D6D] text-left">Attachments</h1>
           </div>
-          </div>
-          
           <div className="lg:w-1/4 p-[60px] bg-[#50917F]">
             <h1 className="font-figtree font-semibold lg:text-4xl md:text-4xl sm:text-4xl xs:text-xl leading-[48px] text-white">
               More Announcements
             </h1>
-            {moreAnnouncements.map((event, index) => (
+            {events.map((event, index) => (
               <AnnouncementCard key={index} {...event} />
             ))}
           </div>
@@ -51,4 +47,4 @@ const AnnouncementDetail = () => {
   );
 };
 
-export default AnnouncementDetail;
+export default AnnouncementDetailAr;

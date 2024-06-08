@@ -4,7 +4,7 @@ import PollCard from "../components/PollCard";
 import { useState } from "react";
 
 
-const Polls = () => {
+const PollsAr = () => {
     const [events, setEvents] = useState([
         {
             "question": "Do you think you have all the tools and equipment you need to carry out your daily tasks?",
@@ -76,7 +76,7 @@ const Polls = () => {
           }
     ]);
   return (
-    <div className="overflow-hidden w-full bg-[#F4F8FB]">
+    <div className="overflow-hidden w-full bg-[#F4F8FB]"  style={{direction: "rtl"}}>
       <Nav />
       <div className="w-full pt-[30px] min-h-[424px] bg-[#F4F8FB] overflow-hidden shadow-md">
         <div className="bg-[#50917F] w-full h-[64px] flex rounded-[8px] rounded-bl-none rounded-br-none justify-between items-center px-[30px] py-[20px] text-white mb-[30px]">
@@ -96,4 +96,4 @@ const Polls = () => {
   );
 };
 
-export default Polls;
+export default PollsAr;

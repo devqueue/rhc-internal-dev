@@ -2,13 +2,16 @@ import React from "react";
 import Nav from "../components/Nav";
 import { useLocation } from "react-router-dom";
 
-const galleryview = () => {
-    const location = useLocation();
-    console.log("location", location);
-    const {gallery} = location.state || {};
+const GalleryviewAr = () => {
+  const location = useLocation();
+  console.log("location", location);
+  const { gallery } = location.state || {};
   return (
     <>
-      <div className="overflow-hidden w-full h-auto bg-[#F4F8FB]">
+      <div
+        className="overflow-hidden w-full h-auto bg-[#F4F8FB]"
+        style={{ direction: "rtl" }}
+      >
         <Nav />
         <div className="py-[18px] bg-[#F4F8FB] overflow-hidden w-full shadow-md"></div>
         <div className="px-[20px] py-[16px] mxmb-[20px] flex items-center rounded-[8px] rounded-bl-none rounded-br-none justify-between gap-[10px] self-stretch flex-wrap bg-[#C2AB80] text-[white]">
@@ -50,4 +53,4 @@ const galleryview = () => {
   );
 };
 
-export default galleryview;
+export default GalleryviewAr;

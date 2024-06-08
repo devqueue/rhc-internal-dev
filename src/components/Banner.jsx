@@ -6,7 +6,7 @@ const Banner = () => {
         src="/images/BannerImg.png"
         alt=""
       />
-      <div className="absolute bottom-[-140px] right-0 w-[20vw]">
+      <div className="absolute xl:top-[0px] lg:top-[40px] sm:top-0 top-[50%] right-0 w-[30%]">
         <img src="/images/HeroImgPattern.png" alt="" />
       </div>
 

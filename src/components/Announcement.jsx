@@ -37,13 +37,11 @@ const Announcement = ({ announcements }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        className={`flex gap-[40px] p-[40px] transition-transform ${
+        className={`flex gap-[40px] py-[40px] pl-[40px] transition-transform ${
           isTransitioning ? "duration-500" : "duration-0"
         }`}
         style={{
-          transform: `translateX(calc(-${currentIndex * 100}% + ${
-            currentIndex * 40
-          }px))`,
+          transform: `translateX(calc(-${currentIndex * 100}% ))`,
         }}
       >
         {announcements.map((announcement, index) => (

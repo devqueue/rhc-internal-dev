@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-const EmployeeCard = ({ img, title, jobTitle, number, email }) => {
+const EmployeeCardAr = ({ img, title, jobTitle, number, email }) => {
     const handleCopy = (text) => {
         navigator.clipboard.writeText(text);
     };
@@ -98,4 +98,4 @@ const EmployeeCard = ({ img, title, jobTitle, number, email }) => {
   );
 };
 
-export default EmployeeCard;
+export default EmployeeCardAr;

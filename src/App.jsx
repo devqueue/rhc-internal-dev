@@ -19,6 +19,13 @@ import Polls from "./pages/Polls";
 import Flipbook from "./components/dflip";
 import Gallery from "./pages/Gallery";
 import GalleryView from "./pages/GalleryView";
+import AllEventsAr from "./pages/AllEventsAr";
+import AnnouncementDetailAr from "./pages/AnnouncementDetailAr";
+import AllNewsAr from "./pages/AllNewsAr";
+import EmployeeDirectoryAr from "./pages/EmployeeDirectoryAr";
+import GalleryAr from "./pages/GalleryAr";
+import PollsAr from "./pages/PollAr";
+import GalleryviewAr from "./pages/GalleryViewAr";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -64,18 +71,27 @@ const App = () => {
         <Route path="/ar" element={<ArabicHome />} />
 
         <Route path="/all-events" element={<AllEvents />} />
+        <Route path="/ar/all-events" element={<AllEventsAr />} />
 
         <Route path="/announcement/:id" element={<AnnouncementDetail />} />
+        <Route path="/ar/announcement/:id" element={<AnnouncementDetailAr />} />
 
         <Route path="/news" element={<AllNews />} />
+        <Route path="/ar/news" element={<AllNewsAr />} />
 
         <Route path="/all-employees" element={<EmployeeDirectory />} />
+        <Route path="/ar/all-employees" element={<EmployeeDirectoryAr />} />
 
-        <Route path="/polls" element={<Polls />} />
+        <Route path="/all-polls" element={<Polls />} />
+        <Route path="/ar/all-polls" element={<PollsAr />} />
 
         <Route path="/pdf" element={<Flipbook />} />
+
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/ar/gallery" element={<GalleryAr />} />
+
         <Route path="/galleryview/:id" element={<GalleryView />} />
+        <Route path="/ar/galleryview/:id" element={<GalleryviewAr />} />
       </Routes>
     </Router>
   );

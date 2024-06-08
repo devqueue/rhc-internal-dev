@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const Nav = ({ user }) => {
+const Nav = ({ user, userImg }) => {
+  console.log("user", userImg);
   const [isHovered, setIsHovered] = useState(false);
 
   // Sample user data
@@ -20,7 +21,7 @@ const Nav = ({ user }) => {
       >
         <img
           className="rounded-full cursor-pointer"
-          src="images/user.png"
+          src={userImg || "/images/user-profile.png"}
           alt="User Profile"
           style={{ width: "40px", height: "40px" }}
         />
@@ -38,7 +39,7 @@ const Nav = ({ user }) => {
       >
         <img
           className="rounded-full cursor-pointer"
-          src="images/arabic.png"
+          src="/images/arabic.png"
           alt="User Profile"
           style={{ width: "40px", height: "40px" }}
         />

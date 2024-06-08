@@ -1,15 +1,14 @@
 import React from "react";
 import Nav from "../components/Nav";
 import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
 
-const Gallery = () => {
+const GalleryAr = () => {
     const location = useLocation();
     console.log("location", location);
     const gallery = location.state? location.state:[];
   return (
     <>
-      <div className="overflow-hidden w-full">
+      <div className="overflow-hidden w-full" style={{direction: "rtl"}}>
         <Nav />
         <div className="py-[30px] px-[30px] bg-[#F4F8FB] overflow-hidden w-full  shadow-md ">
         <div className="px-[30px] bg-[#C2AB80] overflow-hidden w-full h-full shadow-md ">
@@ -48,13 +47,9 @@ const Gallery = () => {
                 </div>
               </div>
 
-              <Link 
-                 to={`/galleryview/${item.id}`}
-                 state={{ gallery: item }}
-                 className="mx-[27.88px] my-[16px] sm:text-[14px] text-[9px] text-white font-light px-[20px] py-[10px] bg-[#3B729C] rounded-md w-[120px]">
+              <button className="mx-[27.88px] my-[16px] sm:text-[14px] text-[9px] text-white font-light px-[20px] py-[10px] bg-[#3B729C] rounded-md w-[120px]">
                 View Gallery
-
-              </Link>
+              </button>
             </div>
           )
         )}
@@ -66,4 +61,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default GalleryAr;

@@ -53,9 +53,10 @@ const UpcomingEvents = ({ events }) => {
         </h1>
 
         <Link
-          href=""
+          to="/ar/all-events"
           className="sm:text-[14px] text-[9px] font-light rounded-[4px] px-[10px] text-[#3B729C] bg-white"
-        >
+          state={events}
+        > 
           عرض الكل
         </Link>
       </div>
