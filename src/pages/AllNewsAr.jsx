@@ -24,8 +24,8 @@ const AllNewsAr = () => {
                 <NewsCard
                   key={index}
                   img={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${item.fields.image_name}`}
-                  title={item.fields.Title}
-                  subheading={item.fields.Preview_en}
+                  title={item.fields.Title_ar}
+                  subheading={item.fields.Preview_ar}
                 />
               ))}
             </div>

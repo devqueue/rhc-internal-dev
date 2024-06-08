@@ -19,8 +19,8 @@ const News = ({ news }) => {
 
       <div className="flex flex-col gap-[40px] max-h-[500px] overflow-y-auto">
         {news.map((item, index) => (
-          <div className="flex gap-[30px] items-center flex-wrap px-[30px] border-b-[1px] pb-[26.5px]">
-            {" "}
+          <div key={index} className="flex gap-[30px] items-center flex-wrap px-[30px] border-b-[1px] pb-[26.5px]">
+
             <div
               style={{
                 backgroundImage: `url('https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${item.fields.image_name}')`,
