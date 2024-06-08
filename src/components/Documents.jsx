@@ -18,7 +18,7 @@ const KnowledgeBase = ({ pdfs }) => {
   if(pdfs.length === 0) return null;
 
   return (
-    <div className="flex flex-col items-start gap-[40px] w-full rounded-[8px] overflow-hidden pb-10">
+    <div className="flex flex-col items-start gap-[40px] w-full rounded-[8px] overflow-hidden pb-10 shadow-md">
       <div className="px-[20px] py-[16px] flex items-center justify-between gap-[10px] self-stretch flex-wrap bg-[#3B729C] text-[white]">
         <h1 className="sm:text-[20px] text-[12px] font-light self-stretch min-w-[100px]">
           Documents
