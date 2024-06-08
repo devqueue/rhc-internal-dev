@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const Nav = ({ user, userImg }) => {
-  console.log("user", userImg);
+const Nav = ({ userImg }) => {
+
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log("user", user);
   const [isHovered, setIsHovered] = useState(false);
 
   // Sample user data
@@ -21,7 +23,7 @@ const Nav = ({ user, userImg }) => {
       >
         <img
           className="rounded-full cursor-pointer"
-          src={userImg || "/images/user-profile.png"}
+          src={userImg? userImg : "/images/user.png"}
           alt="User Profile"
           style={{ width: "40px", height: "40px" }}
         />
