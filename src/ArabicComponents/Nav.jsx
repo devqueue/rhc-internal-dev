@@ -1,11 +1,21 @@
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useState } from "react";
 
 const Nav = ({ user }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === "https://shamil.riyadhholding.sa/";
+
+  const handleClickLogo = () => {
+    if (isHomePage) {
+      window.location.reload(); 
+    }
+  };
+
   return (
     <div className="w-full bg-white flex justify-between sm:px-[30px] px-[5vw] py-[20px]">
-      <Link to="https://shamil.riyadhholding.sa/">
+      <Link to="https://shamil.riyadhholding.sa/" onClick={handleClickLogo}>
         <img
           className="sm:w-[200px] w-[35vw]"
           src="/icons/rhclogo1.png"
