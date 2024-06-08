@@ -67,13 +67,13 @@ const Announcement = ({ announcements }) => {
                 <p className="sm:text-[16px] text-[11px] font-light xxl:w-[20vw] w-auto">
                   {announcement.fields.preview_ar}
                 </p>
-                <Link
+                {/* <Link
                   className="m:sm:text-[14px] text-[9px] px-[10px] py-[5px] border-[1px] border-black md:rounded-[8px] rounded-md"
                   to={`/ar/announcement/${announcement.id}`}
                   state={{ announcement,  moreAnnouncements: announcements }}
                 >
                   تعلم اكثر
-                </Link>
+                </Link> */}
               </div>
 
               <img className="sm:w-[200px] lg:w-[100px]" src="/images/HeroPattern.png" alt="" />
