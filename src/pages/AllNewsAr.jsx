@@ -19,7 +19,7 @@ const AllNewsAr = () => {
             </h1>
           </div>
           <div className="flex w-full bg-[#F4F8FB]">
-            <div className="max-w-[1470px] lg:p-0 p-6 flex flex-wrap lg:justify-start gap-6 md:gap-8 lg:gap-[20px] lg:mx-8 md:mx-12 xs:justify-center">
+            <div className="max-w-[1470px] lg:py-8 p-6 flex flex-wrap lg:justify-start gap-6 md:gap-8 lg:gap-[20px] lg:mx-8 md:mx-12 xs:justify-center">
               {news.map((item, index) => (
                 <NewsCard
                   key={index}
