@@ -51,7 +51,7 @@ const NewsCard = ({ img, title, subheading }) => {
                 >
                   &times;
                 </button>
-                <h1 className="mt-12 font-figtree font-semibold text-[35px] leading-[48px] text-right"> {/* Changed to text-right */}
+                <h1 className="mt-12 text-SomarBold text-[35px] leading-[48px] text-right"> {/* Changed to text-right */}
                   {title}
                 </h1>
               </div>
@@ -63,7 +63,7 @@ const NewsCard = ({ img, title, subheading }) => {
                     className="w-full h-[400px] object-cover rounded-[8px]"
                   />
                 </div>
-                <p className="font-somar font-normal text-base leading-[32.52px] text-right"> {/* Changed to text-right */}
+                <p className=" text-Somar text-base leading-[32.52px] text-right"> {/* Changed to text-right */}
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's
                   standard dummy text ever since the 1500s, when an unknown
