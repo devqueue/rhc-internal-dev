@@ -36,6 +36,7 @@ const Home = () => {
   const [gallery, setGallery] = useState([]);
   const [pdfs, setPdfs] = useState([]);
   const [user, setUser] = useState(null);
+  const [userImg, setUserImg] = useState(null);
   const [loading, setLoading] = useState(true);
 
   // console.log(accounts)
@@ -88,9 +89,21 @@ const Home = () => {
               headers: { Authorization: `Bearer ${response.accessToken}` },
             }
           );
+
           const userJson = await userResponse.json();
           console.log("User details:", userJson);
           setUser(userJson);
+
+          const userImgResponse = await fetch(
+            "https://graph.microsoft.com/v1.0/me/photo/$value",
+            {
+              headers: { Authorization: `Bearer ${response.accessToken}` },
+            }
+          );
+
+          const userImgBlob = await userImgResponse.blob();
+          console.log("User image:", userImgBlob);
+          setUserImg(URL.createObjectURL(userImgBlob));
 
           const response2 = await fetch(
             "https://graph.microsoft.com/v1.0/sites/riyadhholding.sharepoint.com:/sites/Shamil/",
@@ -308,7 +321,7 @@ const Home = () => {
 
   return (
     <div className="overflow-hidden w-full">
-      <Nav user={user} />
+      <Nav user={user} userImg={userImg.type} />
       <div className="xl:px-[30px] px-[2vw] bg-[#F4F8FB] w-full py-[30px]">
         <div className="flex lg:flex-row flex-col xl:gap-[30px] gap-[2vw]">
           <div className="lg:w-[63vw] w-full">
