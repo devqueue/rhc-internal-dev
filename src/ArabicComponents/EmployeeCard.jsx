@@ -9,7 +9,7 @@ const EmployeeCardAr = ({ img, title, jobTitle, number, email }) => {
   return (
     <div className="w-[280px] h-[381.2px] items-center justify-center gap-[20px] bg-white rounded-[17.6px] p-[27.5px] mb-4">
       <div
-        className="h-[143px] w-[143px] ml-[20%] mb-[25px] rounded-[8px]"
+        className="h-[143px] w-[143px] mr-[20%] mb-[25px] rounded-[8px]"
         style={{
           backgroundImage: `url(${img})`,
           backgroundSize: "cover",
@@ -22,7 +22,7 @@ const EmployeeCardAr = ({ img, title, jobTitle, number, email }) => {
       </h1>
       <div className="flex flex-col gap-[15px] items-start justify-start border-b-[2px] pb-4 ">
         <div className="flex flex-row gap-[8px] ">
-        <div className="flex flex-row gap-[8px] items-center border-r-[1px] pr-[16px]">
+        <div className="flex flex-row gap-[8px] items-center border-r-[1px] pl-[16px]">
           <div
             style={{
               backgroundImage: "url('/icons/graduation-cap.svg')",
@@ -37,7 +37,7 @@ const EmployeeCardAr = ({ img, title, jobTitle, number, email }) => {
         </p>
         </div>
         <div className="flex flex-row gap-[8px]">
-        <div className="flex flex-row gap-[8px] items-center border-r-[1px] pr-[16px]">
+        <div className="flex flex-row gap-[8px] items-center border-r-[1px] pl-[16px]">
           <div
             style={{
               backgroundImage: "url('/icons/job.svg')",
@@ -65,7 +65,7 @@ const EmployeeCardAr = ({ img, title, jobTitle, number, email }) => {
         <p className="font-figtree font-medium text-[13px] leading-[16.5px]">
             {number}
         </p>
-        <button onClick={() => handleCopy("+9876543210")} className="ml-auto">
+        <button onClick={() => handleCopy("+9876543210")} className="mr-auto">
             <img
                 src="/icons/copy.svg"
                 alt="copy icon"
@@ -86,7 +86,7 @@ const EmployeeCardAr = ({ img, title, jobTitle, number, email }) => {
         <p className="font-figtree font-medium text-[13px] leading-[16.5px]">
             {email}
         </p>
-        <button onClick={() => handleCopy("name@websitename.com")} className="ml-auto">
+        <button onClick={() => handleCopy("name@websitename.com")} className="mr-auto">
             <img
                 src="/icons/copy.svg"
                 alt="copy icon"

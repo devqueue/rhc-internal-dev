@@ -45,12 +45,12 @@ const EventCardAr = ({ start_time, end_time, Title, event_location_en }) => {
 
   return (
     <div
-      className=" lg:w-[312.5px] md:w-[312.5px] sm:w-[312.5px] xs:w-[280px] bg-white rounded-[8px] "
+      className=" lg:w-[312.5px] md:w-[312.5px] sm:w-[312.5px] xs:w-[280px] bg-white rounded-[8px]"
       style={{ direction: "rtl" }}
     >
       <div className=" h-[314px] lg:w-[312.5px] md:w-[312.5px] sm:w-[312.5px] xs:w-[280px] mt-[30px] ">
         <div
-          className="w-[108px] h-[108px] mb-[20px] lg:ml-24 md:ml-24 sm:ml-24 xs:ml-20 p-2 grid items-center text-center text-[#444444]"
+          className="w-[108px] h-[108px] mb-[20px] lg:mr-24 md:mr-24 sm:mr-24 xs:mr-20 p-2 grid items-center text-center text-[#444444]"
           style={{
             backgroundImage: `url('/icons/cal.svg')`,
             backgroundSize: "cover",
