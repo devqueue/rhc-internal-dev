@@ -6,12 +6,12 @@ const KnowledgeBaseUpdated = () => {
     <div className="w-full min-h-[424px] bg-white rounded-lg overflow-hidden shadow-md">
       <div className="bg-[#3B729C] w-full h-[64px] flex justify-between items-center px-[30px] py-[20px] text-[white]">
         <h1 className="sm:text-[20px] text-[12px]">Knowledge Base</h1>
-        <Link
+        {/* <Link
           to="/all-employees"
           className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#50917F] rounded-md"
         >
           View All
-        </Link>
+        </Link> */}
       </div>
 
       <div className="w-full h-[360px] flex flex-col items-start gap-[20px] p-[20px] overflow-y-auto">
