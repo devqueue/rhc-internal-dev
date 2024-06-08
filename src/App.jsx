@@ -71,7 +71,7 @@ const App = () => {
 
         <Route path="/all-employees" element={<EmployeeDirectory />} />
 
-        <Route path="/polls" element={<Polls />} />
+        <Route path="/all-polls" element={<Polls />} />
 
         <Route path="/pdf" element={<Flipbook />} />
         <Route path="/gallery" element={<Gallery />} />
