@@ -32,12 +32,12 @@ const Announcement = ({ announcements }) => {
 
   return (
     <div
-      className="w-full rounded-[8px] overflow-hidden bg-[#50917F] relative"
+      className="w-full rounded-[8px] overflow-hidden bg-[#f2f8f4] relative shadow-md"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        className={`flex gap-[40px] py-[40px] pr-[40px] transition-transform ${
+        className={`flex gap-[40px] py-[40px] pr-[40px] pl-[40px] transition-transform ${
           isTransitioning ? "duration-500" : "duration-0"
         }`}
         style={{
@@ -48,7 +48,7 @@ const Announcement = ({ announcements }) => {
           <div
             key={index}
             className={`w-full justify-center flex flex-wrap flex-shrink-0 rounded-lg gap-[60px] items-center self-stretch content-center`}
-            style={{ backgroundColor: "#50917F" }}
+            style={{ backgroundColor: "#f2f8f4" }}
           >
             <div
               className="lg:w-[460px] w-[40vw] lg:h-[320px] h-[30vw] bg-slate-300 rounded-lg overflow-hidden shrink-0"
@@ -60,7 +60,7 @@ const Announcement = ({ announcements }) => {
             ></div>
 
             <div className="flex justify-between gap-[60px] items-end sm:items-center sm:flex-row flex-col">
-              <div className="text-white flex flex-col gap-[20px] items-start">
+              <div className="text-black flex flex-col gap-[20px] items-start">
                 <h1 className="sm:text-[24px] text-[16px] font-light">
                   {announcement.fields.Title_ar}
                 </h1>
@@ -68,7 +68,7 @@ const Announcement = ({ announcements }) => {
                   {announcement.fields.preview_ar}
                 </p>
                 <Link
-                  className="m:sm:text-[14px] text-[9px] px-[10px] py-[5px] border-[1px] border-white md:rounded-[8px] rounded-md"
+                  className="m:sm:text-[14px] text-[9px] px-[10px] py-[5px] border-[1px] border-black md:rounded-[8px] rounded-md"
                   to={`/ar/announcement/${announcement.id}`}
                   state={{ announcement,  moreAnnouncements: announcements }}
                 >
@@ -76,11 +76,12 @@ const Announcement = ({ announcements }) => {
                 </Link>
               </div>
 
-              <img className="sm:w-[200px] w-[150px] scale-x-[-1]" src="/images/HeroImgPattern.png" alt="" />
+              <img className="sm:w-[200px] lg:w-[100px] scale-x-[-1]" src="/images/HeroPattern.png" alt="" />
             </div>
           </div>
         ))}
       </div>
+      <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-b from-gray-200 to-transparent"></div>
     </div>
   );
 };

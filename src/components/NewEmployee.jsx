@@ -38,7 +38,7 @@ const NewEmployee = ({ newEmployee }) => {
         {newEmployee.map((employee, index) => (
           <div
             key={index}
-            className="flex w-full flex-shrink-0 flex-col items-center gap-[30px] bg-[#50917F] py-[30px] rounded-[8px] overflow-hidden"
+            className="flex w-full flex-shrink-0 flex-col items-center gap-[30px] bg-[#144566] py-[30px] rounded-[8px] overflow-hidden"
           >
             <h1 className="text-center sm:text-[20px] text-[12px] text-white font-light w-full px-[16px] text-wrap">
               Welcome to Riyadh Holding family
