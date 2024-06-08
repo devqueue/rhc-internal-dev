@@ -92,7 +92,7 @@ const EmployeeDirectoryAr = () => {
     <>
     <div className="overflow-hidden w-full bg-[#F4F8FB]" style={{direction: "rtl"}}>
         <Nav />
-      <div className="w-full pt-[30px] min-h-[424px] bg-[#F4F8FB] overflow-hidden shadow-md">
+      <div className="w-full pt-[30px] min-h-[424px] bg-[#F4F8FB] overflow-hidden shadow-md px-[40px]">
       <div className="bg-[#50917F] w-full h-[64px] rounded-[8px] rounded-bl-none rounded-br-none flex justify-between items-center px-[30px] py-[20px] text-[white] mb-[30px]">
         <h1 className="sm:text-[20px] xs:text-[16px] text-[12px]">Employee Directory</h1>
       </div>
