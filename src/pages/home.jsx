@@ -39,7 +39,7 @@ const Home = () => {
   const [user, setUser] = useState(null);
   const [userImg, setUserImg] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [mails,setMails] = useState([]);
+  const [mails, setMails] = useState([]);
 
   // console.log(accounts)
   useEffect(() => {
@@ -93,7 +93,10 @@ const Home = () => {
 
           const userJson = await userResponse.json();
           console.log("User details:", userJson);
-          setUser(userJson);
+
+          // Store user data in local storage
+          localStorage.setItem("user", JSON.stringify(userJson));
+          
 
           const userImgResponse = await fetch(
             "https://graph.microsoft.com/v1.0/me/photo/$value",
@@ -223,13 +226,15 @@ const Home = () => {
 
     const fetchMailInbox = async (token) => {
       try {
-        const response = await fetch(`https://graph.microsoft.com/v1.0/me/messages?$filter=microsoft.graph.eventMessage/meetingMessageType ne 'none' and sender/emailAddress/address  eq 'mcenter@riyadhholding.sa'`, {
-          headers: { Authorization: "Bearer " + token },
-        });
-        
-        
+        const response = await fetch(
+          `https://graph.microsoft.com/v1.0/me/messages?$filter=microsoft.graph.eventMessage/meetingMessageType ne 'none' and sender/emailAddress/address  eq 'mcenter@riyadhholding.sa'`,
+          {
+            headers: { Authorization: "Bearer " + token },
+          }
+        );
+
         const json = await response.json();
-        setMails(json.value)
+        setMails(json.value);
       } catch (error) {
         console.error("Error fetching mail inbox:", error);
       }
@@ -287,6 +292,14 @@ const Home = () => {
     acquireToken();
   }, [instance, accounts]);
 
+  useEffect(() => {
+    // Retrieve user data from local storage
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
   if (loading) {
     return (
       <div class="grid min-h-[100vh] w-full h-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
@@ -320,15 +333,14 @@ const Home = () => {
 
   return (
     <div className="overflow-hidden w-full">
-    <Nav user={user} />
-    
-    <div className="xl:px-[30px] px-[2vw] bg-[#F4F8FB] w-full py-[30px]">
+      <Nav user={user} />
 
-      <div className="flex lg:flex-row flex-col xl:gap-[30px] gap-[2vw]">
-        <div className="lg:w-[63vw] w-full">
-          <div className="w-full h-[400px] rounded-lg overflow-hidden">
-            <Banner />
-          </div>
+      <div className="xl:px-[30px] px-[2vw] bg-[#F4F8FB] w-full py-[30px]">
+        <div className="flex lg:flex-row flex-col xl:gap-[30px] gap-[2vw]">
+          <div className="lg:w-[63vw] w-full">
+            <div className="w-full h-[400px] rounded-lg overflow-hidden">
+              <Banner />
+            </div>
 
             <div className="flex lg:flex-row flex-col gap-[30px] mt-[25px]">
               <Calender events={calendarEvents} />

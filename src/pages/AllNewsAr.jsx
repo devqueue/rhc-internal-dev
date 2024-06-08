@@ -1,6 +1,6 @@
 import { useState } from "react"; // Import useState to manage state
 import Nav from "../components/Nav";
-import NewsCard from "../components/NewsCard";
+import NewsCard from "../ArabicComponents/NewsCard";
 import { useLocation } from "react-router-dom";
 
 const AllNewsAr = () => {
@@ -10,7 +10,7 @@ const AllNewsAr = () => {
 
   return (
     <>
-      <div className="overflow-hidden w-full" style={{direction: "rtl"}}>
+      <div className="overflow-hidden w-full h-full" style={{direction: "rtl"}}>
         <Nav />
         <div className="py-[30px] bg-[#F4F8FB] overflow-hidden w-full shadow-md">
           <div className="px-[20px] py-[16px] lg:mx-9 mxmb-[20px] flex items-center rounded-[8px] rounded-bl-none rounded-br-none justify-between gap-[10px] self-stretch flex-wrap bg-[#C2AB80] text-[white]">

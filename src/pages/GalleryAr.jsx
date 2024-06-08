@@ -11,8 +11,8 @@ const GalleryAr = () => {
     <>
       <div className="overflow-hidden w-full" style={{ direction: "rtl" }}>
         <Nav />
-        <div className="py-[30px] px-[30px] bg-[#F4F8FB] overflow-hidden w-full  shadow-md ">
-          <div className="overflow-hidden w-full h-full shadow-md ">
+        <div className="py-[30px] px-[30px] bg-[#F4F8FB] overflow-hidden w-full rounded-lg shadow-md ">
+          <div className="overflow-hidden w-full h-full shadow-md rounded-lg">
             <div className="px-[20px] py-[16px] mb-[20px] flex items-center rounded-[8px] rounded-bl-none rounded-br-none justify-between gap-[10px] self-stretch flex-wrap bg-[#C2AB80] text-[white] ">
               <h1 className="text-[28px] font-semibold self-stretch min-w-[100px] mt-1">
                 معرض الصور
@@ -32,17 +32,17 @@ const GalleryAr = () => {
                       <div className="w-full h-[180px] bg-slate-300">
                         <img
                           src={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${item.fields.image_name}`}
-                          alt={item.Title}
+                          alt={item.Title_ar}
                           className="object-cover w-full h-full"
                         />
                       </div>
                       <div className="px-[27.88px] mt-[20px] min-h-[130px] flex flex-col justify-between">
                         <div>
                           <h1 className="sm:text-[16px] text-[11px] mb-[5px]">
-                            {item.fields.Title}
+                            {item.fields.event_name_ar}
                           </h1>
                           <p className="sm:text-[14px] text-[9px] font-light text-[#888888]">
-                            {item.fields.subtitle_en}
+                            {item.fields.subtitle_ar}
                           </p>
                         </div>
                       </div>

@@ -70,7 +70,7 @@ const Announcement = ({ announcements }) => {
                 <Link
                   className="m:sm:text-[14px] text-[9px] px-[10px] py-[5px] border-[1px] border-white md:rounded-[8px] rounded-md"
                   to={`/announcement/${announcement.id}`}
-                  state={{ announcement }}
+                  state={{ announcement,  moreAnnouncements: announcements }}
                 >
                   Read More
                 </Link>

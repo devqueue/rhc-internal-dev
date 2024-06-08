@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Announcement = ({ announcements }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -66,12 +67,13 @@ const Announcement = ({ announcements }) => {
                 <p className="sm:text-[16px] text-[11px] font-light xxl:w-[20vw] w-auto">
                   {announcement.fields.preview_ar}
                 </p>
-                <a
-                  className="sm:text-[14px] text-[9px] px-[10px] py-[5px] border-[1px] border-white rounded-[8px]"
-                  href="#"
+                <Link
+                  className="m:sm:text-[14px] text-[9px] px-[10px] py-[5px] border-[1px] border-white md:rounded-[8px] rounded-md"
+                  to={`/ar/announcement/${announcement.id}`}
+                  state={{ announcement,  moreAnnouncements: announcements }}
                 >
                   Read More
-                </a>
+                </Link>
               </div>
 
               <img className="sm:w-[200px] w-[150px] scale-x-[-1]" src="/images/HeroImgPattern.png" alt="" />

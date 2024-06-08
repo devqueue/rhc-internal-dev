@@ -12,7 +12,7 @@ const NewsCard = ({ img, title, subheading }) => {
   };
 
   return (
-    <div className="h-[360px] lg:w-[273px] md:w-[273px] xs:w-[222px] bg-white rounded-[8px] mb-4 flex flex-col justify-between">
+    <div className="h-[360px] lg:w-[273px] md:w-[273px] xs:w-[222px] bg-white rounded-[8px] mb-4 flex flex-col justify-between" dir="rtl">
       <div className="m-[25px] flex flex-col h-full">
         <div
           className="h-[137px] w-full flex bg-slate-300 items-center justify-center mb-[25px] rounded-[8px] bg-cover bg-center"
@@ -43,19 +43,19 @@ const NewsCard = ({ img, title, subheading }) => {
 
         {showModal && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-            <div className="min-h-[724px] w-[80%] lg:w-[60%] p-[20px] bg-white rounded-lg overflow-hidden shadow-md max-h-screen overflow-y-auto">
+            <div className="min-h-[724px] w-[80%] lg:w-[60%] p-[20px] bg-white rounded-lg overflow-hidden shadow-md max-h-screen overflow-y-auto" style={{ scrollbarWidth: "8px" }}>
               <div className="relative bg-white w-full h-auto flex flex-col justify-start items-start px-8 sm:px-[30px] text-black">
                 <button
-                  className="absolute top-4 right-4 text-black text-4xl font-bold"
+                  className="absolute top-4 left-4 text-black text-4xl font-bold" // Changed to left
                   onClick={closePopup}
                 >
                   &times;
                 </button>
-                <h1 className="mt-12 text-SomarBold text-[35px] leading-[48px] text-left">
+                <h1 className="mt-12 text-SomarBold text-[35px] leading-[48px] text-right"> {/* Changed to text-right */}
                   {title}
                 </h1>
               </div>
-              <div className="p-[20px]">
+              <div className="p-[20px]" style={{ scrollbarWidth: "8px" }}>
                 <div className="flex items-center gap-[20px] mb-[20px]">
                   <img
                     src="/images/announcement.svg"
@@ -63,12 +63,24 @@ const NewsCard = ({ img, title, subheading }) => {
                     className="w-full h-[400px] object-cover rounded-[8px]"
                   />
                 </div>
-                <p className="text-Somar text-base leading-[32.52px]">
+                <p className=" text-Somar text-base leading-[32.52px] text-right"> {/* Changed to text-right */}
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's
                   standard dummy text ever since the 1500s, when an unknown
                   printer took a galley of type and scrambled it to make a type
                   specimen book. Lorem Ipsum is simply dummy text of the
+                  printing and typesetting industry. Lorem Ipsum has been the
+                  industry's standard dummy text ever since the 1500s, when an
+                  unknown printer took a galley of type and scrambled it to make
+                  a type specimen book. Lorem Ipsum is simply dummy text of the
+                  printing and typesetting industry. Lorem Ipsum has been the
+                  industry's standard dummy text ever since the 1500s, when an
+                  unknown printer took a galley of type and scrambled it to make
+                  a type specimen book. Lorem Ipsum is simply dummy text of the
+                  printing and typesetting industry. Lorem Ipsum has been the
+                  industry's standard dummy text ever since the 1500s, when an
+                  unknown printer took a galley of type and scrambled it to make
+                  a type specimen book. Lorem Ipsum is simply dummy text of the
                   printing and typesetting industry. Lorem Ipsum has been the
                   industry's standard dummy text ever since the 1500s, when an
                   unknown printer took a galley of type and scrambled it to make
