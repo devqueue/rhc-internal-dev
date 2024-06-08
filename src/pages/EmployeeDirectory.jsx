@@ -11,21 +11,21 @@ const EmployeeDirectory = () => {
     const [events, setEvents] = useState([
       {
           img: "/images/employee.svg",
-          title: "Annual General Meeting",
-          jobTitle: "CEO",
+          title: "Akshita Arora",
+          jobTitle: "Web Developer Intern",
           number: "1234567890",
           email: "Web Developer"
       },
       {
           img: "/images/employee.svg",
-          title: "Annual General Meeting",
-          jobTitle: "CEO",
+          title: "Akshita Arora",
+          jobTitle: "Web Developer Intern",
           number: "1234567890",
           email: "Web Developer"
       },
       {
           img: "/images/employee.svg",
-          title: "Annual General Meeting",
+          title: "Akshita Arora",
           jobTitle: "CEO",
           number: "1234567890",
           email: "Web Developer"
