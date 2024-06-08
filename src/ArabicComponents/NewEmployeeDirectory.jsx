@@ -1,6 +1,6 @@
 import React from "react";
 
-const NewEmployeeDirectory = () => {
+const NewEmployeeDirectoryAr = () => {
   return (
     <div className="inline-flex p-10 flex-col items-start gap-10 bg-[#3B729C] rounded-lg w-[310px]">
       <div className="flex h-[181px] flex-col items-start gap-[25px] self-stretch mb-7">
@@ -54,4 +54,4 @@ const NewEmployeeDirectory = () => {
   );
 };
 
-export default NewEmployeeDirectory;
+export default NewEmployeeDirectoryAr;
