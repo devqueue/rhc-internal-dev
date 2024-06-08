@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { DateTime } from 'luxon';
 
 const EventName = ({ events }) => {
+
   const [nearestEvent, setNearestEvent] = useState(null);
   const [countdown, setCountdown] = useState({
     days: 0,

@@ -34,6 +34,8 @@ const ArabicHome = () => {
   const [gallery, setGallery] = useState([]);
   const [accounts, setAccounts] = useState([]);
   const [user, setUser] = useState(null);
+  
+  const [mails,setMails] = useState([]);
 
   const [loading, setLoading] = useState(true);
 
@@ -156,6 +158,20 @@ const ArabicHome = () => {
       }
     };
 
+    const fetchMailInbox = async (token) => {
+      try {
+        const response = await fetch(`https://graph.microsoft.com/v1.0/me/messages?$filter=microsoft.graph.eventMessage/meetingMessageType ne 'none' and sender/emailAddress/address  eq 'mcenter@riyadhholding.sa'`, {
+          headers: { Authorization: "Bearer " + token },
+        });
+        
+        
+        const json = await response.json();
+        setMails(json.value)
+      } catch (error) {
+        console.error("Error fetching mail inbox:", error);
+      }
+    };
+
     const fetchPlannerTasks = async (token) => {
       try {
         const tasks_planner = await fetch("https://graph.microsoft.com/v1.0/me/planner/tasks/", {
@@ -250,7 +266,7 @@ const ArabicHome = () => {
             <hr />
 
             <div className="mt-[21px] mb-[32px] sm:px-[25px] px-[5vw]">
-              <EventName events={calendarEvents} />
+              <EventName events={mails} />
             </div>
 
             <hr />
