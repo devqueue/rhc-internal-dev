@@ -1,7 +1,8 @@
 import React from "react";
 import Nav from "../components/Nav";
 import AnnouncementCard from "../components/AnnouncementCard";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 const AnnouncementDetail = () => {
   const location = useLocation();
@@ -11,6 +12,38 @@ const AnnouncementDetail = () => {
   if (!announcement) {
     return <div>Announcement not found</div>;
   }
+
+  const [attachment, setAttachment] = useState([
+    {
+      img: "/images/attachment.svg",
+      title: "Building.png",
+    },
+    {
+      img: "/images/attachment.svg",
+      title: "Building.png",
+    },
+    {
+      img: "/images/attachment.svg",
+      title: "Building.png",
+    },
+    {
+      img: "/images/attachment.svg",
+      title: "Building.png",
+    },
+    {
+      img: "/images/attachment.svg",
+      title: "Building.png",
+    },
+    {
+      img: "/images/attachment.svg",
+      title: "Building.png",
+    },
+    {
+      img: "/images/attachment.svg",
+      title: "Building.png",
+    },
+  ]);
+
 
   return (
     <>
@@ -32,11 +65,31 @@ const AnnouncementDetail = () => {
             <p className="font-somar font-normal text-base leading-[32.52px]">
               {announcement.fields.Full_Text_en}
             </p>
-            <div className="mt-6">
-            <h1 className="font-figtree font-semibold text-4xl leading-[48px] text-[#6D6D6D] text-left">Attachments</h1>
+            <div className="mt-6 ">
+              <h1 className="font-figtree font-semibold text-4xl leading-[48px] text-[#6D6D6D] text-left">
+                Attachments
+              </h1>
+              <div className="flex flex-wrap items-center h-full gap-[30px] mt-[40px] mb-[40px]">
+                {attachment.map((item, index) => (
+                <div key={index} className="w-[256px] h-[198px] bg-[#F9F9F9]">
+                  <div>
+                    <img
+                      src="/images/attachment.svg"
+                      alt="attachment"
+                      className="w-full object-cover rounded-[8px]"
+                    />
+                  </div>
+                  <div className="pt-[10px]">
+                    <h1 className="font-figtree font-semibold text-2xl leading-[48px] text-[#6D6D6D] text-left">
+                      Building.png
+                    </h1>
+                  </div>
+                </div>
+                ))}
+              </div>
+            </div>
           </div>
-          </div>
-          
+
           <div className="lg:w-1/4 p-[60px] bg-[#50917F]">
             <h1 className="font-figtree font-semibold lg:text-4xl md:text-4xl sm:text-4xl xs:text-xl leading-[48px] text-white">
               More Announcements
