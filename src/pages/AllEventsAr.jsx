@@ -23,7 +23,7 @@ const AllEventsAr = () => {
           <div className="py-[30px] overflow-hidden w-full shadow-md px-[30px] flex flex-col items-center">
             <div className="px-[20px] py-[16px] flex items-center rounded-[8px] rounded-bl-none rounded-br-none justify-between gap-[10px] self-stretch flex-wrap bg-[#3B729C] text-[white] ">
               <h1 className="text-[18px] font-light self-stretch min-w-[100px] mt-1">
-                Upcoming Events
+              الأحداث القادمة
               </h1>
               <a
                 href=""

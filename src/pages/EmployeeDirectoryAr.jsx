@@ -2,6 +2,7 @@ import { useState } from "react";
 // import { useLocation } from "react-router-dom";
 import Nav from "../components/Nav"
 import EmployeeCard from "../components/EmployeeCard"
+import EmployeeCardAr from "../ArabicComponents/EmployeeCard";
 
 const EmployeeDirectoryAr = () => {
     // const location = useLocation();
@@ -126,7 +127,7 @@ const EmployeeDirectoryAr = () => {
 
         <div className="flex flex-wrap lg:justify-start md:justify-start sm:justify-start gap-6 md:gap-8 lg:gap-[80px] lg:mx-16 md:mx-16 sm:mx-12 xs:justify-center xs:mx-4">
         {events && events.map((event, index) => (
-              <EmployeeCard
+              <EmployeeCardAr
                 key={index}
                 // img={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${employee.fields.photo_name}`}
                 // title={employee.fields.Title}
