@@ -16,6 +16,9 @@ import { useMsal } from '@azure/msal-react';
 import { useState, useEffect } from 'react';
 import { loginRequest, msalConfig } from '../authConfig';
 import { InteractionRequiredAuthError, PublicClientApplication } from '@azure/msal-browser';
+import ViewEmployeeDirectoryAr from "../ArabicComponents/ViewEmployeeDirectory";
+import NewEmployeeCardsAr from "../ArabicComponents/NewEmployeeCards";
+import KnowledgeBaseUpdatedAr from "../ArabicComponents/KnowledgeBaseUpdated";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -235,7 +238,7 @@ const ArabicHome = () => {
             </div>
 
             <div className="mt-[30px]">
-              {/* <EmployeeDirectory employees={employeeDirectory} /> */}
+              <KnowledgeBaseUpdatedAr />
             </div>
           </div>
 
@@ -262,10 +265,19 @@ const ArabicHome = () => {
               <NewEmployee newEmployee={newEmployee} />
             </div>
 
+            <hr />
+            <div className="sm:px-[30px] px-[5vw] mt-[30px]">
+              <ViewEmployeeDirectoryAr />
+            </div>
+
             <div className="sm:px-[30px] px-[5vw] mt-[30px]">
               <KnowledgeBase />
             </div>
           </div>
+        </div>
+
+        <div className="w-full rounded-lg overflow-hidden mt-[65px]">
+          <NewEmployeeCardsAr />
         </div>
 
         <div className="w-full rounded-lg overflow-hidden mt-[65px]">
