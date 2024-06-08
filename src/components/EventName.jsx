@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { DateTime } from 'luxon';
 
 const EventName = ({ events }) => {
   const [nearestEvent, setNearestEvent] = useState(null);
@@ -9,51 +10,42 @@ const EventName = ({ events }) => {
   });
 
   const getNearestEvent = (events) => {
-    const now = new Date();
-    const upcomingEvents = events.filter(
-      (event) =>
-        new Date(`${event.month} ${event.day}, 2024 ${event.starttime}`) > now
-    );
-    const sortedEvents = upcomingEvents.sort(
-      (a, b) =>
-        new Date(`${a.month} ${a.day}, 2024 ${a.starttime}`) -
-        new Date(`${b.month} ${b.day}, 2024 ${b.starttime}`)
-    );
-    return sortedEvents[0];
+    const now = DateTime.now().setZone('Asia/Riyadh');
+  
+    const upcomingEvents = events
+      .filter(event => event.startDateTime && event.startDateTime.dateTime)
+      .map(event => {
+        const eventDateTime = DateTime.fromISO(event.startDateTime.dateTime, { zone: event.startDateTime.timeZone });
+        return { ...event, eventDateTime };
+      })
+      .filter(event => event.eventDateTime > now)
+      .sort((a, b) => a.eventDateTime - b.eventDateTime);
+  
+    return upcomingEvents[0];
   };
 
-  const calculateCountdown = (eventDate) => {
-    const now = new Date();
-    const timeDifference = eventDate - now;
-
-    if (timeDifference <= 0) {
-      return { days: 0, hours: 0, minutes: 0 };
-    }
-
-    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
-      (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const minutes = Math.floor(
-      (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
-    );
-
-    return { days, hours, minutes };
+  const calculateCountdown = (eventDateTime) => {
+    const now = DateTime.now().setZone('Asia/Riyadh');
+    const diff = eventDateTime.diff(now, ['days', 'hours', 'minutes', 'seconds']).toObject();
+    return {
+      days: diff.days,
+      hours: diff.hours,
+      minutes: diff.minutes,
+      seconds: diff.seconds,
+    };
   };
+  
 
   useEffect(() => {
     if (events.length > 0) {
       const nearestEvent = getNearestEvent(events);
       setNearestEvent(nearestEvent);
-      if(!nearestEvent){
+      if (!nearestEvent) {
         return;
       }
-      const eventDate = new Date(
-        `${nearestEvent.month} ${nearestEvent.day}, 2024 ${nearestEvent.starttime}`
-      );
 
       const updateCountdown = () => {
-        const newCountdown = calculateCountdown(eventDate);
+        const newCountdown = calculateCountdown(nearestEvent.eventDateTime);
         setCountdown(newCountdown);
       };
 
@@ -64,13 +56,14 @@ const EventName = ({ events }) => {
     }
   }, [events]);
 
+
   if(events.length === 0 || !nearestEvent) return null;
 
   return (
     <div className="py-[30px] px-[20px] bg-[#3B729C] flex flex-col justify-center items-center gap-[24px] text-white rounded-[8px]">
       <div className="flex flex-col items-center gap-[10px]">
         <h1 className="sm:text-[20px] text-[12px] font-light ">
-          {nearestEvent ? nearestEvent.name : "No Event"}
+          {nearestEvent ? nearestEvent.subject : "No Event"}
         </h1>
         <h2 className="sm:text-[16px] text-[11px] font-light ">Starting In</h2>
       </div>

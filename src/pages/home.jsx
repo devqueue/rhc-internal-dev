@@ -38,6 +38,7 @@ const Home = () => {
   const [user, setUser] = useState(null);
   const [userImg, setUserImg] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [mails,setMails] = useState([]);
 
   // console.log(accounts)
   useEffect(() => {
@@ -228,7 +229,7 @@ const Home = () => {
         
         
         const json = await response.json();
-        console.log("mailbox:", json);
+        setMails(json.value)
       } catch (error) {
         console.error("Error fetching mail inbox:", error);
       }
@@ -354,7 +355,7 @@ const Home = () => {
             </div>
             <hr />
             <div className="mt-[21px] mb-[32px] sm:px-[25px] px-[5vw]">
-              <EventName events={calendarEvents} />
+              <EventName events={mails} />
             </div>
             <hr />
             <div className="sm:px-[30px] px-[5vw] mt-[30px]">
