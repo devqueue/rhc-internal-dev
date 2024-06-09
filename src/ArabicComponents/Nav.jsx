@@ -17,7 +17,7 @@ const Nav = ({ user }) => {
 
   return (
     <div className="w-full bg-white flex justify-between sm:px-[30px] px-[5vw] py-[20px]">
-      <Link to="https://shamil.riyadhholding.sa/" onClick={handleClickLogo}>
+      <Link to="https://shamil.riyadhholding.sa/ar" onClick={handleClickLogo}>
         <img
           className="sm:w-[200px] w-[35vw]"
           src="/icons/rhclogo1.png"
