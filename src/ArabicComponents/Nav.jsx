@@ -25,6 +25,7 @@ const Nav = ({ user }) => {
         />
       </Link>
 
+      <div className="flex gap-3">
       <div
         className="flex items-end justify-end mr-auto ml-0"
         onMouseEnter={() => setIsHovered(true)}
@@ -54,6 +55,7 @@ const Nav = ({ user }) => {
           alt="User Profile"
           style={{ width: "40px", height: "40px" }}
         />
+      </div>
       </div>
     </div>
   );

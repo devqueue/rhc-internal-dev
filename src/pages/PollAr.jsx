@@ -79,7 +79,7 @@ const PollsAr = () => {
     },
   ]);
   return (
-    <div className="overflow-hidden w-full">
+    <div className="overflow-hidden w-full" style={{direction:'rtl'}}>
       <Nav />
       <div className="w-full pt-[30px] min-h-[424px] overflow-hidden shadow-md px-[30px]">
         <div className="bg-[#50917F] w-full h-[64px] flex rounded-[8px] rounded-bl-none rounded-br-none justify-between items-center  py-[20px] px-[30px] text-white">

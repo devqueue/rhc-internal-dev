@@ -38,7 +38,7 @@ const EmployeeCard = ({ title, jobTitle, number, email, token, id,bg,fg,setAlert
   return (
     <div className={`w-[280px] h-[381.2px] items-center justify-center gap-[20px] bg-white rounded-[17.6px] p-[27.5px] mb-4`}>
       <div
-        className="h-[143px] w-[143px] ml-[20%] m-auto mb-[25px] rounded-[8px] bg-green-200 text-green-800 text-5xl flex items-center justify-center"
+        className="h-[143px] w-[143px] ml-[20%] m-auto mb-[25px] rounded-[8px] bg-[#dbf0f3] text-[#31696c] font-extrabold text-5xl flex items-center justify-center"
         style={{
           backgroundImage: `url(${img})`,
           backgroundSize: "cover",

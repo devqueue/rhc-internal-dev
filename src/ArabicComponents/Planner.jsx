@@ -27,7 +27,7 @@ const Planner = ({ tasks }) => {
   
   if (tasks.length === 0) {
     return (
-      <div className="w-full bg-white rounded-lg overflow-hidden shadow-md">
+      <div className="w-full bg-white rounded-lg overflow-hidden shadow-md relative">
         <div className="bg-[#3B729C] w-full min-h-[64px] gap-[10px] flex justify-between items-center flex-wrap px-[30px] py-[20px] text-[white] mb-[30px]">
           <h1 className="sm:text-[20px] text-[12px]"> (بلانر) المهام</h1>
           <Link
@@ -39,7 +39,7 @@ const Planner = ({ tasks }) => {
           </Link>
         </div>
 
-        <div className="w-full flex flex-col gap-[15px] p-7">
+        <div className=" h-full w-full absolute top-0 left-0 flex justify-center items-center">
           لا توجد مهام في البلانر
         </div>
       </div>

@@ -5,7 +5,7 @@ const Gallery = ({ gallery }) => {
     return <div>No gallery available.</div>;
   }
   return (
-    <div className="w-full bg-[#f9f9f9]">
+    <div className="w-full bg-[#fff] shadow-xl shadow-black border-[0.5px] drop-shadow-md pb-4">
       <div className=" px-10 w-full py-[16px] bg-[#C2AB80] flex justify-between items-center mb-[30px] bg text-[white] rounded-[8px] rounded-bl-none rounded-br-none">
         <h1 className="sm:text-[20px] text-[12px]">معرض الصور</h1>
         <Link

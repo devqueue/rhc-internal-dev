@@ -61,7 +61,7 @@ const Calender = ({ events }) => {
   if (!events || events.length === 0) return null;
 
   return (
-    <div className="w-full h-[424px] bg-white rounded-lg overflow-hidden shadow-md">
+    <div className="w-full h-[424px] bg-white rounded-lg overflow-hidden shadow-md relative">
       <div className="bg-[#3B729C] w-full flex justify-between items-center px-[30px] py-[20px] text-[white]">
         <h1 className="sm:text-[20px] text-[12px]">التقويم</h1>
         <Link
@@ -79,7 +79,7 @@ const Calender = ({ events }) => {
           {weekEvents.length > 0 ? renderEvents(weekEvents, "This Week") : null}
         </div>
       ) : (
-        <div className="text-l">لا توجد أحداث في التقويم</div>
+        <div className=" h-full w-full absolute top-0 left-0 flex justify-center items-center">لا توجد أحداث في التقويم</div>
       )}
     </div>
   );

@@ -20,6 +20,7 @@ import ViewEmployeeDirectoryAr from "../ArabicComponents/ViewEmployeeDirectory";
 import NewEmployeeCardsAr from "../ArabicComponents/NewEmployeeCards";
 import KnowledgeBaseUpdatedAr from "../ArabicComponents/KnowledgeBaseUpdated";
 import { Link } from "react-router-dom";
+import NewEmployeeCards from "../components/NewEmployeeCards";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -309,7 +310,7 @@ const ArabicHome = () => {
         </div>
 
         <div className="w-full rounded-lg overflow-hidden mt-[65px]">
-          <NewEmployeeCardsAr />
+          <NewEmployeeCards accessToken = {accessToken} />
         </div>
 
         <div className="w-full rounded-lg overflow-hidden mt-[65px]">

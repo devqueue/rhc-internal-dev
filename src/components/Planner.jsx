@@ -30,7 +30,7 @@ const Planner = ({ tasks }) => {
   
   if (tasks.length === 0){
     return(
-      <div className="w-full h-[424px] bg-white rounded-lg overflow-hidden shadow-md">
+      <div className="w-full h-[424px] bg-white rounded-lg overflow-hidden shadow-md relative">
       <div className="bg-[#3B729C] w-full min-h-[64px] gap-[10px] flex justify-between items-center flex-wrap px-[30px] py-[20px] text-[white] mb-[30px]">
         <h1 className="sm:text-[20px] text-[12px]">List From Planner</h1>
         <Link
@@ -42,7 +42,7 @@ const Planner = ({ tasks }) => {
         </Link>
       </div>
 
-      <div className=" h-full overflow-y-auto p-7 pt-0">
+      <div className=" h-full w-full absolute top-0 left-0 flex justify-center items-center">
       No tasks in planner
       </div>
     </div>

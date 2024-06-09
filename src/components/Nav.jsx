@@ -18,6 +18,7 @@ const Nav = ({ userImg }) => {
       <Link to="https://shamil.riyadhholding.sa/">
         <img className="sm:w-[200px] w-[35vw]" src="/icons/rhclogo1.png" alt="" />
       </Link>
+      <div className="flex gap-3">
       <div
         className="flex items-end justify-end ml-auto mr-4"
         onMouseEnter={() => setIsHovered(true)}
@@ -47,6 +48,7 @@ const Nav = ({ userImg }) => {
           alt="User Profile"
           style={{ width: "40px", height: "40px" }}
         />
+      </div>
       </div>
     </div>
   );

@@ -58,7 +58,22 @@ const EventName = ({ events }) => {
   }, [events]);
 
 
-  if(events.length === 0 || !nearestEvent) return null;
+  if(events.length === 0 || !nearestEvent){
+    return(
+      <div className="py-[30px] px-[20px] bg-[#3B729C] flex flex-col justify-center items-center gap-[24px] text-white rounded-[8px]">
+      <div className="flex flex-col items-center gap-[10px]">
+        <h1 className="sm:text-[20px] text-[12px] font-light ">
+        &nbsp;
+        </h1>
+        <h2 className="sm:text-[16px] text-[11px] font-light ">No upcoming Event</h2>
+      </div>
+
+      <p className="text-[13px] font-light text-center">
+        &nbsp;
+      </p>
+    </div>
+    )
+  };
 
   return (
     <div className="py-[30px] px-[20px] bg-[#3B729C] flex flex-col justify-center items-center gap-[24px] text-white rounded-[8px]">
