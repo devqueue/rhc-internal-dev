@@ -29,7 +29,7 @@ const Poll = () => {
         <h1 className="sm:text-[20px] text-[12px]">استطلاع رأي</h1>
         <Link
           className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#50917F] rounded-[8px]"
-          to="/all-polls"
+          to= "#" //"/all-polls"
         >
           عرض الكل
         </Link>
