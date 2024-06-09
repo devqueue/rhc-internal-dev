@@ -32,7 +32,7 @@ const Announcement = ({ announcements }) => {
 
   return (
     <div
-      className="w-full overflow-hidden bg-[#f2f8f4] relative rounded-lg shadow-md"
+      className="w-full overflow-hidden bg-[#ffffff] relative rounded-lg shadow-md"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -48,7 +48,7 @@ const Announcement = ({ announcements }) => {
           <div
             key={index}
             className={`w-full justify-center flex flex-wrap flex-shrink-0 rounded-lg gap-[60px] items-center self-stretch content-center`}
-            style={{ backgroundColor: "#f2f8f4" }}
+            style={{ backgroundColor: "#ffffff" }}
           >
             <div
               className="lg:w-[460px] w-[40vw] lg:h-[320px] h-[30vw] bg-slate-300 rounded-lg overflow-hidden shrink-0"
@@ -67,13 +67,13 @@ const Announcement = ({ announcements }) => {
                 <p className="sm:text-[16px] text-[11px] font-light xxl:w-[20vw] w-auto">
                   {announcement.fields.preview_en}
                 </p>
-                <Link
+                {/* <Link
                   className="m:sm:text-[14px] text-[9px] px-[10px] py-[5px] border-[1px] border-black md:rounded-[8px] rounded-md"
                   to={`/announcement/${announcement.id}`}
                   state={{ announcement, moreAnnouncements: announcements }}
                 >
                   Read More
-                </Link>
+                </Link> */}
               </div>
 
               <img
