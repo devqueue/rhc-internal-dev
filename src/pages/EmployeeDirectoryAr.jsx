@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Nav from "../components/Nav";
+import Nav from "../ArabicComponents/Nav";
 import EmployeeCard from "../components/EmployeeCard";
 import { useLocation } from "react-router-dom";
 

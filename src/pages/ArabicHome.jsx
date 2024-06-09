@@ -12,10 +12,13 @@ import Planner from "../ArabicComponents/Planner";
 import Poll from "../ArabicComponents/Poll";
 import QuickLinks from "../ArabicComponents/QuickLinks";
 import UpcomingEvents from "../ArabicComponents/UpcomingEvents";
-import { useMsal } from '@azure/msal-react';
-import { useState, useEffect } from 'react';
-import { loginRequest, msalConfig } from '../authConfig';
-import { InteractionRequiredAuthError, PublicClientApplication } from '@azure/msal-browser';
+import { useMsal } from "@azure/msal-react";
+import { useState, useEffect } from "react";
+import { loginRequest, msalConfig } from "../authConfig";
+import {
+  InteractionRequiredAuthError,
+  PublicClientApplication,
+} from "@azure/msal-browser";
 import ViewEmployeeDirectoryAr from "../ArabicComponents/ViewEmployeeDirectory";
 import NewEmployeeCardsAr from "../ArabicComponents/NewEmployeeCards";
 import KnowledgeBaseUpdatedAr from "../ArabicComponents/KnowledgeBaseUpdated";
@@ -36,8 +39,8 @@ const ArabicHome = () => {
   const [gallery, setGallery] = useState([]);
   const [accounts, setAccounts] = useState([]);
   const [user, setUser] = useState(null);
-  
-  const [mails,setMails] = useState([]);
+
+  const [mails, setMails] = useState([]);
 
   const [loading, setLoading] = useState(true);
 
@@ -52,11 +55,21 @@ const ArabicHome = () => {
   }, []);
 
   useEffect(() => {
-    const fetchListItems = async (token, siteId, listId, setStateFunction, name) => {
+    const fetchListItems = async (
+      token,
+      siteId,
+      listId,
+      setStateFunction,
+      name,
+      fields
+    ) => {
       try {
-        const response = await fetch(`https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listId}/items?expand=fields`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const response = await fetch(
+          `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listId}/items?expand=fields${fields}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         const data = await response.json();
         // console.log(`${name} items:`, data);
 
@@ -83,30 +96,73 @@ const ArabicHome = () => {
           await fetchCalendarEvents(response.accessToken);
           await fetchPlannerTasks(response.accessToken);
 
-          const userResponse = await fetch('https://graph.microsoft.com/v1.0/me', {
-            headers: { Authorization: `Bearer ${response.accessToken}` }
-          });
+          const userResponse = await fetch(
+            "https://graph.microsoft.com/v1.0/me",
+            {
+              headers: { Authorization: `Bearer ${response.accessToken}` },
+            }
+          );
           const userJson = await userResponse.json();
-          console.log('User details:', userJson);
+          console.log("User details:", userJson);
           setUser(userJson);
 
-          const response2 = await fetch('https://graph.microsoft.com/v1.0/sites/riyadhholding.sharepoint.com:/sites/Shamil/', {
-            headers: { Authorization: `Bearer ${response.accessToken}` }
-          });
+          const response2 = await fetch(
+            "https://graph.microsoft.com/v1.0/sites/riyadhholding.sharepoint.com:/sites/Shamil/",
+            {
+              headers: { Authorization: `Bearer ${response.accessToken}` },
+            }
+          );
           const resJson = await response2.json();
           const siteId = resJson.id;
 
           const lists = [
-            { name: 'Announcements', id: '8123ed29-3809-4573-bd24-70b60e752aa1', setStateFunction: setAnnouncements },
-            { name: 'Employee Directory', id: '50e093d8-d366-4994-a9d8-ac460cb6e18a', setStateFunction: setEmployeeDirectory },
-            { name: 'News', id: '0304b663-8abb-414e-a03c-2d7f00cff357', setStateFunction: setNews },
-            { name: 'New Employee', id: 'cc29e416-2bf1-4462-8d41-d2b437357776', setStateFunction: setNewEmployee },
-            { name: 'Upcoming events', id: 'fd974e0a-d601-4921-804c-10ff956619e2', setStateFunction: setUpcomingEvents },
-            { name: 'Gallery', id: '9505ceb4-ece5-447d-99fa-b383a324dcd9', setStateFunction: setGallery },
+            {
+              name: "Announcements",
+              id: "8123ed29-3809-4573-bd24-70b60e752aa1",
+              fields: "",
+              setStateFunction: setAnnouncements,
+            },
+            {
+              name: "Employee Directory",
+              id: "50e093d8-d366-4994-a9d8-ac460cb6e18a",
+              fields: "",
+              setStateFunction: setEmployeeDirectory,
+            },
+            {
+              name: "News",
+              id: "0304b663-8abb-414e-a03c-2d7f00cff357",
+              fields: "(select=Title, preview_en, full_text_en, title_ar, preview_ar, full_text_ar, image_name, status)",
+              setStateFunction: setNews,
+            },
+            {
+              name: "New Employee",
+              id: "cc29e416-2bf1-4462-8d41-d2b437357776",
+              fields: "",
+              setStateFunction: setNewEmployee,
+            },
+            {
+              name: "Upcoming events",
+              id: "fd974e0a-d601-4921-804c-10ff956619e2",
+              fields: "",
+              setStateFunction: setUpcomingEvents,
+            },
+            {
+              name: "Gallery",
+              id: "9505ceb4-ece5-447d-99fa-b383a324dcd9",
+              fields: "",
+              setStateFunction: setGallery,
+            },
           ];
 
-          const fetchPromises = lists.map(list => 
-            fetchListItems(response.accessToken, siteId, list.id, list.setStateFunction, list.name)
+          const fetchPromises = lists.map((list) =>
+            fetchListItems(
+              response.accessToken,
+              siteId,
+              list.id,
+              list.setStateFunction,
+              list.name,
+              list.fields
+            )
           );
 
           await Promise.all(fetchPromises);
@@ -126,12 +182,20 @@ const ArabicHome = () => {
         const now = new Date();
         now.setHours(0, 0, 0, 0);
         const isoDate = now.toISOString();
-        const dateAfterSevenDays = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
+        const dateAfterSevenDays = new Date(
+          now.getTime() + 7 * 24 * 60 * 60 * 1000
+        );
         const isoDateAfterSevenDays = dateAfterSevenDays.toISOString();
 
-        let calendar = await fetch(`https://graph.microsoft.com/v1.0/me/calendarView?startDateTime=${isoDate}&endDateTime=${isoDateAfterSevenDays}`, {
-          headers: { Authorization: "Bearer " + token, Prefer: 'outlook.timezone="Asia/Riyadh"' },
-        });
+        let calendar = await fetch(
+          `https://graph.microsoft.com/v1.0/me/calendarView?startDateTime=${isoDate}&endDateTime=${isoDateAfterSevenDays}`,
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+              Prefer: 'outlook.timezone="Asia/Riyadh"',
+            },
+          }
+        );
 
         const cal_json = await calendar.json();
         // console.log('org_cal', cal_json);
@@ -140,7 +204,9 @@ const ArabicHome = () => {
 
         const cal_eventsjson = cal_json.value.map((events) => ({
           name: events.subject,
-          month: new Date(events.start.dateTime).toLocaleString("default", { month: "short" }),
+          month: new Date(events.start.dateTime).toLocaleString("default", {
+            month: "short",
+          }),
           day: new Date(events.start.dateTime).getDate(),
           starttime: new Date(events.start.dateTime).toLocaleString("default", {
             timeStyle: "short",
@@ -162,13 +228,15 @@ const ArabicHome = () => {
 
     const fetchMailInbox = async (token) => {
       try {
-        const response = await fetch(`https://graph.microsoft.com/v1.0/me/messages?$filter=microsoft.graph.eventMessage/meetingMessageType ne 'none' and sender/emailAddress/address  eq 'mcenter@riyadhholding.sa'`, {
-          headers: { Authorization: "Bearer " + token },
-        });
-        
-        
+        const response = await fetch(
+          `https://graph.microsoft.com/v1.0/me/messages?$filter=microsoft.graph.eventMessage/meetingMessageType ne 'none' and sender/emailAddress/address  eq 'mcenter@riyadhholding.sa'`,
+          {
+            headers: { Authorization: "Bearer " + token },
+          }
+        );
+
         const json = await response.json();
-        setMails(json.value)
+        setMails(json.value);
       } catch (error) {
         console.error("Error fetching mail inbox:", error);
       }
@@ -176,28 +244,44 @@ const ArabicHome = () => {
 
     const fetchPlannerTasks = async (token) => {
       try {
-        const tasks_planner = await fetch("https://graph.microsoft.com/v1.0/me/planner/tasks/", {
-          headers: { Authorization: "Bearer " + token },
-        });
+        const tasks_planner = await fetch(
+          "https://graph.microsoft.com/v1.0/me/planner/tasks/",
+          {
+            headers: { Authorization: "Bearer " + token },
+          }
+        );
         const tasks_json = await tasks_planner.json();
-        const tasks_filter_json = tasks_json.value.filter((obj) => !obj.completedBy);
+        const tasks_filter_json = tasks_json.value.filter(
+          (obj) => !obj.completedBy
+        );
         const tasks_assigned_json = tasks_filter_json.map((tasks) => ({
           title: tasks.title,
           id: tasks.id,
           url: `https://tasks.office.com/arhc.com.sa/Home/Task/${tasks.id}`,
-          dueDate: new Date(tasks.dueDateTime).getFullYear() !== 1970
-            ? `${new Date(tasks.dueDateTime).getDate()}/${new Date(tasks.dueDateTime).getMonth() + 1}/${new Date(tasks.dueDateTime).getFullYear()}`
-            : "No Due Date",
+          dueDate:
+            new Date(tasks.dueDateTime).getFullYear() !== 1970
+              ? `${new Date(tasks.dueDateTime).getDate()}/${
+                  new Date(tasks.dueDateTime).getMonth() + 1
+                }/${new Date(tasks.dueDateTime).getFullYear()}`
+              : "No Due Date",
         }));
         const stasks_assigned_json = tasks_assigned_json.sort((a, b) => {
           // Split the dueDate string and parse it as a Date object
-          const datePartsA = a.dueDate.split('/');
-          const datePartsB = b.dueDate.split('/');
-          
+          const datePartsA = a.dueDate.split("/");
+          const datePartsB = b.dueDate.split("/");
+
           // Create Date objects with year, month (zero-based), and day
-          const dateA = new Date(datePartsA[2], datePartsA[0] - 1, datePartsA[1]);
-          const dateB = new Date(datePartsB[2], datePartsB[0] - 1, datePartsB[1]);
-          
+          const dateA = new Date(
+            datePartsA[2],
+            datePartsA[0] - 1,
+            datePartsA[1]
+          );
+          const dateB = new Date(
+            datePartsB[2],
+            datePartsB[0] - 1,
+            datePartsB[1]
+          );
+
           return dateA - dateB;
         });
         setPlannerTasks(stasks_assigned_json);
@@ -215,23 +299,37 @@ const ArabicHome = () => {
   if (loading) {
     return (
       <div class="grid min-h-[100vh] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
-  <svg class="w-16 h-16 animate-spin text-gray-900/50" viewBox="0 0 64 64" fill="none"
-    xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-    <path
-      d="M32 3C35.8083 3 39.5794 3.75011 43.0978 5.20749C46.6163 6.66488 49.8132 8.80101 52.5061 11.4939C55.199 14.1868 57.3351 17.3837 58.7925 20.9022C60.2499 24.4206 61 28.1917 61 32C61 35.8083 60.2499 39.5794 58.7925 43.0978C57.3351 46.6163 55.199 49.8132 52.5061 52.5061C49.8132 55.199 46.6163 57.3351 43.0978 58.7925C39.5794 60.2499 35.8083 61 32 61C28.1917 61 24.4206 60.2499 20.9022 58.7925C17.3837 57.3351 14.1868 55.199 11.4939 52.5061C8.801 49.8132 6.66487 46.6163 5.20749 43.0978C3.7501 39.5794 3 35.8083 3 32C3 28.1917 3.75011 24.4206 5.2075 20.9022C6.66489 17.3837 8.80101 14.1868 11.4939 11.4939C14.1868 8.80099 17.3838 6.66487 20.9022 5.20749C24.4206 3.7501 28.1917 3 32 3L32 3Z"
-      stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
-    <path
-      d="M32 3C36.5778 3 41.0906 4.08374 45.1692 6.16256C49.2477 8.24138 52.7762 11.2562 55.466 14.9605C58.1558 18.6647 59.9304 22.9531 60.6448 27.4748C61.3591 31.9965 60.9928 36.6232 59.5759 40.9762"
-      stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" class="text-gray-900">
-    </path>
-  </svg>
-</div>  
+        <svg
+          class="w-16 h-16 animate-spin text-gray-900/50"
+          viewBox="0 0 64 64"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+        >
+          <path
+            d="M32 3C35.8083 3 39.5794 3.75011 43.0978 5.20749C46.6163 6.66488 49.8132 8.80101 52.5061 11.4939C55.199 14.1868 57.3351 17.3837 58.7925 20.9022C60.2499 24.4206 61 28.1917 61 32C61 35.8083 60.2499 39.5794 58.7925 43.0978C57.3351 46.6163 55.199 49.8132 52.5061 52.5061C49.8132 55.199 46.6163 57.3351 43.0978 58.7925C39.5794 60.2499 35.8083 61 32 61C28.1917 61 24.4206 60.2499 20.9022 58.7925C17.3837 57.3351 14.1868 55.199 11.4939 52.5061C8.801 49.8132 6.66487 46.6163 5.20749 43.0978C3.7501 39.5794 3 35.8083 3 32C3 28.1917 3.75011 24.4206 5.2075 20.9022C6.66489 17.3837 8.80101 14.1868 11.4939 11.4939C14.1868 8.80099 17.3838 6.66487 20.9022 5.20749C24.4206 3.7501 28.1917 3 32 3L32 3Z"
+            stroke="currentColor"
+            stroke-width="5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+          <path
+            d="M32 3C36.5778 3 41.0906 4.08374 45.1692 6.16256C49.2477 8.24138 52.7762 11.2562 55.466 14.9605C58.1558 18.6647 59.9304 22.9531 60.6448 27.4748C61.3591 31.9965 60.9928 36.6232 59.5759 40.9762"
+            stroke="currentColor"
+            stroke-width="5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="text-gray-900"
+          ></path>
+        </svg>
+      </div>
     );
   }
 
   return (
-    <div className="overflow-hidden w-full" style={{ direction: 'rtl' }}>
-      <Nav user = {user} />
+    <div className="overflow-hidden w-full" style={{ direction: "rtl" }}>
+      <Nav user={user} />
       <div className="xl:px-[30px] px-[2vw] bg-[#F4F8FB] w-full py-[30px]">
         <div className="flex lg:flex-row flex-col xl:gap-[30px] gap-[2vw]">
           <div className="lg:w-[63vw] w-full">
@@ -307,14 +405,13 @@ const ArabicHome = () => {
               <h1 className="text-white font-inter text-lg font-semibold">View Employee Directory</h1>
             </Link>
             </div> */}
-            
-          
+
             <div className="sm:px-[30px] px-[5vw] mt-[30px]">
               <KnowledgeBase />
             </div>
           </div>
         </div>
-        
+
         {/* 
                 Hide Linkedin 
         */}

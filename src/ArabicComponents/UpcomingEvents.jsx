@@ -49,7 +49,7 @@ const UpcomingEvents = ({ events }) => {
     <div className="rounded-[8px] overflow-hidden w-full h-[530px] shadow-md">
       <div className="px-[20px] py-[16px] flex items-center justify-between gap-[10px] self-stretch flex-wrap bg-[#3B729C] text-[white]">
         <h1 className="sm:text-[20px] text-[12px] font-light self-stretch min-w-[100px]">
-          احداث القادمة
+        الأحداث والفعاليات
         </h1>
 
         <Link
@@ -103,7 +103,7 @@ const UpcomingEvents = ({ events }) => {
                   className="w-[16px] h-[16px] shrink-0"
                 ></div>
                 <p className="text-[12px] font-[400px]">
-                  {event.fields.event_location_en}
+                  {event.fields.event_location_ar}
                 </p>
               </div>
             </div>

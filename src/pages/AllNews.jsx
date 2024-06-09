@@ -8,6 +8,8 @@ const AllNews = () => {
   console.log("location", location);
   const news = location.state ? location.state : [];
 
+  console.log("Hello world")
+  console.log(news)
 
   return (
     <>
@@ -27,6 +29,7 @@ const AllNews = () => {
                   img={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${item.fields.image_name}`}
                   title={item.fields.Title}
                   subheading={item.fields.Preview_en}
+                  fulltext={item.fields.Full_Text_en}
                 />
               ))}
             </div>

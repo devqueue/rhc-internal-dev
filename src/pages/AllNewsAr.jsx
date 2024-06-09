@@ -1,5 +1,5 @@
 import { useState } from "react"; // Import useState to manage state
-import Nav from "../components/Nav";
+import Nav from "../ArabicComponents/Nav";
 import NewsCard from "../ArabicComponents/NewsCard";
 import { useLocation } from "react-router-dom";
 
@@ -26,6 +26,7 @@ const AllNewsAr = () => {
                   img={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${item.fields.image_name}`}
                   title={item.fields.Title_ar}
                   subheading={item.fields.Preview_ar}
+                  fulltext={item.fields.Full_Text_ar}
                 />
               ))}
             </div>

@@ -44,7 +44,7 @@ const QuickLinks = () => {
     {
       src: "/icons/officeAr.svg",
       alt: "Office & Outlook",
-      path: "https://www.office.com",
+      path: "https://outlook.office.com/mail/",
     },
   ];
   return (

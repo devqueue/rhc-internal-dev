@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const NewsCard = ({ img, title, subheading }) => {
+const NewsCard = ({ img, title, subheading, fulltext }) => {
   const [showModal, setShowModal] = useState(false);
 
   const showPopup = () => {
@@ -58,41 +58,13 @@ const NewsCard = ({ img, title, subheading }) => {
               <div className="p-[20px]">
                 <div className="flex items-center gap-[20px] mb-[20px]">
                   <img
-                    src="/images/announcement.svg"
+                    src={img}
                     alt="announcement"
                     className="w-full h-[400px] object-cover rounded-[8px]"
                   />
                 </div>
                 <p className="text-Somar text-base leading-[32.52px]">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. Lorem Ipsum is simply dummy text of the
-                  printing and typesetting industry. Lorem Ipsum has been the
-                  industry's standard dummy text ever since the 1500s, when an
-                  unknown printer took a galley of type and scrambled it to make
-                  a type specimen book. Lorem Ipsum is simply dummy text of the
-                  printing and typesetting industry. Lorem Ipsum has been the
-                  industry's standard dummy text ever since the 1500s, when an
-                  unknown printer took a galley of type and scrambled it to make
-                  a type specimen book. Lorem Ipsum is simply dummy text of the
-                  printing and typesetting industry. Lorem Ipsum has been the
-                  industry's standard dummy text ever since the 1500s, when an
-                  unknown printer took a galley of type and scrambled it to make
-                  a type specimen book. Lorem Ipsum is simply dummy text of the
-                  printing and typesetting industry. Lorem Ipsum has been the
-                  industry's standard dummy text ever since the 1500s, when an
-                  unknown printer took a galley of type and scrambled it to make
-                  a type specimen book. Lorem Ipsum is simply dummy text of the
-                  printing and typesetting industry. Lorem Ipsum has been the
-                  industry's standard dummy text ever since the 1500s, when an
-                  unknown printer took a galley of type and scrambled it to make
-                  a type specimen book. Lorem Ipsum is simply dummy text of the
-                  printing and typesetting industry. Lorem Ipsum has been the
-                  industry's standard dummy text ever since the 1500s, when an
-                  unknown printer took a galley of type and scrambled it to make
-                  a type specimen book.
+                  {fulltext}
                 </p>
               </div>
             </div>

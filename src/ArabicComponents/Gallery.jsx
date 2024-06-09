@@ -48,7 +48,7 @@ const Gallery = ({ gallery }) => {
               </div>
 
               <Link 
-                to={`/ar/galleryview/${item.id}`}
+                to= "" //{`/ar/galleryview/${item.id}`}
                 state={{ gallery: item }}
                 className="mx-[27.88px] my-[16px] sm:text-[14px] text-[9px] text-white font-light px-[20px] py-[10px] bg-[#3B729C] rounded-md w-[120px]">
                 عرض الصور

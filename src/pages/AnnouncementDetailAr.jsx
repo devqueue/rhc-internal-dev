@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Nav from "../components/Nav";
+import Nav from "../ArabicComponents/Nav";
 import AnnouncementCard from "../components/AnnouncementCard";
 import { useLocation } from "react-router-dom";
 
