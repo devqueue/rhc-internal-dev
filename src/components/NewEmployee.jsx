@@ -4,7 +4,7 @@ const NewEmployee = ({ newEmployee }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
-
+  console.log(newEmployee)
   useEffect(() => {
     if (newEmployee.length > 1 && !isHovered) {
       let intervalId = setInterval(() => {
@@ -41,7 +41,7 @@ const NewEmployee = ({ newEmployee }) => {
             className="flex w-full flex-shrink-0 flex-col items-center gap-[30px] bg-[#3B729C] py-[30px] rounded-[8px] overflow-hidden"
           >
             <h1 className="text-center sm:text-[20px] text-[12px] text-white font-light w-full px-[16px] text-wrap">
-            {employee.fields.welcome_en}
+            {employee.fields.Welcome_en}
             </h1>
 
             <div
