@@ -51,7 +51,7 @@ const Nav = ({ user }) => {
       >
         <img
           className=" cursor-pointer"
-          src="/images/english.svg"
+          src="/icons/englishicon.svg"
           alt="User Profile"
           style={{ width: "30px", height: "30px" }}
         />

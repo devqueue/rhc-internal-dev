@@ -44,7 +44,7 @@ const Nav = ({ userImg }) => {
       >
         <img
           className=" cursor-pointer"
-          src="/images/arabic.svg"
+          src="/icons/arabicicon.svg"
           alt="User Profile"
           style={{ width: "30px", height: "30px" }}
         />
