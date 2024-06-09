@@ -48,11 +48,12 @@ const Home = () => {
       siteId,
       listId,
       setStateFunction,
-      name
+      name,
+      fields
     ) => {
       try {
         const response = await fetch(
-          `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listId}/items?expand=fields`,
+          `https://graph.microsoft.com/v1.0/sites/${siteId}/lists/${listId}/items?expand=fields${fields}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -119,36 +120,43 @@ const Home = () => {
             {
               name: "Announcements",
               id: "8123ed29-3809-4573-bd24-70b60e752aa1",
+              fields: "",
               setStateFunction: setAnnouncements,
             },
             {
               name: "Employee Directory",
               id: "50e093d8-d366-4994-a9d8-ac460cb6e18a",
+              fields: "",
               setStateFunction: setEmployeeDirectory,
             },
             {
               name: "News",
               id: "0304b663-8abb-414e-a03c-2d7f00cff357",
+              fields: "(select=Title, preview_en, full_text_en, title_ar, preview_ar, full_text_ar, image_name, status)",
               setStateFunction: setNews,
             },
             {
               name: "New Employee",
               id: "cc29e416-2bf1-4462-8d41-d2b437357776",
+              fields: "",
               setStateFunction: setNewEmployee,
             },
             {
               name: "Upcoming events",
               id: "fd974e0a-d601-4921-804c-10ff956619e2",
+              fields: "",
               setStateFunction: setUpcomingEvents,
             },
             {
               name: "Gallery",
               id: "9505ceb4-ece5-447d-99fa-b383a324dcd9",
+              fields: "",
               setStateFunction: setGallery,
             },
             {
               name: "Pdfs",
               id: "ed12e05a-da1c-4407-83d0-85c70fe882b7",
+              fields: "",
               setStateFunction: setPdfs,
             },
           ];
@@ -159,7 +167,8 @@ const Home = () => {
               siteId,
               list.id,
               list.setStateFunction,
-              list.name
+              list.name,
+              list.fields
             )
           );
           await Promise.all(fetchPromises);
