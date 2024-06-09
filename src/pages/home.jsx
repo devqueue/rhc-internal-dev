@@ -355,10 +355,12 @@ const Home = () => {
               <Poll />
               <News news={news} />
             </div>
-
-            <div className="mt-[30px]">
+            {/* 
+                Hide Knoledge base
+            */}
+            {/* <div className="mt-[30px]">
               <KnowledgeBaseUpdated />
-            </div>
+            </div> */}
           </div>
 
           <div className="shadow-md lg:w-[30vw] w-full rounded-[8px] bg-white">
@@ -384,7 +386,10 @@ const Home = () => {
           </div> */}
 
             <hr />
-            <div className="sm:px-[30px] px-[5vw] mt-[30px]">
+            {/*
+            View Employee Directory
+            */}
+            {/* <div className="sm:px-[30px] px-[5vw] mt-[30px]">
             <Link state={accessToken} to="/all-employees" className="flex w-full p-4 pt-4 pb-4 px-5 items-start content-start gap-2 flex-wrap bg-[#C2AB80] rounded-lg">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -401,7 +406,7 @@ const Home = () => {
 
               <h1 className="text-white font-inter text-lg font-semibold">View Employee Directory</h1>
             </Link>
-            </div>
+            </div> */}
 
             <div className="sm:px-[30px] px-[5vw] mt-[30px]">
               <KnowledgeBase pdfs={pdfs} />
@@ -409,9 +414,13 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="w-full rounded-lg overflow-hidden mt-[65px]">
+        {/*
+        hide linkedin 
+        */}
+
+        {/* <div className="w-full rounded-lg overflow-hidden mt-[65px]">
           <NewEmployeeCards accessToken = {accessToken} />
-        </div>
+        </div> */}
 
         <div className="w-full rounded-lg overflow-hidden mt-[65px]">
           <Gallery gallery={gallery} />

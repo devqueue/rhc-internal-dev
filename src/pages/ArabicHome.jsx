@@ -254,10 +254,12 @@ const ArabicHome = () => {
 
               <News news={news} />
             </div>
-
-            <div className="mt-[30px]">
+            {/* 
+                Hide Knoledge base
+            */}
+            {/* <div className="mt-[30px]">
               <KnowledgeBaseUpdatedAr />
-            </div>
+            </div> */}
           </div>
 
           <div className="shadow-md lg:w-[30vw] w-full rounded-[8px] bg-white">
@@ -284,7 +286,10 @@ const ArabicHome = () => {
             </div>
 
             <hr />
-            <div className="sm:px-[30px] px-[5vw] mt-[30px]">
+            {/* 
+                Hide Employee directory
+            */}
+            {/* <div className="sm:px-[30px] px-[5vw] mt-[30px]">
             <Link state={accessToken} to="/ar/all-employees" className="flex w-full p-4 pt-4 pb-4 px-5 items-start content-start gap-2 flex-wrap bg-[#C2AB80] rounded-lg">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -301,17 +306,21 @@ const ArabicHome = () => {
 
               <h1 className="text-white font-inter text-lg font-semibold">View Employee Directory</h1>
             </Link>
-            </div>
-
+            </div> */}
+            
+          
             <div className="sm:px-[30px] px-[5vw] mt-[30px]">
               <KnowledgeBase />
             </div>
           </div>
         </div>
-
-        <div className="w-full rounded-lg overflow-hidden mt-[65px]">
+        
+        {/* 
+                Hide Linkedin 
+        */}
+        {/* <div className="w-full rounded-lg overflow-hidden mt-[65px]">
           <NewEmployeeCards accessToken = {accessToken} />
-        </div>
+        </div> */}
 
         <div className="w-full rounded-lg overflow-hidden mt-[65px]">
           <Gallery gallery={gallery} />
