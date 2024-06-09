@@ -26,6 +26,7 @@ const AllNewsAr = () => {
                   img={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${item.fields.image_name}`}
                   title={item.fields.Title_ar}
                   subheading={item.fields.Preview_ar}
+                  fulltext={item.fields.Full_Text_ar}
                 />
               ))}
             </div>
