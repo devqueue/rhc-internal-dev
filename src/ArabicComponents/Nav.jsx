@@ -35,7 +35,7 @@ const Nav = ({ user }) => {
           className="rounded-full cursor-pointer"
           src="/images/user.svg"
           alt="User Profile"
-          style={{ width: "40px", height: "40px" }}
+          style={{ width: "30px", height: "30px" }}
         />
         {isHovered && (
           <div className="absolute top-[60px] left-0 bg-white border border-gray-300 rounded-lg shadow-md p-4">
@@ -53,7 +53,7 @@ const Nav = ({ user }) => {
           className=" cursor-pointer"
           src="/images/english.svg"
           alt="User Profile"
-          style={{ width: "40px", height: "40px" }}
+          style={{ width: "30px", height: "30px" }}
         />
       </div>
       </div>
