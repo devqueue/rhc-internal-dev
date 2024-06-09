@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "../components/Nav";
+import Nav from "../ArabicComponents/Nav";
 import { useLocation } from "react-router-dom";
 
 const GalleryviewAr = () => {

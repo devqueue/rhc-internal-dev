@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "../components/Nav";
+import Nav from "../ArabicComponents/Nav";
 import PollCard from "../components/PollCard";
 import { useState } from "react";
 

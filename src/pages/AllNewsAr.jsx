@@ -1,5 +1,5 @@
 import { useState } from "react"; // Import useState to manage state
-import Nav from "../components/Nav";
+import Nav from "../ArabicComponents/Nav";
 import NewsCard from "../ArabicComponents/NewsCard";
 import { useLocation } from "react-router-dom";
 
