@@ -34,7 +34,7 @@ const QuickLinks = () => {
     {
       src: "/icons/BookRooms.svg",
       alt: "Book rooms and meetings",
-      path: "https://arhc.provizit.com/",
+      path: "https://riyadhholding.provizit.com/",
     },
     {
       src: "/icons/Training.svg",
