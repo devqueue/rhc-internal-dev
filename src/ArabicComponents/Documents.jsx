@@ -21,7 +21,7 @@ const KnowledgeBase = () => {
 
         <div>
           <h1 className="sm:text-[14px] text-[9px] font-medium self-stretch">
-          دليل الموظف
+          دليل الموظف الإرشادي          
           </h1>
           <h3 className="text-[12px] font-light self-stretch">ملفات</h3>
         </div>
