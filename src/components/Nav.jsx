@@ -28,7 +28,7 @@ const Nav = ({ userImg }) => {
           className="rounded-full cursor-pointer"
           src={userImg? userImg : "/images/user.svg"}
           alt="User Profile"
-          style={{ width: "40px", height: "40px" }}
+          style={{ width: "30px", height: "30px" }}
         />
         {isHovered && (
           <div className="absolute top-[60px] right-0 bg-white border border-gray-300 rounded-lg shadow-md p-4">
@@ -46,7 +46,7 @@ const Nav = ({ userImg }) => {
           className=" cursor-pointer"
           src="/images/arabic.svg"
           alt="User Profile"
-          style={{ width: "40px", height: "40px" }}
+          style={{ width: "30px", height: "30px" }}
         />
       </div>
       </div>
