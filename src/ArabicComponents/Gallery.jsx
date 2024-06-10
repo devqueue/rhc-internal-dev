@@ -10,8 +10,8 @@ const Gallery = ({ gallery }) => {
         <h1 className="sm:text-[20px] text-[12px]">معرض الصور</h1>
         <Link
           className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#C2AB80] rounded-[8px]"
-          to="/ar/gallery"
-          state={gallery}
+          // to="/ar/gallery"
+          // state={gallery}
         >
           عرض الكل
         </Link>
@@ -48,8 +48,8 @@ const Gallery = ({ gallery }) => {
               </div>
 
               <Link 
-                to= "" //{`/ar/galleryview/${item.id}`}
-                state={{ gallery: item }}
+                // to= "" //{`/ar/galleryview/${item.id}`}
+                // state={{ gallery: item }}
                 className="mx-[27.88px] my-[16px] sm:text-[14px] text-[9px] text-white font-light px-[20px] py-[10px] bg-[#3B729C] rounded-md w-[120px]">
                 عرض الصور
               </Link>
