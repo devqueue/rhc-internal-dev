@@ -41,7 +41,8 @@ const Announcement = ({ announcements }) => {
           isTransitioning ? "duration-500" : "duration-0"
         }`}
         style={{
-          transform: `translateX(calc(${currentIndex * 100}% )`,
+          transform: `translateX(calc(${currentIndex * 100}% - ${
+            currentIndex * 40}px )`,
         }}
       >
         {announcements.map((announcement, index) => (
