@@ -431,7 +431,7 @@ const Home = () => {
           <NewEmployeeCards accessToken = {accessToken} />
         </div> */}
 
-        <div className="w-full rounded-lg overflow-hidden mt-[65px]">
+        <div className="w-full rounded-lg overflow-hidden mt-[65px] shadow-md">
           <Gallery gallery={gallery} />
         </div>
       </div>

@@ -6,7 +6,7 @@ const Gallery = ({ gallery }) => {
   }
   return (
     <>
-    <div className="w-full bg-[#fff] shadow-xl shadow-black border-[0.5px] drop-shadow-md pb-4">
+    <div className="w-full bg-[#f9f9f9] shadow-black border-[0.5px] drop-shadow-lg pb-4 shadow-md">
       <div className=" px-10 w-full py-[16px] bg-[#C2AB80] flex justify-between items-center mb-[30px] bg text-[white] rounded-[8px] rounded-bl-none rounded-br-none">
         <h1 className="sm:text-[20px] text-[12px]">Gallery</h1>
         <Link className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#C2AB80] rounded-md"
@@ -25,7 +25,7 @@ const Gallery = ({ gallery }) => {
           ) => (
             <div
               key={index}
-              className="w-[404px] min-h-[355px] bg-white rounded-lg overflow-hidden flex flex-col justify-between"
+              className="w-[404px] min-h-[355px] bg-white rounded-lg overflow-hidden flex flex-col justify-between shadow-md"
             >
               <div>
                 <div className="w-full h-[180px] bg-slate-300">
