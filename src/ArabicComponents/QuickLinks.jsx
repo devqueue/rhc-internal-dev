@@ -29,7 +29,7 @@ const QuickLinks = () => {
     },
     {
       src: "/icons/MidanAr.svg",
-      path: "https://arhc-op-web.azurewebsites.net/violations",
+      path: "https://maidan.riyadhholding.sa",
     },
     {
       src: "/icons/BookRoomsAr.svg",
