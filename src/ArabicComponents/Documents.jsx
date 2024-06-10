@@ -17,7 +17,7 @@ const KnowledgeBase = () => {
       </div>
 
       <a href="/pdf" target="_blank" className="flex self-stretch p-[12px] px-[20px] mx-[20px] items-center gap-[10px] rounded-[8px] border border-[#595959]">
-        <img src="/icons/WebinarIcon.svg" alt="" />
+        <img src="/icons/newdoc.svg" alt="" />
 
         <div>
           <h1 className="sm:text-[14px] text-[9px] font-medium self-stretch">
