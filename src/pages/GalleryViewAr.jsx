@@ -20,34 +20,24 @@ const GalleryviewAr = () => {
                 Event Gallery
               </h1>
             </div>
-            <div className="flex carousel bg-[#F4F8FB] rounded-box overflow-x-auto pt-[20px]">
-              <div className="carousel-item lg:w-[812px] lg:h-[533px] py-[40px] pl-[40px]">
-                <img src="/images/gallery.png" alt="img" />
+            <div className="flex carousel bg-[#F4F8FB] rounded-box w-full justify-center items-center flex-col">
+              <div className="carousel-item sm:w-[40vw] w-[70vw] py-[40px] ">
+                <img
+                  src={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${gallery.fields.image_name}`}
+                  alt={gallery.fields.Title}
+                  className="object-cover w-full h-full"
+                />
               </div>
-              <div className="carousel-item lg:w-[812px] lg:h-[533px] py-[40px] pl-[40px]">
-                <img src="/images/gallery.png" alt="img" />
-              </div>
-              <div className="carousel-item lg:w-[812px] lg:h-[533px] py-[40px] pl-[40px]">
-                <img src="/images/gallery.png" alt="Burger" />
-              </div>
-              <div className="carousel-item lg:w-[812px] lg:h-[533px] py-[40px] pl-[40px]">
-                <img src="/images/gallery.png" alt="Burger" />
-              </div>
-              <div className="carousel-item lg:w-[812px] lg:h-[533px] py-[40px] pl-[40px]">
-                <img src="/images/gallery.png" alt="Burger" />
-              </div>
-              <div className="carousel-item lg:w-[812px] lg:h-[533px] py-[40px] pl-[40px]">
-                <img src="/images/gallery.png" alt="Burger" />
-              </div>
-            </div>
-            <div className="lg:w-full md:w-full p-[40px] bg-[#F4F8FB] h-auto">
-              <h1 className="font-figtree font-semibold text-4xl leading-[48px] text-right">
-                {gallery.fields.event_name_ar }
+
+              <div className="lg:w-full md:w-full p-[40px] h-auto text-center">
+              <h1 className="font-figtree font-semibold text-4xl leading-[48px] text-center">
+                {gallery.fields.event_name_ar}
               </h1>
 
               <p className="font-inter font-normal text-base leading-[28px]">
                 {gallery.fields.subtitle_ar}
               </p>
+            </div>
             </div>
           </div>
         </div>

@@ -18,7 +18,11 @@ const galleryview = () => {
         </div>
         <div className="flex carousel bg-[#F4F8FB] rounded-box w-full justify-center items-center flex-col">
           <div className="carousel-item sm:w-[40vw] w-[70vw] py-[40px] ">
-            <img src="/images/gallery.png" alt="img" />
+            <img
+              src={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${gallery.fields.image_name}`}
+              alt={gallery.fields.Title}
+              className="object-cover w-full h-full"
+            />
           </div>
 
           <div className="lg:w-full md:w-full p-[40px] h-auto text-center">
