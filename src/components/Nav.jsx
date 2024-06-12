@@ -11,6 +11,9 @@ import {
 function signOutClickHandler(instance,account) {
   console.log(account);
   localStorage.setItem('userAuthToken',null);
+  localStorage.setItem('user',null);
+  localStorage.setItem('userImg','');
+
   const logoutRequest = {
     account: instance.getAccountByHomeId(account.homeAccountId),
     postLogoutRedirectUri: "/",
@@ -55,7 +58,7 @@ const Nav = ({ }) => {
       >
         <img
           className="rounded-full cursor-pointer"
-          src={userImg? userImg : "/images/user.svg"}
+          src={userImg!=''? userImg : "/images/user.svg"}
           alt="User Profile"
           style={{ width: "30px", height: "30px" }}
         />

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {
@@ -29,6 +29,23 @@ const msalInstance = new PublicClientApplication(msalConfig);
 
 const PrivateRoute = ({ children }) => {
   const isAuthenticated = useIsAuthenticated();
+  const [popupOpened, setPopupOpened] = useState(false);
+
+  const openPopup = () => {
+    const popup = window.open(
+      "https://riyadhholding.sharepoint.com/sites/Shamil/Assets/DONOTDELETE.png",
+      "_blank",
+      "width=0,height=0"
+    );
+
+    if (popup) {
+      popup.onload = () => {
+        popup.close();
+      };
+    }
+    setPopupOpened(true);
+  };
+
   if (!isAuthenticated) {
     return (
       <MsalAuthenticationTemplate
@@ -40,24 +57,22 @@ const PrivateRoute = ({ children }) => {
     );
   }
 
-  const popup = window.open(
-    "https://riyadhholding.sharepoint.com/sites/Shamil/Assets/DONOTDELETE.png",
-    "_blank",
-    "width=0,height=0"
+  return (
+    <>
+      {!popupOpened && (
+        <div>
+          <button onClick={openPopup}>
+            Allow Popup
+          </button>
+        </div>
+      )}
+      {children}
+    </>
   );
-
-  if (popup) {
-    popup.onload = () => {
-      popup.close();
-    };
-  }
-
-  return children;
 };
 
 const App = () => {
   useEffect(() => {
-
     const reload = setInterval(() => {
       window.location.reload();
     }, 3600000);
