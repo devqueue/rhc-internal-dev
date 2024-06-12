@@ -53,7 +53,7 @@ const KnowledgeBase = ({ pdfs }) => {
 
       {isPopupOpen && selectedPdf && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-4 rounded-lg relative w-[90%] h-[90%] ">
+          <div className="bg-white p-4 rounded-lg relative w-[90%] h-auto ">
             <button
               className="absolute top-2 right-2 text-[24px] font-bold text-gray-700"
               onClick={closePopup}

@@ -1,31 +1,69 @@
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import Flipbook from '../components/dflip';
+const KnowledgeBase = ({ pdfs }) => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [selectedPdf, setSelectedPdf] = useState(null);
 
-const KnowledgeBase = () => {
+  const handlePdfClick = (pdf) => {
+    setSelectedPdf(pdf);
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+    setSelectedPdf(null);
+  };
+
+  
+
+  if(pdfs.length === 0) return null;
+
   return (
-    <div className="flex flex-col items-start gap-[40px] w-full rounded-[8px] overflow-hidden  shadow-md pb-10">
+    <div className="flex flex-col items-start gap-[40px] w-full rounded-[8px] overflow-hidden pb-10 shadow-md">
       <div className="px-[20px] py-[16px] flex items-center justify-between gap-[10px] self-stretch flex-wrap bg-[#3B729C] text-[white]">
         <h1 className="sm:text-[20px] text-[12px] font-light self-stretch min-w-[100px]">
         الملفات
         </h1>
 
         {/* <Link
-          href=""
-          className="sm:text-[14px] text-[9px] font-light rounded-[4px] px-[10px] bg-white text-[#3B729C]"
+          to="/all-documents"
+          className="sm:text-[14px] text-[9px] font-light rounded-[4px] text-[#3B729C] px-[10px] bg-white"
         >
-          عرض الكل
+          View All
         </Link> */}
       </div>
 
-      <a href="/pdf" target="_blank" className="flex self-stretch p-[12px] px-[20px] mx-[20px] items-center gap-[10px] rounded-[8px] border border-[#595959]">
-        <img src="/icons/newdoc.svg" alt="" />
+      {pdfs.map((pdf, index) => (
+        <div
+          key={index}
+          className="flex self-stretch p-[12px] px-[20px] mx-[20px] items-center gap-[10px] rounded-[8px] border border-[#595959] cursor-pointer"
+           onClick={() => {handlePdfClick(pdf)}}
+        >
+          <img src="/icons/newdoc.svg" alt="" />
 
-        <div>
-          <h1 className="sm:text-[14px] text-[9px] font-medium self-stretch">
-          دليل الموظف الإرشادي          
-          </h1>
-          <h3 className="text-[12px] font-light self-stretch">ملفات</h3>
+          <div>
+            <h1 className="sm:text-[14px] text-[9px] font-medium self-stretch">
+              {pdf.fields.title_ar}
+            </h1>
+            <h3 className="text-[12px] font-light self-stretch">الملفات</h3>
+          </div>
         </div>
-      </a>
+      ))}
+
+      {isPopupOpen && selectedPdf && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-4 rounded-lg relative w-[90%] h-auto ">
+            <button
+              className="absolute top-2 right-2 text-[24px] font-bold text-gray-700"
+              onClick={closePopup}
+            >
+              &times;
+            </button>
+            <Flipbook source={`https://riyadhholding.sharepoint.com/sites/Shamil/_layouts/download.aspx?SourceUrl=https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${selectedPdf.fields.document_name}`} />
+            </div>
+        </div>
+      )}
     </div>
   );
 };

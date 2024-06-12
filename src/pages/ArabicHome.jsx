@@ -39,6 +39,7 @@ const ArabicHome = () => {
   const [gallery, setGallery] = useState([]);
   const [accounts, setAccounts] = useState([]);
   const [user, setUser] = useState(null);
+  const [pdfs, setPdfs] = useState([]);
 
   const [mails, setMails] = useState([]);
 
@@ -163,6 +164,12 @@ const ArabicHome = () => {
               id: "9505ceb4-ece5-447d-99fa-b383a324dcd9",
               fields: "",
               setStateFunction: setGallery,
+            },
+            {
+              name: "Pdfs",
+              id: "ed12e05a-da1c-4407-83d0-85c70fe882b7",
+              fields: "",
+              setStateFunction: setPdfs,
             },
           ];
 
@@ -419,7 +426,7 @@ const ArabicHome = () => {
             </div> */}
 
             <div className="sm:px-[30px] px-[5vw] mt-[30px]">
-              <KnowledgeBase />
+              <KnowledgeBase pdfs={pdfs}/>
             </div>
           </div>
         </div>
