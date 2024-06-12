@@ -1,8 +1,36 @@
-import { Link } from "react-router-dom";
+import { Link, json } from "react-router-dom";
 import { useState } from "react";
 
-const Nav = ({ userImg }) => {
 
+import {
+  useMsal,
+  AuthenticatedTemplate,
+  UnauthenticatedTemplate,
+} from "@azure/msal-react";
+
+function signOutClickHandler(instance,account) {
+  console.log(account);
+  const logoutRequest = {
+    account: instance.getAccountByHomeId(account.homeAccountId),
+    postLogoutRedirectUri: "/",
+  };
+  instance.logoutRedirect(logoutRequest);
+}
+
+// SignOutButton Component returns a button that invokes a redirect logout when clicked
+function SignOutButton() {
+  // useMsal hook will return the PublicClientApplication instance you provided to MsalProvider
+  const { instance,accounts } = useMsal();
+
+  return (
+    <p className="text-sm w-full cursor-pointer mt-2" onClick={() => signOutClickHandler(instance,accounts[0])}>Sign Out</p>
+  );
+}
+
+
+const Nav = ({ }) => {
+  const { instance, accounts } = useMsal();
+  const userImg = (localStorage.getItem("userImg"));
   const user = JSON.parse(localStorage.getItem("user"));
   console.log("user", user);
   const [isHovered, setIsHovered] = useState(false);
@@ -31,9 +59,10 @@ const Nav = ({ userImg }) => {
           style={{ width: "30px", height: "30px" }}
         />
         {isHovered && (
-          <div className="absolute top-[60px] right-0 bg-white border border-gray-300 rounded-lg shadow-md p-4">
+          <div className="absolute top-[60px] right-5 bg-white border border-gray-300 rounded-lg shadow-md p-4">
             <p className="text-gray-800">{user.displayName}</p>
             <p className="text-gray-800">{user.jobTitle}</p>
+            <SignOutButton/>
           </div>
         )}
       </div>

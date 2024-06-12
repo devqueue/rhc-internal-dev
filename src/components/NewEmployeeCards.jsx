@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const NewEmployeeCards = () => {
   return (
-    <div className=" w-full rounded-lg overflow-hidden shadow-xl shadow-black border-[0.5px] drop-shadow-md">
+    <div className=" w-full rounded-lg overflow-hidden ">
       <div className="bg-[#3B729C] w-full h-[64px] flex justify-between items-center px-[30px] py-[20px] text-[white]">
         <h1 className="sm:text-[20px] text-[12px]">LinkedIn</h1>
         {/* <Link

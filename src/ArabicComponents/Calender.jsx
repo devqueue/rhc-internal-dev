@@ -43,16 +43,22 @@ const Calender = ({ events }) => {
   );
 
   // Events for today and this week
-  const todayEvents = events.filter((event) => {
+  let todayEvents = events.filter((event) => {
     const eventDate = new Date(todayYear, todayMonth, event.day);
     return eventDate.toDateString() === new Date().toDateString();
   });
 
-  const weekEvents = events.filter((event) => {
+  todayEvents.sort((a, b) => parseInt(a.day) - parseInt(b.day));
+
+  let weekEvents = events.filter((event) => {
     const todayEvent = new Date(todayYear, todayMonth, todayDay);
     const eventDate = new Date(todayYear, todayMonth, event.day);
     return eventDate > todayEvent && eventDate <= endOfWeek && eventDate.toDateString() !== new Date().toDateString();
   });
+
+  weekEvents.sort((a, b) => parseInt(a.day) - parseInt(b.day));
+
+
 
 
   // console.log("Today Events:", todayEvents);

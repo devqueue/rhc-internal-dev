@@ -52,13 +52,15 @@ const UpcomingEvents = ({ events }) => {
         الأحداث والفعاليات
         </h1>
 
-        <Link
+      {/* commented upcomming events */}
+
+        {/* <Link
           to="/ar/all-events"
           className="sm:text-[14px] text-[9px] font-light rounded-[4px] px-[10px] text-[#3B729C] bg-white"
           state={events}
         > 
           عرض الكل
-        </Link>
+        </Link> */}
       </div>
 
       <div className="h-full overflow-y-auto xl:pb-24 pb-32">

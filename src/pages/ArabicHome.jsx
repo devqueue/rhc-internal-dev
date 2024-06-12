@@ -74,7 +74,8 @@ const ArabicHome = () => {
         // console.log(`${name} items:`, data);
 
         if (data.value) {
-          setStateFunction(data.value);
+          const valuesToSet = data.value.filter((item) => item.fields.Status === 'Published' || item.fields.status === 'Published');
+          setStateFunction(valuesToSet);
         } else {
           console.error(`No items found in ${listId}`);
         }
@@ -104,7 +105,18 @@ const ArabicHome = () => {
           );
           const userJson = await userResponse.json();
           console.log("User details:", userJson);
-          setUser(userJson);
+          localStorage.setItem("user", JSON.stringify(userJson));
+
+          const userImgResponse = await fetch(
+            "https://graph.microsoft.com/v1.0/me/photos/48x48/$value",
+            {
+              headers: { Authorization: `Bearer ${response.accessToken}` },
+            }
+          );
+
+          const userImgBlob = await userImgResponse.blob();
+          console.log("User image:", userImgBlob);
+          localStorage.setItem("userImg",(URL.createObjectURL(userImgBlob)));
 
           const response2 = await fetch(
             "https://graph.microsoft.com/v1.0/sites/riyadhholding.sharepoint.com:/sites/Shamil/",
@@ -415,7 +427,7 @@ const ArabicHome = () => {
         {/* 
                 Hide Linkedin 
         */}
-        {/* <div className="w-full rounded-lg overflow-hidden mt-[65px]">
+        {/* <div className="w-full rounded-lg overflow-hidden mt-[65px] shadow-md">
           <NewEmployeeCards accessToken = {accessToken} />
         </div> */}
 

@@ -59,10 +59,12 @@ const Home = () => {
           }
         );
         const data = await response.json();
-        // console.log(`${name} items:`, data);
+         console.log(`${name} items:`, data);
 
         if (data.value) {
-          setStateFunction(data.value);
+          const valuesToSet = data.value.filter((item) => item.fields.Status === 'Published' || item.fields.status === 'Published');
+          setStateFunction(valuesToSet);
+
         } else {
           console.error(`No items found in ${listId}`);
         }
@@ -100,7 +102,7 @@ const Home = () => {
           
 
           const userImgResponse = await fetch(
-            "https://graph.microsoft.com/v1.0/me/photo/$value",
+            "https://graph.microsoft.com/v1.0/me/photos/48x48/$value",
             {
               headers: { Authorization: `Bearer ${response.accessToken}` },
             }
@@ -108,7 +110,7 @@ const Home = () => {
 
           const userImgBlob = await userImgResponse.blob();
           console.log("User image:", userImgBlob);
-          setUserImg(URL.createObjectURL(userImgBlob));
+          localStorage.setItem("userImg",(URL.createObjectURL(userImgBlob)));
 
           const response2 = await fetch(
             "https://graph.microsoft.com/v1.0/sites/riyadhholding.sharepoint.com:/sites/Shamil/",
@@ -427,9 +429,9 @@ const Home = () => {
         hide linkedin 
         */}
 
-        {/* <div className="w-full rounded-lg overflow-hidden mt-[65px]">
+         {/* <div className="w-full rounded-lg overflow-hidden mt-[65px] shadow-md">
           <NewEmployeeCards accessToken = {accessToken} />
-        </div> */}
+        </div>  */}
 
         <div className="w-full rounded-lg overflow-hidden mt-[65px] shadow-md">
           <Gallery gallery={gallery} />

@@ -51,16 +51,21 @@ const Calendar = ({events}) => {
   );
   
   // Events for today and this week
-  const todayEvents = events.filter((event) => {
+  let todayEvents = events.filter((event) => {
     const eventDate = new Date(todayYear, todayMonth, event.day);
     return eventDate.toDateString() === new Date().toDateString();
   });
+
+  todayEvents.sort((a, b) => parseInt(a.day) - parseInt(b.day));
   
-  const weekEvents = events.filter((event) => {
+  let weekEvents = events.filter((event) => {
     const todayEvent = new Date(todayYear, todayMonth, todayDay);
     const eventDate = new Date(todayYear, todayMonth, event.day);
     return eventDate > todayEvent && eventDate <= endOfWeek && eventDate.toDateString() !== new Date().toDateString();
   });
+
+  weekEvents.sort((a, b) => parseInt(a.day) - parseInt(b.day));
+
 
  // Events for today and others
   // const todayEvents = events.filter((event) => {

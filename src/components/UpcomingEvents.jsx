@@ -54,13 +54,15 @@ const UpcomingEvents = ({ events }) => {
           Upcoming Events
         </h1>
 
-        <Link
+        {/* commented view all button */}
+
+        {/* <Link
           to="/all-events" // Changed from href to to for Link component
           className="sm:text-[14px] text-[9px] font-light rounded-[4px] px-[10px] text-[#3B729C] bg-white"
           state={events}
         >
           View All
-        </Link>
+        </Link> */}
       </div>
 
       <div className="h-full overflow-y-auto xl:pb-24 pb-32">

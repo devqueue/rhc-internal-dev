@@ -58,41 +58,39 @@ const App = () => {
 
   return (
     <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <PrivateRoute>
-              <Home />
-            </PrivateRoute>
-          }
-        />
+      <PrivateRoute>
+        <Routes>
+          <Route path="/" element={<Home />} />
 
-        <Route path="/ar" element={<ArabicHome />} />
+          <Route path="/ar" element={<ArabicHome />} />
 
-        <Route path="/all-events" element={<AllEvents />} />
-        <Route path="/ar/all-events" element={<AllEventsAr />} />
+          <Route path="/all-events" element={<AllEvents />} />
+          <Route path="/ar/all-events" element={<AllEventsAr />} />
 
-        <Route path="/announcement/:id" element={<AnnouncementDetail />} />
-        <Route path="/ar/announcement/:id" element={<AnnouncementDetailAr />} />
+          <Route path="/announcement/:id" element={<AnnouncementDetail />} />
+          <Route
+            path="/ar/announcement/:id"
+            element={<AnnouncementDetailAr />}
+          />
 
-        <Route path="/news" element={<AllNews />} />
-        <Route path="/ar/news" element={<AllNewsAr />} />
+          <Route path="/news" element={<AllNews />} />
+          <Route path="/ar/news" element={<AllNewsAr />} />
 
-        <Route path="/all-employees" element={<EmployeeDirectory />} />
-        <Route path="/ar/all-employees" element={<EmployeeDirectoryAr />} />
+          <Route path="/all-employees" element={<EmployeeDirectory />} />
+          <Route path="/ar/all-employees" element={<EmployeeDirectoryAr />} />
 
-        <Route path="/all-polls" element={<Polls />} />
-        <Route path="/ar/all-polls" element={<PollsAr />} />
+          <Route path="/all-polls" element={<Polls />} />
+          <Route path="/ar/all-polls" element={<PollsAr />} />
 
-        <Route path="/pdf" element={<Flipbook />} />
+          <Route path="/pdf" element={<Flipbook />} />
 
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/ar/gallery" element={<GalleryAr />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/ar/gallery" element={<GalleryAr />} />
 
-        <Route path="/galleryview/:id" element={<GalleryView />} />
-        <Route path="/ar/galleryview/:id" element={<GalleryviewAr />} />
-      </Routes>
+          <Route path="/galleryview/:id" element={<GalleryView />} />
+          <Route path="/ar/galleryview/:id" element={<GalleryviewAr />} />
+        </Routes>
+      </PrivateRoute>
     </Router>
   );
 };

@@ -4,7 +4,7 @@ export const msalConfig = {
     authority:
       "https://login.microsoftonline.com/5030b96a-04c0-4332-92a2-b935cadbb142",
         redirectUri: "https://shamil.riyadhholding.sa",
-      //  redirectUri:'http://localhost:5173'
+       //redirectUri:'http://localhost:5173'
   },
   cache: {
     cacheLocation: "localStorage",
