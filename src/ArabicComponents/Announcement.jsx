@@ -65,10 +65,11 @@ const Announcement = ({ announcements }) => {
                 <h1 className="sm:text-[24px] text-[16px] font-light">
                   {announcement.fields.Title_ar}
                 </h1>
-                <p className="sm:text-[16px] text-[11px] font-light xxl:w-[20vw] w-auto">
+                <p className="sm:text-[16px] text-[11px] text-justify	font-light xxl:w-[20vw] w-auto">
                   {announcement.fields.preview_ar}
                 </p>
                 <p className="sm:text-[16px] text-[11px] font-light xxl:w-[20vw] w-auto">
+                  تاريخ النشر: &nbsp;
                   { 
                   new Date(announcement.fields.date).toLocaleString("default", 
                     {

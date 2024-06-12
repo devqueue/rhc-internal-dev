@@ -6,9 +6,9 @@ const Poll = () => {
   const [voteCasted, setVoteCasted] = useState(false);
 
   const options = [
-    { label: "Yes, I have all the tools and equipment", value: "option1" },
-    { label: "No...I need tools and equipment", value: "option2" },
-    { label: "Some are available", value: "option3" },
+    { label: "Excellent", value: "option1" },
+    { label: "Good", value: "option2" },
+    { label: "Acceptable", value: "option3" },
   ];
 
   const handleOptionChange = (value) => {
@@ -37,8 +37,7 @@ const Poll = () => {
 
       <div className="w-full px-[30px]">
         <p className="mb-[30px] sm:text-base text-[10.5px]">
-          Do you think you have all the tools and equipment you need to carry
-          out your daily tasks?
+          What is your assesment of the user interface design for the new portal
         </p>
 
         <div className="flex flex-col gap-[16px]">
