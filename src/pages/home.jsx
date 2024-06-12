@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Announcement from "../components/Announcement";
 import Banner from "../components/Banner";
 import Calender from "../components/Calender";
@@ -40,7 +40,8 @@ const Home = () => {
   const [userImg, setUserImg] = useState(null);
   const [loading, setLoading] = useState(true);
   const [mails, setMails] = useState([]);
-
+  const [popupOpened, setPopupOpened] = useState(localStorage.getItem('imgFix'));
+  
   // console.log(accounts)
   useEffect(() => {
     const fetchListItems = async (
@@ -312,9 +313,31 @@ const Home = () => {
     }
   }, []);
 
-  if (loading) {
+  if (loading || !popupOpened) {
     return (
       <div class="grid min-h-[100vh] w-full h-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
+      {!popupOpened && (
+        <div className="fixed flex items-center justify-center w-full h-full bg-[#0000006b] z-50">
+          <div className="bg-white p-[50px] rounded-lg">
+            <a
+            href="https://riyadhholding.sharepoint.com/sites/Shamil/Assets/DONOTDELETE2.png"
+            target="_blank"
+              className="bg-[#3B729C] text-white px-4 py-2 rounded"
+              onClick={
+                ()=>{
+                  setTimeout(() => {
+                    setPopupOpened(false);
+                    localStorage.setItem('imgFix',false)
+                    window.location.reload();
+                  }, 3400);
+                }
+              }
+            >
+              Allow Popup
+            </a>
+          </div>
+        </div>
+      )}
         <svg
           class="w-16 h-16 animate-spin text-gray-900/50"
           viewBox="0 0 64 64"

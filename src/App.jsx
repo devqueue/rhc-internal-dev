@@ -61,18 +61,6 @@ const PrivateRoute = ({ children }) => {
 
   return (
     <>
-      {!popupOpened && (
-        <div className="fixed flex items-center justify-center w-full h-full bg-[#0000006b] z-50">
-          <div className="bg-white bg-opacity-40 p-[50px] rounded-lg">
-            <button
-              className="bg-[#3B729C] text-white px-4 py-2 rounded"
-              onClick={openPopup}
-            >
-              Allow Popup
-            </button>
-          </div>
-        </div>
-      )}
       {children}
     </>
   );
