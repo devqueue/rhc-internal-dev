@@ -32,11 +32,13 @@ const PrivateRoute = ({ children }) => {
   const [popupOpened, setPopupOpened] = useState(false);
 
   const openPopup = () => {
-    const popup = window.open(
-      "https://riyadhholding.sharepoint.com/sites/Shamil/Assets/DONOTDELETE2.png",
-      "_blank",
-      "width=0,height=0"
-    ).focus();
+    const popup = window
+      .open(
+        "https://riyadhholding.sharepoint.com/sites/Shamil/Assets/DONOTDELETE2.png",
+        "_blank",
+        "width=0,height=0"
+      )
+      .focus();
 
     if (popup) {
       popup.onload = () => {
@@ -61,12 +63,14 @@ const PrivateRoute = ({ children }) => {
     <>
       {!popupOpened && (
         <div className="fixed flex items-center justify-center w-full h-full bg-[#0000006b] z-50">
-          <div className="bg-white p-[50px] rounded-lg">
-          <button className="bg-green-500 text-white px-4 py-2 rounded" onClick={openPopup}>
-            Allow Popup
-          </button>
+          <div className="bg-white bg-opacity-40 p-[50px] rounded-lg">
+            <button
+              className="bg-[#3B729C] text-white px-4 py-2 rounded"
+              onClick={openPopup}
+            >
+              Allow Popup
+            </button>
           </div>
-          
         </div>
       )}
       {children}
