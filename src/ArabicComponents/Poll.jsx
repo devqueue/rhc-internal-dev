@@ -6,9 +6,9 @@ const Poll = () => {
   const [voteCasted, setVoteCasted] = useState(false);
 
   const options = [
-    { label: "نعم .. لدي كل الأدوات و المعدات", value: "option1" },
-    { label: "لا...احتاج الى الأدوات والمعدات", value: "option2" },
-    { label: "بعضها متاح", value: "option3" },
+    { label: "ممتاز", value: "option1" },
+    { label: "جيد جداً", value: "option2" },
+    { label: "جيد", value: "option3" },
   ];
 
   const handleOptionChange = (value) => {
@@ -27,18 +27,17 @@ const Poll = () => {
     <div className="w-full min-h-[424px] bg-white rounded-lg overflow-hidden shadow-md">
       <div className="bg-[#50917F] w-full h-[64px] flex justify-between items-center px-[30px] py-[20px] text-white mb-[30px]">
         <h1 className="sm:text-[20px] text-[12px]">استطلاع رأي</h1>
-        <Link
+        {/* <Link
           className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#50917F] rounded-[8px]"
           to= "#" //"/all-polls"
         >
           عرض الكل
-        </Link>
+        </Link> */}
       </div>
 
       <div className="w-full px-[30px]">
         <p className="mb-[30px] sm:text-base text-[10.5px]">
-          هل تعتقد أن لديك جميع الأدوات والمعدات التي تحتاجها لتنفيذ مهامك
-          اليومية؟
+          ه⁠ما رأيك في تصميم واجهة المستخدم للبوابة الجديدة؟
         </p>
 
         <div className="flex flex-col gap-[16px]">
