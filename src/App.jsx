@@ -33,7 +33,7 @@ const PrivateRoute = ({ children }) => {
 
   const openPopup = () => {
     const popup = window.open(
-      "https://riyadhholding.sharepoint.com/sites/Shamil/Assets/DONOTDELETE.png",
+      "https://riyadhholding.sharepoint.com/sites/Shamil/Assets/DONOTDELETE2.png",
       "_blank",
       "width=0,height=0"
     ).focus();
