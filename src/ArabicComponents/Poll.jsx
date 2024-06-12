@@ -37,7 +37,7 @@ const Poll = () => {
 
       <div className="w-full px-[30px]">
         <p className="mb-[30px] sm:text-base text-[10.5px]">
-          ه⁠ما رأيك في تصميم واجهة المستخدم للبوابة الجديدة؟
+          ما رأيك في تصميم واجهة المستخدم للبوابة الجديدة؟
         </p>
 
         <div className="flex flex-col gap-[16px]">
