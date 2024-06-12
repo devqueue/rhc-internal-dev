@@ -10,8 +10,8 @@ const Gallery = ({ gallery }) => {
         <h1 className="sm:text-[20px] text-[12px]">معرض الصور</h1>
         <Link
           className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#C2AB80] rounded-[8px]"
-          // to="/ar/gallery"
-          // state={gallery}
+          to="/ar/gallery"
+          state={gallery}
         >
           عرض الكل
         </Link>
