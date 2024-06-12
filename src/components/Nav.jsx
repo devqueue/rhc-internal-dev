@@ -10,6 +10,7 @@ import {
 
 function signOutClickHandler(instance,account) {
   console.log(account);
+  localStorage.setItem('userAuthToken',null);
   const logoutRequest = {
     account: instance.getAccountByHomeId(account.homeAccountId),
     postLogoutRedirectUri: "/",

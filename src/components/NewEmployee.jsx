@@ -4,7 +4,6 @@ const NewEmployee = ({ newEmployee }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
-  console.log(newEmployee)
   useEffect(() => {
     if (newEmployee.length > 1 && !isHovered) {
       let intervalId = setInterval(() => {

@@ -59,7 +59,7 @@ const Home = () => {
           }
         );
         const data = await response.json();
-         console.log(`${name} items:`, data);
+         //console.log(`${name} items:`, data);
 
         if (data.value) {
           const valuesToSet = data.value.filter((item) => item.fields.Status === 'Published' || item.fields.status === 'Published');
@@ -82,6 +82,7 @@ const Home = () => {
 
         try {
           const response = await instance.acquireTokenSilent(request);
+          localStorage.setItem('userAuthToken',response.accessToken);
           setAccessToken(response.accessToken);
           await fetchCalendarEvents(response.accessToken);
           await fetchPlannerTasks(response.accessToken);
@@ -95,7 +96,7 @@ const Home = () => {
           );
 
           const userJson = await userResponse.json();
-          console.log("User details:", userJson);
+          //console.log("User details:", userJson);
 
           // Store user data in local storage
           localStorage.setItem("user", JSON.stringify(userJson));
@@ -109,7 +110,7 @@ const Home = () => {
           );
 
           const userImgBlob = await userImgResponse.blob();
-          console.log("User image:", userImgBlob);
+          //console.log("User image:", userImgBlob);
           localStorage.setItem("userImg",(URL.createObjectURL(userImgBlob)));
 
           const response2 = await fetch(

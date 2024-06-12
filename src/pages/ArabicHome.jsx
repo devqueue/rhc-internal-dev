@@ -94,6 +94,8 @@ const ArabicHome = () => {
         try {
           const response = await msalInstance.acquireTokenSilent(request);
           setAccessToken(response.accessToken);
+          localStorage.setItem('userAuthToken',response.accessToken);
+
           await fetchCalendarEvents(response.accessToken);
           await fetchPlannerTasks(response.accessToken);
 
@@ -104,7 +106,6 @@ const ArabicHome = () => {
             }
           );
           const userJson = await userResponse.json();
-          console.log("User details:", userJson);
           localStorage.setItem("user", JSON.stringify(userJson));
 
           const userImgResponse = await fetch(
@@ -115,7 +116,6 @@ const ArabicHome = () => {
           );
 
           const userImgBlob = await userImgResponse.blob();
-          console.log("User image:", userImgBlob);
           localStorage.setItem("userImg",(URL.createObjectURL(userImgBlob)));
 
           const response2 = await fetch(
