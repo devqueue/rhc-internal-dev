@@ -36,7 +36,7 @@ const PrivateRoute = ({ children }) => {
       "https://riyadhholding.sharepoint.com/sites/Shamil/Assets/DONOTDELETE.png",
       "_blank",
       "width=0,height=0"
-    );
+    ).focus();
 
     if (popup) {
       popup.onload = () => {
@@ -60,10 +60,13 @@ const PrivateRoute = ({ children }) => {
   return (
     <>
       {!popupOpened && (
-        <div>
-          <button onClick={openPopup}>
+        <div className="fixed flex items-center justify-center w-full h-full bg-[#0000006b] z-50">
+          <div className="bg-white p-[50px] rounded-lg">
+          <button className="bg-green-500 text-white px-4 py-2 rounded" onClick={openPopup}>
             Allow Popup
           </button>
+          </div>
+          
         </div>
       )}
       {children}
