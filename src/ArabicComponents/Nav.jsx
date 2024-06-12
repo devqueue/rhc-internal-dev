@@ -63,9 +63,12 @@ const Nav = ({  }) => {
       >
         <img
           className="rounded-full cursor-pointer"
-          src={userImg? userImg : "/images/user.svg"}
+          src={userImg !== '' ? userImg : "/images/user.svg"}
           alt="User Profile"
           style={{ width: "30px", height: "30px" }}
+          onError={(e) => {
+            e.target.src = "/images/user.svg"; // Set default image path
+          }}
         />
         {isHovered && (
           <div className="absolute top-[60px]  bg-white border border-gray-300 rounded-lg shadow-md p-4">

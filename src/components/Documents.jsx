@@ -15,20 +15,7 @@ const KnowledgeBase = ({ pdfs }) => {
     setSelectedPdf(null);
   };
 
-
-  const fetchPdf = async (link)=>{
-    const response = await fetch(link,
-      {
-        headers: { Authorization: `Bearer ${localStorage.getItem('userAuthToken')}` },
-      }
-    )
-
-    if(response.status === 302){
-      fetchPdf(response.Location);
-    }
-
-    console.log(response)
-  }
+  
 
   if(pdfs.length === 0) return null;
 
@@ -51,7 +38,7 @@ const KnowledgeBase = ({ pdfs }) => {
         <div
           key={index}
           className="flex self-stretch p-[12px] px-[20px] mx-[20px] items-center gap-[10px] rounded-[8px] border border-[#595959] cursor-pointer"
-           onClick={() => {handlePdfClick(pdf);fetchPdf(`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${pdf.fields.document_name}`)}}
+           onClick={() => {handlePdfClick(pdf)}}
         >
           <img src="/icons/newdoc.svg" alt="" />
 
@@ -73,7 +60,7 @@ const KnowledgeBase = ({ pdfs }) => {
             >
               &times;
             </button>
-            <Flipbook source={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${selectedPdf.fields.document_name}`} />
+            <Flipbook source={`https://riyadhholding.sharepoint.com/sites/Shamil/_layouts/download.aspx?SourceUrl=https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${selectedPdf.fields.document_name}`} />
             </div>
         </div>
       )}

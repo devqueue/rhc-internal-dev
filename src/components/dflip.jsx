@@ -6,6 +6,7 @@ class Flipbook extends Component {
   componentDidMount() {
     this.loadStyles();
     this.loadScripts();
+    this.disableRightClick();
   }
 
   loadStyles() {
@@ -45,9 +46,7 @@ class Flipbook extends Component {
         color3DCover:"#ffffff",
         hard: "none",
         shadowOpacity: 0,
-        allControls: "",
-        pageMode: 1,
-        singlePageMode: 1,
+        allControls: "https://riyadhholding.sharepoint.com",
         onReady: function (flipBook) {
           const prodFlipbook = document.querySelector('#prod-flipbook');
           if (prodFlipbook) {
@@ -73,13 +72,19 @@ class Flipbook extends Component {
     });
   }
 
+  disableRightClick() {
+    document.addEventListener('contextmenu', function (event) {
+      event.preventDefault();
+    });
+  }
+
   render() {
     const { source } = this.props;
-    console.log(source)
+    // console.log(source)
 
     return (
       <div>
-        <div className="_df_book" id="flipbook" pageMode='2' source={source}></div>
+        <div className="_df_book" id="flipbook" pageMode='2' source={'/doc1.pdf'}></div>
       </div>
     );
   }
