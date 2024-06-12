@@ -15,6 +15,21 @@ const KnowledgeBase = ({ pdfs }) => {
     setSelectedPdf(null);
   };
 
+
+  const fetchPdf = async (link)=>{
+    const response = await fetch(link,
+      {
+        headers: { Authorization: `Bearer ${localStorage.getItem('userAuthToken')}` },
+      }
+    )
+
+    if(response.status === 302){
+      fetchPdf(response.Location);
+    }
+
+    console.log(response)
+  }
+
   if(pdfs.length === 0) return null;
 
   return (
@@ -33,12 +48,10 @@ const KnowledgeBase = ({ pdfs }) => {
       </div>
 
       {pdfs.map((pdf, index) => (
-        <a
-        target='_blank'
-        href = "/pdf"
+        <div
           key={index}
           className="flex self-stretch p-[12px] px-[20px] mx-[20px] items-center gap-[10px] rounded-[8px] border border-[#595959] cursor-pointer"
-          // onClick={() => handlePdfClick(pdf)}
+           onClick={() => {handlePdfClick(pdf);fetchPdf(`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${pdf.fields.document_name}`)}}
         >
           <img src="/icons/newdoc.svg" alt="" />
 
@@ -48,7 +61,7 @@ const KnowledgeBase = ({ pdfs }) => {
             </h1>
             <h3 className="text-[12px] font-light self-stretch">Documents</h3>
           </div>
-        </a>
+        </div>
       ))}
 
       {isPopupOpen && selectedPdf && (
@@ -61,7 +74,7 @@ const KnowledgeBase = ({ pdfs }) => {
               &times;
             </button>
             <Flipbook source={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${selectedPdf.fields.document_name}`} />
-          </div>
+            </div>
         </div>
       )}
     </div>

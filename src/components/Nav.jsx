@@ -12,7 +12,7 @@ function signOutClickHandler(instance,account) {
   console.log(account);
   localStorage.setItem('userAuthToken',null);
   localStorage.setItem('user',null);
-  localStorage.setItem('userImg','');
+  localStorage.setItem('userImg',null);
 
   const logoutRequest = {
     account: instance.getAccountByHomeId(account.homeAccountId),

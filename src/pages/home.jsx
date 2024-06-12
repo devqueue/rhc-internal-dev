@@ -41,7 +41,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [mails, setMails] = useState([]);
   const [popupOpened, setPopupOpened] = useState(localStorage.getItem('imgFix'));
-  
+  const [siteID,setSiteID] = useState('');
   // console.log(accounts)
   useEffect(() => {
     const fetchListItems = async (
@@ -120,6 +120,7 @@ const Home = () => {
           );
           const resJson = await response2.json();
           const siteId = resJson.id;
+          setSiteID(siteId)
           const lists = [
             {
               name: "Announcements",
@@ -444,7 +445,7 @@ const Home = () => {
             </div> */}
 
             <div className="sm:px-[30px] px-[5vw] mt-[30px]">
-              <KnowledgeBase pdfs={pdfs} />
+              <KnowledgeBase siteID={siteID} pdfs={pdfs} />
             </div>
           </div>
         </div>
