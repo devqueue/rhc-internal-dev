@@ -17,7 +17,7 @@ const GalleryviewAr = () => {
           <div className="overflow-hidden w-full h-full shadow-md ">
             <div className="px-[20px] py-[16px] flex items-center rounded-[8px] rounded-bl-none rounded-br-none justify-between gap-[10px] self-stretch flex-wrap bg-[#C2AB80] text-[white] ">
               <h1 className="text-[20px] font-light self-stretch min-w-[100px]">
-                Event Gallery
+              معرض الصور
               </h1>
             </div>
             <div className="flex carousel bg-[#F4F8FB] rounded-box w-full justify-center items-center flex-col">
