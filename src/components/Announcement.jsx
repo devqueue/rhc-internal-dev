@@ -73,8 +73,12 @@ const Announcement = ({ announcements }) => {
                   { 
                   new Date(announcement.fields.date).toLocaleString("default", 
                     {
-                      dateStyle: "short",
+                      // dateStyle: "short",
                       timeZone: "Asia/Riyadh",
+                      timeZone: "Asia/Riyadh",
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit"
                     })      
                   }
                 </p>

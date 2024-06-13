@@ -41,8 +41,11 @@ const News = ({ news }) => {
               {
                 new Date(item.fields.date_published).toLocaleString("default", 
                 {
-                  dateStyle: "short",
+                  // dateStyle: "short",
                   timeZone: "Asia/Riyadh",
+                  year: "numeric",
+                  month: "2-digit",
+                  day: "2-digit"
                 }) 
               
               }
