@@ -6,10 +6,10 @@ import { useState } from "react";
 
 const AnnouncementDetail = () => {
   const location = useLocation();
-  console.log("location", location);
+  // console.log("location", location);
   const { announcement, moreAnnouncements = [] } = location.state || {};
 
-  console.log("More Announcement", moreAnnouncements);
+  // console.log("More Announcement", moreAnnouncements);
   if (!announcement) {
     return <div>Announcement not found</div>;
   }

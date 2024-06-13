@@ -16,8 +16,8 @@ const Poll = ({ polls }) => {
         },
       });
       const globalPollData = await response.json();
-      setGlobalPoll(globalPollData.data);
-      console.log(globalPollData)
+      // setGlobalPoll(globalPollData.data);
+      // console.log(globalPollData)
     } catch (error) {
       console.error("Error fetching global poll data:", error);
     }
@@ -33,7 +33,7 @@ const Poll = ({ polls }) => {
         const pollsData = await response.json();
         pollsData.data.docs.forEach((element) => {
           if (element.poll_id === poll_id) {
-            console.log(element.option_id)
+            // console.log(element.option_id)
             setOptionIdCasted(element.option_id)
             setVoteCasted(true);
           }
@@ -177,7 +177,7 @@ const Poll = ({ polls }) => {
             className={`h-[48px] bg-[#50917F] w-full my-[30px] flex justify-center items-center rounded-lg text-white ${voteCasted ? 'opacity-50 cursor-not-allowed' : ''}`}
             disabled={voteCasted}
           >
-            Vote
+            تصويت
           </button>
         )}
         {/* {voteCasted && (

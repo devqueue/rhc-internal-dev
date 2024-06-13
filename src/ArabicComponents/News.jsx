@@ -4,7 +4,7 @@ const News = ({ news }) => {
   if (!news || news.length === 0) {
     return null;
   }
-  console.log(news)
+  // console.log(news)
   return (
     <div className="min-h-[424px] w-full bg-white rounded-lg overflow-hidden shadow-md">
       <div className="bg-[#C2AB80] w-full min-h-[64px] gap-[10px] flex justify-between items-center flex-wrap px-[30px] py-[20px] text-[white]  mb-[30px]">

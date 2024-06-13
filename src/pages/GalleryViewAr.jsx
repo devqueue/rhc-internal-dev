@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 
 const GalleryviewAr = () => {
   const location = useLocation();
-  console.log("location", location);
+  // console.log("location", location);
   const { gallery } = location.state || {};
   return (
     <>

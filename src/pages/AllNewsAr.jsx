@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 
 const AllNewsAr = () => {
   const location = useLocation();
-  console.log("location", location);
+  // console.log("location", location);
   const news = location.state ? location.state : [];
 
   return (

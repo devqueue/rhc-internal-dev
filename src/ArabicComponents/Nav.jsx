@@ -9,7 +9,7 @@ import {
 } from "@azure/msal-react";
 
 function signOutClickHandler(instance,account) {
-  console.log(account);
+  // console.log(account);
   localStorage.setItem('userAuthToken',null);
 
   const logoutRequest = {
@@ -38,8 +38,8 @@ const Nav = ({  }) => {
   const isHomePage = location.pathname === "https://shamil.riyadhholding.sa/";
 
   const handleClickLogo = () => {
-    console.log("Clicked on logo");
-    console.log("Is home page:", isHomePage);
+    // console.log("Clicked on logo");
+    // console.log("Is home page:", isHomePage);
     if (isHomePage) {
       window.location.reload(); 
     }

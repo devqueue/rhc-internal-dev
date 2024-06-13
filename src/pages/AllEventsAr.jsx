@@ -6,7 +6,7 @@ import EventCardAr from "../ArabicComponents/EventCard";
 
 const AllEventsAr = () => {
     const location = useLocation();
-    console.log("location", location);
+    // console.log("location", location);
     const events = location.state ? location.state : [];
     const sortedEvents = events.slice().sort((a, b) => {
       return new Date(a.fields.Start_time) - new Date(b.fields.Start_time);

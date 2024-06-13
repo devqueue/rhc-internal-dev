@@ -5,10 +5,10 @@ import { useLocation } from "react-router-dom";
 
 const AnnouncementDetailAr = () => {
   const location = useLocation();
-  console.log("location", location);
+  // console.log("location", location);
   const { announcement, moreAnnouncements = [] } = location.state || {};
 
-  console.log("More Announcement", moreAnnouncements);
+  // console.log("More Announcement", moreAnnouncements);
   if (!announcement) {
     return <div>Announcement not found</div>;
   }

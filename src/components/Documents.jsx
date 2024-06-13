@@ -19,15 +19,15 @@ const KnowledgeBase = ({ pdfs,siteID }) => {
    const  result = await fetch(`https://graph.microsoft.com/v1.0/sites/riyadhholding.sharepoint.com:/sites/Shamil:/drives`,{
       headers:{Authorization: "Bearer " + localStorage.getItem('userAuthToken'),}
     })
-    console.log('respone',result);
+    // console.log('respone',result);
     const json = await result.json();
 
     result2 = await fetch(`https://graph.microsoft.com/v1.0/sites/${siteID.split(',')[1]}/drives/${json.value[0].id}/root:/Assets/Documents/:/children`,{
       headers:{Authorization: "Bearer " + localStorage.getItem('userAuthToken'),}
     })
-    console.log('respone',result);
+    // console.log('respone',result);
     const json2 = await result.json();
-    console.log('hellosss',json)
+    // console.log('hellosss',json)
   }
 
   

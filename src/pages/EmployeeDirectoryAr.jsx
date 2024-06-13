@@ -20,7 +20,7 @@ const EmployeeDirectory = () => {
         });
         const json = await response.json();
         setEvents(json.value);
-        console.log('fetchEmployee', json);
+        // console.log('fetchEmployee', json);
       } catch (error) {
         console.error("Error fetching employees:", error);
       }

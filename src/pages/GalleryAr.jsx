@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const GalleryAr = () => {
   const location = useLocation();
-  console.log("location", location);
+  // console.log("location", location);
   const gallery = location.state ? location.state : [];
   return (
     <>
