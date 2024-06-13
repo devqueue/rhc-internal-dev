@@ -6,6 +6,9 @@ const GalleryviewAr = () => {
   const location = useLocation();
   // console.log("location", location);
   const { gallery } = location.state || {};
+  const images = gallery.fields.gallery_images.split("\n");
+  const images_fil = images.filter(Boolean);
+
   return (
     <>
       <div
@@ -20,24 +23,28 @@ const GalleryviewAr = () => {
               معرض الصور
               </h1>
             </div>
-            <div className="flex carousel bg-[#F4F8FB] rounded-box w-full justify-center items-center flex-col">
+            <div className="flex carousel bg-[#F4F8FB] rounded-box w-full justify-center items-right flex-col">
               <div className="carousel-item sm:w-[40vw] w-[70vw] py-[40px] ">
+              {
+              
+              images_fil.map((image, index) => (
                 <img
-                  src={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${gallery.fields.image_name}`}
+                  src={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${image}`}
                   alt={gallery.fields.Title}
-                  className="object-cover w-full h-full"
+                  className="object-cover w-full h-full px-2"
                 />
+              ))
+            }
               </div>
-
-              <div className="lg:w-full md:w-full p-[40px] h-auto text-center">
-              <h1 className="font-figtree font-semibold text-4xl leading-[48px] text-center">
+            </div>
+            <div className="lg:w-full md:w-full p-[40px] h-auto text-right bg-[#F4F8FB]">
+              <h1 className="font-figtree font-semibold text-4xl leading-[48px] text-right">
                 {gallery.fields.event_name_ar}
               </h1>
 
               <p className="font-inter font-normal text-base leading-[28px]">
                 {gallery.fields.subtitle_ar}
               </p>
-            </div>
             </div>
           </div>
         </div>

@@ -155,8 +155,8 @@ const Home = () => {
             },
             {
               name: "Gallery",
-              id: "9505ceb4-ece5-447d-99fa-b383a324dcd9",
-              fields: "",
+              id: "9505ceb4-ece5-447d-99fa-b383a324dcd9", 
+              fields: "(select=Title, event_name_ar, subtitle_en, subtitle_ar, status, image_name, date_published, gallery_images)",
               setStateFunction: setGallery,
             },
             {
