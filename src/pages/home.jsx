@@ -138,7 +138,7 @@ const Home = () => {
             {
               name: "News",
               id: "0304b663-8abb-414e-a03c-2d7f00cff357",
-              fields: "(select=Title, preview_en, full_text_en, title_ar, preview_ar, full_text_ar, image_name, status)",
+              fields: "(select=Title, preview_en, full_text_en, title_ar, preview_ar, full_text_ar, image_name, status, date_published)",
               setStateFunction: setNews,
             },
             {

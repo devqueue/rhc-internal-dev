@@ -35,6 +35,18 @@ const News = ({ news }) => {
                 {item.fields.Title}
               </h1>
               <p className="text-[13px] font-light">{item.fields.Preview_en}</p>
+              <p className="text-[13px] font-light">
+                Date: &nbsp;
+                {
+                new Date(item.fields.date_published).toLocaleString("default", 
+                {
+                  dateStyle: "short",
+                  timeZone: "Asia/Riyadh",
+                }) 
+              
+              }
+              </p>
+              
             </div>
           </div>
         ))}
