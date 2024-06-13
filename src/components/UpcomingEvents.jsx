@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { DateTime } from "luxon";
 
 const UpcomingEvents = ({ events }) => {
   // Sort events by start date in ascending order
@@ -11,7 +12,7 @@ const UpcomingEvents = ({ events }) => {
   }
 
   const formatDate = (timestamp) => {
-    const date = new Date(timestamp);
+    const date = DateTime.fromISO(timestamp, { zone: 'UTC' }).setZone('Asia/Riyadh');
 
     // Define month names
     const monthNames = [
@@ -30,21 +31,19 @@ const UpcomingEvents = ({ events }) => {
     ];
 
     // Get the day of the month
-    const day = date.getDate();
+    const day = date.day;
 
     // Get the month (0-indexed), so we need to add 1 to it
-    const monthIndex = date.getMonth();
+    const monthIndex = date.month - 1;
     const monthName = monthNames[monthIndex];
 
     // Format the date
     return { day, monthName };
   };
+
   const normalizeDateTime = (dateTimeString) => {
-    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    return new Date(dateTimeString).toLocaleString("default", {
-      timeStyle: "short",
-      timeZone: tz,
-    });
+    const dateTime = DateTime.fromISO(dateTimeString, { zone: 'UTC' }).setZone('Asia/Riyadh');
+    return dateTime.toLocaleString(DateTime.TIME_SIMPLE);
   };
 
   return (
@@ -55,7 +54,6 @@ const UpcomingEvents = ({ events }) => {
         </h1>
 
         {/* commented view all button */}
-
         {/* <Link
           to="/all-events" // Changed from href to to for Link component
           className="sm:text-[14px] text-[9px] font-light rounded-[4px] px-[10px] text-[#3B729C] bg-white"
@@ -92,7 +90,7 @@ const UpcomingEvents = ({ events }) => {
                   }}
                   className="w-[16px] h-[16px] shrink-0"
                 ></div>
-                <p className="text-[12px] font-[400px]">
+                <p className="text-[12px] font-[400px]" style={{ direction: "ltr" }}>
                   {normalizeDateTime(event.fields.Start_time)} -{" "}
                   {normalizeDateTime(event.fields.end_time)}
                 </p>
