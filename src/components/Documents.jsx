@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import Flipbook from './dflip';
-const KnowledgeBase = ({ pdfs }) => {
+const KnowledgeBase = ({ pdfs,siteID }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedPdf, setSelectedPdf] = useState(null);
 
@@ -14,6 +14,21 @@ const KnowledgeBase = ({ pdfs }) => {
     setIsPopupOpen(false);
     setSelectedPdf(null);
   };
+
+  const fetchLink= async()=>{
+   const  result = await fetch(`https://graph.microsoft.com/v1.0/sites/riyadhholding.sharepoint.com:/sites/Shamil:/drives`,{
+      headers:{Authorization: "Bearer " + localStorage.getItem('userAuthToken'),}
+    })
+    console.log('respone',result);
+    const json = await result.json();
+
+    result2 = await fetch(`https://graph.microsoft.com/v1.0/sites/${siteID.split(',')[1]}/drives/${json.value[0].id}/root:/Assets/Documents/:/children`,{
+      headers:{Authorization: "Bearer " + localStorage.getItem('userAuthToken'),}
+    })
+    console.log('respone',result);
+    const json2 = await result.json();
+    console.log('hellosss',json)
+  }
 
   
 
@@ -38,7 +53,7 @@ const KnowledgeBase = ({ pdfs }) => {
         <div
           key={index}
           className="flex self-stretch p-[12px] px-[20px] mx-[20px] items-center gap-[10px] rounded-[8px] border border-[#595959] cursor-pointer"
-           onClick={() => {handlePdfClick(pdf)}}
+           onClick={() => {handlePdfClick(pdf);fetchLink()}}
         >
           <img src="/icons/newdoc.svg" alt="" />
 
@@ -60,7 +75,7 @@ const KnowledgeBase = ({ pdfs }) => {
             >
               &times;
             </button>
-            <Flipbook source={`https://riyadhholding.sharepoint.com/sites/Shamil/_layouts/download.aspx?SourceUrl=https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${selectedPdf.fields.document_name}`} />
+            <Flipbook source={`https://admin.riyadhholding.sa/admin/download-document?document_name=${selectedPdf.fields.document_name}&token=${localStorage.getItem('userAuthToken')}`} />
             </div>
         </div>
       )}
