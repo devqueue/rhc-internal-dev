@@ -38,7 +38,7 @@ const News = ({ news }) => {
               <p className="text-[13px] font-light">
                 Date: &nbsp;
                 {
-                new Date(item.fields.date_published).toLocaleString("default", 
+                new Date(item.fields.date_published).toLocaleString("en-AU", 
                 {
                   // dateStyle: "short",
                   timeZone: "Asia/Riyadh",

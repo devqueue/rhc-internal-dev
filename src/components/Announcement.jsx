@@ -71,7 +71,7 @@ const Announcement = ({ announcements }) => {
                 <p className="sm:text-[16px] text-[11px] font-light xxl:w-[20vw] w-auto">
                   Date: &nbsp;
                   { 
-                  new Date(announcement.fields.date).toLocaleString("default", 
+                  new Date(announcement.fields.date).toLocaleString("en-AU", 
                     {
                       // dateStyle: "short",
                       timeZone: "Asia/Riyadh",

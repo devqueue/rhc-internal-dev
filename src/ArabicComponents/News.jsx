@@ -39,7 +39,7 @@ const News = ({ news }) => {
               تاريخ: &nbsp;
 
               {
-                new Date(item.fields.date_published).toLocaleString("default", 
+                new Date(item.fields.date_published).toLocaleString("en-AU", 
                 {
                   // dateStyle: "short",
                   timeZone: "Asia/Riyadh",
