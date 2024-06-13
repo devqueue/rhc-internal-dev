@@ -40,6 +40,7 @@ const ArabicHome = () => {
   const [accounts, setAccounts] = useState([]);
   const [user, setUser] = useState(null);
   const [pdfs, setPdfs] = useState([]);
+  const [polls,setPolls] = useState([]);
 
   const [mails, setMails] = useState([]);
 
@@ -170,6 +171,12 @@ const ArabicHome = () => {
               id: "ed12e05a-da1c-4407-83d0-85c70fe882b7",
               fields: "",
               setStateFunction: setPdfs,
+            },
+            {
+              name: "Polls",
+              id: "9153493d-9dd8-42c6-a342-1f088cf19d47",
+              fields: "",
+              setStateFunction: setPolls,
             },
           ];
 
@@ -367,7 +374,7 @@ const ArabicHome = () => {
             </div>
 
             <div className="flex lg:flex-row flex-col gap-[60px] justify-between mt-[25px]">
-              <Poll />
+              <Poll polls={polls} />
 
               <News news={news} />
             </div>
