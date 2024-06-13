@@ -18,7 +18,7 @@ const Gallery = ({ gallery }) => {
       </div>
 
       <div className="flex gap-[41.88px] px-[30px] lg:flex-nowrap flex-wrap">
-        {gallery.map(
+        {gallery.slice(0, 4).map(
           (
             item,
             index //.slice(0,3)

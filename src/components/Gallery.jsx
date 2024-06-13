@@ -18,7 +18,7 @@ const Gallery = ({ gallery }) => {
       </div>
       <div className="pt-[10px] pb-[40px] sm:px-[41px] w-full bg-[#f9f9f9]">
       <div className="flex gap-[41.88px] lg:flex-nowrap flex-wrap">
-        {gallery.map(
+        {gallery.slice(0, 4).map(
           (
             item,
             index //slice(0,3)
@@ -40,7 +40,7 @@ const Gallery = ({ gallery }) => {
                     <h1 className="sm:text-[16px] text-[11px] mb-[5px]">
                       {item.fields.Title}
                     </h1>
-                    <p className="sm:text-[14px] text-[9px] font-light text-[#888888]">
+                    <p className="sm:text-[14px] text-[9px] text-justify font-light text-[#888888]">
                       {item.fields.subtitle_en}
                     </p>
                   </div>
