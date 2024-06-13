@@ -42,6 +42,7 @@ const Home = () => {
   const [mails, setMails] = useState([]);
   const [popupOpened, setPopupOpened] = useState(localStorage.getItem('imgFix'));
   const [siteID,setSiteID] = useState('');
+  const [polls,setPolls] = useState([]);
   // console.log(accounts)
   useEffect(() => {
     const fetchListItems = async (
@@ -163,6 +164,12 @@ const Home = () => {
               id: "ed12e05a-da1c-4407-83d0-85c70fe882b7",
               fields: "",
               setStateFunction: setPdfs,
+            },
+            {
+              name: "Polls",
+              id: "9153493d-9dd8-42c6-a342-1f088cf19d47",
+              fields: "",
+              setStateFunction: setPolls,
             },
           ];
 
@@ -388,7 +395,7 @@ const Home = () => {
             </div>
 
             <div className="flex lg:flex-row flex-col gap-[30px] justify-between mt-[25px]">
-              <Poll />
+              <Poll polls={polls} />
               <News news={news} />
             </div>
             {/* 
