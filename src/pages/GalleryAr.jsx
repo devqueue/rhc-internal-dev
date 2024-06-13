@@ -18,7 +18,7 @@ const GalleryAr = () => {
                 معرض الصور
               </h1>
             </div>
-            <div className="flex gap-[41.88px] lg:flex-wrap flex-wrap">
+            <div className="flex gap-[41.88px] lg:flex-wrap justify-center flex-wrap">
               {gallery.map(
                 (
                   item,
