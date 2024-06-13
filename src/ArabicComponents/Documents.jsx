@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import Flipbook from '../components/dflip';
+import FlipbookArabic from './dflip';
 const KnowledgeBase = ({ pdfs }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedPdf, setSelectedPdf] = useState(null);
@@ -60,7 +60,7 @@ const KnowledgeBase = ({ pdfs }) => {
             >
               &times;
             </button>
-            <Flipbook source={`https://riyadhholding.sharepoint.com/sites/Shamil/_layouts/download.aspx?SourceUrl=https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${selectedPdf.fields.document_name}`} />
+            <FlipbookArabic source={`/${selectedPdf.fields.document_name}`} />
             </div>
         </div>
       )}

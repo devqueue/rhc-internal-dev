@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 
-class Flipbook extends Component {
+class FlipbookArabic extends Component {
   componentDidMount() {
     this.loadStyles();
     this.loadScripts();
@@ -43,6 +43,7 @@ class Flipbook extends Component {
         forceFit:true,
         webgl: true,
         outline:[],
+        direction:DFLIP.DIRECTION.RTL,
         color3DCover:"#ffffff",
         hard: "none",
         shadowOpacity: 0,
@@ -91,4 +92,4 @@ class Flipbook extends Component {
   }
 }
 
-export default Flipbook;
+export default FlipbookArabic;
