@@ -4,6 +4,8 @@ const Gallery = ({ gallery }) => {
   if (!gallery || gallery.length === 0) {
     return <div>No gallery available.</div>;
   }
+  gallery.sort((a, b) => new Date(a.fields.date_published) -  new Date(b.fields.date_published))
+
   return (
     <div className="w-full bg-[#f9f9f9] shadow-black border-[0.5px] drop-shadow-md pb-4 shadow-md">
       <div className=" px-10 w-full py-[16px] bg-[#C2AB80] flex justify-between items-center mb-[30px] bg text-[white] rounded-[8px] rounded-bl-none rounded-br-none">
@@ -40,7 +42,7 @@ const Gallery = ({ gallery }) => {
                     <h1 className="sm:text-[16px] text-[11px] mb-[5px]">
                       {item.fields.event_name_ar}
                     </h1>
-                    <p className="sm:text-[14px] text-justify text-[9px]m font-light text-[#888888]">
+                    <p className="sm:text-[12px] text-justify text-[9px]m font-light text-[#888888]">
                       {item.fields.subtitle_ar}
                     </p>
                   </div>

@@ -46,7 +46,8 @@ const Poll = ({ polls }) => {
 
   useEffect(() => {
     if (polls.length > 0) {
-      polls.sort((a, b) => new Date(b.date_published) - new Date(a.date_published));
+      
+      polls.sort((a, b) => new Date(b.fields.date_published) - new Date(a.fields.date_published));
       const latestPoll = polls[0].fields;
       setPoll(latestPoll);
       getGlobalPoll(latestPoll.poll_id);
@@ -103,7 +104,6 @@ const Poll = ({ polls }) => {
   if (!poll || options.length === 0) return null;
 
   const totalVotes = globalPoll.options ? globalPoll.options.reduce((total, option) => total + option.votes_count, 0) : 0;
-
   return (
     <div className="w-full min-h-[424px] bg-white rounded-lg overflow-hidden shadow-md">
       <div className="bg-[#50917F] w-full h-[64px] flex justify-between items-center px-[30px] py-[20px] text-white mb-[30px]">

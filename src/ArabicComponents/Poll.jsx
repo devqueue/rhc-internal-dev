@@ -46,7 +46,7 @@ const Poll = ({ polls }) => {
 
   useEffect(() => {
     if (polls.length > 0) {
-      polls.sort((a, b) => new Date(b.date_published) - new Date(a.date_published));
+      polls.sort((a, b) => new Date(b.fields.date_published) - new Date(a.fields.date_published));
       const latestPoll = polls[0].fields;
       setPoll(latestPoll);
       getGlobalPoll(latestPoll.poll_id);
