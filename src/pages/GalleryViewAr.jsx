@@ -23,20 +23,21 @@ const GalleryviewAr = () => {
               معرض الصور
               </h1>
             </div>
-            <div className="flex carousel bg-[#F4F8FB] rounded-box w-full justify-center items-right flex-col">
-              <div className="carousel-item sm:w-[40vw] w-[70vw] py-[40px] ">
-              {
+            <div className="flex bg-[#F4F8FB] rounded-box w-full justify-center flex-col">
+          <div className="carousel w-full py-[40px]">
+            {
               
               images_fil.map((image, index) => (
                 <img
                   src={`https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${image}`}
-                  alt={gallery.fields.Title}
-                  className="object-cover w-full h-full px-2"
+                  alt={index}
+                  className="carousel-item object-cover sm:w-[40vw] w-[70vw] h-auto px-2"
                 />
               ))
             }
-              </div>
-            </div>
+            
+          </div>
+        </div>
             <div className="lg:w-full md:w-full p-[40px] h-auto text-right bg-[#F4F8FB]">
               <h1 className="font-figtree font-semibold text-4xl leading-[48px] text-right">
                 {gallery.fields.event_name_ar}
