@@ -40,7 +40,7 @@ const Gallery = ({ gallery }) => {
                     <h1 className="sm:text-[16px] text-[11px] mb-[5px]">
                       {item.fields.event_name_ar}
                     </h1>
-                    <p className="sm:text-[14px] text-[9px]m font-light text-[#888888]">
+                    <p className="sm:text-[14px] text-justify text-[9px]m font-light text-[#888888]">
                       {item.fields.subtitle_ar}
                     </p>
                   </div>
