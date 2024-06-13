@@ -94,7 +94,7 @@ const Calendar = ({events}) => {
         <hr />
         {weekEvents.length > 0 ? renderEvents(weekEvents, "This Week") : null}
       </div>):<div className=" h-full w-full absolute top-0 left-0 flex justify-center items-center">
-      No events in calendar
+      No appointments in calendar
       </div>}
       
     </div>

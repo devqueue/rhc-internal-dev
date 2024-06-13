@@ -107,7 +107,7 @@ const Poll = ({ polls }) => {
   return (
     <div className="w-full min-h-[424px] bg-white rounded-lg overflow-hidden shadow-md">
       <div className="bg-[#50917F] w-full h-[64px] flex justify-between items-center px-[30px] py-[20px] text-white mb-[30px]">
-        <h1 className="sm:text-[20px] text-[12px]">Poll</h1>
+        <h1 className="sm:text-[20px] text-[12px]">استطلاع رأي</h1>
       </div>
 
       <div className="w-full px-[30px]">

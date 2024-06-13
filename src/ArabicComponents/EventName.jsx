@@ -64,7 +64,7 @@ const EventName = ({ events }) => {
         <h1 className="sm:text-[20px] text-[12px] font-light ">
         &nbsp;
         </h1>
-        <h2 className="sm:text-[16px] text-[11px] font-light ">لا يوجد أحداث</h2>
+        <h2 className="sm:text-[16px] text-[11px] font-light ">لا يوجد حدث</h2>
       </div>
 
       <p className="text-[13px] font-light text-center">
