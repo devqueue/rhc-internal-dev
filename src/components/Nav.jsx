@@ -36,7 +36,7 @@ const Nav = ({ }) => {
   const { instance, accounts } = useMsal();
   const userImg = (localStorage.getItem("userImg"));
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log("user", user);
+  // console.log("user", user);
   const [isHovered, setIsHovered] = useState(false);
 
   // Sample user data
