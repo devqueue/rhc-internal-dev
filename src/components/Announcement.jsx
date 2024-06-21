@@ -74,7 +74,7 @@ const Announcement = ({ announcements }) => {
                   new Date(announcement.fields.date).toLocaleString("en-AU", 
                     {
                       // dateStyle: "short",
-                      timeZone: "Asia/Riyadh",
+                      // timeZone: "Asia/Riyadh",
                       timeZone: "Asia/Riyadh",
                       year: "numeric",
                       month: "2-digit",
