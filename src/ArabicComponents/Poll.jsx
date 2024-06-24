@@ -6,6 +6,8 @@ const Poll = ({ polls }) => {
   const [optionIdCasted,setOptionIdCasted] = useState('');
   const [poll, setPoll] = useState({});
   const [globalPoll, setGlobalPoll] = useState({});
+  const [admins,setAdmins] = useState([]);
+  const [user,setUser] = useState('');
 
   const getGlobalPoll = async (poll_id) => {
     try {
@@ -48,6 +50,8 @@ const Poll = ({ polls }) => {
     if (polls.length > 0) {
       polls.sort((a, b) => new Date(b.fields.date_published) - new Date(a.fields.date_published));
       const latestPoll = polls[0].fields;
+      setAdmins(latestPoll.admin_emails.split('\n').map(admin => admin.trim().toLowerCase()));
+      setUser(JSON.parse(localStorage.getItem('user')).mail.toLocaleLowerCase());
       setPoll(latestPoll);
       getGlobalPoll(latestPoll.poll_id);
       getPollByIdentifier(latestPoll.poll_id);
@@ -145,7 +149,7 @@ const Poll = ({ polls }) => {
               </div>
             ))}
           </div>
-        ) : (
+        ) :  (poll.show_result || (!poll.show_result && admins.includes(user.toLocaleLowerCase()))) ? (
           <div className="flex flex-col gap-[16px]">
             {globalPoll.options && globalPoll.options.map((option,i) => {
               const percentage = totalVotes > 0 ? ((option.votes_count / totalVotes) * 100).toFixed(2) : 0;
@@ -169,7 +173,45 @@ const Poll = ({ polls }) => {
               );
             })}
           </div>
-        )}
+        ) : (
+          <>
+          <div className="flex flex-col gap-[16px]">
+            {globalPoll.options && globalPoll.options.map((option,i) => (
+              <div
+                key={option.id}
+                className={`w-full px-[33px] py-[17px] border-[1px] border-[#50917F] rounded-lg flex items-center gap-[16px] cursor-pointer ${voteCasted ? 'opacity-50 cursor-not-allowed' : ''}`}
+              >
+                <input
+                  className="hidden"
+                  type="radio"
+                  id={option.id}
+                  name="options"
+                  value={option.id}
+                  checked={option.id==optionIdCasted}
+                  disabled={voteCasted}
+                />
+                <span className="w-[33px] h-[33px] border-[1px] border-[#888888] rounded-full flex items-center justify-center shrink-0">
+                  <span
+                    className={`w-[60%] h-[60%] bg-[#3B729C] rounded-full ${optionIdCasted === option.id ? "opacity-100" : "opacity-0"}`}
+                  ></span>
+                </span>
+
+                <label className={`sm:text-[16px] text-[11px] ${voteCasted ? 'cursor-not-allowed' : 'cursor-pointer'}`} htmlFor={option.id}>
+                  {options[i].label}
+                </label>
+
+              </div>
+            ))}
+          </div>
+          
+            <p className="text-center text-[#50917F] mt-4 py-5">
+            شكرا للتصويت
+            </p>
+          </>
+          
+        )
+        
+        }
 
         {!voteCasted && (
           <button

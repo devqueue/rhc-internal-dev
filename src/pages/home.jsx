@@ -61,7 +61,7 @@ const Home = () => {
           }
         );
         const data = await response.json();
-         //console.log(`${name} items:`, data);
+         console.log(`${name} items:`, data);
 
         if (data.value) {
           const valuesToSet = data.value.filter((item) => item.fields.Status === 'Published' || item.fields.status === 'Published');
@@ -150,7 +150,7 @@ const Home = () => {
             {
               name: "Upcoming events",
               id: "fd974e0a-d601-4921-804c-10ff956619e2",
-              fields: "",
+              fields: "(select=*)",
               setStateFunction: setUpcomingEvents,
             },
             {
