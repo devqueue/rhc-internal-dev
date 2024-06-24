@@ -12,7 +12,7 @@ const UpcomingEvents = ({ events }) => {
   }
 
   const formatDate = (timestamp) => {
-    const date = DateTime.fromISO(timestamp, { zone: 'UTC' }).setZone('Asia/Riyadh');
+    const date = DateTime.fromISO(timestamp, { zone: 'UTC' }).minus({ hours: 10 }).setZone('Asia/Riyadh');
 
     // Define month names
     const monthNames = [
@@ -42,7 +42,7 @@ const UpcomingEvents = ({ events }) => {
   };
 
   const normalizeDateTime = (dateTimeString) => {
-    const dateTime = DateTime.fromISO(dateTimeString, { zone: 'UTC' }).setZone('Asia/Riyadh');
+    const dateTime = DateTime.fromISO(dateTimeString, { zone: 'UTC' }).minus({ hours: 10 }).setZone('Asia/Riyadh');
     return dateTime.toLocaleString(DateTime.TIME_SIMPLE);
   };
 

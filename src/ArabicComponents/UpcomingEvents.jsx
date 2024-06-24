@@ -3,7 +3,7 @@ import { DateTime } from "luxon";
 
 const UpcomingEvents = ({ events }) => {
   const sortedEvents = events.slice().sort((a, b) => {
-    return new Date(a.fields.Start_time) - new Date(b.fields.Start_time);
+    return new Date(a.fields.start_dt_time) - new Date(b.fields.start_dt_time);
   });
 
   if (!sortedEvents || sortedEvents.length === 0) {
@@ -11,7 +11,7 @@ const UpcomingEvents = ({ events }) => {
   }
 
   const formatDate = (timestamp) => {
-    const date = DateTime.fromISO(timestamp, { zone: 'UTC' }).setZone('Asia/Riyadh');
+    const date = DateTime.fromISO(timestamp, { zone: 'UTC' }).minus({ hours: 10 }).setZone('Asia/Riyadh');
     
     // Define month names
     const monthNames = [
@@ -41,7 +41,7 @@ const UpcomingEvents = ({ events }) => {
   };
 
   const normalizeDateTime = (dateTimeString) => {
-    const dateTime = DateTime.fromISO(dateTimeString, { zone: 'UTC' }).setZone('Asia/Riyadh');
+    const dateTime = DateTime.fromISO(dateTimeString, { zone: 'UTC' }).minus({ hours: 10 }).setZone('Asia/Riyadh');
     return dateTime.toLocaleString(DateTime.TIME_SIMPLE);
   };
 
@@ -73,8 +73,8 @@ const UpcomingEvents = ({ events }) => {
                 backgroundPosition: "center",
               }}
             >
-              {formatDate(event.fields.Start_time).day}
-              <br /> {formatDate(event.fields.Start_time).monthName}
+              {formatDate(event.fields.start_dt_time).day}
+              <br /> {formatDate(event.fields.start_dt_time).monthName}
             </div>
             <div className="flex flex-col gap-[5px]">
               <h1 className="sm:text-[16px] text-[11px] font-[400px] lg:w-[15vw]">
@@ -90,7 +90,7 @@ const UpcomingEvents = ({ events }) => {
                   className="w-[16px] h-[16px] shrink-0"
                 ></div>
                 <p className="text-[12px] font-[400px]" style={{ direction: "ltr" }}>
-                  {normalizeDateTime(event.fields.Start_time)} -{" "}
+                  {normalizeDateTime(event.fields.start_dt_time)} -{" "}
                   {normalizeDateTime(event.fields.end_time)}
                 </p>
               </div>
