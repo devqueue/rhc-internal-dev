@@ -7,9 +7,10 @@ const Calender = ({ events }) => {
   const todayMonth = today.getMonth();
   const todayDay = today.getDate();
 
-  
   const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay()));
-  const endOfWeek = new Date(today.setDate(today.getDate() - today.getDay() + 6));
+  const endOfWeek = new Date(
+    today.setDate(today.getDate() - today.getDay() + 6)
+  );
 
   const renderEvents = (events, title) => (
     <div className="px-[30px] my-[20px]">
@@ -31,7 +32,10 @@ const Calender = ({ events }) => {
                 <h1 className="sm:text-[16px] text-[11px] w-[100%]">
                   {event.name}
                 </h1>
-                <h2 className="text-[14px] text-[#888888]" style={{direction: "ltr"}}>
+                <h2
+                  className="text-[14px] text-[#888888] text-right"
+                  style={{ direction: "ltr" }}
+                >
                   {event.starttime} - {event.endtime}
                 </h2>
               </div>
@@ -53,13 +57,14 @@ const Calender = ({ events }) => {
   let weekEvents = events.filter((event) => {
     const todayEvent = new Date(todayYear, todayMonth, todayDay);
     const eventDate = new Date(todayYear, todayMonth, event.day);
-    return eventDate > todayEvent && eventDate <= endOfWeek && eventDate.toDateString() !== new Date().toDateString();
+    return (
+      eventDate > todayEvent &&
+      eventDate <= endOfWeek &&
+      eventDate.toDateString() !== new Date().toDateString()
+    );
   });
 
   weekEvents.sort((a, b) => parseInt(a.day) - parseInt(b.day));
-
-
-
 
   // console.log("Today Events:", todayEvents);
   // console.log("Week Events:", weekEvents);
@@ -85,7 +90,9 @@ const Calender = ({ events }) => {
           {weekEvents.length > 0 ? renderEvents(weekEvents, "This Week") : null}
         </div>
       ) : (
-        <div className=" h-full w-full absolute top-0 left-0 flex justify-center items-center">لا يوجد أحداث في التقويم</div>
+        <div className=" h-full w-full absolute top-0 left-0 flex justify-center items-center">
+          لا يوجد أحداث في التقويم
+        </div>
       )}
     </div>
   );
