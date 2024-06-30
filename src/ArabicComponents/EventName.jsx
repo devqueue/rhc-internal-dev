@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { DateTime } from 'luxon';
+import { DateTime } from "luxon";
 
 const EventName = ({ events }) => {
-
   const [nearestEvent, setNearestEvent] = useState(null);
   const [countdown, setCountdown] = useState({
     days: 0,
@@ -11,23 +10,27 @@ const EventName = ({ events }) => {
   });
 
   const getNearestEvent = (events) => {
-    const now = DateTime.now().setZone('Asia/Riyadh');
-  
+    const now = DateTime.now().setZone("Asia/Riyadh");
+
     const upcomingEvents = events
-      .filter(event => event.startDateTime && event.startDateTime.dateTime)
-      .map(event => {
-        const eventDateTime = DateTime.fromISO(event.startDateTime.dateTime, { zone: event.startDateTime.timeZone });
+      .filter((event) => event.startDateTime && event.startDateTime.dateTime)
+      .map((event) => {
+        const eventDateTime = DateTime.fromISO(event.startDateTime.dateTime, {
+          zone: event.startDateTime.timeZone,
+        });
         return { ...event, eventDateTime };
       })
-      .filter(event => event.eventDateTime > now)
+      .filter((event) => event.eventDateTime > now)
       .sort((a, b) => a.eventDateTime - b.eventDateTime);
-  
+
     return upcomingEvents[0];
   };
 
   const calculateCountdown = (eventDateTime) => {
-    const now = DateTime.now().setZone('Asia/Riyadh');
-    const diff = eventDateTime.diff(now, ['days', 'hours', 'minutes', 'seconds']).toObject();
+    const now = DateTime.now().setZone("Asia/Riyadh");
+    const diff = eventDateTime
+      .diff(now, ["days", "hours", "minutes", "seconds"])
+      .toObject();
     return {
       days: diff.days,
       hours: diff.hours,
@@ -35,7 +38,6 @@ const EventName = ({ events }) => {
       seconds: diff.seconds,
     };
   };
-  
 
   useEffect(() => {
     if (events.length > 0) {
@@ -57,22 +59,21 @@ const EventName = ({ events }) => {
     }
   }, [events]);
 
-  if(events.length === 0 || !nearestEvent){
-    return(
+  if (events.length === 0 || !nearestEvent) {
+    console.log(events);
+    return (
       <div className="py-[30px] px-[20px] bg-[#3B729C] flex flex-col justify-center items-center gap-[24px] text-white rounded-[8px]">
-      <div className="flex flex-col items-center gap-[10px]">
-        <h1 className="sm:text-[20px] text-[12px] font-light ">
-        &nbsp;
-        </h1>
-        <h2 className="sm:text-[16px] text-[11px] font-light ">لا يوجد حدث</h2>
-      </div>
+        <div className="flex flex-col items-center gap-[10px]">
+          <h1 className="sm:text-[20px] text-[12px] font-light ">&nbsp;</h1>
+          <h2 className="sm:text-[16px] text-[11px] font-light ">
+            لا يوجد حدث
+          </h2>
+        </div>
 
-      <p className="text-[13px] font-light text-center">
-        &nbsp;
-      </p>
-    </div>
-    )
-  };
+        <p className="text-[13px] font-light text-center">&nbsp;</p>
+      </div>
+    );
+  }
 
   return (
     <div className="py-[30px] px-[20px] bg-[#3B729C] flex flex-col justify-center items-center gap-[24px] text-white rounded-[8px]">
@@ -100,9 +101,9 @@ const EventName = ({ events }) => {
         </div>
       </div>
 
-      <p className="text-[13px] font-light text-center">
+      {/* <p className="text-[13px] font-light text-center">
         {nearestEvent ? nearestEvent.bodyPreview : "No upcoming events"}
-      </p>
+      </p> */}
     </div>
   );
 };

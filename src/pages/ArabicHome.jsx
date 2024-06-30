@@ -40,7 +40,7 @@ const ArabicHome = () => {
   const [accounts, setAccounts] = useState([]);
   const [user, setUser] = useState(null);
   const [pdfs, setPdfs] = useState([]);
-  const [polls,setPolls] = useState([]);
+  const [polls, setPolls] = useState([]);
 
   const [mails, setMails] = useState([]);
 
@@ -76,7 +76,11 @@ const ArabicHome = () => {
         // console.log(`${name} items:`, data);
 
         if (data.value) {
-          const valuesToSet = data.value.filter((item) => item.fields.Status === 'Published' || item.fields.status === 'Published');
+          const valuesToSet = data.value.filter(
+            (item) =>
+              item.fields.Status === "Published" ||
+              item.fields.status === "Published"
+          );
           setStateFunction(valuesToSet);
         } else {
           console.error(`No items found in ${listId}`);
@@ -96,10 +100,11 @@ const ArabicHome = () => {
         try {
           const response = await msalInstance.acquireTokenSilent(request);
           setAccessToken(response.accessToken);
-          localStorage.setItem('userAuthToken',response.accessToken);
+          localStorage.setItem("userAuthToken", response.accessToken);
 
           await fetchCalendarEvents(response.accessToken);
           await fetchPlannerTasks(response.accessToken);
+          await fetchMailInbox(response.accessToken);
 
           const userResponse = await fetch(
             "https://graph.microsoft.com/v1.0/me",
@@ -118,7 +123,7 @@ const ArabicHome = () => {
           );
 
           const userImgBlob = await userImgResponse.blob();
-          localStorage.setItem("userImg",(URL.createObjectURL(userImgBlob)));
+          localStorage.setItem("userImg", URL.createObjectURL(userImgBlob));
 
           const response2 = await fetch(
             "https://graph.microsoft.com/v1.0/sites/riyadhholding.sharepoint.com:/sites/Shamil/",
@@ -145,7 +150,8 @@ const ArabicHome = () => {
             {
               name: "News",
               id: "0304b663-8abb-414e-a03c-2d7f00cff357",
-              fields: "(select=Title, preview_en, full_text_en, title_ar, preview_ar, full_text_ar, image_name, status, date_published)",
+              fields:
+                "(select=Title, preview_en, full_text_en, title_ar, preview_ar, full_text_ar, image_name, status, date_published)",
               setStateFunction: setNews,
             },
             {
@@ -163,7 +169,8 @@ const ArabicHome = () => {
             {
               name: "Gallery",
               id: "9505ceb4-ece5-447d-99fa-b383a324dcd9",
-              fields: "(select=Title, event_name_ar, subtitle_en, subtitle_ar, status, image_name, date_published, gallery_images)",
+              fields:
+                "(select=Title, event_name_ar, subtitle_en, subtitle_ar, status, image_name, date_published, gallery_images)",
               setStateFunction: setGallery,
             },
             {
@@ -433,7 +440,7 @@ const ArabicHome = () => {
             </div> */}
 
             <div className="sm:px-[30px] px-[5vw] mt-[30px]">
-              <KnowledgeBase pdfs={pdfs}/>
+              <KnowledgeBase pdfs={pdfs} />
             </div>
           </div>
         </div>
