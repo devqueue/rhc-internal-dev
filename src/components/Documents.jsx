@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Flipbook from './dflip';
-const KnowledgeBase = ({ pdfs,siteID }) => {
-  console.log('pfs',pdfs)
+import Flipbook from "./dflip";
+const KnowledgeBase = ({ pdfs, siteID }) => {
+  // console.log('pfs',pdfs)
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedPdf, setSelectedPdf] = useState(null);
 
@@ -15,9 +15,8 @@ const KnowledgeBase = ({ pdfs,siteID }) => {
     setIsPopupOpen(false);
     setSelectedPdf(null);
   };
-  
 
-  if(pdfs.length === 0) return null;
+  if (pdfs.length === 0) return null;
 
   return (
     <div className="flex flex-col items-start gap-[40px] w-full rounded-[8px] overflow-hidden pb-10 shadow-md">
@@ -38,7 +37,9 @@ const KnowledgeBase = ({ pdfs,siteID }) => {
         <div
           key={index}
           className="flex self-stretch p-[12px] px-[20px] mx-[20px] items-center gap-[10px] rounded-[8px] border border-[#595959] cursor-pointer"
-           onClick={() => {handlePdfClick(pdf);}}
+          onClick={() => {
+            handlePdfClick(pdf);
+          }}
         >
           <img src="/icons/newdoc.svg" alt="" />
 
@@ -61,7 +62,7 @@ const KnowledgeBase = ({ pdfs,siteID }) => {
               &times;
             </button>
             <Flipbook source={`/${selectedPdf.fields.document_name}`} />
-            </div>
+          </div>
         </div>
       )}
     </div>
