@@ -41,6 +41,7 @@ const ArabicHome = () => {
   const [user, setUser] = useState(null);
   const [pdfs, setPdfs] = useState([]);
   const [polls, setPolls] = useState([]);
+  const [knowledge, setKnowledge] = useState([]);
 
   const [mails, setMails] = useState([]);
 
@@ -185,6 +186,12 @@ const ArabicHome = () => {
               fields: "",
               setStateFunction: setPolls,
             },
+            {
+              name: "awareness",
+              id: "ac2f4398-3022-4114-9955-3e893c6ef09b",
+              fields: "",
+              setStateFunction: setKnowledge,
+            },
           ];
 
           const fetchPromises = lists.map((list) =>
@@ -262,7 +269,7 @@ const ArabicHome = () => {
     const fetchMailInbox = async (token) => {
       try {
         const response = await fetch(
-          `https://graph.microsoft.com/v1.0/me/messages?$filter=microsoft.graph.eventMessage/meetingMessageType ne 'none' and sender/emailAddress/address  eq 'mcenter@riyadhholding.sa'`,
+          `https://graph.microsoft.com/v1.0/me/messages?$filter=gt 2024-04-30T21:00:00.000Z and microsoft.graph.eventMessage/meetingMessageType ne 'none' and sender/emailAddress/address  eq 'mcenter@riyadhholding.sa'`,
           {
             headers: { Authorization: "Bearer " + token },
           }
@@ -385,12 +392,10 @@ const ArabicHome = () => {
 
               <News news={news} />
             </div>
-            {/* 
-                Hide Knoledge base
-            */}
-            {/* <div className="mt-[30px]">
-              <KnowledgeBaseUpdatedAr />
-            </div> */}
+
+            <div className="mt-[30px]">
+              <KnowledgeBaseUpdatedAr Knowledge={knowledge} />
+            </div>
           </div>
 
           <div className="shadow-md lg:w-[30vw] w-full rounded-[8px] bg-white">
