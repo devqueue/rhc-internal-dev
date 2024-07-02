@@ -40,9 +40,12 @@ const Home = () => {
   const [userImg, setUserImg] = useState(null);
   const [loading, setLoading] = useState(true);
   const [mails, setMails] = useState([]);
-  const [popupOpened, setPopupOpened] = useState(localStorage.getItem('imgFix'));
-  const [siteID,setSiteID] = useState('');
-  const [polls,setPolls] = useState([]);
+  const [popupOpened, setPopupOpened] = useState(
+    localStorage.getItem("imgFix")
+  );
+  const [siteID, setSiteID] = useState("");
+  const [polls, setPolls] = useState([]);
+  const [knowledge, setKnowledge] = useState([]);
   // console.log(accounts)
   useEffect(() => {
     const fetchListItems = async (
@@ -61,12 +64,15 @@ const Home = () => {
           }
         );
         const data = await response.json();
-         console.log(`${name} items:`, data);
+        console.log(`${name} items:`, data);
 
         if (data.value) {
-          const valuesToSet = data.value.filter((item) => item.fields.Status === 'Published' || item.fields.status === 'Published');
+          const valuesToSet = data.value.filter(
+            (item) =>
+              item.fields.Status === "Published" ||
+              item.fields.status === "Published"
+          );
           setStateFunction(valuesToSet);
-
         } else {
           console.error(`No items found in ${listId}`);
         }
@@ -84,7 +90,7 @@ const Home = () => {
 
         try {
           const response = await instance.acquireTokenSilent(request);
-          localStorage.setItem('userAuthToken',response.accessToken);
+          localStorage.setItem("userAuthToken", response.accessToken);
           setAccessToken(response.accessToken);
           await fetchCalendarEvents(response.accessToken);
           await fetchPlannerTasks(response.accessToken);
@@ -102,7 +108,6 @@ const Home = () => {
 
           // Store user data in local storage
           localStorage.setItem("user", JSON.stringify(userJson));
-          
 
           const userImgResponse = await fetch(
             "https://graph.microsoft.com/v1.0/me/photos/48x48/$value",
@@ -113,7 +118,7 @@ const Home = () => {
 
           const userImgBlob = await userImgResponse.blob();
           //console.log("User image:", userImgBlob);
-          localStorage.setItem("userImg",(URL.createObjectURL(userImgBlob)));
+          localStorage.setItem("userImg", URL.createObjectURL(userImgBlob));
 
           const response2 = await fetch(
             "https://graph.microsoft.com/v1.0/sites/riyadhholding.sharepoint.com:/sites/Shamil/",
@@ -121,7 +126,7 @@ const Home = () => {
           );
           const resJson = await response2.json();
           const siteId = resJson.id;
-          setSiteID(siteId)
+          setSiteID(siteId);
           const lists = [
             {
               name: "Announcements",
@@ -138,7 +143,8 @@ const Home = () => {
             {
               name: "News",
               id: "0304b663-8abb-414e-a03c-2d7f00cff357",
-              fields: "(select=Title, preview_en, full_text_en, title_ar, preview_ar, full_text_ar, image_name, status, date_published)",
+              fields:
+                "(select=Title, preview_en, full_text_en, title_ar, preview_ar, full_text_ar, image_name, status, date_published)",
               setStateFunction: setNews,
             },
             {
@@ -155,8 +161,9 @@ const Home = () => {
             },
             {
               name: "Gallery",
-              id: "9505ceb4-ece5-447d-99fa-b383a324dcd9", 
-              fields: "(select=Title, event_name_ar, subtitle_en, subtitle_ar, status, image_name, date_published, gallery_images)",
+              id: "9505ceb4-ece5-447d-99fa-b383a324dcd9",
+              fields:
+                "(select=Title, event_name_ar, subtitle_en, subtitle_ar, status, image_name, date_published, gallery_images)",
               setStateFunction: setGallery,
             },
             {
@@ -170,6 +177,12 @@ const Home = () => {
               id: "9153493d-9dd8-42c6-a342-1f088cf19d47",
               fields: "",
               setStateFunction: setPolls,
+            },
+            {
+              name: "awareness",
+              id: "ac2f4398-3022-4114-9955-3e893c6ef09b",
+              fields: "(select=*)",
+              setStateFunction: setKnowledge,
             },
           ];
 
@@ -248,7 +261,7 @@ const Home = () => {
     const fetchMailInbox = async (token) => {
       try {
         const response = await fetch(
-          `https://graph.microsoft.com/v1.0/me/messages?$filter=microsoft.graph.eventMessage/meetingMessageType ne 'none' and sender/emailAddress/address  eq 'mcenter@riyadhholding.sa'`,
+          `https://graph.microsoft.com/v1.0/me/messages?$filter=receivedDateTime gt 2024-04-30T21:00:00.000Z and microsoft.graph.eventMessage/meetingMessageType ne 'none' and sender/emailAddress/address  eq 'mcenter@riyadhholding.sa'`,
           {
             headers: { Authorization: "Bearer " + token },
           }
@@ -324,28 +337,26 @@ const Home = () => {
   if (loading || !popupOpened) {
     return (
       <div class="grid min-h-[100vh] w-full h-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
-      {!popupOpened && (
-        <div className="fixed flex items-center justify-center w-full h-full bg-[#0000006b] z-50">
-          <div className="bg-white p-[50px] rounded-lg">
-            <a
-            href="https://riyadhholding.sharepoint.com/sites/Shamil/Assets/DONOTDELETE2.png"
-            target="_blank"
-              className="bg-[#3B729C] text-white px-4 py-2 rounded"
-              onClick={
-                ()=>{
+        {!popupOpened && (
+          <div className="fixed flex items-center justify-center w-full h-full bg-[#0000006b] z-50">
+            <div className="bg-white p-[50px] rounded-lg">
+              <a
+                href="https://riyadhholding.sharepoint.com/sites/Shamil/Assets/DONOTDELETE2.png"
+                target="_blank"
+                className="bg-[#3B729C] text-white px-4 py-2 rounded"
+                onClick={() => {
                   setTimeout(() => {
                     setPopupOpened(false);
-                    localStorage.setItem('imgFix',false)
+                    localStorage.setItem("imgFix", false);
                     window.location.reload();
                   }, 3400);
-                }
-              }
-            >
-              Allow Popup
-            </a>
+                }}
+              >
+                Allow Popup
+              </a>
+            </div>
           </div>
-        </div>
-      )}
+        )}
         <svg
           class="w-16 h-16 animate-spin text-gray-900/50"
           viewBox="0 0 64 64"
@@ -384,26 +395,20 @@ const Home = () => {
             <div className="w-full h-[400px] rounded-lg overflow-hidden">
               <Banner />
             </div>
-
             <div className="flex lg:flex-row flex-col gap-[30px] mt-[25px]">
               <Calender events={calendarEvents} />
               <Planner tasks={plannerTasks} />
             </div>
-
             <div className="mt-[30px] w-full">
               <Announcement announcements={announcements} />
             </div>
-
             <div className="flex lg:flex-row flex-col gap-[30px] justify-between mt-[25px]">
               <Poll polls={polls} />
               <News news={news} />
             </div>
-            {/* 
-                Hide Knoledge base
-            */}
-            {/* <div className="mt-[30px]">
-              <KnowledgeBaseUpdated />
-            </div> */}
+            <div className="mt-[30px]">
+              <KnowledgeBaseUpdated Knowledge={knowledge} />
+            </div>
           </div>
 
           <div className="shadow-md lg:w-[30vw] w-full rounded-[8px] bg-white">
@@ -461,7 +466,7 @@ const Home = () => {
         hide linkedin 
         */}
 
-         {/* <div className="w-full rounded-lg overflow-hidden mt-[65px] shadow-md">
+        {/* <div className="w-full rounded-lg overflow-hidden mt-[65px] shadow-md">
           <NewEmployeeCards accessToken = {accessToken} />
         </div>  */}
 
