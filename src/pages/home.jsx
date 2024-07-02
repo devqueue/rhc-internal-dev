@@ -406,9 +406,9 @@ const Home = () => {
               <Poll polls={polls} />
               <News news={news} />
             </div>
-            <div className="mt-[30px]">
+            {/* <div className="mt-[30px]">
               <KnowledgeBaseUpdated Knowledge={knowledge} />
-            </div>
+            </div> */}
           </div>
 
           <div className="shadow-md lg:w-[30vw] w-full rounded-[8px] bg-white">
