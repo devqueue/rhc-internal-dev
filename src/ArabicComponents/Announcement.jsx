@@ -42,7 +42,8 @@ const Announcement = ({ announcements }) => {
         }`}
         style={{
           transform: `translateX(calc(${currentIndex * 100}% - ${
-            currentIndex * 40}px )`,
+            currentIndex * 40
+          }px )`,
         }}
       >
         {announcements.map((announcement, index) => (
@@ -70,16 +71,13 @@ const Announcement = ({ announcements }) => {
                 </p>
                 <p className="sm:text-[16px] text-[11px] font-light xxl:w-[20vw] w-auto">
                   تاريخ النشر: &nbsp;
-                  { 
-                  new Date(announcement.fields.date).toLocaleString("en-AU", 
-                    {
-                      // dateStyle: "short",
-                      timeZone: "Asia/Riyadh",
-                      year: "numeric",
-                      month: "2-digit",
-                      day: "2-digit"
-                    })      
-                  }
+                  {new Date(announcement.fields.date).toLocaleString("en-AU", {
+                    // dateStyle: "short",
+                    timeZone: "Asia/Riyadh",
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit",
+                  })}
                 </p>
                 {/* <Link
                   className="m:sm:text-[14px] text-[9px] px-[10px] py-[5px] border-[1px] border-black md:rounded-[8px] rounded-md"
@@ -90,7 +88,11 @@ const Announcement = ({ announcements }) => {
                 </Link> */}
               </div>
 
-              <img className="sm:w-[200px] lg:w-[100px]" src="/images/HeroPattern.png" alt="" />
+              <img
+                className="sm:w-[100px] lg:w-[100px]"
+                src="/images/HeroPattern.png"
+                alt=""
+              />
             </div>
           </div>
         ))}
