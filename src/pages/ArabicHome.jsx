@@ -269,7 +269,7 @@ const ArabicHome = () => {
     const fetchMailInbox = async (token) => {
       try {
         const response = await fetch(
-          `https://graph.microsoft.com/v1.0/me/messages?$filter=gt 2024-04-30T21:00:00.000Z and microsoft.graph.eventMessage/meetingMessageType ne 'none' and sender/emailAddress/address  eq 'mcenter@riyadhholding.sa'`,
+          `https://graph.microsoft.com/v1.0/me/messages?$filter=receivedDateTime gt 2024-04-30T21:00:00.000Z and microsoft.graph.eventMessage/meetingMessageType ne 'none' and sender/emailAddress/address  eq 'mcenter@riyadhholding.sa'`,
           {
             headers: { Authorization: "Bearer " + token },
           }
