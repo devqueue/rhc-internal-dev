@@ -42,7 +42,8 @@ const Announcement = ({ announcements }) => {
         }`}
         style={{
           transform: `translateX(calc(-${currentIndex * 100}% + ${
-            currentIndex * 40}px))`,
+            currentIndex * 40
+          }px))`,
         }}
       >
         {announcements.map((announcement, index) => (
@@ -60,7 +61,7 @@ const Announcement = ({ announcements }) => {
               }}
             ></div>
 
-            <div className="flex justify-between gap-[60px] items-end sm:items-center sm:flex-row flex-col">
+            {/* <div className="flex justify-between gap-[60px] items-end sm:items-center sm:flex-row flex-col">
               <div className="text-black flex flex-col gap-[20px] items-start">
                 <h1 className="sm:text-[24px] text-[16px] font-light">
                   {announcement.fields.Title}
@@ -82,13 +83,13 @@ const Announcement = ({ announcements }) => {
                     })      
                   }
                 </p>
-                {/* <Link
+               <Link
                   className="m:sm:text-[14px] text-[9px] px-[10px] py-[5px] border-[1px] border-black md:rounded-[8px] rounded-md"
                   to={`/announcement/${announcement.id}`}
                   state={{ announcement, moreAnnouncements: announcements }}
                 >
                   Read More
-                </Link> */}
+                </Link> 
               </div>
 
               <img
@@ -96,8 +97,7 @@ const Announcement = ({ announcements }) => {
                 src="/images/HeroPattern.png"
                 alt=""
               />
-            </div>
-            
+            </div> */}
           </div>
         ))}
       </div>

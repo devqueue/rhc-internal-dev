@@ -80,7 +80,9 @@ const ArabicHome = () => {
           const valuesToSet = data.value.filter(
             (item) =>
               item.fields.Status === "Published" ||
-              item.fields.status === "Published"
+              item.fields.status === "Published" ||
+              item.fields.Status === "Development" ||
+              item.fields.status === "Development"
           );
           setStateFunction(valuesToSet);
         } else {

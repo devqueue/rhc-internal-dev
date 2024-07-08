@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import Announcement from "../components/Announcement";
+import NewAnnouncement from "../components/NewAnnouncement";
 import Banner from "../components/Banner";
 import Calender from "../components/Calender";
 import EmployeeDirectory from "../components/EmployeeDirectory";
@@ -70,7 +71,9 @@ const Home = () => {
           const valuesToSet = data.value.filter(
             (item) =>
               item.fields.Status === "Published" ||
-              item.fields.status === "Published"
+              item.fields.status === "Published" ||
+              item.fields.Status === "Development" ||
+              item.fields.status === "Development"
           );
           setStateFunction(valuesToSet);
         } else {
@@ -402,13 +405,16 @@ const Home = () => {
             <div className="mt-[30px] w-full">
               <Announcement announcements={announcements} />
             </div>
+            {/* <div className="w-full  mt-[30px] rounded-lg overflow-hidden">
+              <NewAnnouncement announcements={announcements} />
+            </div> */}
             <div className="flex lg:flex-row flex-col gap-[30px] justify-between mt-[25px]">
               <Poll polls={polls} />
               <News news={news} />
             </div>
-            {/* <div className="mt-[30px]">
+            <div className="mt-[30px]">
               <KnowledgeBaseUpdated Knowledge={knowledge} />
-            </div> */}
+            </div>
           </div>
 
           <div className="shadow-md lg:w-[30vw] w-full rounded-[8px] bg-white">
