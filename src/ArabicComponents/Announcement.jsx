@@ -14,9 +14,14 @@ const Announcement = ({ announcements }) => {
     setCarouselPosition(0);
   };
 
-  const MoveRight = () => {};
+  const MoveRight = () => {
+    setCurrentIndex(prevIndex => prevIndex === announcements.length - 1 ? 0 : prevIndex + 1);
+  };
 
-  const Moveleft = () => {};
+  const Moveleft = () => {
+    setCurrentIndex(prevIndex => prevIndex === 0 ? announcements.length - 1 : prevIndex - 1);
+  };
+
 
   useEffect(() => {
     if (announcements.length > 1 && !isHovered) {
