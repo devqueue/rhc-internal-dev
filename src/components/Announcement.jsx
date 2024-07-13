@@ -5,6 +5,18 @@ const Announcement = ({ announcements }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
+  const [CarouselPosition, setCarouselPosition] = useState(0);
+  const [arrowRightBg, setArrowRightBg] = useState("bg-golden");
+  const [arrowleftBg, setArrowleftBg] = useState("bg-disable");
+
+  const handleTimeout = () => {
+    setIsTransitioning(false);
+    setCarouselPosition(0);
+  };
+
+  const MoveRight = () => {};
+
+  const Moveleft = () => {};
 
   useEffect(() => {
     if (announcements.length > 1 && !isHovered) {
@@ -60,48 +72,25 @@ const Announcement = ({ announcements }) => {
                 backgroundPosition: "center center",
               }}
             ></div>
-
-            {/* <div className="flex justify-between gap-[60px] items-end sm:items-center sm:flex-row flex-col">
-              <div className="text-black flex flex-col gap-[20px] items-start">
-                <h1 className="sm:text-[24px] text-[16px] font-light">
-                  {announcement.fields.Title}
-                </h1>
-                <p className="sm:text-[16px] text-justify	 text-[11px] font-light xxl:w-[20vw] w-auto">
-                  {announcement.fields.preview_en}
-                </p>
-                <p className="sm:text-[16px] text-[11px] font-light xxl:w-[20vw] w-auto">
-                  Date: &nbsp;
-                  { 
-                  new Date(announcement.fields.date).toLocaleString("en-AU", 
-                    {
-                      // dateStyle: "short",
-                      // timeZone: "Asia/Riyadh",
-                      timeZone: "Asia/Riyadh",
-                      year: "numeric",
-                      month: "2-digit",
-                      day: "2-digit"
-                    })      
-                  }
-                </p>
-               <Link
-                  className="m:sm:text-[14px] text-[9px] px-[10px] py-[5px] border-[1px] border-black md:rounded-[8px] rounded-md"
-                  to={`/announcement/${announcement.id}`}
-                  state={{ announcement, moreAnnouncements: announcements }}
-                >
-                  Read More
-                </Link> 
-              </div>
-
-              <img
-                className="sm:w-[200px] lg:w-[100px]"
-                src="/images/HeroPattern.png"
-                alt=""
-              />
-            </div> */}
           </div>
         ))}
       </div>
       <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-b from-gray-200 to-transparent"></div>
+      <div className="flex gap-2 pt-[24px] px-[30px] sm:px-[50px] relative bottom-[20px] lg:right-[0px] justify-end right-[16px] z-50">
+        <img
+          className="py-3 px-5 z-50 bg-golden"
+          src="/icons/ArrowLeft.svg"
+          alt=""
+          onClick={Moveleft}
+        />
+
+        <img
+          className="py-3 px-5 z-50 bg-golden"
+          src="/icons/ArrowRight.svg"
+          alt=""
+          onClick={MoveRight}
+        />
+      </div>
     </div>
   );
 };
