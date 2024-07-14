@@ -15,11 +15,15 @@ const Announcement = ({ announcements }) => {
   };
 
   const MoveRight = () => {
-    setCurrentIndex(prevIndex => prevIndex === announcements.length - 1 ? 0 : prevIndex + 1);
+    setCurrentIndex((prevIndex) =>
+      prevIndex === announcements.length - 1 ? 0 : prevIndex + 1
+    );
   };
 
   const Moveleft = () => {
-    setCurrentIndex(prevIndex => prevIndex === 0 ? announcements.length - 1 : prevIndex - 1);
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? announcements.length - 1 : prevIndex - 1
+    );
   };
 
   useEffect(() => {
@@ -69,7 +73,7 @@ const Announcement = ({ announcements }) => {
             style={{ backgroundColor: "#ffffff" }}
           >
             <div
-              className="lg:w-[550px] lg:h-[400px] w-[50vw] h-[37vw] bg-slate-300 rounded-lg overflow-hidden shrink-0"
+              className="lg:w-[800px] lg:h-[600px] w-[50vw] h-[37vw] bg-slate-300 rounded-lg overflow-hidden shrink-0"
               style={{
                 backgroundImage: `url('https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${announcement.fields.image_name}')`,
                 backgroundSize: "100%",
