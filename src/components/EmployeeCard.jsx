@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
 
-
-const EmployeeCard = ({ title, jobTitle, number, email, token, id,bg,fg,setAlert }) => {
+const EmployeeCard = ({
+  title,
+  jobTitle,
+  number,
+  email,
+  token,
+  id,
+  bg,
+  fg,
+  setAlert,
+}) => {
   const handleCopy = (text) => {
     navigator.clipboard.writeText(text);
     setAlert("Copied to clipboard " + text);
@@ -36,7 +45,9 @@ const EmployeeCard = ({ title, jobTitle, number, email, token, id,bg,fg,setAlert
   }, [token, id]);
 
   return (
-    <div className={`w-[280px] h-[381.2px] items-center justify-center gap-[20px] bg-white rounded-[17.6px] p-[27.5px] mb-4`}>
+    <div
+      className={`w-[280px] h-[381.2px] items-center justify-center gap-[20px] bg-white rounded-[17.6px] p-[27.5px] mb-4`}
+    >
       <div
         className="h-[143px] w-[143px] ml-[20%] m-auto mb-[25px] rounded-[8px] bg-[#dbf0f3] text-[#31696c] font-extrabold text-5xl flex items-center justify-center"
         style={{
@@ -45,14 +56,9 @@ const EmployeeCard = ({ title, jobTitle, number, email, token, id,bg,fg,setAlert
           backgroundPosition: "center",
         }}
       >
-        {
-
-            title.split(" ").map((name, index)=>{
-              if(index<2 && !img)
-              return name[0].toUpperCase()
-            })
-
-        }
+        {title.split(" ").map((name, index) => {
+          if (index < 2 && !img) return name[0];
+        })}
       </div>
 
       <h1 className="font-figtree flex flex-col items-center justify-center font-semibold text-[22px] leading-[19.2px] mb-[10px]">
