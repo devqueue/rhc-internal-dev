@@ -23,7 +23,7 @@ const EventName = ({ events }) => {
       .filter((event) => event.eventDateTime > now)
       .sort((a, b) => a.eventDateTime - b.eventDateTime);
 
-    console.log("Latest for countdown", upcomingEvents[0]);
+    // console.log("Latest for countdown", upcomingEvents[0]);
 
     return upcomingEvents[0];
   };
@@ -61,7 +61,7 @@ const EventName = ({ events }) => {
     }
   }, [events]);
 
-  console.log("Communication emails", events);
+  // console.log("Communication emails", events);
 
   if (events.length === 0 || !nearestEvent) {
     return (

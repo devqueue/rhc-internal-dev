@@ -16,7 +16,7 @@ const EmployeeDirectory = () => {
       if (!token) return; // Ensure we only fetch if a token exists
       try {
         const response = await fetch(
-          `https://graph.microsoft.com/v1.0/users?$filter=endswith(mail,'riyadhholding.sa') and accountEnabled eq true &$count=true&$top=300`,
+          `https://graph.microsoft.com/v1.0/users?$filter=endswith(mail,'riyadhholding.sa') and accountEnabled eq true&$count=true&$top=300`,
 
           {
             headers: {
@@ -26,7 +26,11 @@ const EmployeeDirectory = () => {
           }
         );
         const json = await response.json();
-        setEvents(json.value);
+        const fjson = json.value.filter(
+          (obj) => obj.businessPhones.length !== 0
+        );
+
+        setEvents(fjson);
       } catch (error) {
         console.error("Error fetching employees:", error);
       }
