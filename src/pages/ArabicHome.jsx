@@ -449,7 +449,7 @@ const ArabicHome = () => {
                 </svg>
 
                 <h1 className="text-white font-inter text-lg font-semibold">
-                  View Employee Directory
+                  عرض دليل الموظفين
                 </h1>
               </Link>
             </div>

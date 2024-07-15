@@ -61,7 +61,7 @@ const EmployeeCard = ({
         })}
       </div>
 
-      <h1 className="font-figtree flex flex-col items-center justify-center font-semibold text-[22px] leading-[19.2px] mb-[10px]">
+      <h1 className="font-figtree flex flex-col items-center justify-center font-semibold text-[20px] leading-[19.2px] mb-[10px]">
         <span
           className="block overflow-hidden overflow-ellipsis whitespace-nowrap max-w-[90%] capitalize cursor-pointer"
           title={title}

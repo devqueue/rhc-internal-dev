@@ -57,7 +57,7 @@ const NewAnnouncement = ({ announcements }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="bg-[#3B729C] w-full h-[64px] flex justify-between items-center px-[30px] py-[20px] text-white">
-        <h1 className="sm:text-[20px] text-[12px]">استطلاع رأي</h1>
+        <h1 className="sm:text-[20px] text-[12px]">توعية</h1>
       </div>
       <div
         className={`flex gap-[40px] py-[40px] pr-[40px] pl-[40px] transition-transform ${
