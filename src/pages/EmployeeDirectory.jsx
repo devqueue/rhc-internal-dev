@@ -29,7 +29,6 @@ const EmployeeDirectory = () => {
         const fjson = json.value.filter(
           (obj) => obj.businessPhones.length !== 0
         );
-
         setEvents(fjson);
       } catch (error) {
         console.error("Error fetching employees:", error);

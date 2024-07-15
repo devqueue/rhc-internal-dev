@@ -15,13 +15,16 @@ const Announcement = ({ announcements }) => {
   };
 
   const MoveRight = () => {
-    setCurrentIndex(prevIndex => prevIndex === announcements.length - 1 ? 0 : prevIndex + 1);
+    setCurrentIndex((prevIndex) =>
+      prevIndex === announcements.length - 1 ? 0 : prevIndex + 1
+    );
   };
 
   const Moveleft = () => {
-    setCurrentIndex(prevIndex => prevIndex === 0 ? announcements.length - 1 : prevIndex - 1);
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? announcements.length - 1 : prevIndex - 1
+    );
   };
-
 
   useEffect(() => {
     if (announcements.length > 1 && !isHovered) {
@@ -49,7 +52,7 @@ const Announcement = ({ announcements }) => {
 
   return (
     <div
-      className="w-full rounded-[8px] overflow-hidden bg-[#ffffff] relative shadow-md"
+      className="w-full overflow-hidden bg-[#ffffff] relative rounded-lg shadow-md"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -70,11 +73,12 @@ const Announcement = ({ announcements }) => {
             style={{ backgroundColor: "#ffffff" }}
           >
             <div
-              className="lg:w-[460px] w-[40vw] lg:h-[320px] h-[30vw] bg-slate-300 rounded-lg overflow-hidden shrink-0"
+              className="w-full h-[37vw] bg-white rounded-lg overflow-hidden shrink-0"
               style={{
                 backgroundImage: `url('https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${announcement.fields.image_name}')`,
-                backgroundSize: "100%",
+                backgroundSize: "auto 100%",
                 backgroundPosition: "center center",
+                backgroundRepeat: "no-repeat",
               }}
             ></div>
           </div>

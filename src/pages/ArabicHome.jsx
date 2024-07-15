@@ -395,6 +395,10 @@ const ArabicHome = () => {
               <News news={news} />
             </div>
 
+            <div className="mt-[30px] w-full">
+              <Announcement announcements={announcements} />
+            </div>
+
             {/* <div className="mt-[30px]">
               <KnowledgeBaseUpdatedAr Knowledge={knowledge} />
             </div> */}
@@ -422,7 +426,7 @@ const ArabicHome = () => {
             <div className="sm:px-[30px] px-[5vw] mt-[30px]">
               <NewEmployee newEmployee={newEmployee} />
             </div>
-
+            <br />
             <hr />
             <div className="sm:px-[30px] px-[5vw] mt-[30px]">
               <Link
@@ -448,10 +452,12 @@ const ArabicHome = () => {
                 </h1>
               </Link>
             </div>
-
+            <br />
+            <hr />
             <div className="sm:px-[30px] px-[5vw] mt-[30px]">
               <KnowledgeBase pdfs={pdfs} />
             </div>
+            <br />
           </div>
         </div>
 
