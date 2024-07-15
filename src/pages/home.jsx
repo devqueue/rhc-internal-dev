@@ -413,8 +413,9 @@ const Home = () => {
               <News news={news} />
             </div>
             <div className="mt-[30px] w-full">
-              <Announcement announcements={announcements} />
+              <NewAnnouncement announcements={knowledge} />
             </div>
+
             {/* <div className="mt-[30px]">
               <KnowledgeBaseUpdated Knowledge={knowledge} />
             </div> */}
