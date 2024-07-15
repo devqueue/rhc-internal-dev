@@ -1,4 +1,5 @@
 import Announcement from "../ArabicComponents/Announcement";
+import NewAnnouncement from "../ArabicComponents/NewAnnouncement";
 import Banner from "../ArabicComponents/Banner";
 import Calender from "../ArabicComponents/Calender";
 import EmployeeDirectory from "../ArabicComponents/EmployeeDirectory";
@@ -396,7 +397,7 @@ const ArabicHome = () => {
             </div>
 
             <div className="mt-[30px] w-full">
-              <Announcement announcements={announcements} />
+              <NewAnnouncement announcements={knowledge} />
             </div>
 
             {/* <div className="mt-[30px]">
