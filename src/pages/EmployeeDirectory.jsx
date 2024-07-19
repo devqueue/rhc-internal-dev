@@ -10,6 +10,23 @@ const EmployeeDirectory = () => {
   const token = location.state ? location.state : "";
   const [alert, setAlert] = useState(false);
 
+  const fetchPhoto = async (id) => {
+    try {
+      const response = await fetch(
+        `https://graph.microsoft.com/v1.0/users/${id}/photo/$value`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      if (!response.ok) {
+        return "";
+      }
+      const blob = await response.blob();
+      return (URL.createObjectURL(blob));
+    } catch (error) {
+      return "";
+    }
+  };
   // Fetch employees when the component mounts
   useEffect(() => {
     const fetchEmployee = async () => {
@@ -17,7 +34,6 @@ const EmployeeDirectory = () => {
       try {
         const response = await fetch(
           `https://graph.microsoft.com/v1.0/users?$filter=endswith(mail,'riyadhholding.sa') and accountEnabled eq true&$count=true&$top=300`,
-
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -26,17 +42,21 @@ const EmployeeDirectory = () => {
           }
         );
         const json = await response.json();
-        const fjson = json.value.filter(
-          (obj) => obj.businessPhones.length !== 0
-        );
-        setEvents(fjson);
+        const fjson = json.value.filter((obj) => obj.businessPhones.length !== 0);
+    
+        for (const element of fjson) {
+          const img = await fetchPhoto(element.id);
+          element['img'] = img;
+          setEvents((prev) => [...prev, element]);
+        }
       } catch (error) {
         console.error("Error fetching employees:", error);
       }
     };
+    
 
     fetchEmployee();
-  }, [token, setEvents]);
+  }, [token]);
 
   const filteredEvents = events.filter((event) =>
     event.displayName.toLowerCase().includes(searchQuery.toLowerCase())
@@ -114,6 +134,7 @@ const EmployeeDirectory = () => {
                   fg={"white"}
                   key={index}
                   token={token}
+                  img={event.img}
                   setAlert={setAlert}
                   id={event.id}
                   title={event.displayName}

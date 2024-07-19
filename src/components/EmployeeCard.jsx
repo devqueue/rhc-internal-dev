@@ -9,6 +9,7 @@ const EmployeeCard = ({
   id,
   bg,
   fg,
+  img,
   setAlert,
 }) => {
   const handleCopy = (text) => {
@@ -18,38 +19,44 @@ const EmployeeCard = ({
       setAlert("");
     }, 2000);
   };
+  const [scale,setScale] = useState(0);
 
-  const [img, setImg] = useState(null);
+  setTimeout(() => {
+    setScale(1);
+  }, 10);
 
-  useEffect(() => {
-    const fetchPhoto = async () => {
-      setImg(null);
-      try {
-        const response = await fetch(
-          `https://graph.microsoft.com/v1.0/users/${id}/photo/$value`,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-        if (!response.ok) {
-          setImg(null);
-          return;
-        }
-        const blob = await response.blob();
-        setImg(URL.createObjectURL(blob));
-      } catch (error) {
-        setImg(null);
+  // const [img, setImg] = useState(null);
 
-        console.error("Error fetching employee photo:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchPhoto = async () => {
+  //     setImg(null);
+  //     try {
+  //       const response = await fetch(
+  //         `https://graph.microsoft.com/v1.0/users/${id}/photo/$value`,
+  //         {
+  //           headers: { Authorization: `Bearer ${token}` },
+  //         }
+  //       );
+  //       if (!response.ok) {
+  //         setImg(null);
+  //         return;
+  //       }
+  //       const blob = await response.blob();
+  //       setImg(URL.createObjectURL(blob));
+  //     } catch (error) {
+  //       setImg(null);
 
-    fetchPhoto();
-  }, [token, id]);
+  //       console.error("Error fetching employee photo:", error);
+  //     }
+  //   };
+
+  //   fetchPhoto();
+  // }, [token, id]);
 
   return (
     <div
-      className={`w-[280px] h-[381.2px] items-center justify-center gap-[20px] bg-white rounded-[17.6px] p-[27.5px] mb-4`}
+      className={`w-[280px] h-[381.2px] items-center justify-center gap-[20px] bg-white rounded-[17.6px] p-[27.5px] mb-4 transition-[0.16s]`}
+      style={{transform:`scale(${scale})`,transformOrigin:'center'}}
     >
       <div
         className="h-[143px] w-[143px] ml-[20%] m-auto mb-[25px] rounded-[8px] bg-[#dbf0f3] text-[#31696c] font-extrabold text-5xl flex items-center justify-center"
