@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Announcement = ({ announcements }) => {
+const NewAnnouncement = ({ announcements }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
@@ -56,6 +56,9 @@ const Announcement = ({ announcements }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      <div className="bg-[#3B729C] w-full h-[64px] flex justify-between items-center px-[30px] py-[20px] text-white">
+        <h1 className="sm:text-[20px] text-[12px]">التوعية</h1>
+      </div>
       <div
         className={`flex gap-[40px] py-[40px] pr-[40px] pl-[40px] transition-transform ${
           isTransitioning ? "duration-500" : "duration-0"
@@ -84,7 +87,6 @@ const Announcement = ({ announcements }) => {
           </div>
         ))}
       </div>
-      <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-b from-gray-200 to-transparent"></div>
       <div className="flex gap-2 pt-[24px] px-[30px] sm:px-[50px] relative bottom-[20px] lg:right-[0px] justify-end right-[16px] z-50">
         <img
           className="py-3 px-5 z-50 bg-golden"
@@ -104,4 +106,4 @@ const Announcement = ({ announcements }) => {
   );
 };
 
-export default Announcement;
+export default NewAnnouncement;

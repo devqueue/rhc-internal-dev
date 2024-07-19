@@ -73,12 +73,12 @@ const Announcement = ({ announcements }) => {
             style={{ backgroundColor: "#ffffff" }}
           >
             <div
-              className=" w-full h-[37vw] bg-white rounded-lg overflow-hidden shrink-0"
+              className="w-full h-[37vw] bg-white rounded-lg overflow-hidden shrink-0"
               style={{
                 backgroundImage: `url('https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${announcement.fields.image_name}')`,
                 backgroundSize: "auto 100%",
                 backgroundPosition: "center center",
-                backgroundRepeat:'no-repeat'
+                backgroundRepeat: "no-repeat",
               }}
             ></div>
           </div>

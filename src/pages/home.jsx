@@ -412,9 +412,13 @@ const Home = () => {
               <Poll polls={polls} />
               <News news={news} />
             </div>
-            <div className="mt-[30px]">
-              <KnowledgeBaseUpdated Knowledge={knowledge} />
+            <div className="mt-[30px] w-full">
+              <NewAnnouncement announcements={knowledge} />
             </div>
+
+            {/* <div className="mt-[30px]">
+              <KnowledgeBaseUpdated Knowledge={knowledge} />
+            </div> */}
           </div>
 
           <div className="shadow-md lg:w-[30vw] w-full rounded-[8px] bg-white">
@@ -429,11 +433,12 @@ const Home = () => {
             <div className="sm:px-[30px] px-[5vw] mt-[30px]">
               <UpcomingEvents events={upcomingEvents} />
             </div>
+            <br />
             <hr />
             <div className="sm:px-[30px] px-[5vw] mt-[30px]">
               <NewEmployee newEmployee={newEmployee} />
             </div>
-
+            <br />
             <hr />
 
             <div className="sm:px-[30px] px-[5vw] mt-[30px]">
@@ -460,10 +465,13 @@ const Home = () => {
                 </h1>
               </Link>
             </div>
+            <br />
             <hr />
+            {/* documents */}
             <div className="sm:px-[30px] px-[5vw] mt-[30px]">
               <KnowledgeBase siteID={siteID} pdfs={pdfs} />
             </div>
+            <br />
           </div>
         </div>
 

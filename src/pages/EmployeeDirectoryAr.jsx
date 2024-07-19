@@ -45,10 +45,7 @@ const EmployeeDirectory = () => {
 
   return (
     <>
-      <div
-        className="overflow-hidden w-full bg-[#F4F8FB]"
-        style={{ direction: "rtl" }}
-      >
+      <div className="overflow-hidden w-full bg-[#F4F8FB]">
         <Nav />
         {alert && (
           <div
@@ -77,14 +74,20 @@ const EmployeeDirectory = () => {
           </div>
         )}
         <div className="w-full pt-[30px] min-h-[424px] bg-[#F4F8FB] overflow-hidden shadow-md px-[40px]">
-          <div className="bg-[#50917F] w-full h-[64px] rounded-[8px] rounded-bl-none rounded-br-none flex justify-between items-center px-[30px] py-[20px] text-[white] mb-[30px]">
+          <div
+            className="bg-[#50917F] w-full h-[64px] rounded-[8px] rounded-bl-none rounded-br-none flex justify-between items-center px-[30px] py-[20px] text-[white] mb-[30px]"
+            style={{ direction: "rtl" }}
+          >
             <h1 className="sm:text-[20px] xs:text-[16px] text-[12px]">
               دليل الموظف
             </h1>
           </div>
 
           <div className="w-full flex flex-col items-start gap-[20px]">
-            <div className="flex items-center bg-white border border-[#50917F] rounded-lg p-2 w-[92%] mx-auto">
+            <div
+              className="flex items-center bg-white border border-[#50917F] rounded-lg p-2 w-[92%] mx-auto"
+              style={{ direction: "rtl" }}
+            >
               <div className="flex items-center px-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +107,7 @@ const EmployeeDirectory = () => {
 
               <input
                 type="text"
-                placeholder="Search For Employee"
+                placeholder="البحث عن موظف"
                 className="flex-grow px-4 py-2"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}

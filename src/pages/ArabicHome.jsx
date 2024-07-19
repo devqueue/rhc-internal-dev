@@ -1,4 +1,5 @@
 import Announcement from "../ArabicComponents/Announcement";
+import NewAnnouncement from "../ArabicComponents/NewAnnouncement";
 import Banner from "../ArabicComponents/Banner";
 import Calender from "../ArabicComponents/Calender";
 import EmployeeDirectory from "../ArabicComponents/EmployeeDirectory";
@@ -395,6 +396,10 @@ const ArabicHome = () => {
               <News news={news} />
             </div>
 
+            <div className="mt-[30px] w-full">
+              <NewAnnouncement announcements={knowledge} />
+            </div>
+
             {/* <div className="mt-[30px]">
               <KnowledgeBaseUpdatedAr Knowledge={knowledge} />
             </div> */}
@@ -422,7 +427,7 @@ const ArabicHome = () => {
             <div className="sm:px-[30px] px-[5vw] mt-[30px]">
               <NewEmployee newEmployee={newEmployee} />
             </div>
-
+            <br />
             <hr />
             <div className="sm:px-[30px] px-[5vw] mt-[30px]">
               <Link
@@ -444,14 +449,16 @@ const ArabicHome = () => {
                 </svg>
 
                 <h1 className="text-white font-inter text-lg font-semibold">
-                  View Employee Directory
+                  عرض دليل الموظفين
                 </h1>
               </Link>
             </div>
-
+            <br />
+            <hr />
             <div className="sm:px-[30px] px-[5vw] mt-[30px]">
               <KnowledgeBase pdfs={pdfs} />
             </div>
+            <br />
           </div>
         </div>
 
