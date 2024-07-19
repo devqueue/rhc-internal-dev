@@ -23,6 +23,7 @@ const EmployeeCard = ({
 
   useEffect(() => {
     const fetchPhoto = async () => {
+      setImg(null);
       try {
         const response = await fetch(
           `https://graph.microsoft.com/v1.0/users/${id}/photo/$value`,
@@ -31,12 +32,14 @@ const EmployeeCard = ({
           }
         );
         if (!response.ok) {
-          throw new Error("Failed to fetch employee photo");
+          setImg(null);
           return;
         }
         const blob = await response.blob();
         setImg(URL.createObjectURL(blob));
       } catch (error) {
+        setImg(null);
+
         console.error("Error fetching employee photo:", error);
       }
     };
