@@ -9,8 +9,23 @@ const EmployeeDirectory = () => {
   const location = useLocation();
   const token = location.state ? location.state : "";
   const [alert, setAlert] = useState(false);
-
-  // Fetch employees when the component mounts
+  const fetchPhoto = async (id) => {
+    try {
+      const response = await fetch(
+        `https://graph.microsoft.com/v1.0/users/${id}/photo/$value`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      if (!response.ok) {
+        return "";
+      }
+      const blob = await response.blob();
+      return (URL.createObjectURL(blob));
+    } catch (error) {
+      return "";
+    }
+  };
   useEffect(() => {
     const fetchEmployee = async () => {
       if (!token) return; // Ensure we only fetch if a token exists
@@ -25,19 +40,23 @@ const EmployeeDirectory = () => {
           }
         );
         const json = await response.json();
-        const fjson = json.value.filter(
-          (obj) => obj.businessPhones.length !== 0
-        );
+        const fjson = json.value.filter((obj) => obj.businessPhones.length !== 0);
 
+        // Fetch photos for each employee and update fjson with img property
+        await Promise.all(fjson.map(async (employee) => {
+          const img = await fetchPhoto(employee.id); // Assuming fetchPhoto function exists
+          employee['img'] = img;
+        }));
+
+        // Set events with the updated employee data (including images)
         setEvents(fjson);
-        // console.log('fetchEmployee', json);
       } catch (error) {
         console.error("Error fetching employees:", error);
       }
     };
 
     fetchEmployee();
-  }, [token, setEvents]);
+  }, [token]);
 
   const filteredEvents = events.filter((event) =>
     event.displayName.toLowerCase().includes(searchQuery.toLowerCase())
@@ -121,6 +140,7 @@ const EmployeeDirectory = () => {
                   fg={"white"}
                   key={index}
                   token={token}
+                  img={event.img}
                   setAlert={setAlert}
                   id={event.id}
                   title={event.displayName}

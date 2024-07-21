@@ -42,21 +42,25 @@ const EmployeeDirectory = () => {
           }
         );
         const json = await response.json();
-        const fjson = json.value.filter((obj) => obj.businessPhones.length !== 0);
-    
-        for (const element of fjson) {
-          const img = await fetchPhoto(element.id);
-          element['img'] = img;
-          setEvents((prev) => [...prev, element]);
-        }
+        const filteredEmployees = json.value.filter(obj => obj.businessPhones.length !== 0);
+        
+        // Use map with Promise.all to fetch photos and update events
+        const updatedEvents = await Promise.all(filteredEmployees.map(async (employee) => {
+          const img = await fetchPhoto(employee.id);
+          employee['img'] = img;
+          return employee; // Return the updated employee object
+        }));
+  
+        // Update state with all employee data including images
+        setEvents(updatedEvents);
       } catch (error) {
         console.error("Error fetching employees:", error);
       }
     };
-    
-
+  
     fetchEmployee();
   }, [token]);
+  
 
   const filteredEvents = events.filter((event) =>
     event.displayName.toLowerCase().includes(searchQuery.toLowerCase())
