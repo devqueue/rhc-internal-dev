@@ -79,21 +79,21 @@ const EmployeeDirectory = () => {
         <div className="w-full pt-[30px] min-h-[424px] bg-[#F4F8FB] overflow-hidden shadow-md px-[40px]">
           {/* Header and styling */}
           <div className="w-full flex flex-col items-start gap-[20px]">
-            <div className="flex items-center bg-white border border-[#50917F] rounded-lg p-2 w-[92%] mx-auto">
+            <div className="flex flex-col-reverse md:flex-row items-center bg-white border border-[#50917F] rounded-lg p-2 w-[92%] mx-auto">
               <div className="flex items-center px-2">
                 {/* Search Icon */}
               </div>
               <input
                 type="text"
                 placeholder="Search For Employee"
-                className="flex-grow px-4 py-2"
+                className="flex-grow px-4 py-2 w-full"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
               <select
                 value={jobTitleFilter}
                 onChange={(e) => setJobTitleFilter(e.target.value)}
-                className="ml-4 p-2 rounded-md bg-gray-100"
+                className="md:ml-4 p-2 rounded-md bg-gray-100 max-w-full"
               >
                 <option value="">All Job Titles</option>
                 {jobTitles.map((title, index) => (

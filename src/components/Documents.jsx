@@ -35,13 +35,13 @@ const KnowledgeBase = ({ pdfs, siteID }) => {
         <h1 className="sm:text-[20px] text-[12px] font-light self-stretch min-w-[100px]">
           Documents
         </h1>
-        <div className="flex ">
+        <div className="flex w-full">
           <input
             type="text"
             placeholder="Search by name"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="text-[12px] p-[5px] rounded-l-md text-gray-800"
+            className="text-[12px] p-[5px] rounded-l-md w-full text-gray-800"
           />
           <select
             onChange={(e) => setCategoryFilter(e.target.value)}

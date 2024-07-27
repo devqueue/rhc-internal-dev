@@ -33,13 +33,13 @@ const KnowledgeBase = ({ pdfs }) => {
         <h1 className="sm:text-[20px] text-[12px] font-light self-stretch min-w-[100px]">
           الملفات
         </h1>
-        <div className="flex bg-slate-50 overflow-hidden  rounded-md">
+        <div className="flex w-full bg-slate-50 overflow-hidden  rounded-md">
           <input
             type="text"
             placeholder="بحث بالاسم"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="text-[12px] p-[5px] rounded-l-md text-gray-800"
+            className="text-[12px] p-[5px] w-full rounded-l-md text-gray-800"
           />
           <select
             value={categoryFilter}
