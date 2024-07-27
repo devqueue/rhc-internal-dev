@@ -23,7 +23,7 @@ const EmployeeDirectory = () => {
         return "";
       }
       const blob = await response.blob();
-      return (URL.createObjectURL(blob));
+      return URL.createObjectURL(blob);
     } catch (error) {
       return "";
     }
@@ -34,7 +34,7 @@ const EmployeeDirectory = () => {
       if (!token) return;
       try {
         const response = await fetch(
-          `https://graph.microsoft.com/v1.0/users?$filter=endswith(mail,'riyadhholding.sa') and accountEnabled eq true&$count=true&$top=300`,
+          `https://graph.microsoft.com/v1.0/users?$filter=endswith(mail,'riyadhholding.sa') and accountEnabled eq true&$count=true&$top=300&$select=businessPhones,displayName,givenName,surname,userPrincipalName,id,jobTitle,mail,department`,
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -56,7 +56,7 @@ const EmployeeDirectory = () => {
         console.error("Error fetching employees:", error);
       }
     };
-  
+
     fetchEmployee();
   }, [token]);
 
@@ -113,6 +113,7 @@ const EmployeeDirectory = () => {
                   id={event.id}
                   title={event.displayName}
                   jobTitle={event.jobTitle || "Not Found"}
+                  department={event.department || "Not Found"}
                   number={
                     event.businessPhones ? event.businessPhones[0] : "Not Found"
                   }

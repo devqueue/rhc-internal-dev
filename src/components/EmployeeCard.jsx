@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 const EmployeeCard = ({
   title,
   jobTitle,
+  department,
   number,
   email,
   token,
@@ -19,7 +20,7 @@ const EmployeeCard = ({
       setAlert("");
     }, 2000);
   };
-  const [scale,setScale] = useState(0);
+  const [scale, setScale] = useState(0);
 
   setTimeout(() => {
     setScale(1);
@@ -56,7 +57,7 @@ const EmployeeCard = ({
   return (
     <div
       className={`w-[280px] h-[381.2px] items-center justify-center gap-[20px] bg-white rounded-[17.6px] p-[27.5px] mb-4 transition-[0.16s]`}
-      style={{transform:`scale(${scale})`,transformOrigin:'center'}}
+      style={{ transform: `scale(${scale})`, transformOrigin: "center" }}
     >
       <div
         className="h-[143px] w-[143px] ml-[20%] m-auto mb-[25px] rounded-[8px] bg-[#dbf0f3] text-[#31696c] font-extrabold text-5xl flex items-center justify-center"
@@ -111,9 +112,9 @@ const EmployeeCard = ({
           </div>
           <p
             className="text-[14px] font-figtree font-normal leading-[21.6px] block overflow-hidden overflow-ellipsis whitespace-nowrap max-w-[70%] capitalize cursor-pointer"
-            title={jobTitle}
+            title={department}
           >
-            {jobTitle}
+            {department}
           </p>
         </div>
       </div>
