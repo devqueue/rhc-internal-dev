@@ -6,9 +6,11 @@ import { useLocation } from "react-router-dom";
 const EmployeeDirectory = () => {
   const [events, setEvents] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [jobTitleFilter, setJobTitleFilter] = useState("");
   const location = useLocation();
   const token = location.state ? location.state : "";
   const [alert, setAlert] = useState(false);
+
   const fetchPhoto = async (id) => {
     try {
       const response = await fetch(
@@ -26,12 +28,13 @@ const EmployeeDirectory = () => {
       return "";
     }
   };
+
   useEffect(() => {
     const fetchEmployee = async () => {
-      if (!token) return; // Ensure we only fetch if a token exists
+      if (!token) return;
       try {
         const response = await fetch(
-          `https://graph.microsoft.com/v1.0/users?$filter=endswith(mail,'riyadhholding.sa') and accountEnabled eq true &$count=true&$top=300`,
+          `https://graph.microsoft.com/v1.0/users?$filter=endswith(mail,'riyadhholding.sa') and accountEnabled eq true&$count=true&$top=300`,
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -40,16 +43,16 @@ const EmployeeDirectory = () => {
           }
         );
         const json = await response.json();
-        const fjson = json.value.filter((obj) => obj.businessPhones.length !== 0);
-
-        // Fetch photos for each employee and update fjson with img property
-        await Promise.all(fjson.map(async (employee) => {
-          const img = await fetchPhoto(employee.id); // Assuming fetchPhoto function exists
+        console.log(json);
+        const filteredEmployees = json.value.filter(obj => obj.businessPhones.length !== 0);
+        
+        const updatedEvents = await Promise.all(filteredEmployees.map(async (employee) => {
+          const img = null;
           employee['img'] = img;
+          return employee;
         }));
 
-        // Set events with the updated employee data (including images)
-        setEvents(fjson);
+        setEvents(updatedEvents);
       } catch (error) {
         console.error("Error fetching employees:", error);
       }
@@ -58,9 +61,12 @@ const EmployeeDirectory = () => {
     fetchEmployee();
   }, [token]);
 
-  const filteredEvents = events.filter((event) =>
-    event.displayName.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredEvents = events.filter(event =>
+    event.displayName.toLowerCase().includes(searchQuery.toLowerCase()) &&
+    (jobTitleFilter ? event.jobTitle === jobTitleFilter : true)
   );
+
+  const jobTitles = Array.from(new Set(events.map(event => event.jobTitle).filter(Boolean)));
 
   return (
     <>
@@ -68,21 +74,12 @@ const EmployeeDirectory = () => {
         <Nav />
         {alert && (
           <div
-            className="max-w-xs fixed bottom-7 mx-auto right-7 bg-white border border-gray-200 rounded-xl shadow-lg"
+            className="max-w-xs fixed bottom-7 mx-auto right-7 bg-white border border-gray-200 rounded-xl shadow-lg z-50"
             role="alert"
           >
             <div className="flex p-4">
               <div className="flex-shrink-0">
-                <svg
-                  className="flex-shrink-0 size-4 text-teal-500 mt-0.5"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path>
-                </svg>
+                {/* Alert icon */}
               </div>
               <div className="ms-3">
                 <p className="text-sm text-gray-700 dark:text-neutral-400">
@@ -92,38 +89,15 @@ const EmployeeDirectory = () => {
             </div>
           </div>
         )}
-        <div className="w-full pt-[30px] min-h-[424px] bg-[#F4F8FB] overflow-hidden shadow-md px-[40px]">
-          <div
-            className="bg-[#50917F] w-full h-[64px] rounded-[8px] rounded-bl-none rounded-br-none flex justify-between items-center px-[30px] py-[20px] text-[white] mb-[30px]"
-            style={{ direction: "rtl" }}
-          >
+        <div className="w-full pt-[30px] min-h-[424px] bg-[#F4F8FB] overflow-hidden shadow-md px-[40px]" style={{ direction: "rtl" }}>
+          <div className="bg-[#50917F] w-full h-[64px] rounded-[8px] rounded-bl-none rounded-br-none flex justify-between items-center px-[30px] py-[20px] text-[white] mb-[30px]">
             <h1 className="sm:text-[20px] xs:text-[16px] text-[12px]">
               دليل الموظف
             </h1>
           </div>
 
           <div className="w-full flex flex-col items-start gap-[20px]">
-            <div
-              className="flex items-center bg-white border border-[#50917F] rounded-lg p-2 w-[92%] mx-auto"
-              style={{ direction: "rtl" }}
-            >
-              <div className="flex items-center px-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-[#888888] ml-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-5.222-5.222"
-                  />
-                </svg>
-              </div>
-
+            <div className="flex items-center bg-white border border-[#50917F] rounded-lg p-2 w-[92%] mx-auto">
               <input
                 type="text"
                 placeholder="البحث عن موظف"
@@ -131,6 +105,16 @@ const EmployeeDirectory = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
+              <select
+                value={jobTitleFilter}
+                onChange={(e) => setJobTitleFilter(e.target.value)}
+                className="ml-4 p-2 rounded-md bg-gray-100"
+              >
+                <option value="">جميع الوظائف</option>
+                {jobTitles.map((title, index) => (
+                  <option key={index} value={title}>{title}</option>
+                ))}
+              </select>
             </div>
 
             <div className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-[80px] lg:mx-16 md:mx-16 sm:mx-12 xs:justify-center xs:mx-4">

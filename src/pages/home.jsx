@@ -65,7 +65,7 @@ const Home = () => {
           }
         );
         const data = await response.json();
-        // console.log(`${name} items:`, data);
+        console.log(`${name} items:`, data);
 
         if (data.value) {
           const valuesToSet = data.value.filter(
