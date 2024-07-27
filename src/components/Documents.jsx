@@ -35,7 +35,7 @@ const KnowledgeBase = ({ pdfs, siteID }) => {
         <h1 className="sm:text-[20px] text-[12px] font-light self-stretch min-w-[100px]">
           Documents
         </h1>
-        <div className="flex">
+        <div className="flex ">
           <input
             type="text"
             placeholder="Search by name"
@@ -45,7 +45,7 @@ const KnowledgeBase = ({ pdfs, siteID }) => {
           />
           <select
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="text-[12px] p-[5px] rounded-r-md text-gray-800"
+            className="text-[12px] p-[5px] rounded-r-md text-gray-800 bg-slate-100"
           >
             <option value="">All Categories</option>
             {categories.map((category, index) => (

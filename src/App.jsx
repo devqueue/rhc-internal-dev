@@ -24,6 +24,8 @@ import EmployeeDirectoryAr from "./pages/EmployeeDirectoryAr";
 import GalleryAr from "./pages/GalleryAr";
 import PollsAr from "./pages/PollAr";
 import GalleryviewAr from "./pages/GalleryViewAr";
+import FAQ from "./pages/FaqEng";
+import FAQar from "./pages/FaqAr";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
@@ -101,6 +103,8 @@ const App = () => {
           <Route path="/ar/gallery" element={<GalleryAr />} />
           <Route path="/galleryview/:id" element={<GalleryView />} />
           <Route path="/ar/galleryview/:id" element={<GalleryviewAr />} />
+          <Route path="/faq-eng/:siteID" element={<FAQ />} />
+          <Route path="/faq-ar/:siteID" element={<FAQar />} />
         </Routes>
       </PrivateRoute>
     </Router>
