@@ -8,11 +8,17 @@ const UpcomingEvents = ({ events }) => {
   });
 
   if (!sortedEvents || sortedEvents.length === 0) {
-    return <div>No upcoming events available.</div>;
+    return (
+      <div>
+        <div>No upcoming events available</div>
+      </div>
+    );
   }
 
   const formatDate = (timestamp) => {
-    const date = DateTime.fromISO(timestamp, { zone: 'UTC' }).minus({ hours: 10 }).setZone('Asia/Riyadh');
+    const date = DateTime.fromISO(timestamp, { zone: "UTC" })
+      .minus({ hours: 10 })
+      .setZone("Asia/Riyadh");
 
     // Define month names
     const monthNames = [
@@ -42,7 +48,9 @@ const UpcomingEvents = ({ events }) => {
   };
 
   const normalizeDateTime = (dateTimeString) => {
-    const dateTime = DateTime.fromISO(dateTimeString, { zone: 'UTC' }).minus({ hours: 10 }).setZone('Asia/Riyadh');
+    const dateTime = DateTime.fromISO(dateTimeString, { zone: "UTC" })
+      .minus({ hours: 10 })
+      .setZone("Asia/Riyadh");
     return dateTime.toLocaleString(DateTime.TIME_SIMPLE);
   };
 
@@ -65,7 +73,10 @@ const UpcomingEvents = ({ events }) => {
 
       <div className="h-full overflow-y-auto xl:pb-24 pb-32">
         {sortedEvents.map((event) => (
-          <div key={event.id} className="flex p-[20px] gap-[20px] items-start content-start self-stretch lg:flex-nowrap flex-wrap border-b-[1px] border-b-[#888888]">
+          <div
+            key={event.id}
+            className="flex p-[20px] gap-[20px] items-start content-start self-stretch lg:flex-nowrap flex-wrap border-b-[1px] border-b-[#888888]"
+          >
             <div
               className="w-[72px] h-[72px] flex items-end pb-1 justify-center text-sm text-center shrink-0"
               style={{
@@ -90,7 +101,10 @@ const UpcomingEvents = ({ events }) => {
                   }}
                   className="w-[16px] h-[16px] shrink-0"
                 ></div>
-                <p className="text-[12px] font-[400px]" style={{ direction: "ltr" }}>
+                <p
+                  className="text-[12px] font-[400px]"
+                  style={{ direction: "ltr" }}
+                >
                   {normalizeDateTime(event.fields.start_dt_time)} -{" "}
                   {normalizeDateTime(event.fields.end_time)}
                 </p>

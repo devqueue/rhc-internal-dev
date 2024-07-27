@@ -22,7 +22,7 @@ const EmployeeDirectory = () => {
         return "";
       }
       const blob = await response.blob();
-      return (URL.createObjectURL(blob));
+      return URL.createObjectURL(blob);
     } catch (error) {
       return "";
     }
@@ -33,7 +33,7 @@ const EmployeeDirectory = () => {
       if (!token) return; // Ensure we only fetch if a token exists
       try {
         const response = await fetch(
-          `https://graph.microsoft.com/v1.0/users?$filter=endswith(mail,'riyadhholding.sa') and accountEnabled eq true&$count=true&$top=300`,
+          `https://graph.microsoft.com/v1.0/users?$filter=endswith(mail,'riyadhholding.sa') and accountEnabled eq true&$count=true&$top=300&$select=businessPhones,displayName,givenName,surname,userPrincipalName,id,jobTitle,mail,department`,
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -42,25 +42,28 @@ const EmployeeDirectory = () => {
           }
         );
         const json = await response.json();
-        const filteredEmployees = json.value.filter(obj => obj.businessPhones.length !== 0);
-        
+        const filteredEmployees = json.value.filter(
+          (obj) => obj.businessPhones.length !== 0
+        );
+
         // Use map with Promise.all to fetch photos and update events
-        const updatedEvents = await Promise.all(filteredEmployees.map(async (employee) => {
-          const img = await fetchPhoto(employee.id);
-          employee['img'] = img;
-          return employee; // Return the updated employee object
-        }));
-  
+        const updatedEvents = await Promise.all(
+          filteredEmployees.map(async (employee) => {
+            const img = await fetchPhoto(employee.id);
+            employee["img"] = img;
+            return employee; // Return the updated employee object
+          })
+        );
+
         // Update state with all employee data including images
         setEvents(updatedEvents);
       } catch (error) {
         console.error("Error fetching employees:", error);
       }
     };
-  
+
     fetchEmployee();
   }, [token]);
-  
 
   const filteredEvents = events.filter((event) =>
     event.displayName.toLowerCase().includes(searchQuery.toLowerCase())
@@ -143,6 +146,7 @@ const EmployeeDirectory = () => {
                   id={event.id}
                   title={event.displayName}
                   jobTitle={event.jobTitle || "Not Found"}
+                  department={event.department || "Not Found"}
                   number={
                     event.businessPhones ? event.businessPhones[0] : "Not Found"
                   }
