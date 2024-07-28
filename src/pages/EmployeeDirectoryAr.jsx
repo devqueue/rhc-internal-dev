@@ -23,7 +23,7 @@ const EmployeeDirectory = () => {
         return "";
       }
       const blob = await response.blob();
-      return (URL.createObjectURL(blob));
+      return URL.createObjectURL(blob);
     } catch (error) {
       return "";
     }
@@ -34,7 +34,7 @@ const EmployeeDirectory = () => {
       if (!token) return;
       try {
         const response = await fetch(
-          `https://graph.microsoft.com/v1.0/users?$filter=endswith(mail,'riyadhholding.sa') and accountEnabled eq true&$count=true&$top=300`,
+          `https://graph.microsoft.com/v1.0/users?$filter=endswith(mail,'riyadhholding.sa') and accountEnabled eq true&$count=true&$top=300&$select=businessPhones,displayName,givenName,surname,userPrincipalName,id,jobTitle,mail,department`,
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -44,13 +44,17 @@ const EmployeeDirectory = () => {
         );
         const json = await response.json();
         console.log(json);
-        const filteredEmployees = json.value.filter(obj => obj.businessPhones.length !== 0);
-        
-        const updatedEvents = await Promise.all(filteredEmployees.map(async (employee) => {
-          const img = null;
-          employee['img'] = img;
-          return employee;
-        }));
+        const filteredEmployees = json.value.filter(
+          (obj) => obj.businessPhones.length !== 0
+        );
+
+        const updatedEvents = await Promise.all(
+          filteredEmployees.map(async (employee) => {
+            const img = null;
+            employee["img"] = img;
+            return employee;
+          })
+        );
 
         setEvents(updatedEvents);
       } catch (error) {
@@ -61,12 +65,15 @@ const EmployeeDirectory = () => {
     fetchEmployee();
   }, [token]);
 
-  const filteredEvents = events.filter(event =>
-    event.displayName.toLowerCase().includes(searchQuery.toLowerCase()) &&
-    (jobTitleFilter ? event.jobTitle === jobTitleFilter : true)
+  const filteredEvents = events.filter(
+    (event) =>
+      event.displayName.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      (jobTitleFilter ? event.jobTitle === jobTitleFilter : true)
   );
 
-  const jobTitles = Array.from(new Set(events.map(event => event.jobTitle).filter(Boolean)));
+  const jobTitles = Array.from(
+    new Set(events.map((event) => event.jobTitle).filter(Boolean))
+  );
 
   return (
     <>
@@ -78,9 +85,7 @@ const EmployeeDirectory = () => {
             role="alert"
           >
             <div className="flex p-4">
-              <div className="flex-shrink-0">
-                {/* Alert icon */}
-              </div>
+              <div className="flex-shrink-0">{/* Alert icon */}</div>
               <div className="ms-3">
                 <p className="text-sm text-gray-700 dark:text-neutral-400">
                   {alert}
@@ -89,7 +94,10 @@ const EmployeeDirectory = () => {
             </div>
           </div>
         )}
-        <div className="w-full pt-[30px] min-h-[424px] bg-[#F4F8FB] overflow-hidden shadow-md px-[40px]" style={{ direction: "rtl" }}>
+        <div
+          className="w-full pt-[30px] min-h-[424px] bg-[#F4F8FB] overflow-hidden shadow-md px-[40px]"
+          style={{ direction: "rtl" }}
+        >
           <div className="bg-[#50917F] w-full h-[64px] rounded-[8px] rounded-bl-none rounded-br-none flex justify-between items-center px-[30px] py-[20px] text-[white] mb-[30px]">
             <h1 className="sm:text-[20px] xs:text-[16px] text-[12px]">
               دليل الموظف
@@ -112,7 +120,9 @@ const EmployeeDirectory = () => {
               >
                 <option value="">جميع الوظائف</option>
                 {jobTitles.map((title, index) => (
-                  <option key={index} value={title}>{title}</option>
+                  <option key={index} value={title}>
+                    {title}
+                  </option>
                 ))}
               </select>
             </div>
@@ -129,6 +139,7 @@ const EmployeeDirectory = () => {
                   id={event.id}
                   title={event.displayName}
                   jobTitle={event.jobTitle || "Not Found"}
+                  department={event.department || "Not Found"}
                   number={
                     event.businessPhones ? event.businessPhones[0] : "Not Found"
                   }
