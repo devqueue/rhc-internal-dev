@@ -444,7 +444,7 @@ const Home = () => {
             <div className="sm:px-[30px] px-[5vw] mt-[30px]">
               <Link
                 state={accessToken}
-                to="/all-employees"
+                to={"/all-employees/"}
                 className="flex w-full p-4 pt-4 pb-4 px-5 items-start content-start gap-2 flex-wrap bg-[#C2AB80] rounded-lg"
               >
                 <svg

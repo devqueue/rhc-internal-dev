@@ -33,18 +33,20 @@ const KnowledgeBase = ({ pdfs }) => {
         <h1 className="sm:text-[20px] text-[12px] font-light self-stretch min-w-[100px]">
           الملفات
         </h1>
-        <div className="flex w-full bg-slate-50 overflow-hidden  rounded-md">
+        
+      </div>
+      <div className="flex w-[90%] m-auto bg-slate-100 overflow-hidden  rounded-md">
           <input
             type="text"
             placeholder="بحث بالاسم"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="text-[12px] p-[5px] w-full rounded-l-md text-gray-800"
+            className="text-[12px] p-[5px] w-full rounded-l-md bg-transparent text-gray-800"
           />
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="text-[12px] p-[5px] rounded-r-md bg-gray-100 text-gray-800"
+            className="text-[12px] p-[5px] rounded-r-md bg-gray-200 text-gray-800"
           >
             <option value="">جميع الفئات</option>
             {categories.map((category, index) => (
@@ -54,8 +56,6 @@ const KnowledgeBase = ({ pdfs }) => {
             ))}
           </select>
         </div>
-      </div>
-
       {filteredPdfs.map((pdf, index) => (
         <div
           key={index}

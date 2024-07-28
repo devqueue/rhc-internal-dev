@@ -23,7 +23,7 @@ const EmployeeDirectory = () => {
         return "";
       }
       const blob = await response.blob();
-      return (URL.createObjectURL(blob));
+      return URL.createObjectURL(blob);
     } catch (error) {
       return "";
     }
@@ -34,7 +34,7 @@ const EmployeeDirectory = () => {
       if (!token) return;
       try {
         const response = await fetch(
-          `https://graph.microsoft.com/v1.0/users?$filter=endswith(mail,'riyadhholding.sa') and accountEnabled eq true&$count=true&$top=300`,
+          `https://graph.microsoft.com/v1.0/users?$filter=endswith(mail,'riyadhholding.sa') and accountEnabled eq true&$count=true&$top=300&$select=businessPhones,displayName,givenName,surname,userPrincipalName,id,jobTitle,mail,department`,
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -43,15 +43,14 @@ const EmployeeDirectory = () => {
           }
         );
         const json = await response.json();
-        console.log(json);
         const filteredEmployees = json.value.filter(obj => obj.businessPhones.length !== 0);
         
         const updatedEvents = await Promise.all(filteredEmployees.map(async (employee) => {
-          const img = null;
+          const img = await fetchPhoto(employee.id);
           employee['img'] = img;
           return employee;
         }));
-
+  
         setEvents(updatedEvents);
       } catch (error) {
         console.error("Error fetching employees:", error);
@@ -61,16 +60,19 @@ const EmployeeDirectory = () => {
     fetchEmployee();
   }, [token]);
 
-  const filteredEvents = events.filter(event =>
-    event.displayName.toLowerCase().includes(searchQuery.toLowerCase()) &&
-    (jobTitleFilter ? event.department === jobTitleFilter : true)
+  const filteredEvents = events.filter(
+    (event) =>
+      event.displayName.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      (jobTitleFilter ? event.department === jobTitleFilter : true)
   );
 
-  const jobTitles = Array.from(new Set(events.map(event => event.department).filter(Boolean)));
+  const jobTitles = Array.from(
+    new Set(events.map((event) => event.department).filter(Boolean))
+  );
 
   return (
     <>
-      <div className="overflow-hidden w-full bg-[#F4F8FB]">
+      <div className="overflow-hidden w-full bg-[#F4F8FB]" style={{direction:'rtl'}}>
         <Nav />
         {alert && (
           <div
@@ -78,9 +80,7 @@ const EmployeeDirectory = () => {
             role="alert"
           >
             <div className="flex p-4">
-              <div className="flex-shrink-0">
-                {/* Alert icon */}
-              </div>
+              <div className="flex-shrink-0">{/* Alert icon */}</div>
               <div className="ms-3">
                 <p className="text-sm text-gray-700 dark:text-neutral-400">
                   {alert}
@@ -89,7 +89,10 @@ const EmployeeDirectory = () => {
             </div>
           </div>
         )}
-        <div className="w-full pt-[30px] min-h-[424px] bg-[#F4F8FB] overflow-hidden shadow-md px-[40px]" style={{ direction: "rtl" }}>
+        <div
+          className="w-full pt-[30px] min-h-[424px] bg-[#F4F8FB] overflow-hidden shadow-md px-[40px]"
+          style={{ direction: "rtl" }}
+        >
           <div className="bg-[#50917F] w-full h-[64px] rounded-[8px] rounded-bl-none rounded-br-none flex justify-between items-center px-[30px] py-[20px] text-[white] mb-[30px]">
             <h1 className="sm:text-[20px] xs:text-[16px] text-[12px]">
               دليل الموظف
@@ -110,14 +113,16 @@ const EmployeeDirectory = () => {
                 onChange={(e) => setJobTitleFilter(e.target.value)}
                 className="md:ml-4 p-2 rounded-md bg-gray-100 max-w-full"
               >
-                <option value="">جميع الوظائف</option>
+                <option value=""> جميع الأقسام </option>
                 {jobTitles.map((title, index) => (
-                  <option key={index} value={title}>{title}</option>
+                  <option key={index} value={title}>
+                    {title}
+                  </option>
                 ))}
               </select>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-[80px] lg:mx-16 md:mx-16 sm:mx-12 xs:justify-center xs:mx-4">
+            <div style={{direction:'ltr'}} className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-[80px] lg:mx-16 md:mx-16 sm:mx-12 xs:justify-center xs:mx-4">
               {filteredEvents.map((event, index) => (
                 <EmployeeCard
                   bg={"#50917F"}
@@ -129,6 +134,7 @@ const EmployeeDirectory = () => {
                   id={event.id}
                   title={event.displayName}
                   jobTitle={event.jobTitle || "Not Found"}
+                  department={event.department || "Not Found"}
                   number={
                     event.businessPhones ? event.businessPhones[0] : "Not Found"
                   }

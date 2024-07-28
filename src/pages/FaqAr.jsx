@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Nav from '../components/Nav';
+import Nav from '../ArabicComponents/Nav';
 
 const FAQar = () => {
   const [activeKey, setActiveKey] = useState(null);

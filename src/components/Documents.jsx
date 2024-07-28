@@ -35,17 +35,20 @@ const KnowledgeBase = ({ pdfs, siteID }) => {
         <h1 className="sm:text-[20px] text-[12px] font-light self-stretch min-w-[100px]">
           Documents
         </h1>
-        <div className="flex w-full">
+        
+      </div>
+      
+      <div className="flex w-[90%] my-[-10px] m-auto bg-gray-100 rounded-md">
           <input
             type="text"
             placeholder="Search by name"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="text-[12px] p-[5px] rounded-l-md w-full text-gray-800"
+            className="text-[12px] p-[5px] rounded-l-md w-full bg-transparent text-gray-800"
           />
           <select
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="text-[12px] p-[5px] rounded-r-md text-gray-800 bg-slate-100"
+            className="text-[12px] p-[5px] rounded-r-md text-gray-800 bg-slate-200"
           >
             <option value="">All Categories</option>
             {categories.map((category, index) => (
@@ -55,7 +58,6 @@ const KnowledgeBase = ({ pdfs, siteID }) => {
             ))}
           </select>
         </div>
-      </div>
 
       {filteredPdfs.map((pdf, index) => (
         <div
