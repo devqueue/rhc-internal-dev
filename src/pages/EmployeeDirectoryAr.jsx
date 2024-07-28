@@ -43,14 +43,18 @@ const EmployeeDirectory = () => {
           }
         );
         const json = await response.json();
-        const filteredEmployees = json.value.filter(obj => obj.businessPhones.length !== 0);
-        
-        const updatedEvents = await Promise.all(filteredEmployees.map(async (employee) => {
-          const img = await fetchPhoto(employee.id);
-          employee['img'] = img;
-          return employee;
-        }));
-  
+        const filteredEmployees = json.value.filter(
+          (obj) => obj.businessPhones.length !== 0
+        );
+
+        const updatedEvents = await Promise.all(
+          filteredEmployees.map(async (employee) => {
+            const img = await fetchPhoto(employee.id);
+            employee["img"] = img;
+            return employee;
+          })
+        );
+
         setEvents(updatedEvents);
       } catch (error) {
         console.error("Error fetching employees:", error);
@@ -72,7 +76,10 @@ const EmployeeDirectory = () => {
 
   return (
     <>
-      <div className="overflow-hidden w-full bg-[#F4F8FB]" style={{direction:'rtl'}}>
+      <div
+        className="overflow-hidden w-full bg-[#F4F8FB]"
+        style={{ direction: "rtl" }}
+      >
         <Nav />
         {alert && (
           <div
@@ -95,7 +102,7 @@ const EmployeeDirectory = () => {
         >
           <div className="bg-[#50917F] w-full h-[64px] rounded-[8px] rounded-bl-none rounded-br-none flex justify-between items-center px-[30px] py-[20px] text-[white] mb-[30px]">
             <h1 className="sm:text-[20px] xs:text-[16px] text-[12px]">
-              دليل الموظف
+              دليل التواصل
             </h1>
           </div>
 
@@ -122,7 +129,10 @@ const EmployeeDirectory = () => {
               </select>
             </div>
 
-            <div style={{direction:'ltr'}} className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-[80px] lg:mx-16 md:mx-16 sm:mx-12 xs:justify-center xs:mx-4">
+            <div
+              style={{ direction: "ltr" }}
+              className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-[80px] lg:mx-16 md:mx-16 sm:mx-12 xs:justify-center xs:mx-4"
+            >
               {filteredEvents.map((event, index) => (
                 <EmployeeCard
                   bg={"#50917F"}
