@@ -63,10 +63,10 @@ const EmployeeDirectory = () => {
 
   const filteredEvents = events.filter(event =>
     event.displayName.toLowerCase().includes(searchQuery.toLowerCase()) &&
-    (jobTitleFilter ? event.jobTitle === jobTitleFilter : true)
+    (jobTitleFilter ? event.department === jobTitleFilter : true)
   );
 
-  const jobTitles = Array.from(new Set(events.map(event => event.jobTitle).filter(Boolean)));
+  const jobTitles = Array.from(new Set(events.map(event => event.department).filter(Boolean)));
 
   return (
     <>

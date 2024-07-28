@@ -62,10 +62,10 @@ const EmployeeDirectory = () => {
 
   const filteredEvents = events.filter((event) =>
     event.displayName.toLowerCase().includes(searchQuery.toLowerCase()) &&
-    (jobTitleFilter ? event.jobTitle === jobTitleFilter : true)
+    (jobTitleFilter ? event.department === jobTitleFilter : true)
   );
 
-  const jobTitles = Array.from(new Set(events.map(event => event.jobTitle).filter(Boolean)));
+  const jobTitles = Array.from(new Set(events.map(event => event.department).filter(Boolean)));
 
   return (
     <>
@@ -95,7 +95,7 @@ const EmployeeDirectory = () => {
                 onChange={(e) => setJobTitleFilter(e.target.value)}
                 className="md:ml-4 p-2 rounded-md bg-gray-100 max-w-full"
               >
-                <option value="">All Job Titles</option>
+                <option value="">All Departments</option>
                 {jobTitles.map((title, index) => (
                   <option key={index} value={title}>{title}</option>
                 ))}
