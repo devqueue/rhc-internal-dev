@@ -67,21 +67,35 @@ const Announcement = ({ announcements }) => {
         }}
       >
         {announcements.map((announcement, index) => (
-          <div
-            key={index}
-            className={`w-full justify-center flex flex-wrap flex-shrink-0 rounded-lg gap-[60px] items-center self-stretch content-center`}
-            style={{ backgroundColor: "#ffffff" }}
-          >
+          <>
             <div
-              className="w-full h-[37vw] bg-white rounded-lg overflow-hidden shrink-0"
-              style={{
-                backgroundImage: `url('https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${announcement.fields.image_name}')`,
-                backgroundSize: "auto 100%",
-                backgroundPosition: "center center",
-                backgroundRepeat: "no-repeat",
-              }}
-            ></div>
-          </div>
+              key={index}
+              className={`w-full flex flex-wrap flex-shrink-0 rounded-lg gap-[60px] items-center self-stretch content-center`}
+              style={{ backgroundColor: "#ffffff" }}
+            >
+              <div
+                className="w-full h-[37vw] bg-white rounded-lg overflow-hidden shrink-0"
+                style={{
+                  backgroundImage: `url('https://riyadhholding.sharepoint.com/sites/Shamil/Assets/${announcement.fields.image_name}')`,
+                  backgroundSize: "auto 100%",
+                  backgroundPosition: "center center",
+                  backgroundRepeat: "no-repeat",
+                }}
+              ></div>
+              <div className="flex justify-between gap-[60px] items-start sm:items-start sm:flex-row flex-col">
+                <p className="sm:text-[16px] text-[11px] font-light xxl:w-[20vw] w-auto">
+                  التاريخ:{"  "}
+                  {new Date(announcement.fields.date).toLocaleString(
+                    "default",
+                    {
+                      dateStyle: "short",
+                      timeZone: "Asia/Riyadh",
+                    }
+                  )}
+                </p>
+              </div>
+            </div>
+          </>
         ))}
       </div>
       <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-b from-gray-200 to-transparent"></div>
