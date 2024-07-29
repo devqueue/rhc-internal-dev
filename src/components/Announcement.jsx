@@ -56,6 +56,16 @@ const Announcement = ({ announcements }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      <div className="bg-[#50917F] w-full h-[64px] flex justify-between items-center px-[30px] py-[20px] text-white">
+        <h1 className="sm:text-[20px] text-[12px]">Announcements</h1>
+        {/* <Link
+          to="/all-employees"
+          className="sm:text-[14px] text-[9px] px-[10px] py-[5px] bg-white text-[#50917F] rounded-md"
+          // state={{ announcement, moreAnnouncements: announcements }}
+        >
+          View All
+        </Link> */}
+      </div>
       <div
         className={`flex gap-[40px] shrink-0 py-[40px] pl-[40px] pr-[40px] transition-transform ${
           isTransitioning ? "duration-500" : "duration-0"
@@ -98,8 +108,6 @@ const Announcement = ({ announcements }) => {
           </>
         ))}
       </div>
-
-      <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-b from-gray-200 to-transparent"></div>
 
       <div className="flex gap-2 pt-[24px] px-[30px] sm:px-[50px] relative bottom-[20px] lg:right-[0px] justify-end right-[16px] z-50">
         <img
