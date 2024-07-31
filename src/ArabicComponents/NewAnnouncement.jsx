@@ -72,7 +72,7 @@ const NewAnnouncement = ({ announcements }) => {
         {announcements.map((announcement, index) => (
           <div
             key={index}
-            className={`w-full justify-center flex flex-wrap flex-shrink-0 rounded-lg gap-[60px] items-center self-stretch content-center`}
+            className={`w-full flex flex-wrap flex-shrink-0 rounded-lg gap-[60px] items-center self-stretch content-center`}
             style={{ backgroundColor: "#ffffff" }}
           >
             <div
@@ -84,6 +84,15 @@ const NewAnnouncement = ({ announcements }) => {
                 backgroundRepeat: "no-repeat",
               }}
             ></div>
+            <div className="flex justify-between gap-[60px] items-start sm:items-start sm:flex-row flex-col">
+              <p className="sm:text-[16px] text-[11px] font-light xxl:w-[20vw] w-auto">
+                التاريخ:{"  "}
+                {new Date(announcement.fields.date).toLocaleString("default", {
+                  dateStyle: "short",
+                  timeZone: "Asia/Riyadh",
+                })}
+              </p>
+            </div>
           </div>
         ))}
       </div>
