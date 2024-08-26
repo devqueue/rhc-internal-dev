@@ -20,7 +20,7 @@ const QuickLinks = () => {
     {
       src: "/icons/SelfServiceIcon.svg",
       alt: "Employee self-service",
-      path: "https://hress.arhc.com.sa:9091/",
+      path: "https://selfservice.riyadhholding.sa/",
     },
     {
       src: "/icons/HelpIcon.svg",
