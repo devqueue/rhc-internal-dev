@@ -25,7 +25,7 @@ const QuickLinks = () => {
     {
       src: "/icons/HelpIcon.svg",
       alt: "Help Desk",
-      path: "http://helpdesk.riyadhholding.sa/support-portal/",
+      path: "https://riyadhholding-amc.ivanticloud.com/",
     },
     {
       src: "/icons/Midan.svg",
